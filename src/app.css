@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+
+/* ─── Fonts ─── */
+
+@font-face {
+	font-family: 'Playfair Display';
+	src: url('/fonts/PlayfairDisplay-Variable.ttf') format('truetype');
+	font-weight: 400 900;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Literata';
+	src: url('/fonts/Literata-Variable.ttf') format('truetype');
+	font-weight: 200 900;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	src: url('/fonts/JetBrainsMono-Variable.ttf') format('truetype');
+	font-weight: 100 800;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	src: url('/fonts/JetBrainsMono-Italic-Variable.ttf') format('truetype');
+	font-weight: 100 800;
+	font-style: italic;
+	font-display: swap;
+}
+
+/* ─── Design Tokens ─── */
+
+:root {
+	/* Grounds */
+	--bg-primary: #0f0e0d;
+	--bg-secondary: #1a1816;
+	--bg-tertiary: #242120;
+
+	/* Text */
+	--text-primary: #e8e0d4;
+	--text-secondary: #a89b8c;
+	--text-tertiary: #6b5f52;
+
+	/* Accents — from Iris palette */
+	--accent-primary: #5b8a9a;
+	--accent-hover: #7ba8b6;
+	--accent-secondary: #8b4566;
+	--accent-warm: #c4756a;
+
+	/* Functional */
+	--border: #2a2624;
+	--terminal-bg: #1c1917;
+	--terminal-text: #c8b89a;
+
+	/* Type scale */
+	--text-xs: 0.75rem;
+	--text-sm: 0.875rem;
+	--text-base: 1rem;
+	--text-lg: 1.125rem;
+	--text-xl: 1.5rem;
+	--text-2xl: 2rem;
+	--text-hero: clamp(2rem, 5vw + 1rem, 3.5rem);
+
+	/* Fonts */
+	--font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+	--font-body: 'Literata', Georgia, serif;
+	--font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+}
+
+/* ─── Base Styles ─── */
+
+html {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+body {
+	font-family: var(--font-body);
+	font-size: var(--text-base);
+	line-height: 1.7;
+	color: var(--text-primary);
+	background-color: var(--bg-primary);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Skip Link ─── */
+
+.skip-link {
+	position: absolute;
+	top: -100%;
+	left: 1rem;
+	z-index: 100;
+	padding: 0.5rem 1rem;
+	background: var(--accent-primary);
+	color: var(--bg-primary);
+	font-family: var(--font-body);
+	font-size: var(--text-sm);
+	text-decoration: none;
+	border-radius: 0 0 0.25rem 0.25rem;
+}
+
+.skip-link:focus {
+	top: 0;
+}
+
+/* ─── Selection ─── */
+
+::selection {
+	background: var(--accent-primary);
+	color: var(--bg-primary);
+}
+
+/* ─── Focus States ─── */
+
+:focus-visible {
+	outline: 2px solid var(--accent-primary);
+	outline-offset: 2px;
+}
+
+/* ─── Links ─── */
+
+a {
+	color: var(--accent-primary);
+	text-decoration: none;
+	transition: color 300ms ease;
+}
+
+a:hover {
+	color: var(--accent-hover);
+}
+
+a:visited {
+	color: var(--accent-warm);
+}
