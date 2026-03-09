@@ -1,6 +1,5 @@
 import type { ProjectGitHubData } from '$lib/types';
 
-const GITHUB_USER = 'JasonWarrenUK';
 const API_BASE = 'https://api.github.com';
 
 async function fetchJson<T>(url: string): Promise<T | null> {
@@ -26,8 +25,8 @@ interface ContributorResponse {
 	login: string;
 }
 
-export async function fetchRepoData(repoName: string): Promise<ProjectGitHubData | null> {
-	const repoUrl = `${API_BASE}/repos/${GITHUB_USER}/${repoName}`;
+export async function fetchRepoData(repoPath: string): Promise<ProjectGitHubData | null> {
+	const repoUrl = `${API_BASE}/repos/${repoPath}`;
 
 	const [repo, languages, contributors] = await Promise.all([
 		fetchJson<RepoResponse>(repoUrl),
