@@ -70,7 +70,7 @@
 		<span class="inline-block h-3 w-3 rounded-full" style="background-color: #ef4444;"></span>
 		<span class="inline-block h-3 w-3 rounded-full" style="background-color: #f59e0b;"></span>
 		<span class="inline-block h-3 w-3 rounded-full" style="background-color: #22c55e;"></span>
-		<span class="ml-2" style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--text-tertiary);">
+		<span class="ml-2" style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--accent-primary);">
 			{title}
 		</span>
 	</div>

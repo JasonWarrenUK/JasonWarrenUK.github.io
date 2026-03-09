@@ -27,7 +27,7 @@
 					{artefact.name}
 				</a>
 				<span style="color: var(--text-tertiary); font-size: var(--text-sm);">
-					— {artefact.description}
+					: {artefact.description}
 				</span>
 			</li>
 		{/each}

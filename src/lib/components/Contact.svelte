@@ -10,7 +10,7 @@
 	</p>
 
 	<div class="flex gap-6" style="font-size: var(--text-base);">
-		<a href="mailto:jason@jasonwarren.dev">jason@jasonwarren.dev</a>
+		<a href="mailto:jason@foundersandcoders.com">jason@foundersandcoders.com</a>
 		<a
 			href="https://github.com/JasonWarrenUK"
 			target="_blank"

@@ -1,4 +1,4 @@
-# Jason Warren — Portfolio
+# Jason Warren | Portfolio
 
 ## Project
 
@@ -24,12 +24,12 @@ bun run preview      # Preview production build
 
 ## Architecture
 
-- `src/routes/+page.svelte` — Single page composing all sections
-- `src/routes/+page.server.ts` — GitHub API data fetching at build time
-- `src/lib/components/` — Svelte 5 components (Nav, Hero, About, Section, ProjectCard, Terminal, Artefacts, Contact)
-- `src/lib/data/` — Typed project data, artefacts, terminal replay frames
-- `src/lib/types/` — TypeScript interfaces
-- `src/lib/utils/github.ts` — GitHub REST API helpers (no auth, public repos only)
+- `src/routes/+page.svelte` : Single page composing all sections
+- `src/routes/+page.server.ts` : GitHub API data fetching at build time
+- `src/lib/components/` : Svelte 5 components (Nav, Hero, About, Section, ProjectCard, Terminal, Artefacts, Contact, Background)
+- `src/lib/data/` : Typed project data, artefacts, terminal replay frames
+- `src/lib/types/` : TypeScript interfaces
+- `src/lib/utils/github.ts` : GitHub REST API helpers (no auth, public repos only)
 
 ## Design Tokens
 
@@ -40,5 +40,6 @@ Defined as CSS custom properties in `src/app.css`. Dark palette with warm accent
 - Svelte 5 runes (`$state`, `$props`, `$derived`)
 - Semantic HTML with proper heading hierarchy
 - `prefers-reduced-motion` respected throughout
-- No images unless strictly necessary — the site is prose-first
+- No images unless strictly necessary; the site is prose-first
 - GitHub data is supplementary; static content works without it
+- Prefer semicolons, colons, or other established punctuation over em-dashes. Em-dashes have become a totem for AI-generated text; avoid them.

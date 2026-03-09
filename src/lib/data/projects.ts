@@ -5,21 +5,21 @@ export const impactProjects: Omit<Project, 'github'>[] = [
 		title: 'Rhea',
 		repo: 'rhea',
 		description:
-			'AI-powered curriculum generation for peer-led learning cohorts. Uses Claude with optional web research to generate module specifications, complete multi-week course structures, and maintain them over time. Built for democratic education — the cascade pattern means AI-generated content comes with change tracking, confidence scoring, and provenance so human curriculum councils can triage what needs review. Hierarchical domain configuration with inheritance and override.',
+			'AI-powered curriculum generation for peer-led learning cohorts. Uses Claude with optional web research to generate module specifications, complete multi-week course structures, and maintain them over time. Built for democratic education: the cascade pattern means AI-generated content comes with change tracking, confidence scoring, and provenance so human curriculum councils can triage what needs review. Hierarchical domain configuration with inheritance and override.',
 		techLine: 'SvelteKit / TypeScript / LangChain / Claude API / Zod'
 	},
 	{
 		title: 'Iris',
 		repo: 'iris',
 		description:
-			'ILR toolkit for apprenticeship data submission. Converts learner data from CSV exports into ILR-compliant XML for government submission, with explicit validation and cross-submission consistency checking. Ships via three interfaces: a full-screen interactive TUI, direct CLI commands, and a Tauri desktop app — all sharing a single TypeScript core. ADR-documented architectural decisions. Proper release cycle at v5.0.0.',
+			'ILR toolkit for apprenticeship data submission. Converts learner data from CSV exports into ILR-compliant XML for government submission, with explicit validation and cross-submission consistency checking. Ships via three interfaces: a full-screen interactive TUI, direct CLI commands, and a Tauri desktop app, all sharing a single TypeScript core. ADR-documented architectural decisions. Proper release cycle at v5.0.0.',
 		techLine: 'TypeScript / SvelteKit / Tauri / Rust / @opentui/core / Vitest'
 	},
 	{
 		title: 'Things We Do',
 		repo: 'fac-things-we-do',
 		description:
-			'A PWA for task management and emotional wellbeing, built for users with Tourette\'s syndrome. Mood tracking through interactive 3D visualisation. Offline-first architecture with RxDB so it works regardless of connectivity — because the people who need it most aren\'t always in places with reliable internet. Sustained over months of collaborative development.',
+			'A PWA for task management and emotional wellbeing, built for users with Tourette\'s syndrome. Mood tracking through interactive 3D visualisation. Offline-first architecture with RxDB so it works regardless of connectivity, because the people who need it most aren\'t always in places with reliable internet. Sustained over months of collaborative development.',
 		techLine: 'Next.js 15 / React 19 / TypeScript / RxDB / Tailwind / Plotly.js'
 	},
 	{
@@ -50,7 +50,7 @@ export const explorationProjects: Omit<Project, 'github'>[] = [
 		title: 'The Work',
 		repo: 'the-work',
 		description:
-			'A narrative game about writing a PhD thesis in one night while staving off existential angst. Built with a custom Ink/Svelte runtime engine (Nib) that\'s extractable for reuse. 67 observations across 7 intellectual domains, an orthodoxy scoring system, 21 emergent disciplines from domain pairings, and a thesis defence that adapts to what you\'ve written. The game\'s idea progression — Observation, Inkling, Idea, Concept, Argument, Thesis — is itself a knowledge system.',
+			'A narrative game about writing a PhD thesis in one night while staving off existential angst. Built with a custom Ink/Svelte runtime engine (Nib) that\'s extractable for reuse. 67 observations across 7 intellectual domains, an orthodoxy scoring system, 21 emergent disciplines from domain pairings, and a thesis defence that adapts to what you\'ve written. The game\'s idea progression (Observation, Inkling, Idea, Concept, Argument, Thesis) is itself a knowledge system.',
 		techLine: 'SvelteKit / TypeScript / Ink (via inkjs) / Svelte 5 runes'
 	},
 	{
@@ -65,7 +65,7 @@ export const explorationProjects: Omit<Project, 'github'>[] = [
 		title: 'Flyt',
 		repo: 'flyt',
 		description:
-			'A Norse contest of words — defend your honour through flyting, the ancient art of ritualised insult poetry. Interactive fiction built with DendryNexus and Svelte 5. Different narrative engine to The Work (DendryNexus vs Ink), same Svelte wrapper pattern. Custom .dry story file compilation pipeline.',
+			'A Norse contest of words: defend your honour through flyting, the ancient art of ritualised insult poetry. Interactive fiction built with DendryNexus and Svelte 5. Different narrative engine to The Work (DendryNexus vs Ink), same Svelte wrapper pattern. Custom .dry story file compilation pipeline.',
 		techLine: 'SvelteKit / TypeScript / DendryNexus / Svelte 5',
 		liveUrl: 'https://flyt-delta.vercel.app'
 	},
@@ -83,14 +83,14 @@ export const metaProjects: Omit<Project, 'github'>[] = [
 		title: 'Goblin Mode',
 		repo: 'goblin-mode',
 		description:
-			'"Three goblins in a trenchcoat pretending to be a senior developer." A Claude Code configuration framework — 50+ slash commands, 12 passive skills, 3 autonomous agents, git hooks — built around ADHD-aware friction design and context window discipline. Weakness-aware design: testing is a known weakness, so a dedicated skill encodes the discipline; ADHD makes executive function unreliable, so hooks enforce it. Model tier thinking maps Haiku/Sonnet/Opus to task complexity. The process of building it is the transferable skill, not the specifics.',
+			'"Three goblins in a trenchcoat pretending to be a senior developer." A Claude Code configuration framework (50+ slash commands, 12 passive skills, 3 autonomous agents, git hooks) built around ADHD-aware friction design and context window discipline. Weakness-aware design: testing is a known weakness, so a dedicated skill encodes the discipline; ADHD makes executive function unreliable, so hooks enforce it. Model tier thinking maps Haiku/Sonnet/Opus to task complexity. The process of building it is the transferable skill, not the specifics.',
 		techLine: 'Shell / Claude Code / CLAUDE.md'
 	},
 	{
 		title: 'Nib',
 		repo: 'the-work',
 		description:
-			'A generic Ink + Svelte 5 runtime engine extracted from The Work. Handles story loading, reactive state via Svelte 5 runes, tag processing, and save/load — with zero knowledge of any particular game\'s mechanics. Game-specific logic is injected through a single onInit callback. Copy src/lib/engine/ to any SvelteKit project and it works. The ability to identify a reusable abstraction inside a bespoke project and extract it cleanly.',
+			'A generic Ink + Svelte 5 runtime engine extracted from The Work. Handles story loading, reactive state via Svelte 5 runes, tag processing, and save/load, with zero knowledge of any particular game\'s mechanics. Game-specific logic is injected through a single onInit callback. Copy src/lib/engine/ to any SvelteKit project and it works. The ability to identify a reusable abstraction inside a bespoke project and extract it cleanly.',
 		techLine: 'SvelteKit / TypeScript / Ink (via inkjs) / Svelte 5 runes'
 	},
 	{

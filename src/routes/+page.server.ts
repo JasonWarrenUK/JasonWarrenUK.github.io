@@ -15,7 +15,7 @@ export const load: PageServerLoad = async () => {
 	try {
 		githubData = await fetchAllRepoData(allRepos);
 	} catch {
-		// Graceful degradation — static content still works
+		// Graceful degradation; static content still works
 	}
 
 	return { githubData };
