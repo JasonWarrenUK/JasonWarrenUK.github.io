@@ -33,6 +33,14 @@
 			year: 'numeric'
 		});
 	}
+
+	function splitOverview(desc: string): { overview: string; detail: string } {
+		const idx = desc.indexOf('. ');
+		if (idx === -1) return { overview: desc, detail: '' };
+		return { overview: desc.slice(0, idx + 1), detail: desc.slice(idx + 2) };
+	}
+
+	const { overview, detail } = $derived(splitOverview(project.description));
 </script>
 
 <article
@@ -45,9 +53,15 @@
 		{project.title}
 	</h3>
 
-	<p style="color: var(--text-primary); line-height: 1.8; margin-bottom: 1rem;">
-		{project.description}
+	<p style="color: var(--text-primary); font-size: var(--text-base); line-height: 1.6; margin-bottom: 0.5rem; font-weight: 500;">
+		{overview}
 	</p>
+
+	{#if detail}
+		<p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
+			{detail}
+		</p>
+	{/if}
 
 	<p style="font-size: var(--text-sm); color: var(--text-tertiary); font-family: var(--font-mono); margin-bottom: 0.75rem;">
 		{project.techLine}
