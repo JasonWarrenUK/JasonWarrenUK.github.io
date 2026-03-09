@@ -41,6 +41,8 @@
 	}
 
 	const { overview, detail } = $derived(splitOverview(project.description));
+
+	let expanded = $state(false);
 </script>
 
 <article
@@ -58,24 +60,28 @@
 	</p>
 
 	{#if detail}
-		<p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
-			{detail}
-		</p>
+		<button
+			type="button"
+			onclick={() => expanded = !expanded}
+			style="color: {accentColors[accent]}; font-size: var(--text-sm); font-family: var(--font-mono); background: none; border: none; cursor: pointer; padding: 0; margin-bottom: 0.5rem;"
+		>
+			{expanded ? '▾ Less' : '▸ More'}
+		</button>
+
+		{#if expanded}
+			<p class="card-detail" style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
+				{detail}
+			</p>
+		{/if}
 	{/if}
 
-	<p style="font-size: var(--text-sm); color: var(--text-tertiary); font-family: var(--font-mono); margin-bottom: 0.75rem;">
+	<p style="font-size: var(--text-sm); color: {accentColors[accent]}; font-family: var(--font-mono); margin-bottom: 0.75rem;">
 		{project.techLine}
 	</p>
 
 	{#if project.github}
-		{#if project.github.stars > 0}
-			<div class="flex flex-wrap gap-4" style="font-size: var(--text-xs); color: var(--text-tertiary);">
-				<span>{project.github.stars} stars</span>
-			</div>
-		{/if}
-
 		{#if Object.keys(project.github.languages).length > 0}
-			<p style="font-size: var(--text-xs); color: var(--text-tertiary); margin-top: 0.5rem;">
+			<p style="font-size: var(--text-xs); color: {accentColors[accent]}; margin-top: 0.5rem;">
 				{formatLanguages(project.github.languages)}
 			</p>
 		{/if}
@@ -102,3 +108,26 @@
 		</div>
 	{/if}
 </article>
+
+<style>
+	.card-detail {
+		animation: card-expand 200ms ease-out;
+	}
+
+	@keyframes card-expand {
+		from {
+			opacity: 0;
+			max-height: 0;
+		}
+		to {
+			opacity: 1;
+			max-height: 20rem;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.card-detail {
+			animation: none;
+		}
+	}
+</style>
