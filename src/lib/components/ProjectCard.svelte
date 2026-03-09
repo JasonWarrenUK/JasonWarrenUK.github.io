@@ -99,7 +99,7 @@
 	{#if project.repo}
 		<div class="mt-3 flex gap-4" style="font-size: var(--text-sm);">
 			<a
-				href="https://github.com/JasonWarrenUK/{project.repo}"
+				href="https://github.com/{project.repo}"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="transition-colors duration-300"

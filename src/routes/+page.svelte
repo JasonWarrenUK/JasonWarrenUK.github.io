@@ -103,7 +103,7 @@
 
 <Section id="impact" title="Impact Work" accent="primary">
 	{#each withGithub(impactProjects) as project}
-		{#if project.repo === 'iris'}
+		{#if project.repo === 'foundersandcoders/iris'}
 			<ProjectCard {project} accent="primary">
 				<Terminal frames={irisSession} title="iris validate" />
 			</ProjectCard>
