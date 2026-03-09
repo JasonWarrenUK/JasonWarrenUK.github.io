@@ -10,8 +10,8 @@
 </script>
 
 <nav
-	class="fixed top-0 left-0 right-0 z-50"
-	style="background-color: var(--bg-primary); border-bottom: 1px solid var(--border);"
+	class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md"
+	style="background-color: color-mix(in srgb, var(--bg-primary) 80%, transparent); border-bottom: 1px solid var(--border); transition: background-color 600ms ease;"
 >
 	<div class="mx-auto flex max-w-3xl items-center justify-between px-6 py-3">
 		<a
