@@ -32,11 +32,11 @@
 	const sectionTints: Record<string, string> = {
 		top: '#0f0e0d',
 		about: '#0f0e0d',
-		impact: '#0d1a1f',
-		explorations: '#1a140f',
-		meta: '#1a0f16',
+		impact: '#06232e',
+		explorations: '#2e1208',
+		meta: '#2a0820',
 		background: '#0f0e0d',
-		artefacts: '#0f0e0d',
+		artefacts: '#161410',
 		contact: '#0f0e0d'
 	};
 
@@ -44,30 +44,30 @@
 		if (!browser) return;
 
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-		if (prefersReducedMotion) return;
 
-		const elements = document.querySelectorAll('.reveal-section');
+		// Reveal animations: only when motion is acceptable
+		let revealObserver: IntersectionObserver | undefined;
+		if (!prefersReducedMotion) {
+			const elements = document.querySelectorAll('.reveal-section');
+			elements.forEach((el) => el.classList.add('reveal-ready'));
 
-		// Mark elements as JS-ready so CSS can hide them for the reveal
-		elements.forEach((el) => el.classList.add('reveal-ready'));
-
-		const revealObserver = new IntersectionObserver(
-			(entries) => {
-				for (const entry of entries) {
-					if (entry.isIntersecting) {
-						entry.target.classList.add('revealed');
-						revealObserver.unobserve(entry.target);
+			revealObserver = new IntersectionObserver(
+				(entries) => {
+					for (const entry of entries) {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('revealed');
+							revealObserver!.unobserve(entry.target);
+						}
 					}
-				}
-			},
-			{ threshold: 0.1 }
-		);
+				},
+				{ threshold: 0.1 }
+			);
 
-		elements.forEach((el) => revealObserver.observe(el));
+			elements.forEach((el) => revealObserver!.observe(el));
+		}
 
-		// Scroll-driven background colour transitions
-		document.body.style.transition = 'background-color 600ms ease';
-
+		// Scroll-driven background colour transitions (always active;
+		// CSS handles transition duration and prefers-reduced-motion)
 		const tintObserver = new IntersectionObserver(
 			(entries) => {
 				for (const entry of entries) {
@@ -79,14 +79,19 @@
 					}
 				}
 			},
-			{ threshold: 0.3 }
+			{
+				// Collapse observation region to viewport midpoint:
+				// only the section straddling the centre triggers
+				rootMargin: '-50% 0px -50% 0px',
+				threshold: 0
+			}
 		);
 
 		const sections = document.querySelectorAll('section[id]');
 		sections.forEach((section) => tintObserver.observe(section));
 
 		return () => {
-			revealObserver.disconnect();
+			revealObserver?.disconnect();
 			tintObserver.disconnect();
 		};
 	});
