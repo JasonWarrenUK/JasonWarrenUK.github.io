@@ -21,9 +21,4 @@ export const artefacts: Artefact[] = [
 		repo: 'the-forgotten-one',
 		description: 'IT LIVES'
 	},
-	{
-		name: 'goblin-mode',
-		repo: 'goblin-mode',
-		description: 'Three goblins in a trenchcoat pretending to be a senior developer'
-	}
 ];
