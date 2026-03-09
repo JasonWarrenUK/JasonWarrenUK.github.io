@@ -68,19 +68,14 @@
 
 <Section id="impact" title="Impact Work" accent="primary">
 	{#each withGithub(impactProjects) as project}
-		<ProjectCard {project} accent="primary" />
+		{#if project.repo === 'iris'}
+			<ProjectCard {project} accent="primary">
+				<Terminal frames={irisSession} title="iris validate" />
+			</ProjectCard>
+		{:else}
+			<ProjectCard {project} accent="primary" />
+		{/if}
 	{/each}
-
-	<div class="mt-16">
-		<h3
-			style="font-family: var(--font-display); font-size: var(--text-xl); color: var(--text-primary); margin-bottom: 1rem; padding-left: 1.5rem; border-left: 2px solid var(--accent-primary);"
-		>
-			Iris — TUI Demo
-		</h3>
-		<div class="mt-4 pl-6">
-			<Terminal frames={irisSession} title="iris validate" />
-		</div>
-	</div>
 </Section>
 
 <Section id="explorations" title="Explorations" accent="warm">
@@ -103,23 +98,6 @@
 		<ProjectCard {project} accent="secondary" />
 	{/each}
 
-	<article
-		class="reveal-section mb-12"
-		style="padding-left: 1.5rem; border-left: 2px solid var(--accent-secondary);"
-	>
-		<h3
-			style="font-family: var(--font-display); font-size: var(--text-xl); color: var(--text-primary); margin-bottom: 0.75rem;"
-		>
-			CLAUDE.md Discipline
-		</h3>
-		<p style="color: var(--text-primary); line-height: 1.8;">
-			Every project has a CLAUDE.md. Not because AI wrote the code — because encoding project
-			context, conventions, and constraints into a machine-readable briefing document is good
-			engineering practice regardless of who reads it. Present across The Work, Epoch, Flyt, Those
-			Who Came Before, Iris, Rhea, Commons Traybake, ReDoT, Sparker, The Forgotten One, and Goblin
-			Mode itself. Each one is project-specific, not copy-pasted.
-		</p>
-	</article>
 </Section>
 
 <Artefacts {artefacts} />

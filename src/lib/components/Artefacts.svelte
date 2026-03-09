@@ -8,8 +8,12 @@
 	let { artefacts }: Props = $props();
 </script>
 
-<section id="artefacts" class="mx-auto max-w-3xl px-6 py-32">
-	<hr style="border-color: var(--border); margin-bottom: 3rem;" />
+<section id="artefacts" class="mx-auto max-w-3xl px-6 py-32" style="font-family: var(--font-mono);">
+	<h2
+		style="font-family: var(--font-mono); font-size: var(--text-2xl); color: var(--text-primary); margin-bottom: 2rem;"
+	>
+		Artefacts
+	</h2>
 
 	<ul class="space-y-3" style="list-style: none; padding: 0;">
 		{#each artefacts as artefact}
@@ -18,7 +22,7 @@
 					href="https://github.com/JasonWarrenUK/{artefact.repo}"
 					target="_blank"
 					rel="noopener noreferrer"
-					style="font-family: var(--font-mono); font-size: var(--text-sm);"
+					style="font-size: var(--text-sm);"
 				>
 					{artefact.name}
 				</a>

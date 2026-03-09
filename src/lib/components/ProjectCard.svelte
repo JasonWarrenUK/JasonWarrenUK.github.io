@@ -1,12 +1,14 @@
 <script lang="ts">
 	import type { Project, SectionAccent } from '$lib/types';
+	import type { Snippet } from 'svelte';
 
 	interface Props {
 		project: Project;
 		accent?: SectionAccent;
+		children?: Snippet;
 	}
 
-	let { project, accent = 'primary' }: Props = $props();
+	let { project, accent = 'primary', children }: Props = $props();
 
 	const accentColors: Record<SectionAccent, string> = {
 		primary: 'var(--accent-primary)',
@@ -31,6 +33,14 @@
 			year: 'numeric'
 		});
 	}
+
+	function splitOverview(desc: string): { overview: string; detail: string } {
+		const idx = desc.indexOf('. ');
+		if (idx === -1) return { overview: desc, detail: '' };
+		return { overview: desc.slice(0, idx + 1), detail: desc.slice(idx + 2) };
+	}
+
+	const { overview, detail } = $derived(splitOverview(project.description));
 </script>
 
 <article
@@ -43,29 +53,26 @@
 		{project.title}
 	</h3>
 
-	<p style="color: var(--text-primary); line-height: 1.8; margin-bottom: 1rem;">
-		{project.description}
+	<p style="color: var(--text-primary); font-size: var(--text-base); line-height: 1.6; margin-bottom: 0.5rem; font-weight: 500;">
+		{overview}
 	</p>
+
+	{#if detail}
+		<p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
+			{detail}
+		</p>
+	{/if}
 
 	<p style="font-size: var(--text-sm); color: var(--text-tertiary); font-family: var(--font-mono); margin-bottom: 0.75rem;">
 		{project.techLine}
 	</p>
 
 	{#if project.github}
-		<div class="flex flex-wrap gap-4" style="font-size: var(--text-xs); color: var(--text-tertiary);">
-			{#if project.github.commitCount > 0}
-				<span>{project.github.commitCount} commits</span>
-			{/if}
-			{#if project.github.contributors > 1}
-				<span>{project.github.contributors} contributors</span>
-			{/if}
-			{#if project.github.stars > 0}
+		{#if project.github.stars > 0}
+			<div class="flex flex-wrap gap-4" style="font-size: var(--text-xs); color: var(--text-tertiary);">
 				<span>{project.github.stars} stars</span>
-			{/if}
-			{#if project.github.lastUpdated}
-				<span>Updated {formatDate(project.github.lastUpdated)}</span>
-			{/if}
-		</div>
+			</div>
+		{/if}
 
 		{#if Object.keys(project.github.languages).length > 0}
 			<p style="font-size: var(--text-xs); color: var(--text-tertiary); margin-top: 0.5rem;">
@@ -88,4 +95,10 @@
 			</a>
 		{/if}
 	</div>
+
+	{#if children}
+		<div class="mt-6">
+			{@render children()}
+		</div>
+	{/if}
 </article>

@@ -7,28 +7,21 @@
 
 	<div class="space-y-6" style="color: var(--text-primary); line-height: 1.8;">
 		<p>
-			I came to software through no standard route. Fewer GCSEs than anyone expected, no A-levels,
-			no undergraduate degree — but a Master's with Distinction and a published book on immersive
-			theatre. The through-line is systems: how they shape experience, who they include, and what
-			happens when you build them with the people they're meant to serve rather than for them.
+			I came to software through no standard route — fewer GCSEs than anyone expected, no A-levels,
+			no undergraduate degree, but a Master's with Distinction and a published book on immersive
+			theatre. I trained at Founders and Coders, the tuition-free, peer-led programme where each
+			cohort teaches the next. I've been on both sides: learner and facilitator, running workshops
+			on database paradigms, AI toolchain architecture, and collaborative development across borders
+			and time zones.
 		</p>
 
 		<p>
-			I trained at Founders and Coders, the tuition-free, peer-led programme that runs on a
-			cascading mentorship model — each cohort teaches the next. I've been on both sides of that:
-			learner and facilitator, running workshops on database paradigms, AI toolchain architecture,
-			and the kind of collaborative development that actually works when your team spans borders and
-			time zones. It's the same model that produced Yalla's founders, and it shapes everything about
-			how I approach both code and people.
-		</p>
-
-		<p>
-			What drives the work is a straightforward conviction: the people who most need good software
-			are usually the last to get it. Tools for apprenticeship compliance, for facilitators tracking
-			students with special educational needs, for peer-led curriculum design, for civic engagement
-			with parliamentary data. I'm sceptical of AI tooling that overshadows core engineering
-			discipline — and I've built enough of it (Rhea, ReDoT, Goblin Mode) to know where it helps
-			and where it flatters.
+			The through-line is systems — how they shape experience, who they include, and what happens
+			when you build them with the people they're meant to serve. The people who most need good
+			software are usually the last to get it: apprenticeship compliance, special educational needs
+			tracking, peer-led curriculum design, civic engagement with parliamentary data. I'm sceptical
+			of AI tooling that overshadows core engineering discipline — and I've built enough of it to
+			know where it helps and where it flatters.
 		</p>
 	</div>
 </section>
