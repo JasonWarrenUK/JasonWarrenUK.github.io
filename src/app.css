@@ -17,6 +17,13 @@
 }
 
 @font-face {
+	font-family: 'Fira Code';
+	src: url('/fonts/FiraCode-Variable.ttf') format('truetype');
+	font-weight: 300 700;
+	font-display: swap;
+}
+
+@font-face {
 	font-family: 'JetBrains Mono';
 	src: url('/fonts/JetBrainsMono-Variable.ttf') format('truetype');
 	font-weight: 100 800;
@@ -67,7 +74,7 @@
 	/* Fonts */
 	--font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
 	--font-body: 'Literata', Georgia, serif;
-	--font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+	--font-mono: 'Fira Code', 'JetBrains Mono', 'Cascadia Code', monospace;
 }
 
 /* ─── Base Styles ─── */
