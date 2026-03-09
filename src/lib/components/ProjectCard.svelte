@@ -35,9 +35,11 @@
 	}
 
 	function splitOverview(desc: string): { overview: string; detail: string } {
-		const idx = desc.indexOf('. ');
-		if (idx === -1) return { overview: desc, detail: '' };
-		return { overview: desc.slice(0, idx + 1), detail: desc.slice(idx + 2) };
+		// Match '. ' or '." ' as sentence boundaries
+		const match = desc.match(/\.\s|\."\s/);
+		if (!match || match.index === undefined) return { overview: desc, detail: '' };
+		const end = match.index + match[0].length;
+		return { overview: desc.slice(0, end).trimEnd(), detail: desc.slice(end) };
 	}
 
 	const { overview, detail } = $derived(splitOverview(project.description));
@@ -59,7 +61,7 @@
 		{overview}
 	</p>
 
-	{#if detail}
+	{#if detail || children}
 		<button
 			type="button"
 			onclick={() => expanded = !expanded}
@@ -69,9 +71,16 @@
 		</button>
 
 		{#if expanded}
-			<p class="card-detail" style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
-				{detail}
-			</p>
+			{#if detail}
+				<p class="card-detail" style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
+					{detail}
+				</p>
+			{/if}
+			{#if children}
+				<div class="mt-6">
+					{@render children()}
+				</div>
+			{/if}
 		{/if}
 	{/if}
 
@@ -87,24 +96,32 @@
 		{/if}
 	{/if}
 
-	<div class="mt-3 flex gap-4" style="font-size: var(--text-sm);">
-		<a
-			href="https://github.com/JasonWarrenUK/{project.repo}"
-			target="_blank"
-			rel="noopener noreferrer"
-		>
-			Repository
-		</a>
-		{#if project.liveUrl}
-			<a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-				Live
+	{#if project.repo}
+		<div class="mt-3 flex gap-4" style="font-size: var(--text-sm);">
+			<a
+				href="https://github.com/JasonWarrenUK/{project.repo}"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="transition-colors duration-300"
+				style="color: var(--text-secondary);"
+				onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--text-primary)')}
+				onmouseleave={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)')}
+			>
+				Repository
 			</a>
-		{/if}
-	</div>
-
-	{#if children}
-		<div class="mt-6">
-			{@render children()}
+			{#if project.liveUrl}
+				<a
+					href={project.liveUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="transition-colors duration-300"
+					style="color: var(--text-secondary);"
+					onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--text-primary)')}
+					onmouseleave={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)')}
+				>
+					Live
+				</a>
+			{/if}
 		</div>
 	{/if}
 </article>

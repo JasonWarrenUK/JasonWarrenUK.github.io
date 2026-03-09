@@ -8,7 +8,7 @@ export const load: PageServerLoad = async () => {
 		...impactProjects.map((p) => p.repo),
 		...explorationProjects.map((p) => p.repo),
 		...metaProjects.map((p) => p.repo)
-	];
+	].filter((repo) => repo.length > 0);
 
 	let githubData: Record<string, ProjectGitHubData | null> = {};
 

@@ -32,9 +32,9 @@
 	const sectionTints: Record<string, string> = {
 		top: '#0f0e0d',
 		about: '#0f0e0d',
-		impact: '#0f1214',
-		explorations: '#14100f',
-		meta: '#130f11',
+		impact: '#0d1a1f',
+		explorations: '#1a140f',
+		meta: '#1a0f16',
 		background: '#0f0e0d',
 		artefacts: '#0f0e0d',
 		contact: '#0f0e0d'
