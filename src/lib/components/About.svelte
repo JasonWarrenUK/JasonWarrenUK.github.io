@@ -18,8 +18,7 @@
 			cascading mentorship model — each cohort teaches the next. I've been on both sides of that:
 			learner and facilitator, running workshops on database paradigms, AI toolchain architecture,
 			and the kind of collaborative development that actually works when your team spans borders and
-			time zones. It's the same model that produced Yalla's founders, and it shapes everything about
-			how I approach both code and people.
+			time zones. It shapes everything about how I approach both code and people.
 		</p>
 
 		<p>

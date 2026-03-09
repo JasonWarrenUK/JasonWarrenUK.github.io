@@ -5,7 +5,7 @@ export const impactProjects: Omit<Project, 'github'>[] = [
 		title: 'Things We Do',
 		repo: 'fac-things-we-do',
 		description:
-			'A PWA for task management and emotional wellbeing, built for users with Tourette\'s syndrome. Mood tracking through interactive 3D visualisation. Offline-first architecture with RxDB so it works regardless of connectivity — because the people who need it most aren\'t always in places with reliable internet. 990 commits across multiple contributors, sustained over months of collaborative development.',
+			'A PWA for task management and emotional wellbeing, built for users with Tourette\'s syndrome. Mood tracking through interactive 3D visualisation. Offline-first architecture with RxDB so it works regardless of connectivity — because the people who need it most aren\'t always in places with reliable internet. Sustained over months of collaborative development.',
 		techLine: 'Next.js 15 / React 19 / TypeScript / RxDB / Tailwind / Plotly.js'
 	},
 	{
@@ -19,14 +19,14 @@ export const impactProjects: Omit<Project, 'github'>[] = [
 		title: 'Rhea',
 		repo: 'rhea',
 		description:
-			'AI-powered curriculum generation for peer-led learning cohorts. Uses Claude with optional web research to generate module specifications, complete multi-week course structures, and maintain them over time. Built for democratic education — the cascade pattern means AI-generated content comes with change tracking, confidence scoring, and provenance so human curriculum councils can triage what needs review. Hierarchical domain configuration with inheritance and override. 350 commits.',
+			'AI-powered curriculum generation for peer-led learning cohorts. Uses Claude with optional web research to generate module specifications, complete multi-week course structures, and maintain them over time. Built for democratic education — the cascade pattern means AI-generated content comes with change tracking, confidence scoring, and provenance so human curriculum councils can triage what needs review. Hierarchical domain configuration with inheritance and override.',
 		techLine: 'SvelteKit / TypeScript / LangChain / Claude API / Zod'
 	},
 	{
 		title: 'Iris',
 		repo: 'iris',
 		description:
-			'ILR toolkit for apprenticeship data submission. Converts learner data from CSV exports into ILR-compliant XML for government submission, with explicit validation and cross-submission consistency checking. Ships via three interfaces: a full-screen interactive TUI, direct CLI commands, and a Tauri desktop app — all sharing a single TypeScript core. ADR-documented architectural decisions. 656 commits. Proper release cycle at v5.0.0.',
+			'ILR toolkit for apprenticeship data submission. Converts learner data from CSV exports into ILR-compliant XML for government submission, with explicit validation and cross-submission consistency checking. Ships via three interfaces: a full-screen interactive TUI, direct CLI commands, and a Tauri desktop app — all sharing a single TypeScript core. ADR-documented architectural decisions. Proper release cycle at v5.0.0.',
 		techLine: 'TypeScript / SvelteKit / Tauri / Rust / @opentui/core / Vitest'
 	},
 	{
@@ -73,7 +73,7 @@ export const explorationProjects: Omit<Project, 'github'>[] = [
 		title: 'Those Who Came Before',
 		repo: 'those-who-came-before',
 		description:
-			'Try to understand a vanished culture by interpreting procedurally generated artefacts. Procedural archaeology with dual objective/subjective world states. Diegetic contradiction resolution. The player\'s interpretation is the gameplay. 84 commits with structured backlog and dev documentation.',
+			'Try to understand a vanished culture by interpreting procedurally generated artefacts. Procedural archaeology with dual objective/subjective world states. Diegetic contradiction resolution. The player\'s interpretation is the gameplay. Structured backlog and dev documentation.',
 		techLine: 'SvelteKit / Svelte 5 / TypeScript'
 	}
 ];

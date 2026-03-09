@@ -52,20 +52,11 @@
 	</p>
 
 	{#if project.github}
-		<div class="flex flex-wrap gap-4" style="font-size: var(--text-xs); color: var(--text-tertiary);">
-			{#if project.github.commitCount > 0}
-				<span>{project.github.commitCount} commits</span>
-			{/if}
-			{#if project.github.contributors > 1}
-				<span>{project.github.contributors} contributors</span>
-			{/if}
-			{#if project.github.stars > 0}
+		{#if project.github.stars > 0}
+			<div class="flex flex-wrap gap-4" style="font-size: var(--text-xs); color: var(--text-tertiary);">
 				<span>{project.github.stars} stars</span>
-			{/if}
-			{#if project.github.lastUpdated}
-				<span>Updated {formatDate(project.github.lastUpdated)}</span>
-			{/if}
-		</div>
+			</div>
+		{/if}
 
 		{#if Object.keys(project.github.languages).length > 0}
 			<p style="font-size: var(--text-xs); color: var(--text-tertiary); margin-top: 0.5rem;">
