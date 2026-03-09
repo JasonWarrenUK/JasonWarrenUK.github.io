@@ -1,12 +1,14 @@
 <script lang="ts">
 	import type { Project, SectionAccent } from '$lib/types';
+	import type { Snippet } from 'svelte';
 
 	interface Props {
 		project: Project;
 		accent?: SectionAccent;
+		children?: Snippet;
 	}
 
-	let { project, accent = 'primary' }: Props = $props();
+	let { project, accent = 'primary', children }: Props = $props();
 
 	const accentColors: Record<SectionAccent, string> = {
 		primary: 'var(--accent-primary)',
@@ -79,4 +81,10 @@
 			</a>
 		{/if}
 	</div>
+
+	{#if children}
+		<div class="mt-6">
+			{@render children()}
+		</div>
+	{/if}
 </article>
