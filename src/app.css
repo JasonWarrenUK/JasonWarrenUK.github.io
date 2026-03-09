@@ -95,8 +95,15 @@ body {
 	line-height: 1.7;
 	color: var(--text-primary);
 	background-color: var(--bg-primary);
+	transition: background-color 600ms ease;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	body {
+		transition: none;
+	}
 }
 
 /* ─── Skip Link ─── */
