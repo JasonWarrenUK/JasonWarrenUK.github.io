@@ -9,7 +9,7 @@
 		class="mt-6 max-w-lg text-center"
 		style="font-family: var(--font-body); font-size: var(--text-lg); color: var(--text-secondary); line-height: 1.6;"
 	>
-		Building tools that take seriously the people they touch.
+		Knowledge systems. Good software. For people who never get either.
 	</p>
 </section>
 
