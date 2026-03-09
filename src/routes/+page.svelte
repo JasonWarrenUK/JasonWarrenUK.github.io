@@ -13,9 +13,6 @@
 	import { irisSession } from '$lib/data/terminal';
 	import type { Project } from '$lib/types';
 
-	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
-
 	interface Props {
 		data: import('./$types').PageData;
 	}
@@ -40,9 +37,7 @@
 		contact: '#0f0e0d'
 	};
 
-	onMount(() => {
-		if (!browser) return;
-
+	$effect(() => {
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 		// Reveal animations: only when motion is acceptable
