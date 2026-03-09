@@ -34,6 +34,11 @@
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 		if (prefersReducedMotion) return;
 
+		const elements = document.querySelectorAll('.reveal-section');
+
+		// Mark elements as JS-ready so CSS can hide them for the reveal
+		elements.forEach((el) => el.classList.add('reveal-ready'));
+
 		const observer = new IntersectionObserver(
 			(entries) => {
 				for (const entry of entries) {
@@ -46,9 +51,7 @@
 			{ threshold: 0.1 }
 		);
 
-		document.querySelectorAll('.reveal-section').forEach((el) => {
-			observer.observe(el);
-		});
+		elements.forEach((el) => observer.observe(el));
 
 		return () => observer.disconnect();
 	});
@@ -124,7 +127,7 @@
 <Contact />
 
 <style>
-	:global(.reveal-section) {
+	:global(.reveal-section.reveal-ready) {
 		opacity: 0;
 		transform: translateY(8px);
 		transition: opacity 600ms ease-out, transform 600ms ease-out;
@@ -133,13 +136,5 @@
 	:global(.reveal-section.revealed) {
 		opacity: 1;
 		transform: translateY(0);
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		:global(.reveal-section) {
-			opacity: 1;
-			transform: none;
-			transition: none;
-		}
 	}
 </style>
