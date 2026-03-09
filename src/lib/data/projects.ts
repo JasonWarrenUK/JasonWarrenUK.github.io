@@ -2,20 +2,6 @@ import type { Project } from '$lib/types';
 
 export const impactProjects: Omit<Project, 'github'>[] = [
 	{
-		title: 'Things We Do',
-		repo: 'fac-things-we-do',
-		description:
-			'A PWA for task management and emotional wellbeing, built for users with Tourette\'s syndrome. Mood tracking through interactive 3D visualisation. Offline-first architecture with RxDB so it works regardless of connectivity — because the people who need it most aren\'t always in places with reliable internet. Sustained over months of collaborative development.',
-		techLine: 'Next.js 15 / React 19 / TypeScript / RxDB / Tailwind / Plotly.js'
-	},
-	{
-		title: 'Sparker',
-		repo: 'sparker',
-		description:
-			'Observation tracking for facilitators working with students who have special educational needs. Records observations using flexible, user-defined fields and surfaces patterns through automatic correlation detection. The architectural decision that defines it: observations stored in Neo4j, where correlation queries become natural graph traversals rather than complex SQL joins. Relationships as the primary data structure, not an afterthought.',
-		techLine: 'SvelteKit 2 / Svelte 5 / TypeScript / Neo4j'
-	},
-	{
 		title: 'Rhea',
 		repo: 'rhea',
 		description:
@@ -30,11 +16,25 @@ export const impactProjects: Omit<Project, 'github'>[] = [
 		techLine: 'TypeScript / SvelteKit / Tauri / Rust / @opentui/core / Vitest'
 	},
 	{
+		title: 'Things We Do',
+		repo: 'fac-things-we-do',
+		description:
+			'A PWA for task management and emotional wellbeing, built for users with Tourette\'s syndrome. Mood tracking through interactive 3D visualisation. Offline-first architecture with RxDB so it works regardless of connectivity — because the people who need it most aren\'t always in places with reliable internet. Sustained over months of collaborative development.',
+		techLine: 'Next.js 15 / React 19 / TypeScript / RxDB / Tailwind / Plotly.js'
+	},
+	{
 		title: 'Commons Traybake',
 		repo: 'commons-traybake',
 		description:
 			'Civic technology for interrogating UK parliamentary data. Applies four different document chunking strategies to Hansard debates, embeds them in a Neo4j vector database, and lets users run comparative searches to see how processing decisions change which political information gets retrieved. The finding: strategies show only 8–25% overlap, proving that "neutral" data architecture encodes ideological choices.',
 		techLine: 'SvelteKit / TypeScript / Neo4j / OpenAI embeddings / UK Parliament API / Docker'
+	},
+	{
+		title: 'Sparker',
+		repo: 'sparker',
+		description:
+			'Observation tracking for facilitators working with students who have special educational needs. Records observations using flexible, user-defined fields and surfaces patterns through automatic correlation detection. The architectural decision that defines it: observations stored in Neo4j, where correlation queries become natural graph traversals rather than complex SQL joins. Relationships as the primary data structure, not an afterthought.',
+		techLine: 'SvelteKit 2 / Svelte 5 / TypeScript / Neo4j'
 	},
 	{
 		title: 'ReDoT',
