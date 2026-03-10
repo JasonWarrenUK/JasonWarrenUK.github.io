@@ -12,5 +12,8 @@
 			systems for these spaces; the kind of software that has to actually work for the people
 			inside it.
 		</p>
+		<p style="margin-top: 1rem; font-size: var(--text-sm); color: var(--text-secondary);">
+			More in <a href="#background">Background</a>.
+		</p>
 	</div>
 </section>

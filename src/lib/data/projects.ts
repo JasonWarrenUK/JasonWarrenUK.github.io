@@ -90,13 +90,7 @@ export const metaProjects: Omit<Project, 'github'>[] = [
 		title: 'Nib',
 		repo: 'JasonWarrenUK/the-work',
 		description:
-			'A generic Ink + Svelte 5 runtime engine extracted from The Work. Handles story loading, reactive state via Svelte 5 runes, tag processing, and save/load, with zero knowledge of any particular game\'s mechanics. Game-specific logic is injected through a single onInit callback. Copy src/lib/engine/ to any SvelteKit project and it works. The ability to identify a reusable abstraction inside a bespoke project and extract it cleanly.',
+			'A generic Ink + Svelte 5 runtime engine, living inside The Work\'s src/lib/engine/ directory. Handles story loading, reactive state via Svelte 5 runes, tag processing, and save/load, with zero knowledge of any particular game\'s mechanics. Game-specific logic is injected through a single onInit callback. Copy the engine directory to any SvelteKit project and it works. The ability to identify a reusable abstraction inside a bespoke project and extract it cleanly.',
 		techLine: 'SvelteKit / TypeScript / Ink (via inkjs) / Svelte 5 runes'
-	},
-	{
-		title: 'XSD -> TS',
-		repo: '',
-		description: '',
-		techLine: ''
 	}
 ];

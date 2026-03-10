@@ -7,6 +7,8 @@
 		{ id: 'artefacts', label: 'Artefacts' },
 		{ id: 'contact', label: 'Contact' }
 	];
+
+	let menuOpen = $state(false);
 </script>
 
 <nav
@@ -37,6 +39,23 @@
 				{/each}
 			</div>
 
+			<button
+				type="button"
+				class="md:hidden"
+				aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+				aria-expanded={menuOpen}
+				onclick={() => menuOpen = !menuOpen}
+				style="color: var(--text-secondary); background: none; border: none; cursor: pointer; padding: 0.25rem;"
+			>
+				<svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+					{#if menuOpen}
+						<path d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" />
+					{:else}
+						<path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" />
+					{/if}
+				</svg>
+			</button>
+
 			<a
 				href="https://github.com/JasonWarrenUK"
 				target="_blank"
@@ -53,4 +72,26 @@
 			</a>
 		</div>
 	</div>
+
+	{#if menuOpen}
+		<div
+			class="md:hidden"
+			style="border-top: 1px solid var(--border); background-color: color-mix(in srgb, var(--bg-primary) 95%, transparent);"
+		>
+			<div class="mx-auto flex max-w-3xl flex-col gap-1 px-6 py-3">
+				{#each sections as section}
+					<a
+						href="#{section.id}"
+						class="no-underline transition-colors duration-300"
+						style="font-family: var(--font-body); font-size: var(--text-sm); color: var(--text-secondary); padding: 0.375rem 0;"
+						onclick={() => menuOpen = false}
+						onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--text-primary)')}
+						onmouseleave={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)')}
+					>
+						{section.label}
+					</a>
+				{/each}
+			</div>
+		</div>
+	{/if}
 </nav>
