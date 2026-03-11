@@ -30,14 +30,6 @@
 	font-display: swap;
 }
 
-@font-face {
-	font-family: 'JetBrains Mono';
-	src: url('/fonts/JetBrainsMono-Italic-Variable.ttf') format('truetype');
-	font-weight: 100 800;
-	font-style: italic;
-	font-display: swap;
-}
-
 /* ─── Design Tokens & Base Styles ─── */
 
 @layer base {
@@ -165,6 +157,60 @@
 
 	a:visited {
 		color: var(--accent-warm);
+	}
+
+	/* ─── Nav Links ─── */
+
+	nav a {
+		color: var(--text-secondary);
+		text-decoration: none;
+	}
+
+	nav a:visited {
+		color: var(--text-secondary);
+	}
+
+	nav a:hover,
+	nav a:focus-visible {
+		color: var(--text-primary);
+	}
+
+	nav .nav-home,
+	nav .nav-home:visited {
+		color: var(--text-primary);
+	}
+
+	/* ─── Card Links ─── */
+
+	.card-links a {
+		color: var(--text-secondary);
+	}
+
+	.card-links a:visited {
+		color: var(--text-secondary);
+	}
+
+	.card-links a:hover,
+	.card-links a:focus-visible {
+		color: var(--text-primary);
+	}
+
+	/* ─── Shared Component Styles ─── */
+
+	.section-heading {
+		font-family: var(--font-display);
+		font-size: var(--text-2xl);
+		color: var(--text-primary);
+		margin-bottom: 2rem;
+	}
+
+	.pull-quote {
+		color: var(--text-secondary);
+		font-family: var(--font-display);
+		font-size: var(--text-lg);
+		font-style: italic;
+		line-height: 1.8;
+		padding-left: 1.5rem;
 	}
 }
 

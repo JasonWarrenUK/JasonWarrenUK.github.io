@@ -68,31 +68,30 @@
 </script>
 
 <article
-	class="reveal-section mb-12"
-	style="padding-left: 1.5rem; border-left: 2px solid {accentColors[accent]};"
+	class="card reveal-section mb-12"
+	style="border-left: 2px solid {accentColors[accent]};"
 >
-	<h3
-		style="font-family: var(--font-display); font-size: var(--text-xl); color: var(--text-primary); margin-bottom: 0.75rem;"
-	>
+	<h3 class="card-title">
 		{project.title}
 	</h3>
 
-	<p style="color: var(--text-primary); font-size: var(--text-base); line-height: 1.6; margin-bottom: 0.5rem; font-weight: 500;">
+	<p class="card-overview">
 		{overview}
 	</p>
 
 	{#if detail || children}
 		<button
 			type="button"
+			class="card-toggle"
 			onclick={() => expanded = !expanded}
-			style="color: {accentColors[accent]}; font-size: var(--text-sm); font-family: var(--font-mono); background: none; border: none; cursor: pointer; padding: 0; margin-bottom: 0.5rem;"
+			style="color: {accentColors[accent]};"
 		>
 			{expanded ? '▾ Less' : '▸ More'}
 		</button>
 
 		{#if expanded}
 			{#if detail}
-				<p class="card-detail" style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem;">
+				<p class="card-detail card-detail-text">
 					{detail}
 				</p>
 			{/if}
@@ -104,20 +103,20 @@
 		{/if}
 	{/if}
 
-	<p style="font-size: var(--text-sm); color: {accentColors[accent]}; font-family: var(--font-mono); margin-bottom: 0.75rem;">
+	<p class="card-tech" style="color: {accentColors[accent]};">
 		{project.techLine}
 	</p>
 
 	{#if project.github}
 		{@const segments = getLanguageSegments(project.github.languages)}
 		{#if segments.length > 0}
-			<div style="margin-top: 0.5rem;">
-				<div class="lang-bar" style="display: flex; height: 4px; border-radius: 2px; overflow: hidden; gap: 1px;">
+			<div class="lang-section">
+				<div class="lang-bar">
 					{#each segments as seg}
 						<div style="width: {seg.pct}%; background: {seg.color};" title="{seg.lang} {seg.pct}%"></div>
 					{/each}
 				</div>
-				<p style="font-size: var(--text-xs); color: var(--text-tertiary); margin-top: 0.25rem;">
+				<p class="lang-labels">
 					{segments.map(s => `${s.lang} ${s.pct}%`).join(' · ')}
 				</p>
 			</div>
@@ -125,15 +124,12 @@
 	{/if}
 
 	{#if project.repo}
-		<div class="mt-3 flex gap-4" style="font-size: var(--text-sm);">
+		<div class="card-links mt-3 flex gap-4">
 			<a
 				href="https://github.com/{project.repo}"
 				target="_blank"
 				rel="noopener noreferrer"
 				class="transition-colors duration-300"
-				style="color: var(--text-secondary);"
-				onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--text-primary)')}
-				onmouseleave={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)')}
 			>
 				Repository
 			</a>
@@ -143,9 +139,6 @@
 					target="_blank"
 					rel="noopener noreferrer"
 					class="transition-colors duration-300"
-					style="color: var(--text-secondary);"
-					onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--text-primary)')}
-					onmouseleave={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)')}
 				>
 					Live
 				</a>
@@ -155,8 +148,71 @@
 </article>
 
 <style>
+	.card {
+		padding-left: 1.5rem;
+	}
+
+	.card-title {
+		font-family: var(--font-display);
+		font-size: var(--text-xl);
+		color: var(--text-primary);
+		margin-bottom: 0.75rem;
+	}
+
+	.card-overview {
+		color: var(--text-primary);
+		font-size: var(--text-base);
+		line-height: 1.6;
+		margin-bottom: 0.5rem;
+		font-weight: 500;
+	}
+
+	.card-toggle {
+		font-size: var(--text-sm);
+		font-family: var(--font-mono);
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		margin-bottom: 0.5rem;
+	}
+
 	.card-detail {
 		animation: card-expand 200ms ease-out;
+	}
+
+	.card-detail-text {
+		color: var(--text-secondary);
+		line-height: 1.8;
+		margin-bottom: 1rem;
+	}
+
+	.card-tech {
+		font-size: var(--text-sm);
+		font-family: var(--font-mono);
+		margin-bottom: 0.75rem;
+	}
+
+	.lang-section {
+		margin-top: 0.5rem;
+	}
+
+	.lang-bar {
+		display: flex;
+		height: 4px;
+		border-radius: 2px;
+		overflow: hidden;
+		gap: 1px;
+	}
+
+	.lang-labels {
+		font-size: var(--text-xs);
+		color: var(--text-tertiary);
+		margin-top: 0.25rem;
+	}
+
+	.card-links {
+		font-size: var(--text-sm);
 	}
 
 	@keyframes card-expand {

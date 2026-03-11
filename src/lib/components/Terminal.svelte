@@ -59,31 +59,50 @@
 	bind:this={containerEl}
 	role="img"
 	aria-label="Terminal demonstration showing {title}"
-	class="reveal-section overflow-hidden rounded-lg"
-	style="background-color: var(--terminal-bg); border: 1px solid var(--border);"
+	class="terminal-window reveal-section overflow-hidden rounded-lg"
 >
 	<!-- Title bar -->
-	<div
-		class="flex items-center gap-2 px-4 py-2"
-		style="background-color: var(--bg-tertiary); border-bottom: 1px solid var(--border);"
-	>
-		<span class="inline-block h-3 w-3 rounded-full" style="background-color: #ef4444;"></span>
-		<span class="inline-block h-3 w-3 rounded-full" style="background-color: #f59e0b;"></span>
-		<span class="inline-block h-3 w-3 rounded-full" style="background-color: #22c55e;"></span>
-		<span class="ml-2" style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--accent-primary);">
+	<div class="terminal-titlebar flex items-center gap-2 px-4 py-2">
+		<span class="terminal-dot inline-block h-3 w-3 rounded-full" style="background-color: #ef4444;"></span>
+		<span class="terminal-dot inline-block h-3 w-3 rounded-full" style="background-color: #f59e0b;"></span>
+		<span class="terminal-dot inline-block h-3 w-3 rounded-full" style="background-color: #22c55e;"></span>
+		<span class="terminal-title ml-2">
 			{title}
 		</span>
 	</div>
 
 	<!-- Terminal content -->
 	<pre
-		class="overflow-x-auto p-4"
-		style="font-family: var(--font-mono); font-size: var(--text-sm); color: var(--terminal-text); line-height: 1.6; margin: 0;"
+		class="terminal-content overflow-x-auto p-4"
 	>{#each visibleLines as line}{line}
 {/each}{#if showCursor}<span class="cursor">█</span>{/if}</pre>
 </div>
 
 <style>
+	.terminal-window {
+		background-color: var(--terminal-bg);
+		border: 1px solid var(--border);
+	}
+
+	.terminal-titlebar {
+		background-color: var(--bg-tertiary);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.terminal-title {
+		font-family: var(--font-mono);
+		font-size: var(--text-xs);
+		color: var(--accent-primary);
+	}
+
+	.terminal-content {
+		font-family: var(--font-mono);
+		font-size: var(--text-sm);
+		color: var(--terminal-text);
+		line-height: 1.6;
+		margin: 0;
+	}
+
 	.cursor {
 		animation: blink 1s step-end infinite;
 	}

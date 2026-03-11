@@ -2,19 +2,20 @@
 </script>
 
 <section id="top" class="flex min-h-screen flex-col items-center justify-center px-6">
-	<h1 class="hero-name" style="font-family: var(--font-display); font-size: var(--text-hero); font-weight: 700; line-height: 1.1;">
+	<h1 class="hero-name">
 		Jason Warren
 	</h1>
-	<p
-		class="mt-6 max-w-lg text-center"
-		style="font-family: var(--font-body); font-size: var(--text-lg); color: var(--text-secondary); line-height: 1.6;"
-	>
+	<p class="hero-tagline mt-6 max-w-lg text-center">
 		Knowledge systems. Good software. For people who never get either.
 	</p>
 </section>
 
 <style>
 	.hero-name {
+		font-family: var(--font-display);
+		font-size: var(--text-hero);
+		font-weight: 700;
+		line-height: 1.1;
 		background: linear-gradient(
 			135deg,
 			#5b8a9a,
@@ -27,6 +28,13 @@
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		animation: iris-cycle 30s ease infinite;
+	}
+
+	.hero-tagline {
+		font-family: var(--font-body);
+		font-size: var(--text-lg);
+		color: var(--text-secondary);
+		line-height: 1.6;
 	}
 
 	@keyframes iris-cycle {
