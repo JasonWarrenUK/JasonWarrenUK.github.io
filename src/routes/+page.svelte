@@ -123,7 +123,7 @@
 </Section>
 
 <Section id="explorations" title="Explorations" accent="warm">
-	<p class="pull-quote mb-12" style="color: var(--text-secondary); font-family: var(--font-display); font-size: var(--text-lg); font-style: italic; line-height: 1.8; padding-left: 1.5rem; border-left: 2px solid var(--accent-warm);">
+	<p class="pull-quote mb-12" style="border-left: 2px solid var(--accent-warm);">
 		Projects that explore ideas through systems design. Each one takes a domain (history,
 		philosophy, narrative, poetry) and builds a system that lets users engage with it on its
 		own terms.
@@ -134,7 +134,7 @@
 </Section>
 
 <Section id="meta" title="Meta" accent="secondary">
-	<p class="pull-quote mb-12" style="color: var(--text-secondary); font-family: var(--font-display); font-size: var(--text-lg); font-style: italic; line-height: 1.8; padding-left: 1.5rem; border-left: 2px solid var(--accent-secondary);">
+	<p class="pull-quote mb-12" style="border-left: 2px solid var(--accent-secondary);">
 		How I think about tooling and workflow. Most developers use tools. Some configure them. This is
 		what happens when you encode your entire development methodology into a system.
 	</p>

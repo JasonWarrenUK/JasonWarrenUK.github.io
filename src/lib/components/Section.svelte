@@ -20,7 +20,8 @@
 
 <section {id} class="mx-auto max-w-3xl px-6 py-32">
 	<h2
-		style="font-family: var(--font-display); font-size: var(--text-2xl); color: var(--text-primary); margin-bottom: 3rem; padding-left: {accent !== 'none' ? '1rem' : '0'}; border-left: {accent !== 'none' ? `3px solid ${accentColors[accent]}` : 'none'};"
+		class="section-heading"
+		style="margin-bottom: 3rem; padding-left: {accent !== 'none' ? '1rem' : '0'}; border-left: {accent !== 'none' ? `3px solid ${accentColors[accent]}` : 'none'};"
 	>
 		{title}
 	</h2>

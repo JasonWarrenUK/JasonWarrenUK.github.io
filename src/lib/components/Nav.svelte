@@ -11,16 +11,18 @@
 	let menuOpen = $state(false);
 </script>
 
+<svelte:window onkeydown={(e: KeyboardEvent) => {
+	if (e.key === 'Escape' && menuOpen) {
+		menuOpen = false;
+	}
+}} />
+
 <nav
 	class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md"
 	style="background-color: color-mix(in srgb, var(--bg-primary) 80%, transparent); border-bottom: 1px solid var(--border); transition: background-color 600ms ease;"
 >
 	<div class="mx-auto flex max-w-3xl items-center justify-between px-6 py-3">
-		<a
-			href="#top"
-			class="no-underline"
-			style="font-family: var(--font-display); font-size: var(--text-lg); color: var(--text-primary);"
-		>
+		<a href="#top" class="nav-home nav-site-name no-underline">
 			Jason Warren
 		</a>
 
@@ -29,10 +31,7 @@
 				{#each sections as section}
 					<a
 						href="#{section.id}"
-						class="no-underline transition-colors duration-300"
-						style="font-family: var(--font-body); font-size: var(--text-sm); color: var(--text-secondary);"
-						onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--text-primary)')}
-						onmouseleave={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)')}
+						class="nav-link no-underline transition-colors duration-300"
 					>
 						{section.label}
 					</a>
@@ -41,11 +40,10 @@
 
 			<button
 				type="button"
-				class="md:hidden"
+				class="nav-menu-btn md:hidden"
 				aria-label={menuOpen ? 'Close menu' : 'Open menu'}
 				aria-expanded={menuOpen}
 				onclick={() => menuOpen = !menuOpen}
-				style="color: var(--text-secondary); background: none; border: none; cursor: pointer; padding: 0.25rem;"
 			>
 				<svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
 					{#if menuOpen}
@@ -61,8 +59,7 @@
 				target="_blank"
 				rel="noopener noreferrer"
 				aria-label="GitHub profile"
-				style="color: var(--text-secondary);"
-				class="transition-colors duration-300 hover:!text-[var(--text-primary)]"
+				class="transition-colors duration-300"
 			>
 				<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 					<path
@@ -82,11 +79,8 @@
 				{#each sections as section}
 					<a
 						href="#{section.id}"
-						class="no-underline transition-colors duration-300"
-						style="font-family: var(--font-body); font-size: var(--text-sm); color: var(--text-secondary); padding: 0.375rem 0;"
+						class="nav-link no-underline transition-colors duration-300"
 						onclick={() => menuOpen = false}
-						onmouseenter={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--text-primary)')}
-						onmouseleave={(e) => ((e.currentTarget as HTMLElement).style.color = 'var(--text-secondary)')}
 					>
 						{section.label}
 					</a>
@@ -95,3 +89,24 @@
 		</div>
 	{/if}
 </nav>
+
+<style>
+	.nav-site-name {
+		font-family: var(--font-display);
+		font-size: var(--text-lg);
+	}
+
+	.nav-link {
+		font-family: var(--font-body);
+		font-size: var(--text-sm);
+		padding: 0.375rem 0;
+	}
+
+	.nav-menu-btn {
+		color: var(--text-secondary);
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0.25rem;
+	}
+</style>
