@@ -95,6 +95,15 @@
 <svelte:head>
 	<title>Jason Warren | Developer</title>
 	<meta name="description" content="Knowledge systems. Good software. For people who never get either." />
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		"@context": "https://schema.org",
+		"@type": "Person",
+		"name": "Jason Warren",
+		"url": "https://jasonwarrenuk.github.io",
+		"sameAs": ["https://github.com/JasonWarrenUK"],
+		"jobTitle": "Developer",
+		"knowsAbout": ["Knowledge Systems", "SvelteKit", "TypeScript", "Civic Technology"]
+	})}</script>`}
 </svelte:head>
 
 <Hero />
@@ -135,9 +144,9 @@
 
 </Section>
 
-<Background />
-
 <Artefacts {artefacts} />
+
+<Background />
 
 <Contact />
 

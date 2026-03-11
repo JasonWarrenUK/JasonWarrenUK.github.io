@@ -17,14 +17,34 @@
 		none: 'var(--border)'
 	};
 
-	function formatLanguages(languages: Record<string, number>): string {
+	const langColors: Record<string, string> = {
+		TypeScript: 'var(--accent-primary)',
+		JavaScript: 'var(--accent-warm)',
+		Svelte: 'var(--accent-warm)',
+		CSS: 'var(--accent-secondary)',
+		HTML: 'var(--accent-secondary)',
+		Rust: 'var(--accent-warm)',
+		Shell: 'var(--accent-primary)',
+		Python: 'var(--accent-primary)'
+	};
+
+	function getLanguageSegments(languages: Record<string, number>): { lang: string; pct: number; color: string }[] {
 		const total = Object.values(languages).reduce((a, b) => a + b, 0);
-		if (total === 0) return '';
+		if (total === 0) return [];
+		const palette = [
+			'var(--accent-primary)',
+			'var(--accent-warm)',
+			'var(--accent-secondary)',
+			'var(--text-tertiary)'
+		];
 		return Object.entries(languages)
 			.sort(([, a], [, b]) => b - a)
 			.slice(0, 4)
-			.map(([lang, bytes]) => `${lang} ${Math.round((bytes / total) * 100)}%`)
-			.join(' · ');
+			.map(([lang, bytes], i) => ({
+				lang,
+				pct: Math.round((bytes / total) * 100),
+				color: langColors[lang] ?? palette[i] ?? 'var(--text-tertiary)'
+			}));
 	}
 
 	function formatDate(iso: string): string {
@@ -89,10 +109,18 @@
 	</p>
 
 	{#if project.github}
-		{#if Object.keys(project.github.languages).length > 0}
-			<p style="font-size: var(--text-xs); color: {accentColors[accent]}; margin-top: 0.5rem;">
-				{formatLanguages(project.github.languages)}
-			</p>
+		{@const segments = getLanguageSegments(project.github.languages)}
+		{#if segments.length > 0}
+			<div style="margin-top: 0.5rem;">
+				<div class="lang-bar" style="display: flex; height: 4px; border-radius: 2px; overflow: hidden; gap: 1px;">
+					{#each segments as seg}
+						<div style="width: {seg.pct}%; background: {seg.color};" title="{seg.lang} {seg.pct}%"></div>
+					{/each}
+				</div>
+				<p style="font-size: var(--text-xs); color: var(--text-tertiary); margin-top: 0.25rem;">
+					{segments.map(s => `${s.lang} ${s.pct}%`).join(' · ')}
+				</p>
+			</div>
 		{/if}
 	{/if}
 

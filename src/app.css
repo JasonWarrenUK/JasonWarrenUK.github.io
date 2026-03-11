@@ -139,6 +139,18 @@
 		outline-offset: 2px;
 	}
 
+	button:focus-visible {
+		outline: 2px solid var(--accent-primary);
+		outline-offset: 4px;
+		background: color-mix(in srgb, var(--accent-primary) 10%, transparent);
+	}
+
+	nav a:focus-visible {
+		outline: 2px solid var(--accent-primary);
+		outline-offset: 4px;
+		border-radius: 2px;
+	}
+
 	/* ─── Links ─── */
 
 	a {
@@ -153,5 +165,59 @@
 
 	a:visited {
 		color: var(--accent-warm);
+	}
+}
+
+/* ─── Print ─── */
+
+@media print {
+	body {
+		background: #fff !important;
+		color: #1a1a1a !important;
+		font-size: 11pt;
+		line-height: 1.5;
+		transition: none;
+	}
+
+	nav,
+	.skip-link,
+	button,
+	.terminal-window,
+	svg {
+		display: none !important;
+	}
+
+	section {
+		padding: 1rem 0 !important;
+		break-inside: avoid;
+	}
+
+	article {
+		border-left-color: #ccc !important;
+		break-inside: avoid;
+	}
+
+	h1, h2, h3 {
+		color: #1a1a1a !important;
+		font-family: Georgia, serif;
+	}
+
+	p, span, div {
+		color: #333 !important;
+	}
+
+	a {
+		color: #1a1a1a !important;
+		text-decoration: underline;
+	}
+
+	a[href^="http"]::after {
+		content: " (" attr(href) ")";
+		font-size: 9pt;
+		color: #666;
+	}
+
+	.card-detail {
+		animation: none !important;
 	}
 }
