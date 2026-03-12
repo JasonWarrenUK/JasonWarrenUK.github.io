@@ -1,0 +1,51 @@
+{
+  "batch": "convention_outlier",
+  "batch_index": 17,
+  "assessments": {"convention_outlier": 93.0},
+  "dimension_notes": {
+    "convention_outlier": {
+      "evidence": [
+        "All data modules in src/lib/data/ follow the same pattern: import type from '$lib/types', export named const array with explicit type annotation",
+        "Naming is consistently camelCase across all production files: fetchGitHub, tryFetchJson, isRepoResponse, parseCommitCount, fetchRepoData, fetchAllRepoData, attachGithubData",
+        "All three data files (artefacts.ts, projects.ts, terminal.ts) use identical export structure: named exports of typed arrays",
+        "Component files all use PascalCase naming matching Svelte convention",
+        "Type definitions in lib/types/index.ts use consistent interface declarations with no mixed strategies"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "Minor inconsistency in GitHub casing: the type is 'ProjectGitHubData' (capital H) but the function is 'attachGithubData' (lowercase h). This is a trivial cosmetic drift but technically a naming convention inconsistency."
+    }
+  },
+  "dimension_judgment": {
+    "convention_outlier": {
+      "strengths": [
+        "All three data modules (artefacts.ts, projects.ts, terminal.ts) follow an identical structural pattern: typed import, named const export of a typed array",
+        "Consistent camelCase naming across all functions in utils/github.ts with clear verb prefixes (fetch, is, parse, attach)",
+        "Svelte components uniformly use PascalCase file naming and Svelte 5 runes ($props, $effect) throughout",
+        "Export patterns are uniform: all modules use named exports exclusively, no default exports",
+        "Type strategy is consistent: all domain objects use TypeScript interfaces, no mixed TypedDict/class/NamedTuple patterns"
+      ],
+      "issue_character": "The only convention inconsistency found is a trivial casing variation in a compound word (GitHub vs Github), which is cosmetic and does not impede navigation or understanding.",
+      "score_rationale": "A developer can confidently predict conventions from seeing one module and trust they hold elsewhere. The data/ directory is a model of sibling consistency. The single minor casing inconsistency (GitHub vs Github) prevents a perfect score but does not materially affect developer experience. This places the codebase solidly in the 90+ range per the dimension anchors."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "convention_outlier",
+      "identifier": "github_casing_inconsistency",
+      "summary": "Inconsistent casing of 'GitHub' in type name vs function name",
+      "related_files": ["src/lib/utils/github.ts", "src/lib/types/index.ts"],
+      "evidence": ["Type is named 'ProjectGitHubData' (capital H) in types/index.ts, but the function is named 'attachGithubData' (lowercase h) in utils/github.ts"],
+      "suggestion": "Rename 'attachGithubData' to 'attachGitHubData' in utils/github.ts and update the call site in routes/+page.server.ts to match",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Minor attention drift on compound word casing"],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

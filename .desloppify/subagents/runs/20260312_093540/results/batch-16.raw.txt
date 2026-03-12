@@ -1,0 +1,38 @@
+{
+  "batch": "cross_module_architecture",
+  "batch_index": 16,
+  "assessments": {"cross_module_architecture": 92.0},
+  "dimension_notes": {
+    "cross_module_architecture": {
+      "evidence": [
+        "Import graph is shallow and acyclic: routes/+page.server.ts imports from lib/data/projects.ts and lib/utils/github.ts; routes/+page.svelte imports from lib/data/artefacts.ts, lib/data/terminal.ts, and lib/components/",
+        "No god modules detected: the most-imported files each have only 1 importer",
+        "Clear unidirectional dependency flow: routes -> lib/utils and lib/data -> lib/types",
+        "No shared mutable state or import-time side effects across modules",
+        "Total codebase is 313 LOC across 8 production files, limiting the surface area for architectural issues"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The codebase is small enough that architectural patterns are trivially correct rather than demonstrably maintained under pressure. The lib/types/index.ts barrel file is the sole type hub for the entire codebase, which is fine at this scale but would become a coupling point as the project grows."
+    }
+  },
+  "dimension_judgment": {
+    "cross_module_architecture": {
+      "strengths": [
+        "Dependency direction is strictly unidirectional: routes depend on lib, lib/data depends on lib/types, lib/utils depends on lib/types; no reverse imports",
+        "No cycles exist in the import graph; each module has a clear, singular responsibility",
+        "No shared mutable state or import-time side effects; all data modules export pure constants, and github.ts exports pure async functions",
+        "The boundary between build-time data fetching (+page.server.ts) and client-side rendering (+page.svelte) is cleanly separated through SvelteKit conventions"
+      ],
+      "issue_character": "No material cross-module architecture issues exist; the codebase is small, cleanly layered, and free of boundary violations.",
+      "score_rationale": "The dependency graph is acyclic, boundaries are respected, and no hub modules or shared mutable state patterns exist. This earns a strong score. The score is held slightly below exemplary because the codebase is only 313 LOC across 8 files, meaning the architecture has not yet been tested under growth pressure; the current simplicity is more a function of scale than of deliberate architectural discipline under complexity."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": ["The scan_evidence flags +page.server.ts as 'orphaned' but this is a SvelteKit convention file that is loaded by the framework, not a true orphan"]
+  }
+}

@@ -1,250 +1,63 @@
 {
-  "command": "show",
-  "query": "review",
-  "status_filter": "open",
-  "total": 10,
-  "summary": {
-    "by_tier": {
-      "T1": 3,
-      "T2": 7
-    },
-    "by_detector": {
-      "review": 10
-    },
-    "files": 1
+  "command": "review",
+  "action": "import",
+  "mode": "holistic",
+  "diff": {
+    "new": 0,
+    "auto_resolved": 0,
+    "reopened": 0,
+    "total_current": 9,
+    "suspect_detectors": [
+      "exports",
+      "logs",
+      "orphaned",
+      "review",
+      "single_use",
+      "smells",
+      "stale_exclude",
+      "test_coverage",
+      "unused"
+    ],
+    "chronic_reopeners": [],
+    "skipped_other_lang": 4,
+    "resolved_out_of_scope": 0,
+    "ignored": 0,
+    "ignore_patterns": 0,
+    "raw_issues": 9,
+    "suppressed_pct": 0.0
   },
-  "by_file": {
-    ".": [
-      {
-        "id": "review::.::holistic::contract_coherence::tryFetchJson_redundant_union",
-        "tier": 1,
-        "confidence": "high",
-        "summary": "tryFetchJson return type 'unknown | null' is redundant since null is a subset of unknown",
-        "detail": {
-          "holistic": true,
-          "dimension": "contract_coherence",
-          "related_files": [
-            "src/lib/utils/github.ts"
-          ],
-          "evidence": [
-            "Line 20: 'async function tryFetchJson(url: string): Promise<unknown | null>' - 'unknown | null' collapses to 'unknown', obscuring the intentional null-return contract"
-          ],
-          "suggestion": "Change return type to Promise<unknown> since that already includes null, or better yet use a more specific return type. If the intent is to communicate 'JSON data or null', consider a branded type or a comment clarifying the null semantics.",
-          "reasoning": "",
-          "content_hash": "9063ec53"
-        }
-      },
-      {
-        "id": "review::.::holistic::error_consistency::unprotected_json_parse",
-        "tier": 1,
-        "confidence": "high",
-        "summary": "tryFetchJson calls res.json() without try-catch, breaking the null-on-error contract",
-        "detail": {
-          "holistic": true,
-          "dimension": "error_consistency",
-          "related_files": [
-            "src/lib/utils/github.ts"
-          ],
-          "evidence": [
-            "Line 22-23: fetchGitHub is carefully wrapped in try-catch, but tryFetchJson calls res.json() unprotected. If the GitHub API returns a 200 with malformed body, this throws an unhandled exception instead of returning null."
-          ],
-          "suggestion": "Wrap the res.json() call in a try-catch that returns null on parse failure, consistent with the function's null-return contract: try { return await res.json(); } catch { return null; }",
-          "reasoning": "",
-          "content_hash": "108566d3"
-        }
-      },
-      {
-        "id": "review::.::holistic::test_strategy::untested_page_server_orchestration",
-        "tier": 1,
-        "confidence": "high",
-        "summary": "+page.server.ts load function and attachGithubData helper have zero test coverage",
-        "detail": {
-          "holistic": true,
-          "dimension": "test_strategy",
-          "related_files": [
-            "src/routes/+page.server.ts"
-          ],
-          "evidence": [
-            "attachGithubData merges static project data with GitHub API results using nullish coalescing; the load function orchestrates collecting all repo names, fetching data, and attaching it to three separate project arrays. No test verifies this merge logic, the deduplication of shared repos across project categories, or the graceful degradation when GitHub data is unavailable."
-          ],
-          "suggestion": "Extract attachGithubData to a testable module (e.g., src/lib/utils/projects.ts) and add unit tests covering: (1) correct merge when GitHub data exists, (2) null fallback when GitHub data is missing for a repo, (3) handling of repos shared across project categories. The load function itself can remain untested as framework plumbing.",
-          "reasoning": "",
-          "content_hash": "5ad54d9e"
-        }
-      },
-      {
-        "id": "review::.::holistic::ai_generated_debt::verbose_project_descriptions",
-        "tier": 2,
-        "confidence": "medium",
-        "summary": "Project descriptions in projects.ts follow a formulaic LLM-style pattern of escalating claims",
-        "detail": {
-          "holistic": true,
-          "dimension": "ai_generated_debt",
-          "related_files": [
-            "src/lib/data/projects.ts"
-          ],
-          "evidence": [
-            "All 12 project descriptions follow the same structure: opening claim, technical detail, philosophical reflection. Examples: 'The architectural decision that defines it:', 'The finding:', 'The game's idea progression... is itself a knowledge system.', 'The process of building it is the transferable skill, not the specifics.' This formulaic structure across all entries suggests AI-generated prose."
-          ],
-          "suggestion": "Consider shortening project descriptions to 1-2 sentences of concrete information. The current descriptions read more like AI-generated marketing copy than developer portfolio entries. Let the repos speak for themselves with concise summaries.",
-          "reasoning": "",
-          "content_hash": "962d5f69"
-        }
-      },
-      {
-        "id": "review::.::holistic::convention_outlier::artefacts_bypasses_section_wrapper",
-        "tier": 2,
-        "confidence": "medium",
-        "summary": "Artefacts component implements its own section structure instead of using the shared Section component",
-        "detail": {
-          "holistic": true,
-          "dimension": "convention_outlier",
-          "related_files": [
-            "src/lib/components/Artefacts.svelte",
-            "src/lib/components/Section.svelte"
-          ],
-          "evidence": [
-            "Impact, Explorations, and Meta sections all compose via <Section id title accent>, but Artefacts renders its own <section> with its own heading styling",
-            "Artefacts has its own .artefacts-heading style while sibling sections use the .section-heading class provided by Section.svelte"
-          ],
-          "suggestion": "Consider wrapping Artefacts content in the Section component for consistency, or document the intentional deviation if the mono-font styling requires it.",
-          "reasoning": "",
-          "content_hash": "19a1e30f"
-        }
-      },
-      {
-        "id": "review::.::holistic::error_consistency::mixed_fallback_strategies",
-        "tier": 2,
-        "confidence": "medium",
-        "summary": "fetchRepoData uses three different fallback strategies for sub-requests in a single function",
-        "detail": {
-          "holistic": true,
-          "dimension": "error_consistency",
-          "related_files": [
-            "src/lib/utils/github.ts"
-          ],
-          "evidence": [
-            "Lines 68-74: repo data failure returns null (bail out entirely), languages failure returns {} (empty fallback), contributors failure returns 0 (numeric default). A developer reading this cannot predict which fallback strategy applies to each sub-request without reading the implementation."
-          ],
-          "suggestion": "Document the intentional degradation hierarchy with a brief comment explaining that repo metadata is required while languages/contributors/commits are optional enrichment. This makes the mixed strategy legible as a design choice rather than accidental inconsistency.",
-          "reasoning": "",
-          "content_hash": "f2a3e229"
-        }
-      },
-      {
-        "id": "review::.::holistic::low_level_elegance::duplicate_observer_effects",
-        "tier": 2,
-        "confidence": "medium",
-        "summary": "Two $effect blocks in +page.svelte create IntersectionObservers with duplicated structural pattern",
-        "detail": {
-          "holistic": true,
-          "dimension": "low_level_elegance",
-          "related_files": [
-            "src/routes/+page.svelte"
-          ],
-          "evidence": [
-            "Lines 31-52 and 54-75: both $effect blocks create an IntersectionObserver, iterate entries, check isIntersecting, perform an action, and return a cleanup function. The structure is identical even though the behavior differs (reveal animation vs background color tint)."
-          ],
-          "suggestion": "Extract a reusable createSectionObserver helper that takes an options object and a callback, returning the cleanup function. This would reduce the two 20-line blocks to two concise calls while keeping the distinct behavior clear.",
-          "reasoning": "",
-          "content_hash": "1368f562"
-        }
-      },
-      {
-        "id": "review::.::holistic::mid_level_elegance::section_tints_implicit_contract",
-        "tier": 2,
-        "confidence": "medium",
-        "summary": "sectionTints record in +page.svelte hardcodes section IDs, creating implicit coupling to child components",
-        "detail": {
-          "holistic": true,
-          "dimension": "mid_level_elegance",
-          "related_files": [
-            "src/routes/+page.svelte"
-          ],
-          "evidence": [
-            "sectionTints keys ('top', 'about', 'impact', 'explorations', 'meta', 'background', 'artefacts', 'contact') must match section IDs spread across Hero, About, Section, Artefacts, Background, and Contact components; adding or renaming a section requires updating this map manually with no type or compile-time enforcement"
-          ],
-          "suggestion": "Define section IDs and their associated tint colors as a shared typed constant in src/lib/data/ or src/lib/constants.ts, then import it in both the page and any component that sets its own section ID. This makes the contract explicit and enforceable.",
-          "reasoning": "",
-          "content_hash": "48484aae"
-        }
-      },
-      {
-        "id": "review::.::holistic::test_strategy::data_tests_shape_only",
-        "tier": 2,
-        "confidence": "medium",
-        "summary": "Data module tests verify structural shape but not behavioral contracts",
-        "detail": {
-          "holistic": true,
-          "dimension": "test_strategy",
-          "related_files": [
-            "src/lib/data/artefacts.test.ts",
-            "src/lib/data/projects.test.ts",
-            "src/lib/data/terminal.test.ts"
-          ],
-          "evidence": [
-            "artefacts.test.ts checks non-empty array, truthy fields, and repo format. projects.test.ts checks non-empty arrays, truthy fields, and slash in repo. terminal.test.ts checks non-empty array, field types, and last-frame delay. None of these tests would catch a duplicate repo entry, a project with description and techLine swapped, or terminal frames with unreasonable delay values."
-          ],
-          "suggestion": "Add uniqueness assertions (no duplicate repo values across all project arrays), and for terminal data, verify total replay duration is within a reasonable bound. These are low-effort additions that catch real data entry errors.",
-          "reasoning": "",
-          "content_hash": "c5affb2c"
-        }
-      },
-      {
-        "id": "review::.::holistic::type_safety::redundant_unknown_null_union",
-        "tier": 2,
-        "confidence": "medium",
-        "summary": "tryFetchJson return type unknown | null is redundant since unknown already includes null",
-        "detail": {
-          "holistic": true,
-          "dimension": "type_safety",
-          "related_files": [
-            "src/lib/utils/github.ts"
-          ],
-          "evidence": [
-            "Line 20: async function tryFetchJson(url: string): Promise<unknown | null> - the union unknown | null is equivalent to just unknown in TypeScript since unknown is a top type that includes null"
-          ],
-          "suggestion": "Change the return type to Promise<unknown>. If the intent is to document that null is a meaningful return value, add a JSDoc comment instead of encoding it in a redundant union.",
-          "reasoning": "",
-          "content_hash": "1ba3f2dc"
-        }
-      }
-    ]
+  "next_command": "desloppify show review --status open",
+  "subjective_at_target": [],
+  "assessment_import": {
+    "mode": "trusted_internal",
+    "trusted": true,
+    "reason": "trusted import-run replay from 20260312_093540"
   },
-  "total_matching": 12,
-  "hidden": {
-    "by_detector": {
-      "review": 2
-    },
-    "total": 2
-  },
-  "noise_budget": 10,
-  "noise_global_budget": 0,
   "narrative": {
-    "phase": "regression",
-    "headline": "Score shifted 1.8 pts \u2014 this is normal after structural changes. Rescan after your next fix to see the real trend. (12 review issues \u2014 run `desloppify show review --status open`)",
+    "phase": "refinement",
+    "headline": " (9 review issues \u2014 run `desloppify show review --status open`)",
     "dimensions": {
       "lowest_dimensions": [
         {
-          "name": "Auth consistency",
-          "strict": 0.0,
-          "failing": 0,
+          "name": "Error consistency",
+          "strict": 72.5,
+          "failing": 2,
           "impact": 0.0,
           "subjective": true,
           "impact_description": "re-review to improve"
         },
         {
-          "name": "Dep health",
-          "strict": 0.0,
-          "failing": 0,
+          "name": "Contracts",
+          "strict": 78.2,
+          "failing": 2,
           "impact": 0.0,
           "subjective": true,
           "impact_description": "re-review to improve"
         },
         {
-          "name": "Stale migration",
-          "strict": 0.0,
-          "failing": 0,
+          "name": "Test strategy",
+          "strict": 78.8,
+          "failing": 1,
           "impact": 0.0,
           "subjective": true,
           "impact_description": "re-review to improve"
@@ -268,6 +81,11 @@
       ],
       "stagnant_dimensions": [
         {
+          "name": "Code quality",
+          "strict": 95.7,
+          "stuck_scans": 5
+        },
+        {
           "name": "Security",
           "strict": 100.0,
           "stuck_scans": 5
@@ -283,8 +101,28 @@
           "stuck_scans": 5
         },
         {
-          "name": "Contracts",
-          "strict": 80.3,
+          "name": "Test health",
+          "strict": 89.3,
+          "stuck_scans": 5
+        },
+        {
+          "name": "Abstraction fit",
+          "strict": 90.2,
+          "stuck_scans": 5
+        },
+        {
+          "name": "API coherence",
+          "strict": 85.0,
+          "stuck_scans": 5
+        },
+        {
+          "name": "Logic clarity",
+          "strict": 92.0,
+          "stuck_scans": 5
+        },
+        {
+          "name": "Naming quality",
+          "strict": 90.0,
           "stuck_scans": 5
         }
       ]
@@ -326,8 +164,8 @@
       {
         "type": "refactor",
         "detector": "review",
-        "count": 12,
-        "description": "12 review issues need investigation \u2014 run `desloppify show review --status open` to see them",
+        "count": 9,
+        "description": "9 review issues need investigation \u2014 run `desloppify show review --status open` to see them",
         "command": "desloppify show review --status open",
         "impact": 0.0,
         "dimension": "Unknown",
@@ -371,8 +209,8 @@
     "strategy": {
       "fixer_leverage": {
         "auto_fixable_count": 2,
-        "total_count": 47,
-        "coverage": 0.043,
+        "total_count": 38,
+        "coverage": 0.053,
         "impact_ratio": 0.0,
         "recommendation": "none"
       },
@@ -442,7 +280,7 @@
         }
       },
       "can_parallelize": false,
-      "hint": "Work through actions in priority order. Rescan after each fix to track progress. Review: 12 issue(s) \u2014 `desloppify show review --status open`."
+      "hint": "Work through actions in priority order. Rescan after each fix to track progress. Review: 9 issue(s) \u2014 `desloppify show review --status open`."
     },
     "tools": {
       "fixers": [
@@ -506,7 +344,7 @@
       "command": "desloppify autofix unused-imports --dry-run",
       "description": "2 unused issues \u2014 run `desloppify autofix unused-imports --dry-run` to preview, then apply"
     },
-    "why_now": "Work through actions in priority order. Rescan after each fix to track progress. Review: 12 issue(s) \u2014 `desloppify show review --status open`.",
+    "why_now": "Work through actions in priority order. Rescan after each fix to track progress. Review: 9 issue(s) \u2014 `desloppify show review --status open`.",
     "verification_step": {
       "command": "desloppify scan",
       "reason": "revalidate after changes"
@@ -520,12 +358,20 @@
     ],
     "strict_target": {
       "target": 95.0,
-      "current": 88.3,
-      "gap": 6.7,
+      "current": 90.7,
+      "gap": 4.3,
       "state": "below",
       "warning": null
     },
-    "reminders": [],
+    "reminders": [
+      {
+        "type": "badge_recommendation",
+        "message": "Score is above 90! Add the scorecard to your README: <img src=\"scorecard.png\" width=\"100%\">",
+        "command": null,
+        "priority": 3,
+        "severity": "low"
+      }
+    ],
     "reminder_history": {
       "zone_classification": 3,
       "report_scores": 8,
@@ -534,7 +380,8 @@
       "stagnant_nudge": 3,
       "wontfix_growing": 2,
       "auto_fixers_available": 3,
-      "dry_run_first": 3
+      "dry_run_first": 3,
+      "badge_recommendation": 1
     }
   },
   "config": {

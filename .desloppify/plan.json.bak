@@ -1,30 +1,25 @@
 {
   "version": 8,
   "created": "2026-03-12T08:33:41+00:00",
-  "updated": "2026-03-12T09:33:24+00:00",
+  "updated": "2026-03-12T09:40:27+00:00",
   "queue_order": [
     "workflow::communicate-score",
     "workflow::create-plan",
-    "subjective::abstraction_fitness",
-    "subjective::ai_generated_debt",
-    "subjective::api_surface_coherence",
-    "subjective::authorization_consistency",
-    "subjective::contract_coherence",
-    "subjective::convention_outlier",
-    "subjective::cross_module_architecture",
-    "subjective::dependency_health",
-    "subjective::design_coherence",
-    "subjective::error_consistency",
-    "subjective::high_level_elegance",
-    "subjective::incomplete_migration",
-    "subjective::initialization_coupling",
-    "subjective::logic_clarity",
-    "subjective::low_level_elegance",
-    "subjective::mid_level_elegance",
-    "subjective::naming_quality",
-    "subjective::package_organization",
-    "subjective::test_strategy",
-    "subjective::type_safety"
+    "triage::observe",
+    "triage::reflect",
+    "triage::organize",
+    "triage::enrich",
+    "triage::sense-check",
+    "triage::commit",
+    "review::.::holistic::contract_coherence::null_conflates_failure_modes",
+    "review::.::holistic::contract_coherence::parse_commit_count_param_misleads",
+    "review::.::holistic::convention_outlier::github_casing_inconsistency",
+    "review::.::holistic::design_coherence::hardcoded_repo_check_in_template",
+    "review::.::holistic::error_consistency::silent_json_parse_catch",
+    "review::.::holistic::error_consistency::unguarded_page_server_load",
+    "review::.::holistic::low_level_elegance::duplicated_observer_effect_pattern",
+    "review::.::holistic::test_strategy::untested_component_layer",
+    "review::.::holistic::type_safety::try_fetch_json_return_type_imprecise"
   ],
   "deferred": [],
   "skipped": {
@@ -2712,12 +2707,7 @@
     }
   },
   "promoted_ids": [],
-  "plan_start_scores": {
-    "strict": 29.5,
-    "overall": 38.1,
-    "objective": 95.3,
-    "verified": 95.3
-  },
+  "plan_start_scores": {},
   "refresh_state": {},
   "execution_log": [
     {
@@ -5153,6 +5143,115 @@
       "actor": "user",
       "note": "Created page.server.test.ts with 5 tests, plus attachGithubData moved to github.ts",
       "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:33:38+00:00",
+      "action": "sync_stale",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "changes": true
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:33:38+00:00",
+      "action": "sync_communicate_score",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "injected": true
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:33:38+00:00",
+      "action": "sync_create_plan",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "injected": true
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:33:38+00:00",
+      "action": "sync_triage",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "injected": true
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:40:27+00:00",
+      "action": "review_import_sync",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "trigger": "review_import",
+        "new_ids": [
+          "review::.::holistic::contract_coherence::null_conflates_failure_modes",
+          "review::.::holistic::contract_coherence::parse_commit_count_param_misleads",
+          "review::.::holistic::convention_outlier::github_casing_inconsistency",
+          "review::.::holistic::design_coherence::hardcoded_repo_check_in_template",
+          "review::.::holistic::error_consistency::silent_json_parse_catch",
+          "review::.::holistic::error_consistency::unguarded_page_server_load",
+          "review::.::holistic::low_level_elegance::duplicated_observer_effect_pattern",
+          "review::.::holistic::test_strategy::untested_component_layer",
+          "review::.::holistic::type_safety::try_fetch_json_return_type_imprecise"
+        ],
+        "added_to_queue": [
+          "review::.::holistic::contract_coherence::null_conflates_failure_modes",
+          "review::.::holistic::contract_coherence::parse_commit_count_param_misleads",
+          "review::.::holistic::convention_outlier::github_casing_inconsistency",
+          "review::.::holistic::design_coherence::hardcoded_repo_check_in_template",
+          "review::.::holistic::error_consistency::silent_json_parse_catch",
+          "review::.::holistic::error_consistency::unguarded_page_server_load",
+          "review::.::holistic::low_level_elegance::duplicated_observer_effect_pattern",
+          "review::.::holistic::test_strategy::untested_component_layer",
+          "review::.::holistic::type_safety::try_fetch_json_return_type_imprecise"
+        ],
+        "workflow_injected_ids": [],
+        "triage_injected": false,
+        "triage_injected_ids": [],
+        "triage_deferred": false,
+        "diff_new": 9,
+        "diff_reopened": 0,
+        "diff_auto_resolved": 12,
+        "stale_pruned_from_queue": [],
+        "covered_subjective": [],
+        "stale_sync_injected": [],
+        "stale_sync_pruned": [
+          "subjective::abstraction_fitness",
+          "subjective::ai_generated_debt",
+          "subjective::api_surface_coherence",
+          "subjective::authorization_consistency",
+          "subjective::contract_coherence",
+          "subjective::convention_outlier",
+          "subjective::cross_module_architecture",
+          "subjective::dependency_health",
+          "subjective::design_coherence",
+          "subjective::error_consistency",
+          "subjective::high_level_elegance",
+          "subjective::incomplete_migration",
+          "subjective::initialization_coupling",
+          "subjective::logic_clarity",
+          "subjective::low_level_elegance",
+          "subjective::mid_level_elegance",
+          "subjective::naming_quality",
+          "subjective::package_organization",
+          "subjective::test_strategy",
+          "subjective::type_safety"
+        ]
+      }
     }
   ],
   "epic_triage_meta": {
@@ -5269,5 +5368,5 @@
   "commit_log": [],
   "uncommitted_issues": [],
   "commit_tracking_branch": null,
-  "scan_count_at_plan_start": 3
+  "previous_plan_start_scores": {}
 }

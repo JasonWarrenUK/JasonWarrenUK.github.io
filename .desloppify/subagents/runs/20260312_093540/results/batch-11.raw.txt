@@ -1,0 +1,61 @@
+{
+  "batch": "contract_coherence",
+  "batch_index": 11,
+  "assessments": {"contract_coherence": 82.5},
+  "dimension_notes": {
+    "contract_coherence": {
+      "evidence": [
+        "tryFetchJson declares return type Promise<unknown> but silently returns null on both fetch failure and JSON parse failure, making it unclear to callers whether null means 'request failed' or 'parse failed'",
+        "fetchRepoData returns Promise<ProjectGitHubData | null> where null conflates 'API unreachable' with 'response did not match expected shape'",
+        "parseCommitCount accepts responseOk: boolean but the caller passes (commitsRes !== null) which is a nullity check, not a response.ok check; the parameter name implies HTTP status semantics",
+        "attachGithubData signature says it returns Project[] but input type is Omit<Project, 'github'>[], so it transforms partial types into full types; the function name 'attach' correctly implies augmentation",
+        "Data module exports (artefacts, impactProjects, etc.) all honor their declared types cleanly with no contract violations"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "medium",
+      "issues_preventing_higher_score": "parseCommitCount parameter name misleads about expected semantics; null return from tryFetchJson and fetchRepoData conflates distinct failure modes without distinguishing them"
+    }
+  },
+  "dimension_judgment": {
+    "contract_coherence": {
+      "strengths": [
+        "Type guard functions (isRepoResponse, isLanguagesResponse) correctly narrow unknown to specific types and return accurate boolean contracts",
+        "attachGithubData accurately transforms Omit<Project, 'github'>[] into Project[] with correct nullish coalescing",
+        "Data modules (artefacts.ts, projects.ts, terminal.ts) export exactly what their types promise with no hidden behavior",
+        "PageServerLoad function in +page.server.ts returns a clear object matching expected SvelteKit conventions"
+      ],
+      "issue_character": "Issues are isolated to the github.ts utility module where null-returning functions conflate distinct failure modes and one parameter name misleads about its semantic meaning.",
+      "score_rationale": "The data layer and route modules honor their contracts cleanly. The github.ts module has minor contract ambiguities: null return values conflate different failure scenarios, and parseCommitCount's responseOk parameter name implies HTTP status checking when it actually receives a nullity check. These are localized issues that would cause minor confusion when debugging API failures but do not create systemic trust problems. This places the codebase solidly above 80 (uneven) but below 90 (strong)."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "contract_coherence",
+      "identifier": "parse_commit_count_param_misleads",
+      "summary": "parseCommitCount's responseOk parameter name implies HTTP ok status but receives a nullity check",
+      "related_files": ["src/lib/utils/github.ts"],
+      "evidence": ["parseCommitCount(commitsRes?.headers.get('Link') ?? null, commitsRes !== null) — the second argument is a null check, but the parameter name 'responseOk' suggests res.ok semantics"],
+      "suggestion": "Rename parameter from 'responseOk' to 'hasResponse' or 'responseReceived' to accurately reflect that callers pass a nullity check, not an HTTP status check",
+      "confidence": "medium",
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "contract_coherence",
+      "identifier": "null_conflates_failure_modes",
+      "summary": "fetchRepoData returns null for both network failures and schema mismatches without distinction",
+      "related_files": ["src/lib/utils/github.ts"],
+      "evidence": ["fetchRepoData returns null both when fetchGitHub fails (network error) and when isRepoResponse returns false (unexpected API shape); callers cannot distinguish 'GitHub is down' from 'API response changed'"],
+      "suggestion": "Consider returning a discriminated result type or logging different warning messages at the fetchRepoData level to distinguish API shape changes from network failures, even if the return type stays nullable for graceful degradation",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Graceful degradation pattern (return null on any failure) is applied uniformly without preserving failure context"],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

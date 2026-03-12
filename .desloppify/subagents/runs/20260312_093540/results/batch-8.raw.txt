@@ -1,0 +1,39 @@
+{
+  "batch": "naming_quality",
+  "batch_index": 8,
+  "assessments": {"naming_quality": 90.0},
+  "dimension_notes": {
+    "naming_quality": {
+      "evidence": [
+        "Function names in github.ts follow a consistent vocabulary: fetch* for network operations, is* for type guards, parse* for data extraction, attach* for enrichment",
+        "Variable names like repoRaw, langRaw, contribRaw use a 'Raw' suffix to clearly signal unvalidated data before type narrowing",
+        "Data module names (impactProjects, explorationProjects, metaProjects) are domain-aligned and descriptive",
+        "Type names (ProjectGitHubData, TerminalFrame, SectionAccent) precisely describe their purpose",
+        "Constant names API_BASE and GITHUB_HEADERS follow SCREAMING_CASE convention for module-level constants"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The function tryFetchJson uses a 'try' prefix that in some conventions implies boolean success/failure, though in this codebase it consistently means 'attempt and return null on failure', which is a valid convention"
+    }
+  },
+  "dimension_judgment": {
+    "naming_quality": {
+      "strengths": [
+        "Consistent verb vocabulary across github.ts: fetch*, is*, parse*, attach* each carry clear semantic meaning",
+        "The 'Raw' suffix pattern for unvalidated API responses (repoRaw, langRaw, contribRaw) clearly communicates data lifecycle stage",
+        "Data export names are domain-specific rather than generic (impactProjects vs just 'projects')",
+        "Type guard functions follow the standard TypeScript is* naming convention",
+        "No generic verbs like 'process', 'handle', 'manage' appear anywhere in the codebase"
+      ],
+      "issue_character": "No significant naming defects found; the naming is precise and domain-aligned throughout.",
+      "score_rationale": "A developer reading this codebase can predict behavior from names with high accuracy. The consistent vocabulary (fetch/is/parse/attach) and the Raw suffix convention demonstrate intentional naming. The only minor friction point is the 'try' prefix convention, which is internally consistent but could trip up developers expecting a boolean return. Per global anchors, this sits at 90: strong with only minor friction."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

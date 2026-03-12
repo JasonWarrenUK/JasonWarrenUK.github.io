@@ -1,0 +1,41 @@
+{
+  "batch": "ai_generated_debt",
+  "batch_index": 14,
+  "assessments": {"ai_generated_debt": 89.5},
+  "dimension_notes": {
+    "ai_generated_debt": {
+      "evidence": [
+        "Comment ratio is extremely low (0.003) — the codebase is almost entirely uncommented, which is the opposite of AI-generated bloat",
+        "Three comments in github.ts are '// Exported for testing' which are functional annotations, not restating comments",
+        "No defensive overengineering detected: null checks in github.ts are all at genuine I/O boundaries (network fetch, JSON parse, type validation)",
+        "No docstring bloat: zero JSDoc or multi-line documentation blocks on any functions",
+        "No generic naming patterns (handleData, processItem) — function names are domain-specific (fetchRepoData, attachGithubData, parseCommitCount)",
+        "No boilerplate error handling duplication — the two try-catch blocks in github.ts handle genuinely different failure modes (network vs parse)",
+        "Terminal.svelte comment '// Match . or .\" as sentence boundaries' in splitOverview is in ProjectCard.svelte and explains a non-obvious regex, adding genuine value"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The '// Exported for testing' comments appear three times on consecutive functions in github.ts; this pattern could be expressed once or replaced with a structural convention (e.g. grouping exports)"
+    }
+  },
+  "dimension_judgment": {
+    "ai_generated_debt": {
+      "strengths": [
+        "Near-zero comment ratio (0.003) means the code speaks for itself rather than restating logic in English",
+        "All function names are domain-specific: fetchRepoData, attachGithubData, parseCommitCount, getLanguageSegments, splitOverview",
+        "No defensive null checks on typed values — null handling only occurs at genuine I/O boundaries",
+        "No pass-through wrapper functions — every function adds meaningful behavior",
+        "The one regex comment in ProjectCard.svelte ('Match . or .\" as sentence boundaries') explains non-obvious logic rather than restating code"
+      ],
+      "issue_character": "The only minor AI-debt signal is the repetitive '// Exported for testing' comment pattern in github.ts, which is formulaic but functional.",
+      "score_rationale": "The codebase shows very little AI-generated debt. Functions are purposefully named, comments are rare and meaningful, there is no defensive overengineering, and no boilerplate duplication. The repeated '// Exported for testing' annotation is the only formulaic pattern, and it is functional rather than noise. This places the codebase at approximately 90: a developer's attention is spent on logic, not filtering noise, with only trivial friction."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

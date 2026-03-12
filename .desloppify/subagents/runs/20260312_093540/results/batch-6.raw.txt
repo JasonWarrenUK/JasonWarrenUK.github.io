@@ -1,0 +1,39 @@
+{
+  "batch": "initialization_coupling",
+  "batch_index": 6,
+  "assessments": {"initialization_coupling": 95.0},
+  "dimension_notes": {
+    "initialization_coupling": {
+      "evidence": [
+        "All data modules (artefacts.ts, projects.ts, terminal.ts) export pure constant arrays with no side effects",
+        "github.ts defines API_BASE and GITHUB_HEADERS as simple string/object literals at module scope with no dynamic computation or environment reads",
+        "+page.server.ts performs network calls only inside the async load() function, not at import time",
+        "+layout.ts exports two boolean constants (prerender, csr) with no side effects",
+        "No circular dependencies detected in the import graph",
+        "No environment variable reads at module scope anywhere in the codebase"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "API_BASE and GITHUB_HEADERS are module-level constants; while harmless for this codebase size, they represent a minor rigidity if the API base ever needed to be configurable per-environment"
+    }
+  },
+  "dimension_judgment": {
+    "initialization_coupling": {
+      "strengths": [
+        "All network calls are deferred to the SvelteKit load() function, never executed at import time",
+        "Data modules are pure constant exports with zero side effects",
+        "No environment variable reads at module scope; the codebase has no .env dependency at import time",
+        "No global singletons or mutable shared state across modules"
+      ],
+      "issue_character": "No initialization coupling issues found; the codebase cleanly separates module-level declarations from runtime behavior.",
+      "score_rationale": "The codebase is exemplary for initialization coupling. All modules export either pure data or functions, with no import-time side effects, no boot-order dependencies, and no environment variable reads at module scope. The only reason this is not 100 is the hardcoded API_BASE constant, which is a very minor rigidity rather than a true coupling defect. Per global anchors, this is solidly in the 90+ range."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": ["The scan_evidence flagged +page.server.ts as orphaned, but this is a SvelteKit entry point, not an initialization coupling concern"]
+  }
+}

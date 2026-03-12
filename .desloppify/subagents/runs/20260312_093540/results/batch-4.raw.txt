@@ -1,0 +1,38 @@
+{
+  "batch": "api_surface_coherence",
+  "batch_index": 4,
+  "assessments": {"api_surface_coherence": 85.0},
+  "dimension_notes": {
+    "api_surface_coherence": {
+      "evidence": [
+        "github.ts exports a coherent API surface: three type guards (isRepoResponse, isLanguagesResponse, parseCommitCount), two async data fetchers (fetchRepoData, fetchAllRepoData), and one sync transformer (attachGithubData)",
+        "The type guards are sync and the data fetchers are async, which is a natural split by purpose rather than an inconsistency",
+        "All async functions return Promise-wrapped types consistently: fetchGitHub returns Promise<Response|null>, tryFetchJson returns Promise<unknown>, fetchRepoData returns Promise<ProjectGitHubData|null>, fetchAllRepoData returns Promise<Record<string, ProjectGitHubData|null>>",
+        "Data modules (artefacts.ts, projects.ts, terminal.ts) all export named const arrays with consistent patterns",
+        "parseCommitCount mixes sync/async in the same module as fetchRepoData, but this is flagged in scan_evidence; the function is a pure parser logically distinct from the async fetchers"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The sync/async mix in github.ts is intentional (type guards and parsers vs. fetchers) but the module's public API surface blends these without explicit grouping or documentation of the different categories. The tryFetchJson return type of Promise<unknown> is accurate but forces callers to do their own type narrowing."
+    }
+  },
+  "dimension_judgment": {
+    "api_surface_coherence": {
+      "strengths": [
+        "All async data-fetching functions follow a consistent null-return contract for failures, making error behavior predictable",
+        "Function parameter shapes are consistent: repo identifiers are always string paths in owner/repo format",
+        "Data module exports are uniformly shaped: named const arrays with explicit element types",
+        "attachGithubData has a clean, predictable signature: takes partial projects and a lookup dictionary, returns complete projects"
+      ],
+      "issue_character": "The API surface is coherent overall; the one minor concern is the mixed sync/async exports in github.ts, which is a natural consequence of co-locating related utilities rather than a design flaw.",
+      "score_rationale": "A developer can predict API shapes and behavior from seeing one example in this codebase. The github.ts module's public surface mixes sync helpers with async fetchers, which is a reasonable design choice but not immediately obvious to a new consumer. The data modules are exemplary in their consistency. This rates at 85: solidly in the 'strong' range with a minor friction point that does not materially impede usage."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": ["The sync/async mix flagged in scan_evidence for github.ts is intentional: type guards and parsers are naturally sync, fetchers are naturally async. Co-locating them in one module is the simpler design."]
+  }
+}

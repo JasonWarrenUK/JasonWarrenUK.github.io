@@ -1,0 +1,50 @@
+{
+  "batch": "design_coherence",
+  "batch_index": 7,
+  "assessments": {"design_coherence": 85.0},
+  "dimension_notes": {
+    "design_coherence": {
+      "evidence": [
+        "github.ts has a clean layered decomposition: fetchGitHub (transport) -> tryFetchJson (parse) -> fetchRepoData (single repo) -> fetchAllRepoData (batch) -> attachGithubData (merge)",
+        "+page.server.ts is a focused 19-line orchestration that collects repos, fetches data, and returns enriched projects",
+        "Data files (artefacts.ts, projects.ts, terminal.ts) are pure typed constant exports with no mixed concerns",
+        "+page.svelte uses data-driven sectionTints record for background color transitions rather than imperative branching",
+        "+page.svelte hardcodes a repo string check to conditionally render Terminal for the Iris project, mixing presentation routing with data"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The hardcoded repo-path check in +page.svelte for Terminal rendering is a minor design concern where presentation logic is coupled to a specific data value rather than being driven by the data model"
+    }
+  },
+  "dimension_judgment": {
+    "design_coherence": {
+      "strengths": [
+        "github.ts demonstrates clean functional layering: each function has a single focused responsibility and composes naturally",
+        "Data modules are pure declarations with zero behavioral code, cleanly separating data from logic",
+        "The sectionTints approach in +page.svelte uses a data-driven pattern for background transitions rather than scattered conditionals",
+        "+page.server.ts is a concise orchestrator that reads as a clear sequence: collect, fetch, attach, return"
+      ],
+      "issue_character": "The only design coherence concern is a minor coupling between presentation logic and a specific data value in the page template.",
+      "score_rationale": "The codebase demonstrates strong design coherence for its size. Functions are focused, the layered decomposition in github.ts is well-structured, and data is cleanly separated from logic. The hardcoded repo check in the template is a minor blemish that prevents a higher score. Per global anchors, this sits at the boundary between 'solid but uneven' and 'strong' because the unevenness is isolated to one small decision rather than a systemic pattern."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "design_coherence",
+      "identifier": "hardcoded_repo_check_in_template",
+      "summary": "Template logic hardcodes a repo path string to conditionally render Terminal component",
+      "related_files": ["src/routes/+page.svelte"],
+      "evidence": ["Line 98: project.repo === 'foundersandcoders/iris' is a magic string check that couples the template to a specific project's identity rather than a data-driven property"],
+      "suggestion": "Add an optional 'terminal' or 'showcase' field to the Project type or to the project data entries, so the template can check a boolean/object property instead of matching against a hardcoded repo path string",
+      "confidence": "medium",
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Small codebase with a single page means some presentation decisions get hardcoded rather than data-modeled"],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

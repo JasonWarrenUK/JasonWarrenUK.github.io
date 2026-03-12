@@ -1,7 +1,7 @@
 {
   "version": 8,
   "created": "2026-03-12T08:33:41+00:00",
-  "updated": "2026-03-12T09:33:38+00:00",
+  "updated": "2026-03-12T09:40:35+00:00",
   "queue_order": [
     "workflow::communicate-score",
     "workflow::create-plan",
@@ -24,13 +24,7 @@
     "subjective::naming_quality",
     "subjective::package_organization",
     "subjective::test_strategy",
-    "subjective::type_safety",
-    "triage::observe",
-    "triage::reflect",
-    "triage::organize",
-    "triage::enrich",
-    "triage::sense-check",
-    "triage::commit"
+    "subjective::type_safety"
   ],
   "deferred": [],
   "skipped": {
@@ -311,25 +305,25 @@
       "issue_id": "subjective_review::src/lib/data/artefacts.ts::unreviewed",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/subjective_review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective_review::src/lib/data/projects.ts::unreviewed": {
       "issue_id": "subjective_review::src/lib/data/projects.ts::unreviewed",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/subjective_review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective_review::src/lib/data/terminal.ts::unreviewed": {
       "issue_id": "subjective_review::src/lib/data/terminal.ts::unreviewed",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/subjective_review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective_review::src/lib/utils/github.ts::unreviewed": {
       "issue_id": "subjective_review::src/lib/utils/github.ts::unreviewed",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/subjective_review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective_review::src/routes/+page.server.ts::unreviewed": {
       "issue_id": "subjective_review::src/routes/+page.server.ts::unreviewed",
@@ -341,127 +335,127 @@
       "issue_id": "subjective_review::.::holistic_unreviewed",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/subjective_review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::abstraction_fitness": {
       "issue_id": "subjective::abstraction_fitness",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::ai_generated_debt": {
       "issue_id": "subjective::ai_generated_debt",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::api_surface_coherence": {
       "issue_id": "subjective::api_surface_coherence",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::authorization_consistency": {
       "issue_id": "subjective::authorization_consistency",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::contract_coherence": {
       "issue_id": "subjective::contract_coherence",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::convention_outlier": {
       "issue_id": "subjective::convention_outlier",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::cross_module_architecture": {
       "issue_id": "subjective::cross_module_architecture",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::dependency_health": {
       "issue_id": "subjective::dependency_health",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::design_coherence": {
       "issue_id": "subjective::design_coherence",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::error_consistency": {
       "issue_id": "subjective::error_consistency",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::high_level_elegance": {
       "issue_id": "subjective::high_level_elegance",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::incomplete_migration": {
       "issue_id": "subjective::incomplete_migration",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::initialization_coupling": {
       "issue_id": "subjective::initialization_coupling",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::logic_clarity": {
       "issue_id": "subjective::logic_clarity",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::low_level_elegance": {
       "issue_id": "subjective::low_level_elegance",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::mid_level_elegance": {
       "issue_id": "subjective::mid_level_elegance",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::naming_quality": {
       "issue_id": "subjective::naming_quality",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::package_organization": {
       "issue_id": "subjective::package_organization",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::test_strategy": {
       "issue_id": "subjective::test_strategy",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "subjective::type_safety": {
       "issue_id": "subjective::type_safety",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "structural::.svelte-kit/output/server/index.js": {
       "issue_id": "structural::.svelte-kit/output/server/index.js",
@@ -965,19 +959,19 @@
       "issue_id": "stale_exclude::docs::docs",
       "created_at": "2026-03-12T08:46:41+00:00",
       "cluster": "auto/stale_exclude",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "stale_exclude::.svelte-kit::.svelte-kit": {
       "issue_id": "stale_exclude::.svelte-kit::.svelte-kit",
       "created_at": "2026-03-12T08:46:41+00:00",
       "cluster": "auto/stale_exclude",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "stale_exclude::.desloppify::.desloppify": {
       "issue_id": "stale_exclude::.desloppify::.desloppify",
       "created_at": "2026-03-12T08:46:41+00:00",
       "cluster": "auto/stale_exclude",
-      "updated_at": "2026-03-12T09:32:14+00:00"
+      "updated_at": "2026-03-12T09:40:35+00:00"
     },
     "review::.::holistic::error_consistency::broad_catch_no_discrimination": {
       "issue_id": "review::.::holistic::error_consistency::broad_catch_no_discrimination",
@@ -2715,10 +2709,105 @@
       "superseded_at": "2026-03-12T09:32:14+00:00",
       "remapped_to": null,
       "candidates": []
+    },
+    "review::.::holistic::contract_coherence::null_conflates_failure_modes": {
+      "original_id": "review::.::holistic::contract_coherence::null_conflates_failure_modes",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:40:35+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "review::.::holistic::contract_coherence::parse_commit_count_param_misleads": {
+      "original_id": "review::.::holistic::contract_coherence::parse_commit_count_param_misleads",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:40:35+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "review::.::holistic::convention_outlier::github_casing_inconsistency": {
+      "original_id": "review::.::holistic::convention_outlier::github_casing_inconsistency",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:40:35+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "review::.::holistic::design_coherence::hardcoded_repo_check_in_template": {
+      "original_id": "review::.::holistic::design_coherence::hardcoded_repo_check_in_template",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:40:35+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "review::.::holistic::error_consistency::silent_json_parse_catch": {
+      "original_id": "review::.::holistic::error_consistency::silent_json_parse_catch",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:40:35+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "review::.::holistic::error_consistency::unguarded_page_server_load": {
+      "original_id": "review::.::holistic::error_consistency::unguarded_page_server_load",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:40:35+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "review::.::holistic::low_level_elegance::duplicated_observer_effect_pattern": {
+      "original_id": "review::.::holistic::low_level_elegance::duplicated_observer_effect_pattern",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:40:35+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "review::.::holistic::test_strategy::untested_component_layer": {
+      "original_id": "review::.::holistic::test_strategy::untested_component_layer",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:40:35+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "review::.::holistic::type_safety::try_fetch_json_return_type_imprecise": {
+      "original_id": "review::.::holistic::type_safety::try_fetch_json_return_type_imprecise",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:40:35+00:00",
+      "remapped_to": null,
+      "candidates": []
     }
   },
   "promoted_ids": [],
-  "plan_start_scores": {},
+  "plan_start_scores": {
+    "strict": 29.5,
+    "overall": 38.1,
+    "objective": 95.3,
+    "verified": 95.3
+  },
   "refresh_state": {},
   "execution_log": [
     {
@@ -5198,6 +5287,115 @@
       "detail": {
         "injected": true
       }
+    },
+    {
+      "timestamp": "2026-03-12T09:40:27+00:00",
+      "action": "review_import_sync",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "trigger": "review_import",
+        "new_ids": [
+          "review::.::holistic::contract_coherence::null_conflates_failure_modes",
+          "review::.::holistic::contract_coherence::parse_commit_count_param_misleads",
+          "review::.::holistic::convention_outlier::github_casing_inconsistency",
+          "review::.::holistic::design_coherence::hardcoded_repo_check_in_template",
+          "review::.::holistic::error_consistency::silent_json_parse_catch",
+          "review::.::holistic::error_consistency::unguarded_page_server_load",
+          "review::.::holistic::low_level_elegance::duplicated_observer_effect_pattern",
+          "review::.::holistic::test_strategy::untested_component_layer",
+          "review::.::holistic::type_safety::try_fetch_json_return_type_imprecise"
+        ],
+        "added_to_queue": [
+          "review::.::holistic::contract_coherence::null_conflates_failure_modes",
+          "review::.::holistic::contract_coherence::parse_commit_count_param_misleads",
+          "review::.::holistic::convention_outlier::github_casing_inconsistency",
+          "review::.::holistic::design_coherence::hardcoded_repo_check_in_template",
+          "review::.::holistic::error_consistency::silent_json_parse_catch",
+          "review::.::holistic::error_consistency::unguarded_page_server_load",
+          "review::.::holistic::low_level_elegance::duplicated_observer_effect_pattern",
+          "review::.::holistic::test_strategy::untested_component_layer",
+          "review::.::holistic::type_safety::try_fetch_json_return_type_imprecise"
+        ],
+        "workflow_injected_ids": [],
+        "triage_injected": false,
+        "triage_injected_ids": [],
+        "triage_deferred": false,
+        "diff_new": 9,
+        "diff_reopened": 0,
+        "diff_auto_resolved": 12,
+        "stale_pruned_from_queue": [],
+        "covered_subjective": [],
+        "stale_sync_injected": [],
+        "stale_sync_pruned": [
+          "subjective::abstraction_fitness",
+          "subjective::ai_generated_debt",
+          "subjective::api_surface_coherence",
+          "subjective::authorization_consistency",
+          "subjective::contract_coherence",
+          "subjective::convention_outlier",
+          "subjective::cross_module_architecture",
+          "subjective::dependency_health",
+          "subjective::design_coherence",
+          "subjective::error_consistency",
+          "subjective::high_level_elegance",
+          "subjective::incomplete_migration",
+          "subjective::initialization_coupling",
+          "subjective::logic_clarity",
+          "subjective::low_level_elegance",
+          "subjective::mid_level_elegance",
+          "subjective::naming_quality",
+          "subjective::package_organization",
+          "subjective::test_strategy",
+          "subjective::type_safety"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:40:35+00:00",
+      "action": "reconcile",
+      "issue_ids": [
+        "review::.::holistic::contract_coherence::null_conflates_failure_modes",
+        "review::.::holistic::contract_coherence::parse_commit_count_param_misleads",
+        "review::.::holistic::convention_outlier::github_casing_inconsistency",
+        "review::.::holistic::design_coherence::hardcoded_repo_check_in_template",
+        "review::.::holistic::error_consistency::silent_json_parse_catch",
+        "review::.::holistic::error_consistency::unguarded_page_server_load",
+        "review::.::holistic::low_level_elegance::duplicated_observer_effect_pattern",
+        "review::.::holistic::test_strategy::untested_component_layer",
+        "review::.::holistic::type_safety::try_fetch_json_return_type_imprecise"
+      ],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "superseded_count": 9,
+        "pruned_count": 0,
+        "resurfaced_count": 0,
+        "clusters_completed_count": 0
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:40:35+00:00",
+      "action": "sync_unscored",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "changes": true
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:40:35+00:00",
+      "action": "seed_start_scores",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {}
     }
   ],
   "epic_triage_meta": {
@@ -5314,5 +5512,5 @@
   "commit_log": [],
   "uncommitted_issues": [],
   "commit_tracking_branch": null,
-  "previous_plan_start_scores": {}
+  "scan_count_at_plan_start": 4
 }

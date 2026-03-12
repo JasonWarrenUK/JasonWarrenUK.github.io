@@ -1,0 +1,51 @@
+{
+  "batch": "type_safety",
+  "batch_index": 10,
+  "assessments": {"type_safety": 88.0},
+  "dimension_notes": {
+    "type_safety": {
+      "evidence": [
+        "All public functions in github.ts have explicit return type annotations that accurately cover all code paths",
+        "Type guard functions (isRepoResponse, isLanguagesResponse) use proper 'data is T' predicates with runtime validation matching the declared shape",
+        "Project data files consistently use Omit<Project, 'github'>[] to express that static data lacks the runtime-enriched github field",
+        "attachGithubData correctly narrows Omit<Project, 'github'>[] to Project[] through the spread-and-assign pattern",
+        "RepoResponse interface captures only the fields actually used from the GitHub API, avoiding over-typing",
+        "tryFetchJson returns Promise<unknown> which is technically correct but does not distinguish the null failure case from a valid parsed result"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "tryFetchJson's return type of Promise<unknown> is honest but imprecise; callers must independently handle the null case that is hidden within 'unknown'. A return type of Promise<unknown | null> would be semantically redundant in TS but a type like Promise<JsonValue | null> with a defined JsonValue type would better communicate the contract."
+    }
+  },
+  "dimension_judgment": {
+    "type_safety": {
+      "strengths": [
+        "Every public function has explicit, accurate return type annotations",
+        "Type guards perform genuine runtime validation that matches their declared type predicates",
+        "The Omit<Project, 'github'> pattern correctly models the data lifecycle (static data vs. runtime-enriched data)",
+        "No 'as' type assertions except the safe Record<string, unknown> cast after a typeof/null guard in isRepoResponse"
+      ],
+      "issue_character": "The single type safety concern is a precision gap in tryFetchJson's return type, where the null failure mode is subsumed into 'unknown' rather than being explicitly represented.",
+      "score_rationale": "The codebase demonstrates strong type safety practices: explicit annotations, proper type guards, and thoughtful use of utility types like Omit. The tryFetchJson return type is the only place where a developer might be surprised by what comes back, and even there the callers handle it correctly. Per global anchors, this is strong (88) with the minor imprecision preventing a higher score."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "type_safety",
+      "identifier": "try_fetch_json_return_type_imprecise",
+      "summary": "tryFetchJson returns Promise<unknown> without explicitly representing the null failure case",
+      "related_files": ["src/lib/utils/github.ts"],
+      "evidence": ["Lines 21-30: tryFetchJson can return null on two failure paths (fetchGitHub returns null, or JSON parse fails) but the return type Promise<unknown> subsumes null without signaling it. Callers like fetchRepoData (line 74) must independently know to check for null via the isRepoResponse guard."],
+      "suggestion": "Change the return type to Promise<unknown | null> or define a type alias. While unknown technically includes null in TypeScript, the explicit union communicates the contract: this function can fail and will return null when it does.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["The tryFetchJson function was likely written with the intention that callers would use type guards anyway, making the precise return type less critical in practice"],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

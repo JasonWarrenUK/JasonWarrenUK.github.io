@@ -1,0 +1,49 @@
+{
+  "batch": "abstraction_fitness",
+  "batch_index": 13,
+  "assessments": {"abstraction_fitness": 90.2},
+  "dimension_notes": {
+    "abstraction_fitness": {
+      "evidence": [
+        "No pass-through wrappers detected; every function adds meaningful behavior (type validation, data transformation, error handling)",
+        "Type interfaces (Project, Artefact, TerminalFrame, ProjectGitHubData) are lean and directly used by their consumers with no unnecessary indirection",
+        "attachGithubData performs a genuine transformation (Omit<Project, 'github'>[] to Project[]) rather than just forwarding data",
+        "fetchGitHub wraps fetch with error handling and header injection — genuine added behavior, not ceremony",
+        "tryFetchJson builds on fetchGitHub adding JSON parsing — each layer adds distinct value",
+        "No single-implementation interfaces; the interfaces defined in types/index.ts are used across multiple files",
+        "The codebase is flat and direct: data files export typed arrays, utils export functions, routes consume them"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The three project arrays (impactProjects, explorationProjects, metaProjects) in projects.ts share the same type and are consumed identically in +page.server.ts, creating mild repetition in the data pipeline that could be simplified with a single categorized collection",
+      "sub_axes": {
+        "abstraction_leverage": 92.0,
+        "indirection_cost": 95.0,
+        "interface_honesty": 90.0,
+        "delegation_density": 95.0,
+        "definition_directness": 88.0,
+        "type_discipline": 90.0
+      }
+    }
+  },
+  "dimension_judgment": {
+    "abstraction_fitness": {
+      "strengths": [
+        "Every layer of indirection in github.ts adds distinct behavior: fetchGitHub adds headers and error handling, tryFetchJson adds JSON parsing, fetchRepoData adds type validation and data assembly",
+        "Type definitions in types/index.ts are minimal and directly consumed — no unused fields, no premature generics",
+        "No barrel re-export modules or facade patterns that add navigation cost without value",
+        "Data files are plain typed arrays with no unnecessary wrapper classes or factory functions",
+        "Omit<Project, 'github'> usage in projects.ts is a precise type-level abstraction that captures the real distinction between static project data and runtime-enriched data"
+      ],
+      "issue_character": "No significant abstraction fitness issues; the codebase is lean and direct with minimal indirection.",
+      "score_rationale": "The codebase demonstrates strong abstraction fitness. Every function adds meaningful behavior rather than forwarding, types are lean and directly used, and there are no single-implementation interfaces or unnecessary wrapper layers. The only minor observation is the three separate project arrays that share identical types and consumption patterns, which is a minor directness issue. This places the codebase at 90, reflecting strong quality with only trivial room for improvement."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}
