@@ -20,7 +20,8 @@
     "smells::src/lib/data/projects.ts::hardcoded_url",
     "orphaned::src/lib/utils/*",
     "single_use::src/app.css",
-    "smells::src/app.css::css_important_overuse"
+    "smells::src/app.css::css_important_overuse",
+    "logs::src/lib/utils/github.ts::GitHub API"
   ],
   "ignore_metadata": {},
   "zone_overrides": {},

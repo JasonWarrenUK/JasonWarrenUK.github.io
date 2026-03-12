@@ -178,7 +178,6 @@ describe('fetchAllRepoData', () => {
 
 	it('handles partial failures', async () => {
 		const mockFetch = vi.mocked(fetch);
-		let callCount = 0;
 		mockFetch.mockImplementation((url) => {
 			const u = typeof url === 'string' ? url : url.toString();
 			if (u.includes('bad-repo') && !u.includes('/languages') && !u.includes('/contributors') && !u.includes('/commits')) {
