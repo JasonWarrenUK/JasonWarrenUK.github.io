@@ -2,35 +2,55 @@
   "command": "next",
   "items": [
     {
-      "id": "workflow::create-plan",
-      "kind": "workflow_action",
-      "confidence": "high",
-      "detector": "workflow",
-      "file": ".",
-      "summary": "Create prioritized plan from review results",
-      "detail": {
-        "planning_tools": [
-          {
-            "label": "Codex",
-            "command": "desloppify plan triage --run-stages --runner codex --only-stages observe"
-          },
-          {
-            "label": "Claude",
-            "command": "desloppify plan triage --run-stages --runner claude --only-stages observe"
-          },
-          {
-            "label": "Manual fallback",
-            "command": "desloppify plan triage --stage observe --report \"analysis of themes and root causes...\""
-          },
-          {
-            "label": "Dashboard",
-            "command": "desloppify plan triage"
-          }
-        ]
-      },
-      "status": null,
-      "primary_command": "desloppify plan triage --run-stages --runner codex --only-stages observe",
-      "queue_position": 1
+      "id": "error-visibility",
+      "kind": "cluster",
+      "action_type": "refactor",
+      "summary": "Add error logging to fetchGitHub for build-time debugging",
+      "member_count": 2,
+      "members": [
+        {
+          "id": "review::.::holistic::error_consistency::broad_catch_no_discrimination",
+          "kind": "issue",
+          "confidence": "high",
+          "detector": "review",
+          "file": ".",
+          "summary": "fetchGitHub conflates non-ok HTTP responses with network/parse exceptions into a single null",
+          "status": "open",
+          "primary_command": "desloppify plan resolve \"review::.::holistic::error_consistency::broad_catch_no_discrimination\" --note \"<what you did>\" --confirm"
+        },
+        {
+          "id": "review::.::holistic::error_consistency::silent_error_swallowing",
+          "kind": "issue",
+          "confidence": "high",
+          "detector": "review",
+          "file": ".",
+          "summary": "fetchGitHub catches all errors and returns null without logging or preserving error context",
+          "status": "open",
+          "primary_command": "desloppify plan resolve \"review::.::holistic::error_consistency::silent_error_swallowing\" --note \"<what you did>\" --confirm"
+        }
+      ],
+      "cluster_name": "error-visibility",
+      "cluster_auto": false,
+      "detector": "review",
+      "primary_command": "desloppify next --cluster error-visibility --count 10",
+      "action_steps": [
+        {
+          "title": "Add console.warn for non-ok HTTP responses with status code",
+          "detail": "In src/lib/utils/github.ts fetchGitHub function, after line 9 (if \\!res.ok return null), add: console.warn('[GitHub API] Non-ok response', { url, status: res.status }) before the return null statement",
+          "effort": "small",
+          "issue_refs": [
+            "review::.::holistic::error_consistency::broad_catch_no_discrimination"
+          ]
+        },
+        {
+          "title": "Add console.warn in catch block with URL and error message",
+          "detail": "In src/lib/utils/github.ts fetchGitHub function catch block at line 11-12, replace bare return null with: console.warn('[GitHub API] Fetch failed', { url, error: (e as Error).message }) then return null",
+          "effort": "small",
+          "issue_refs": [
+            "review::.::holistic::error_consistency::silent_error_swallowing"
+          ]
+        }
+      ]
     }
   ],
   "queue": {
@@ -38,7 +58,7 @@
   },
   "narrative": {
     "phase": "refinement",
-    "headline": " (22 review issues \u2014 run `desloppify show review --status open`)",
+    "headline": " (12 review issues \u2014 run `desloppify show review --status open`)",
     "dimensions": {
       "lowest_dimensions": [
         {
@@ -147,8 +167,8 @@
       {
         "type": "refactor",
         "detector": "review",
-        "count": 22,
-        "description": "22 review issues need investigation \u2014 run `desloppify show review --status open` to see them",
+        "count": 12,
+        "description": "12 review issues need investigation \u2014 run `desloppify show review --status open` to see them",
         "command": "desloppify show review --status open",
         "impact": 0.0,
         "dimension": "Unknown",
@@ -174,8 +194,8 @@
     "strategy": {
       "fixer_leverage": {
         "auto_fixable_count": 2,
-        "total_count": 74,
-        "coverage": 0.027,
+        "total_count": 44,
+        "coverage": 0.045,
         "impact_ratio": 0.0,
         "recommendation": "none"
       },
@@ -227,7 +247,7 @@
         }
       },
       "can_parallelize": false,
-      "hint": "Work through actions in priority order. Rescan after each fix to track progress. Review: 22 issue(s) \u2014 `desloppify show review --status open`."
+      "hint": "Work through actions in priority order. Rescan after each fix to track progress. Review: 12 issue(s) \u2014 `desloppify show review --status open`."
     },
     "tools": {
       "fixers": [
@@ -269,7 +289,7 @@
     },
     "debt": {
       "overall_gap": 0.4,
-      "wontfix_count": 1,
+      "wontfix_count": 11,
       "worst_dimension": "Test health",
       "worst_gap": 7.9,
       "trend": "growing"
@@ -279,7 +299,7 @@
       "command": "desloppify autofix unused-imports --dry-run",
       "description": "2 unused issues \u2014 run `desloppify autofix unused-imports --dry-run` to preview, then apply"
     },
-    "why_now": "Work through actions in priority order. Rescan after each fix to track progress. Review: 22 issue(s) \u2014 `desloppify show review --status open`.",
+    "why_now": "Work through actions in priority order. Rescan after each fix to track progress. Review: 12 issue(s) \u2014 `desloppify show review --status open`.",
     "verification_step": {
       "command": "desloppify scan",
       "reason": "revalidate after changes"
@@ -288,7 +308,7 @@
       {
         "type": "wontfix_gap",
         "severity": "medium",
-        "message": "Strict/lenient gap is 0.4 pts with 1 wontfix issues"
+        "message": "Strict/lenient gap is 0.4 pts with 11 wontfix issues"
       }
     ],
     "strict_target": {
@@ -301,7 +321,7 @@
     "reminders": [
       {
         "type": "review_issues_pending",
-        "message": "22 review issue(s) need investigation. Run `desloppify show review --status open` to see the work queue.",
+        "message": "12 review issue(s) need investigation. Run `desloppify show review --status open` to see the work queue.",
         "command": "desloppify show review --status open",
         "priority": 1,
         "severity": "high"
@@ -362,10 +382,35 @@
         "name": "auto/initial-review",
         "description": "Initial review of 20 unscored subjective dimensions",
         "item_count": 20
+      },
+      {
+        "name": "error-visibility",
+        "description": "Add error logging to fetchGitHub for build-time debugging",
+        "item_count": 2
+      },
+      {
+        "name": "test-coverage",
+        "description": "Add mocked fetch tests for async functions in github.ts",
+        "item_count": 2
+      },
+      {
+        "name": "type-precision",
+        "description": "Improve fetchJson naming, return type, and remove unused RepoResponse.language",
+        "item_count": 3
+      },
+      {
+        "name": "convention-fix",
+        "description": "Migrate Terminal.svelte from onMount to ",
+        "item_count": 1
+      },
+      {
+        "name": "architecture-minor",
+        "description": "Low-priority architecture improvements",
+        "item_count": 4
       }
     ],
-    "total_ordered": 27,
-    "total_skipped": 0,
+    "total_ordered": 20,
+    "total_skipped": 10,
     "plan_overrides_narrative": true
   },
   "overall_score": 88.3,
@@ -412,7 +457,7 @@
       "score": 85.9,
       "strict": 85.9,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "subjective": true,
       "placeholder": false,
@@ -450,7 +495,7 @@
       "score": 80.1,
       "strict": 80.1,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "subjective": true,
       "placeholder": false,
@@ -489,7 +534,7 @@
       "score": 82.4,
       "strict": 82.4,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "subjective": true,
       "placeholder": false,
@@ -511,7 +556,7 @@
       "score": 81.2,
       "strict": 81.2,
       "checks": 30,
-      "failing": 5,
+      "failing": 1,
       "tier": 4,
       "subjective": true,
       "placeholder": false,
@@ -539,7 +584,7 @@
       "score": 78.1,
       "strict": 78.1,
       "checks": 10,
-      "failing": 2,
+      "failing": 0,
       "tier": 4,
       "subjective": true,
       "placeholder": false,
@@ -574,7 +619,7 @@
       "score": 85.9,
       "strict": 85.9,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "subjective": true,
       "placeholder": false,
@@ -650,7 +695,7 @@
       "score": 85.9,
       "strict": 85.9,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "subjective": true,
       "placeholder": false,
@@ -679,7 +724,7 @@
       "score": 80.1,
       "strict": 80.1,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "subjective": true,
       "placeholder": false,
@@ -718,7 +763,7 @@
       "score": 82.4,
       "strict": 82.4,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "subjective": true,
       "placeholder": false,
@@ -731,7 +776,7 @@
       "score": 81.2,
       "strict": 81.2,
       "checks": 30,
-      "failing": 5,
+      "failing": 1,
       "tier": 4,
       "subjective": true,
       "placeholder": false,
@@ -759,7 +804,7 @@
       "score": 78.1,
       "strict": 78.1,
       "checks": 10,
-      "failing": 2,
+      "failing": 0,
       "tier": 4,
       "subjective": true,
       "placeholder": false,
@@ -785,7 +830,7 @@
       "score": 85.9,
       "strict": 85.9,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "subjective": true,
       "placeholder": false,
@@ -819,9 +864,6 @@
         "type_safety"
       ]
     }
-  ],
-  "warnings": [
-    "TRIAGE PENDING \u2014 queued and will activate after objective work is complete."
   ],
   "config": {
     "target_strict_score": 95,

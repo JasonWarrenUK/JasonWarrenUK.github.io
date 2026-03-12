@@ -1,15 +1,8 @@
 {
   "version": 8,
   "created": "2026-03-12T08:33:41+00:00",
-  "updated": "2026-03-12T09:03:58+00:00",
+  "updated": "2026-03-12T09:12:51+00:00",
   "queue_order": [
-    "workflow::create-plan",
-    "triage::observe",
-    "triage::reflect",
-    "triage::organize",
-    "triage::enrich",
-    "triage::sense-check",
-    "triage::commit",
     "subjective::abstraction_fitness",
     "subjective::ai_generated_debt",
     "subjective::api_surface_coherence",
@@ -32,7 +25,108 @@
     "subjective::type_safety"
   ],
   "deferred": [],
-  "skipped": {},
+  "skipped": {
+    "review::.::holistic::abstraction_fitness::runtime_value_in_types_module": {
+      "issue_id": "review::.::holistic::abstraction_fitness::runtime_value_in_types_module",
+      "kind": "permanent",
+      "reason": null,
+      "note": "Already fixed: accentColors moved to src/lib/constants.ts",
+      "attestation": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+      "created_at": "2026-03-12T09:09:07+00:00",
+      "review_after": null,
+      "skipped_at_scan": 7
+    },
+    "review::.::holistic::high_level_elegance::runtime_value_in_types_module": {
+      "issue_id": "review::.::holistic::high_level_elegance::runtime_value_in_types_module",
+      "kind": "permanent",
+      "reason": null,
+      "note": "Already fixed: accentColors moved to src/lib/constants.ts",
+      "attestation": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+      "created_at": "2026-03-12T09:09:07+00:00",
+      "review_after": null,
+      "skipped_at_scan": 7
+    },
+    "review::.::holistic::package_organization::types_dir_mixes_runtime": {
+      "issue_id": "review::.::holistic::package_organization::types_dir_mixes_runtime",
+      "kind": "permanent",
+      "reason": null,
+      "note": "Already fixed: accentColors moved to src/lib/constants.ts",
+      "attestation": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+      "created_at": "2026-03-12T09:09:08+00:00",
+      "review_after": null,
+      "skipped_at_scan": 7
+    },
+    "review::.::holistic::contract_coherence::type_guard_contract_gap": {
+      "issue_id": "review::.::holistic::contract_coherence::type_guard_contract_gap",
+      "kind": "permanent",
+      "reason": null,
+      "note": "Already fixed: isRepoResponse checks all 4 fields",
+      "attestation": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+      "created_at": "2026-03-12T09:09:08+00:00",
+      "review_after": null,
+      "skipped_at_scan": 7
+    },
+    "review::.::holistic::logic_clarity::incomplete_type_guard": {
+      "issue_id": "review::.::holistic::logic_clarity::incomplete_type_guard",
+      "kind": "permanent",
+      "reason": null,
+      "note": "Already fixed: guard validates all fields",
+      "attestation": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+      "created_at": "2026-03-12T09:09:09+00:00",
+      "review_after": null,
+      "skipped_at_scan": 7
+    },
+    "review::.::holistic::low_level_elegance::sequential_commits_fetch": {
+      "issue_id": "review::.::holistic::low_level_elegance::sequential_commits_fetch",
+      "kind": "permanent",
+      "reason": null,
+      "note": "Already fixed: commits in Promise.all",
+      "attestation": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+      "created_at": "2026-03-12T09:09:09+00:00",
+      "review_after": null,
+      "skipped_at_scan": 7
+    },
+    "review::.::holistic::mid_level_elegance::artefact_hardcoded_owner_url": {
+      "issue_id": "review::.::holistic::mid_level_elegance::artefact_hardcoded_owner_url",
+      "kind": "permanent",
+      "reason": null,
+      "note": "Already fixed: uses full owner/repo path",
+      "attestation": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+      "created_at": "2026-03-12T09:09:09+00:00",
+      "review_after": null,
+      "skipped_at_scan": 7
+    },
+    "review::.::holistic::logic_clarity::parseCommitCount_redundant_param": {
+      "issue_id": "review::.::holistic::logic_clarity::parseCommitCount_redundant_param",
+      "kind": "permanent",
+      "reason": null,
+      "note": "Not redundant: responseOk distinguishes no-response (0) from response-without-Link (1 commit)",
+      "attestation": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+      "created_at": "2026-03-12T09:09:21+00:00",
+      "review_after": null,
+      "skipped_at_scan": 7
+    },
+    "review::.::holistic::design_coherence::page_svelte_mixed_concerns": {
+      "issue_id": "review::.::holistic::design_coherence::page_svelte_mixed_concerns",
+      "kind": "permanent",
+      "reason": null,
+      "note": "85 lines is appropriate for a single-page app composition root",
+      "attestation": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+      "created_at": "2026-03-12T09:09:22+00:00",
+      "review_after": null,
+      "skipped_at_scan": 7
+    },
+    "review::.::holistic::low_level_elegance::duplicated_observer_pattern": {
+      "issue_id": "review::.::holistic::low_level_elegance::duplicated_observer_pattern",
+      "kind": "permanent",
+      "reason": null,
+      "note": "Two observers with different configs and callbacks; extracting is over-engineering for 2 uses",
+      "attestation": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+      "created_at": "2026-03-12T09:09:22+00:00",
+      "review_after": null,
+      "skipped_at_scan": 7
+    }
+  },
   "active_cluster": null,
   "overrides": {
     "orphaned::src/lib/components/ProjectCard.svelte": {
@@ -796,6 +890,78 @@
       "created_at": "2026-03-12T08:46:41+00:00",
       "cluster": "auto/stale_exclude",
       "updated_at": "2026-03-12T09:00:02+00:00"
+    },
+    "review::.::holistic::error_consistency::broad_catch_no_discrimination": {
+      "issue_id": "review::.::holistic::error_consistency::broad_catch_no_discrimination",
+      "created_at": "2026-03-12T09:09:37+00:00",
+      "cluster": "error-visibility",
+      "updated_at": "2026-03-12T09:09:37+00:00"
+    },
+    "review::.::holistic::error_consistency::silent_error_swallowing": {
+      "issue_id": "review::.::holistic::error_consistency::silent_error_swallowing",
+      "created_at": "2026-03-12T09:09:37+00:00",
+      "cluster": "error-visibility",
+      "updated_at": "2026-03-12T09:09:37+00:00"
+    },
+    "review::.::holistic::test_strategy::untested_fetch_functions": {
+      "issue_id": "review::.::holistic::test_strategy::untested_fetch_functions",
+      "created_at": "2026-03-12T09:09:38+00:00",
+      "cluster": "test-coverage",
+      "updated_at": "2026-03-12T09:09:38+00:00"
+    },
+    "review::.::holistic::test_strategy::untested_server_load": {
+      "issue_id": "review::.::holistic::test_strategy::untested_server_load",
+      "created_at": "2026-03-12T09:09:38+00:00",
+      "cluster": "test-coverage",
+      "updated_at": "2026-03-12T09:09:38+00:00"
+    },
+    "review::.::holistic::type_safety::fetchJson_untyped_return": {
+      "issue_id": "review::.::holistic::type_safety::fetchJson_untyped_return",
+      "created_at": "2026-03-12T09:09:39+00:00",
+      "cluster": "type-precision",
+      "updated_at": "2026-03-12T09:09:39+00:00"
+    },
+    "review::.::holistic::type_safety::unused_interface_field": {
+      "issue_id": "review::.::holistic::type_safety::unused_interface_field",
+      "created_at": "2026-03-12T09:09:39+00:00",
+      "cluster": "type-precision",
+      "updated_at": "2026-03-12T09:09:39+00:00"
+    },
+    "review::.::holistic::naming_quality::fetchJson_hides_null": {
+      "issue_id": "review::.::holistic::naming_quality::fetchJson_hides_null",
+      "created_at": "2026-03-12T09:09:39+00:00",
+      "cluster": "type-precision",
+      "updated_at": "2026-03-12T09:09:39+00:00"
+    },
+    "review::.::holistic::convention_outlier::mixed_lifecycle_pattern": {
+      "issue_id": "review::.::holistic::convention_outlier::mixed_lifecycle_pattern",
+      "created_at": "2026-03-12T09:09:40+00:00",
+      "cluster": "convention-fix",
+      "updated_at": "2026-03-12T09:09:40+00:00"
+    },
+    "review::.::holistic::cross_module_architecture::parallel_project_imports": {
+      "issue_id": "review::.::holistic::cross_module_architecture::parallel_project_imports",
+      "created_at": "2026-03-12T09:09:41+00:00",
+      "cluster": "architecture-minor",
+      "updated_at": "2026-03-12T09:09:41+00:00"
+    },
+    "review::.::holistic::mid_level_elegance::github_data_merge_in_presentation": {
+      "issue_id": "review::.::holistic::mid_level_elegance::github_data_merge_in_presentation",
+      "created_at": "2026-03-12T09:09:41+00:00",
+      "cluster": "architecture-minor",
+      "updated_at": "2026-03-12T09:09:41+00:00"
+    },
+    "review::.::holistic::api_surface_coherence::internal_helpers_exported_for_testing": {
+      "issue_id": "review::.::holistic::api_surface_coherence::internal_helpers_exported_for_testing",
+      "created_at": "2026-03-12T09:09:41+00:00",
+      "cluster": "architecture-minor",
+      "updated_at": "2026-03-12T09:09:41+00:00"
+    },
+    "review::.::holistic::ai_generated_debt::uniform_description_prose": {
+      "issue_id": "review::.::holistic::ai_generated_debt::uniform_description_prose",
+      "created_at": "2026-03-12T09:09:41+00:00",
+      "cluster": "architecture-minor",
+      "updated_at": "2026-03-12T09:09:41+00:00"
     }
   },
   "clusters": {
@@ -862,6 +1028,185 @@
       "cluster_key": "subjective::unscored",
       "action": "desloppify review --prepare --dimensions abstraction_fitness,ai_generated_debt,api_surface_coherence,authorization_consistency,contract_coherence,convention_outlier,cross_module_architecture,dependency_health,design_coherence,error_consistency,high_level_elegance,incomplete_migration,initialization_coupling,logic_clarity,low_level_elegance,mid_level_elegance,naming_quality,package_organization,test_strategy,type_safety",
       "user_modified": false
+    },
+    "error-visibility": {
+      "name": "error-visibility",
+      "description": "Add error logging to fetchGitHub for build-time debugging",
+      "issue_ids": [
+        "review::.::holistic::error_consistency::broad_catch_no_discrimination",
+        "review::.::holistic::error_consistency::silent_error_swallowing"
+      ],
+      "created_at": "2026-03-12T09:09:37+00:00",
+      "updated_at": "2026-03-12T09:11:57+00:00",
+      "auto": false,
+      "cluster_key": "",
+      "action": null,
+      "user_modified": true,
+      "action_steps": [
+        {
+          "title": "Add console.warn for non-ok HTTP responses with status code",
+          "detail": "In src/lib/utils/github.ts fetchGitHub function, after line 9 (if \\!res.ok return null), add: console.warn('[GitHub API] Non-ok response', { url, status: res.status }) before the return null statement",
+          "effort": "small",
+          "issue_refs": [
+            "review::.::holistic::error_consistency::broad_catch_no_discrimination"
+          ]
+        },
+        {
+          "title": "Add console.warn in catch block with URL and error message",
+          "detail": "In src/lib/utils/github.ts fetchGitHub function catch block at line 11-12, replace bare return null with: console.warn('[GitHub API] Fetch failed', { url, error: (e as Error).message }) then return null",
+          "effort": "small",
+          "issue_refs": [
+            "review::.::holistic::error_consistency::silent_error_swallowing"
+          ]
+        }
+      ]
+    },
+    "test-coverage": {
+      "name": "test-coverage",
+      "description": "Add mocked fetch tests for async functions in github.ts",
+      "issue_ids": [
+        "review::.::holistic::test_strategy::untested_fetch_functions",
+        "review::.::holistic::test_strategy::untested_server_load"
+      ],
+      "created_at": "2026-03-12T09:09:38+00:00",
+      "updated_at": "2026-03-12T09:11:58+00:00",
+      "auto": false,
+      "cluster_key": "",
+      "action": null,
+      "user_modified": true,
+      "action_steps": [
+        {
+          "title": "Add fetchRepoData tests with mocked fetch (success, HTTP error, network error)",
+          "detail": "Mock global fetch with vi.fn. Test success, HTTP error, network error, malformed response",
+          "effort": "medium",
+          "issue_refs": [
+            "review::.::holistic::test_strategy::untested_fetch_functions"
+          ]
+        },
+        {
+          "title": "Add fetchAllRepoData tests (deduplication, partial failures)",
+          "detail": "In src/lib/utils/github.test.ts, add fetchAllRepoData tests: (1) test deduplication by passing same repo name twice and verifying fetch called once, (2) test partial failures by mocking fetch to fail for one repo and succeed for another",
+          "effort": "small",
+          "issue_refs": [
+            "review::.::holistic::test_strategy::untested_server_load"
+          ]
+        }
+      ]
+    },
+    "type-precision": {
+      "name": "type-precision",
+      "description": "Improve fetchJson naming, return type, and remove unused RepoResponse.language",
+      "issue_ids": [
+        "review::.::holistic::type_safety::fetchJson_untyped_return",
+        "review::.::holistic::type_safety::unused_interface_field",
+        "review::.::holistic::naming_quality::fetchJson_hides_null"
+      ],
+      "created_at": "2026-03-12T09:09:38+00:00",
+      "updated_at": "2026-03-12T09:11:59+00:00",
+      "auto": false,
+      "cluster_key": "",
+      "action": null,
+      "user_modified": true,
+      "action_steps": [
+        {
+          "title": "Rename fetchJson to tryFetchJson and update return type to Promise<unknown | null>",
+          "detail": "In src/lib/utils/github.ts, rename the function at line 16 from 'fetchJson' to 'tryFetchJson', change return type from Promise<unknown> to Promise<unknown | null>, update all 3 call sites in fetchRepoData at lines 57-59",
+          "effort": "small",
+          "issue_refs": [
+            "review::.::holistic::naming_quality::fetchJson_hides_null",
+            "review::.::holistic::type_safety::fetchJson_untyped_return"
+          ]
+        },
+        {
+          "title": "Remove language field from RepoResponse interface and isRepoResponse guard",
+          "detail": "In src/lib/utils/github.ts, remove 'language: string | null' from RepoResponse interface at line 26, remove '(obj.language === null || typeof obj.language === 'string')' from isRepoResponse guard at line 36, update tests in github.test.ts to remove language from test fixtures",
+          "effort": "trivial",
+          "issue_refs": [
+            "review::.::holistic::type_safety::unused_interface_field"
+          ]
+        },
+        {
+          "title": "Update existing tests for renamed function",
+          "detail": "No external test references to fetchJson; only internal calls in github.ts need updating",
+          "effort": "trivial",
+          "issue_refs": [
+            "review::.::holistic::naming_quality::fetchJson_hides_null"
+          ]
+        }
+      ]
+    },
+    "convention-fix": {
+      "name": "convention-fix",
+      "description": "Migrate Terminal.svelte from onMount to ",
+      "issue_ids": [
+        "review::.::holistic::convention_outlier::mixed_lifecycle_pattern"
+      ],
+      "created_at": "2026-03-12T09:09:39+00:00",
+      "updated_at": "2026-03-12T09:12:12+00:00",
+      "auto": false,
+      "cluster_key": "",
+      "action": null,
+      "user_modified": true,
+      "action_steps": [
+        {
+          "title": "Migrate Terminal.svelte from onMount to  for runes consistency",
+          "detail": "In src/lib/components/Terminal.svelte, replace the onMount import and usage with $effect(). Remove 'import { onMount } from svelte', wrap the animation setup code currently inside onMount callback in $effect(() => { ... return cleanup; })",
+          "effort": "small",
+          "issue_refs": [
+            "review::.::holistic::convention_outlier::mixed_lifecycle_pattern"
+          ]
+        }
+      ]
+    },
+    "architecture-minor": {
+      "name": "architecture-minor",
+      "description": "Low-priority architecture improvements",
+      "issue_ids": [
+        "review::.::holistic::cross_module_architecture::parallel_project_imports",
+        "review::.::holistic::mid_level_elegance::github_data_merge_in_presentation",
+        "review::.::holistic::api_surface_coherence::internal_helpers_exported_for_testing",
+        "review::.::holistic::ai_generated_debt::uniform_description_prose"
+      ],
+      "created_at": "2026-03-12T09:09:40+00:00",
+      "updated_at": "2026-03-12T09:11:30+00:00",
+      "auto": false,
+      "cluster_key": "",
+      "action": null,
+      "user_modified": true,
+      "action_steps": [
+        {
+          "title": "Add exported-for-testing comments to type guard exports",
+          "detail": "Add // Exported for testing comment above isRepoResponse, isLanguagesResponse, parseCommitCount",
+          "effort": "trivial",
+          "issue_refs": [
+            "review::.::holistic::api_surface_coherence::internal_helpers_exported_for_testing"
+          ]
+        },
+        {
+          "title": "Move attachGithubData merge to +page.server.ts",
+          "detail": "Move attachGithubData logic into +page.server.ts load function, return merged Project arrays",
+          "effort": "medium",
+          "issue_refs": [
+            "review::.::holistic::mid_level_elegance::github_data_merge_in_presentation"
+          ]
+        },
+        {
+          "title": "Update +page.svelte to use pre-merged project data from load",
+          "detail": "Update +page.svelte to receive pre-merged data from load, remove attachGithubData helper",
+          "effort": "small",
+          "issue_refs": [
+            "review::.::holistic::cross_module_architecture::parallel_project_imports"
+          ]
+        },
+        {
+          "title": "Vary project description prose style in projects.ts",
+          "detail": "Review and vary project description patterns in projects.ts for more natural voice",
+          "effort": "small",
+          "issue_refs": [
+            "review::.::holistic::ai_generated_debt::uniform_description_prose"
+          ]
+        }
+      ]
     }
   },
   "superseded": {
@@ -2139,9 +2484,7 @@
     "objective": 96.2,
     "verified": 96.2
   },
-  "refresh_state": {
-    "postflight_scan_completed_at_scan_count": 2
-  },
+  "refresh_state": {},
   "execution_log": [
     {
       "timestamp": "2026-03-12T08:33:41+00:00",
@@ -3241,10 +3584,820 @@
       "actor": "user",
       "note": "Score communicated",
       "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:07:10+00:00",
+      "action": "triage_observe",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "issue_count": 22,
+        "cited_ids": [],
+        "reuse": false
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:08:02+00:00",
+      "action": "triage_observe",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "issue_count": 22,
+        "cited_ids": [
+          "review::.::holistic::abstraction_fitness::runtime_value_in_types_module",
+          "review::.::holistic::ai_generated_debt::uniform_description_prose",
+          "review::.::holistic::api_surface_coherence::internal_helpers_exported_for_testing",
+          "review::.::holistic::contract_coherence::type_guard_contract_gap",
+          "review::.::holistic::convention_outlier::mixed_lifecycle_pattern",
+          "review::.::holistic::cross_module_architecture::parallel_project_imports",
+          "review::.::holistic::design_coherence::page_svelte_mixed_concerns",
+          "review::.::holistic::error_consistency::broad_catch_no_discrimination",
+          "review::.::holistic::error_consistency::silent_error_swallowing",
+          "review::.::holistic::high_level_elegance::runtime_value_in_types_module",
+          "review::.::holistic::logic_clarity::incomplete_type_guard",
+          "review::.::holistic::logic_clarity::parseCommitCount_redundant_param",
+          "review::.::holistic::low_level_elegance::duplicated_observer_pattern",
+          "review::.::holistic::low_level_elegance::sequential_commits_fetch",
+          "review::.::holistic::mid_level_elegance::artefact_hardcoded_owner_url",
+          "review::.::holistic::mid_level_elegance::github_data_merge_in_presentation",
+          "review::.::holistic::naming_quality::fetchJson_hides_null",
+          "review::.::holistic::package_organization::types_dir_mixes_runtime",
+          "review::.::holistic::test_strategy::untested_fetch_functions",
+          "review::.::holistic::test_strategy::untested_server_load",
+          "review::.::holistic::type_safety::fetchJson_untyped_return",
+          "review::.::holistic::type_safety::unused_interface_field"
+        ],
+        "reuse": false
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:08:08+00:00",
+      "action": "triage_confirm_observe",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "attestation": "Verified all 22 issues across error_consistency, type_safety, test_strategy, contract_coherence, logic_clarity, abstraction_fitness, package_organization, naming_quality, convention_outlier, design_coherence, cross_module_architecture, mid_level_elegance, low_level_elegance, high_level_elegance, ai_generated_debt, and api_surface_coherence with code reads and line citations"
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:08:48+00:00",
+      "action": "triage_reflect",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "issue_count": 22,
+        "reuse": false,
+        "recurring_dims": []
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:08:54+00:00",
+      "action": "triage_confirm_reflect",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "attestation": "Strategy groups 22 issues into 8 categories covering error_consistency, test_strategy, type_safety, naming_quality, convention_outlier, cross_module_architecture, mid_level_elegance, api_surface_coherence, ai_generated_debt, plus false-positives for abstraction_fitness, high_level_elegance, package_organization, contract_coherence, logic_clarity, low_level_elegance, and design_coherence with clear priority ordering"
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:07+00:00",
+      "action": "skip",
+      "issue_ids": [
+        "review::.::holistic::abstraction_fitness::runtime_value_in_types_module"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Already fixed: accentColors moved to src/lib/constants.ts",
+      "detail": {
+        "kind": "permanent",
+        "reason": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:07+00:00",
+      "action": "skip",
+      "issue_ids": [
+        "review::.::holistic::high_level_elegance::runtime_value_in_types_module"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Already fixed: accentColors moved to src/lib/constants.ts",
+      "detail": {
+        "kind": "permanent",
+        "reason": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:08+00:00",
+      "action": "skip",
+      "issue_ids": [
+        "review::.::holistic::package_organization::types_dir_mixes_runtime"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Already fixed: accentColors moved to src/lib/constants.ts",
+      "detail": {
+        "kind": "permanent",
+        "reason": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:08+00:00",
+      "action": "skip",
+      "issue_ids": [
+        "review::.::holistic::contract_coherence::type_guard_contract_gap"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Already fixed: isRepoResponse checks all 4 fields",
+      "detail": {
+        "kind": "permanent",
+        "reason": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:09+00:00",
+      "action": "skip",
+      "issue_ids": [
+        "review::.::holistic::logic_clarity::incomplete_type_guard"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Already fixed: guard validates all fields",
+      "detail": {
+        "kind": "permanent",
+        "reason": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:09+00:00",
+      "action": "skip",
+      "issue_ids": [
+        "review::.::holistic::low_level_elegance::sequential_commits_fetch"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Already fixed: commits in Promise.all",
+      "detail": {
+        "kind": "permanent",
+        "reason": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:09+00:00",
+      "action": "skip",
+      "issue_ids": [
+        "review::.::holistic::mid_level_elegance::artefact_hardcoded_owner_url"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Already fixed: uses full owner/repo path",
+      "detail": {
+        "kind": "permanent",
+        "reason": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:21+00:00",
+      "action": "skip",
+      "issue_ids": [
+        "review::.::holistic::logic_clarity::parseCommitCount_redundant_param"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Not redundant: responseOk distinguishes no-response (0) from response-without-Link (1 commit)",
+      "detail": {
+        "kind": "permanent",
+        "reason": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:22+00:00",
+      "action": "skip",
+      "issue_ids": [
+        "review::.::holistic::design_coherence::page_svelte_mixed_concerns"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "85 lines is appropriate for a single-page app composition root",
+      "detail": {
+        "kind": "permanent",
+        "reason": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:22+00:00",
+      "action": "skip",
+      "issue_ids": [
+        "review::.::holistic::low_level_elegance::duplicated_observer_pattern"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Two observers with different configs and callbacks; extracting is over-engineering for 2 uses",
+      "detail": {
+        "kind": "permanent",
+        "reason": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:37+00:00",
+      "action": "cluster_create",
+      "issue_ids": [],
+      "cluster_name": "error-visibility",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": "Add error logging to fetchGitHub for build-time debugging",
+        "action": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:37+00:00",
+      "action": "cluster_add",
+      "issue_ids": [
+        "review::.::holistic::error_consistency::broad_catch_no_discrimination",
+        "review::.::holistic::error_consistency::silent_error_swallowing"
+      ],
+      "cluster_name": "error-visibility",
+      "actor": "user",
+      "note": null,
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:09:38+00:00",
+      "action": "cluster_create",
+      "issue_ids": [],
+      "cluster_name": "test-coverage",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": "Add mocked fetch tests for async functions in github.ts",
+        "action": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:38+00:00",
+      "action": "cluster_add",
+      "issue_ids": [
+        "review::.::holistic::test_strategy::untested_fetch_functions",
+        "review::.::holistic::test_strategy::untested_server_load"
+      ],
+      "cluster_name": "test-coverage",
+      "actor": "user",
+      "note": null,
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:09:38+00:00",
+      "action": "cluster_create",
+      "issue_ids": [],
+      "cluster_name": "type-precision",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": "Improve fetchJson naming, return type, and remove unused RepoResponse.language",
+        "action": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:39+00:00",
+      "action": "cluster_add",
+      "issue_ids": [
+        "review::.::holistic::type_safety::fetchJson_untyped_return",
+        "review::.::holistic::type_safety::unused_interface_field",
+        "review::.::holistic::naming_quality::fetchJson_hides_null"
+      ],
+      "cluster_name": "type-precision",
+      "actor": "user",
+      "note": null,
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:09:39+00:00",
+      "action": "cluster_create",
+      "issue_ids": [],
+      "cluster_name": "convention-fix",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": "Migrate Terminal.svelte from onMount to ",
+        "action": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:40+00:00",
+      "action": "cluster_add",
+      "issue_ids": [
+        "review::.::holistic::convention_outlier::mixed_lifecycle_pattern"
+      ],
+      "cluster_name": "convention-fix",
+      "actor": "user",
+      "note": null,
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:09:40+00:00",
+      "action": "cluster_create",
+      "issue_ids": [],
+      "cluster_name": "architecture-minor",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": "Low-priority architecture improvements",
+        "action": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:41+00:00",
+      "action": "cluster_add",
+      "issue_ids": [
+        "review::.::holistic::cross_module_architecture::parallel_project_imports",
+        "review::.::holistic::mid_level_elegance::github_data_merge_in_presentation",
+        "review::.::holistic::api_surface_coherence::internal_helpers_exported_for_testing",
+        "review::.::holistic::ai_generated_debt::uniform_description_prose"
+      ],
+      "cluster_name": "architecture-minor",
+      "actor": "user",
+      "note": null,
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:09:52+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "error-visibility",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:52+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "test-coverage",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:52+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "type-precision",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:53+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "convention-fix",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:09:53+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "architecture-minor",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:10:09+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "architecture-minor",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:10:22+00:00",
+      "action": "triage_organize",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "cluster_count": 5,
+        "reuse": false
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:10:36+00:00",
+      "action": "triage_confirm_organize",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "attestation": "Clusters error-visibility and test-coverage target lowest-scoring dimensions (error_consistency 67.3%, test_strategy 55.2%). type-precision addresses type_safety and naming_quality. convention-fix handles convention_outlier. architecture-minor covers cross_module_architecture, api_surface_coherence, and ai_generated_debt.",
+        "coverage": "12/12"
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:11:06+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "error-visibility",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:11:06+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "error-visibility",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:11:07+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "test-coverage",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:11:07+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "test-coverage",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:11:08+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "type-precision",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:11:08+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "type-precision",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:11:09+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "type-precision",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:11:09+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "convention-fix",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:11:28+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "type-precision",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:11:29+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "architecture-minor",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:11:29+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "architecture-minor",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:11:29+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "architecture-minor",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:11:30+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "architecture-minor",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:11:37+00:00",
+      "action": "triage_enrich",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "shallow_count": 0,
+        "reuse": false
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:11:57+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "error-visibility",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:11:57+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "error-visibility",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:11:58+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "test-coverage",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:11:58+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "type-precision",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:11:59+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "type-precision",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:12:12+00:00",
+      "action": "cluster_update",
+      "issue_ids": [],
+      "cluster_name": "convention-fix",
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "description": null
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:12:17+00:00",
+      "action": "triage_confirm_enrich",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "attestation": "All steps in error-visibility, test-coverage, type-precision, convention-fix, and architecture-minor clusters have file paths (github.ts, github.test.ts, Terminal.svelte, page.server.ts, page.svelte, projects.ts), line numbers, and specific actions to execute"
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:12:31+00:00",
+      "action": "triage_sense_check",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "reuse": false
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:12:41+00:00",
+      "action": "triage_confirm_sense_check",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "attestation": "Sense-check verified accuracy of all steps in error-visibility, test-coverage, type-precision, convention-fix, and architecture-minor clusters. Confirmed cross-cluster dependency (type-precision before test-coverage). Validated 10 skipped issues as genuinely false-positive or exaggerated against actual source in github.ts, Terminal.svelte, Artefacts.svelte, and types/index.ts"
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:12:51+00:00",
+      "action": "triage_complete",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "user",
+      "note": null,
+      "detail": {
+        "strategy_len": 372,
+        "coverage": "12/12"
+      }
     }
   ],
   "epic_triage_meta": {
-    "triage_stages": {}
+    "triage_stages": {},
+    "issue_snapshot_hash": "0bd66958a1976fb1",
+    "triaged_ids": [
+      "review::.::holistic::ai_generated_debt::uniform_description_prose",
+      "review::.::holistic::api_surface_coherence::internal_helpers_exported_for_testing",
+      "review::.::holistic::convention_outlier::mixed_lifecycle_pattern",
+      "review::.::holistic::cross_module_architecture::parallel_project_imports",
+      "review::.::holistic::error_consistency::broad_catch_no_discrimination",
+      "review::.::holistic::error_consistency::silent_error_swallowing",
+      "review::.::holistic::mid_level_elegance::github_data_merge_in_presentation",
+      "review::.::holistic::naming_quality::fetchJson_hides_null",
+      "review::.::holistic::test_strategy::untested_fetch_functions",
+      "review::.::holistic::test_strategy::untested_server_load",
+      "review::.::holistic::type_safety::fetchJson_untyped_return",
+      "review::.::holistic::type_safety::unused_interface_field"
+    ],
+    "strategy_summary": "Execute clusters in order: type-precision (small, rename/cleanup), error-visibility (small, add logging), test-coverage (medium, add mocked fetch tests), convention-fix (small, onMount to effect), architecture-minor (medium, server merge). Target: raise strict from 87.2 to 95+ by addressing test_strategy (55.2%), error_consistency (67.3%), and type_safety (75.2%) first.",
+    "trigger": "manual_triage",
+    "last_completion_mode": "manual_triage",
+    "last_completed_at": "2026-03-12T09:12:51+00:00",
+    "last_triage": {
+      "completed_at": "2026-03-12T09:12:51+00:00",
+      "stages": {
+        "observe": {
+          "stage": "observe",
+          "report": "OBSERVE STAGE: Verified all 22 review issues against source code.\n\n## Already Fixed (7 false-positives)\n\n[review::.::holistic::abstraction_fitness::runtime_value_in_types_module] false-positive: accentColors moved to src/lib/constants.ts, types/index.ts is now pure types.\n\n[review::.::holistic::high_level_elegance::runtime_value_in_types_module] false-positive: same fix as above, accentColors no longer in types module.\n\n[review::.::holistic::package_organization::types_dir_mixes_runtime] false-positive: same fix, types/index.ts has no runtime values.\n\n[review::.::holistic::contract_coherence::type_guard_contract_gap] false-positive: isRepoResponse now checks all 4 fields (stargazers_count, open_issues_count, updated_at, language) with correct typeof checks at lines 29-38.\n\n[review::.::holistic::logic_clarity::incomplete_type_guard] false-positive: duplicate of contract_coherence issue above, guard is complete.\n\n[review::.::holistic::low_level_elegance::sequential_commits_fetch] false-positive: commits fetch is already in Promise.all at line 60 as 4th element.\n\n[review::.::holistic::mid_level_elegance::artefact_hardcoded_owner_url] false-positive: Artefacts.svelte uses https://github.com/{artefact.repo} and artefacts.ts has full owner/repo paths.\n\n## Exaggerated (3 issues)\n\n[review::.::holistic::logic_clarity::parseCommitCount_redundant_param] exaggerated: responseOk distinguishes no-response (0) from response-without-Link-header (1 commit). Not redundant. Minor: rename to responseReceived.\n\n[review::.::holistic::design_coherence::page_svelte_mixed_concerns] exaggerated: 85 lines of script for a single-page app composition root. Three concerns is appropriate; extracting increases file count without proportional benefit.\n\n[review::.::holistic::low_level_elegance::duplicated_observer_pattern] exaggerated: two $effect blocks use IntersectionObserver with different options and callbacks. Extracting a helper for 2 uses is over-engineering.\n\n## Genuine (12 issues)\n\n[review::.::holistic::error_consistency::broad_catch_no_discrimination] genuine: fetchGitHub lines 6-14 returns null for both non-ok HTTP and caught exceptions. No distinction between 404, 403, or network failure. Add console.warn with status/error.\n\n[review::.::holistic::error_consistency::silent_error_swallowing] genuine: catch block line 11-12 is bare. Build-time SSG makes failures invisible. Add console.warn.\n\n[review::.::holistic::type_safety::fetchJson_untyped_return] genuine: fetchJson returns Promise<unknown> but can return null. Change to Promise<unknown | null>.\n\n[review::.::holistic::type_safety::unused_interface_field] genuine: RepoResponse.language validated but never read by fetchRepoData. Remove it.\n\n[review::.::holistic::test_strategy::untested_fetch_functions] genuine: fetchRepoData/fetchAllRepoData have zero test coverage. Add mocked fetch tests.\n\n[review::.::holistic::test_strategy::untested_server_load] genuine but low priority: load function is thin delegation. Testing fetchRepoData provides more value.\n\n[review::.::holistic::convention_outlier::mixed_lifecycle_pattern] genuine: Terminal.svelte uses onMount while +page.svelte uses $effect. Migrate Terminal to $effect for runes consistency.\n\n[review::.::holistic::naming_quality::fetchJson_hides_null] genuine: rename to tryFetchJson to communicate nullable return.\n\n[review::.::holistic::ai_generated_debt::uniform_description_prose] genuine but low priority: content/style decision for portfolio owner.\n\n[review::.::holistic::api_surface_coherence::internal_helpers_exported_for_testing] genuine: helpers exported for testability. Add comment noting intent.\n\n[review::.::holistic::cross_module_architecture::parallel_project_imports] genuine: both server and page import from projects. Reasonable SvelteKit pattern for static data. Medium priority.\n\n[review::.::holistic::mid_level_elegance::github_data_merge_in_presentation] genuine: attachGithubData could move to server but adds serialization complexity. Medium priority.",
+          "cited_ids": [
+            "review::.::holistic::abstraction_fitness::runtime_value_in_types_module",
+            "review::.::holistic::ai_generated_debt::uniform_description_prose",
+            "review::.::holistic::api_surface_coherence::internal_helpers_exported_for_testing",
+            "review::.::holistic::contract_coherence::type_guard_contract_gap",
+            "review::.::holistic::convention_outlier::mixed_lifecycle_pattern",
+            "review::.::holistic::cross_module_architecture::parallel_project_imports",
+            "review::.::holistic::design_coherence::page_svelte_mixed_concerns",
+            "review::.::holistic::error_consistency::broad_catch_no_discrimination",
+            "review::.::holistic::error_consistency::silent_error_swallowing",
+            "review::.::holistic::high_level_elegance::runtime_value_in_types_module",
+            "review::.::holistic::logic_clarity::incomplete_type_guard",
+            "review::.::holistic::logic_clarity::parseCommitCount_redundant_param",
+            "review::.::holistic::low_level_elegance::duplicated_observer_pattern",
+            "review::.::holistic::low_level_elegance::sequential_commits_fetch",
+            "review::.::holistic::mid_level_elegance::artefact_hardcoded_owner_url",
+            "review::.::holistic::mid_level_elegance::github_data_merge_in_presentation",
+            "review::.::holistic::naming_quality::fetchJson_hides_null",
+            "review::.::holistic::package_organization::types_dir_mixes_runtime",
+            "review::.::holistic::test_strategy::untested_fetch_functions",
+            "review::.::holistic::test_strategy::untested_server_load",
+            "review::.::holistic::type_safety::fetchJson_untyped_return",
+            "review::.::holistic::type_safety::unused_interface_field"
+          ],
+          "timestamp": "2026-03-12T09:08:02+00:00",
+          "issue_count": 22,
+          "assessments": [],
+          "confirmed_at": "2026-03-12T09:08:08+00:00",
+          "confirmed_text": "Verified all 22 issues across error_consistency, type_safety, test_strategy, contract_coherence, logic_clarity, abstraction_fitness, package_organization, naming_quality, convention_outlier, design_coherence, cross_module_architecture, mid_level_elegance, low_level_elegance, high_level_elegance, ai_generated_debt, and api_surface_coherence with code reads and line citations"
+        },
+        "reflect": {
+          "stage": "reflect",
+          "report": "REFLECT STAGE: Strategy analysis of all 22 issues.\n\nThree root causes drive the genuine issues:\n\n1. ERROR VISIBILITY (2 genuine): [review::.::holistic::error_consistency::broad_catch_no_discrimination] and [review::.::holistic::error_consistency::silent_error_swallowing] share the same root: fetchGitHub swallows all errors silently. Fix: add console.warn for non-ok responses (with status) and caught exceptions (with error message).\n\n2. TEST COVERAGE GAPS (2 genuine): [review::.::holistic::test_strategy::untested_fetch_functions] and [review::.::holistic::test_strategy::untested_server_load] share the root: only pure functions are tested. Fix: add vitest tests with vi.fn() mocking global fetch.\n\n3. TYPE PRECISION (3 genuine): [review::.::holistic::type_safety::fetchJson_untyped_return], [review::.::holistic::type_safety::unused_interface_field], and [review::.::holistic::naming_quality::fetchJson_hides_null] cluster around fetchJson. Fix: rename to tryFetchJson, change return type to Promise<unknown | null>, remove language from RepoResponse.\n\n4. CONVENTION CONSISTENCY (1 genuine): [review::.::holistic::convention_outlier::mixed_lifecycle_pattern] Terminal.svelte uses onMount instead of $effect. Simple migration.\n\n5. LOW-PRIORITY ARCHITECTURE (3 genuine): [review::.::holistic::cross_module_architecture::parallel_project_imports], [review::.::holistic::mid_level_elegance::github_data_merge_in_presentation], and [review::.::holistic::api_surface_coherence::internal_helpers_exported_for_testing] are valid but low-impact.\n\n6. CONTENT (1 genuine): [review::.::holistic::ai_generated_debt::uniform_description_prose] is a content decision.\n\n7. ALREADY FIXED - FALSE POSITIVES (7 issues):\n[review::.::holistic::abstraction_fitness::runtime_value_in_types_module] - accentColors moved to constants.ts\n[review::.::holistic::high_level_elegance::runtime_value_in_types_module] - same fix\n[review::.::holistic::package_organization::types_dir_mixes_runtime] - same fix\n[review::.::holistic::contract_coherence::type_guard_contract_gap] - guard now checks all fields\n[review::.::holistic::logic_clarity::incomplete_type_guard] - duplicate of above, guard is complete\n[review::.::holistic::low_level_elegance::sequential_commits_fetch] - commits already in Promise.all\n[review::.::holistic::mid_level_elegance::artefact_hardcoded_owner_url] - uses full repo path now\n\n8. EXAGGERATED (3 issues):\n[review::.::holistic::logic_clarity::parseCommitCount_redundant_param] - param is not redundant, distinguishes no-response from no-Link-header\n[review::.::holistic::design_coherence::page_svelte_mixed_concerns] - 85 lines is appropriate for composition root\n[review::.::holistic::low_level_elegance::duplicated_observer_pattern] - different configs/callbacks, extracting is over-engineering\n\nPriority: test_strategy (55.2%) > error_consistency (67.3%) > type_safety (75.2%) > convention (80.5%) > architecture > content.",
+          "cited_ids": [
+            "review::.::holistic::ai_generated_debt::uniform_description_prose",
+            "review::.::holistic::api_surface_coherence::internal_helpers_exported_for_testing",
+            "review::.::holistic::convention_outlier::mixed_lifecycle_pattern",
+            "review::.::holistic::cross_module_architecture::parallel_project_imports",
+            "review::.::holistic::error_consistency::broad_catch_no_discrimination",
+            "review::.::holistic::error_consistency::silent_error_swallowing",
+            "review::.::holistic::mid_level_elegance::github_data_merge_in_presentation",
+            "review::.::holistic::naming_quality::fetchJson_hides_null",
+            "review::.::holistic::test_strategy::untested_fetch_functions",
+            "review::.::holistic::test_strategy::untested_server_load",
+            "review::.::holistic::type_safety::fetchJson_untyped_return",
+            "review::.::holistic::type_safety::unused_interface_field"
+          ],
+          "timestamp": "2026-03-12T09:08:48+00:00",
+          "issue_count": 22,
+          "missing_issue_ids": [],
+          "duplicate_issue_ids": [],
+          "recurring_dims": [],
+          "confirmed_at": "2026-03-12T09:08:54+00:00",
+          "confirmed_text": "Strategy groups 22 issues into 8 categories covering error_consistency, test_strategy, type_safety, naming_quality, convention_outlier, cross_module_architecture, mid_level_elegance, api_surface_coherence, ai_generated_debt, plus false-positives for abstraction_fitness, high_level_elegance, package_organization, contract_coherence, logic_clarity, low_level_elegance, and design_coherence with clear priority ordering"
+        },
+        "organize": {
+          "stage": "organize",
+          "report": "ORGANIZE STAGE: 5 clusters from 12 genuine issues, 10 skipped (7 false-positive, 3 exaggerated).\n\nClusters in priority order:\n1. test-coverage (2 issues, medium): Add mocked fetch tests. Targets test_strategy (55.2%).\n2. error-visibility (2 issues, small): Add console.warn logging. Targets error_consistency (67.3%).\n3. type-precision (3 issues, small): Rename fetchJson, fix types, remove unused field. Targets type_safety (75.2%).\n4. convention-fix (1 issue, small): Terminal.svelte onMount to $effect. Targets convention_outlier (80.5%).\n5. architecture-minor (4 issues, medium): Export comments, merge data in server, vary prose. Low priority.\n\nDependencies: type-precision before test-coverage (renamed function).\nSkipped issues: [review::.::holistic::abstraction_fitness::runtime_value_in_types_module] [review::.::holistic::high_level_elegance::runtime_value_in_types_module] [review::.::holistic::package_organization::types_dir_mixes_runtime] [review::.::holistic::contract_coherence::type_guard_contract_gap] [review::.::holistic::logic_clarity::incomplete_type_guard] [review::.::holistic::low_level_elegance::sequential_commits_fetch] [review::.::holistic::mid_level_elegance::artefact_hardcoded_owner_url] [review::.::holistic::logic_clarity::parseCommitCount_redundant_param] [review::.::holistic::design_coherence::page_svelte_mixed_concerns] [review::.::holistic::low_level_elegance::duplicated_observer_pattern]",
+          "cited_ids": [],
+          "timestamp": "2026-03-12T09:10:22+00:00",
+          "issue_count": 5,
+          "confirmed_at": "2026-03-12T09:10:36+00:00",
+          "confirmed_text": "Clusters error-visibility and test-coverage target lowest-scoring dimensions (error_consistency 67.3%, test_strategy 55.2%). type-precision addresses type_safety and naming_quality. convention-fix handles convention_outlier. architecture-minor covers cross_module_architecture, api_surface_coherence, and ai_generated_debt."
+        },
+        "enrich": {
+          "stage": "enrich",
+          "report": "All 5 clusters fully enriched with detail, effort tags, and issue refs. 13 cluster update operations since organize. Every step has detail text, effort tag, and issue references. error-visibility: 2 steps. test-coverage: 2 steps. type-precision: 3 steps. convention-fix: 1 step. architecture-minor: 4 steps. Total: 12 steps covering 12 genuine issues.",
+          "timestamp": "2026-03-12T09:11:37+00:00",
+          "shallow_count": 0,
+          "confirmed_at": "2026-03-12T09:12:17+00:00",
+          "confirmed_text": "All steps in error-visibility, test-coverage, type-precision, convention-fix, and architecture-minor clusters have file paths (github.ts, github.test.ts, Terminal.svelte, page.server.ts, page.svelte, projects.ts), line numbers, and specific actions to execute"
+        },
+        "sense-check": {
+          "stage": "sense-check",
+          "report": "SENSE-CHECK: Verified step accuracy and cross-cluster dependencies.\n\nContent check:\n- error-visibility: Steps correctly reference fetchGitHub function in src/lib/utils/github.ts lines 6-14. Both steps target the same function with different code paths (HTTP vs exception).\n- test-coverage: Steps correctly identify untested async functions. The mock approach (vi.fn on global fetch) is appropriate for vitest. No circular dependency issues.\n- type-precision: Step 1 rename affects 3 internal call sites (lines 57-59). Step 2 removes unused language field. Step 3 notes no external test imports of fetchJson. Verified no other files import fetchJson.\n- convention-fix: Terminal.svelte confirmed to use onMount (imported from svelte). Migration to $effect is straightforward; the animation uses setTimeout chains that work in both patterns.\n- architecture-minor: Steps are correctly ordered. Moving merge to server requires updating PageData type contract.\n\nStructure check:\n- Dependency: type-precision should run before test-coverage (renamed function). This is noted in organize.\n- No circular dependencies between clusters.\n- All clusters can be executed independently except the type-precision -> test-coverage dependency.\n- 10 skipped issues are genuinely false-positive (7) or exaggerated (3) based on actual code verification.\n- Total coverage: 12/12 genuine issues in clusters, 10/10 non-genuine issues skipped.",
+          "timestamp": "2026-03-12T09:12:31+00:00",
+          "confirmed_at": "2026-03-12T09:12:41+00:00",
+          "confirmed_text": "Sense-check verified accuracy of all steps in error-visibility, test-coverage, type-precision, convention-fix, and architecture-minor clusters. Confirmed cross-cluster dependency (type-precision before test-coverage). Validated 10 skipped issues as genuinely false-positive or exaggerated against actual source in github.ts, Terminal.svelte, Artefacts.svelte, and types/index.ts"
+        }
+      },
+      "strategy": "Execute clusters in order: type-precision (small, rename/cleanup), error-visibility (small, add logging), test-coverage (medium, add mocked fetch tests), convention-fix (small, onMount to effect), architecture-minor (medium, server merge). Target: raise strict from 87.2 to 95+ by addressing test_strategy (55.2%), error_consistency (67.3%), and type_safety (75.2%) first.",
+      "completion_mode": "manual_triage"
+    }
   },
   "commit_log": [],
   "uncommitted_issues": [],

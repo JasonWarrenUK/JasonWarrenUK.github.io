@@ -12,22 +12,22 @@
     "auto_resolved": 39,
     "false_positive": 0,
     "fixed": 0,
-    "open": 30,
-    "wontfix": 1,
+    "open": 20,
+    "wontfix": 11,
     "by_tier": {
       "1": {
         "auto_resolved": 8,
         "false_positive": 0,
         "fixed": 0,
-        "open": 6,
-        "wontfix": 0
+        "open": 3,
+        "wontfix": 3
       },
       "2": {
         "auto_resolved": 14,
         "false_positive": 0,
         "fixed": 0,
-        "open": 14,
-        "wontfix": 1
+        "open": 7,
+        "wontfix": 8
       },
       "3": {
         "auto_resolved": 9,
@@ -1758,16 +1758,42 @@
         "reasoning": "",
         "content_hash": "3ecc18b0"
       },
-      "status": "open",
-      "note": null,
+      "status": "wontfix",
+      "note": "Already fixed: accentColors moved to src/lib/constants.ts",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:09:07+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+        "attested_at": "2026-03-12T09:09:07+00:00",
+        "scan_verified": false
+      },
+      "wontfix_scan_count": 7,
+      "wontfix_snapshot": {
+        "captured_at": "2026-03-12T09:09:07+00:00",
+        "scan_count": 7,
+        "tier": 2,
+        "confidence": "medium",
+        "detail": {
+          "holistic": true,
+          "dimension": "high_level_elegance",
+          "related_files": [
+            "src/lib/types/index.ts"
+          ],
+          "evidence": [
+            "accentColors is a Record<SectionAccent, string> runtime constant defined at line 32-37 of src/lib/types/index.ts, which otherwise contains only interfaces and type aliases. This mixes runtime values with type-only definitions, blurring the module's role as a pure contract layer."
+          ],
+          "suggestion": "Move accentColors to a dedicated src/lib/data/theme.ts or src/lib/data/accents.ts module, keeping src/lib/types/index.ts as a pure type definition module. Update imports in Section.svelte and ProjectCard.svelte accordingly.",
+          "reasoning": "",
+          "content_hash": "3ecc18b0"
+        }
+      }
     },
     "review::.::holistic::mid_level_elegance::github_data_merge_in_presentation": {
       "id": "review::.::holistic::mid_level_elegance::github_data_merge_in_presentation",
@@ -1822,16 +1848,43 @@
         "reasoning": "",
         "content_hash": "7cf99743"
       },
-      "status": "open",
-      "note": null,
+      "status": "wontfix",
+      "note": "Already fixed: uses full owner/repo path",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:09:09+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+        "attested_at": "2026-03-12T09:09:09+00:00",
+        "scan_verified": false
+      },
+      "wontfix_scan_count": 7,
+      "wontfix_snapshot": {
+        "captured_at": "2026-03-12T09:09:09+00:00",
+        "scan_count": 7,
+        "tier": 1,
+        "confidence": "high",
+        "detail": {
+          "holistic": true,
+          "dimension": "mid_level_elegance",
+          "related_files": [
+            "src/lib/components/Artefacts.svelte",
+            "src/lib/data/artefacts.ts"
+          ],
+          "evidence": [
+            "Artefacts.svelte line 25 constructs URLs as 'https://github.com/JasonWarrenUK/{artefact.repo}', hardcoding the owner. In contrast, ProjectCard.svelte line 123 uses 'https://github.com/{project.repo}' where the repo field already contains 'owner/repo'. The Artefact type's repo field contains only the repo name (e.g., 'nihilistic-onboarder'), while Project's repo field contains 'owner/repo' (e.g., 'JasonWarrenUK/sparker'). This inconsistency means the two parallel data paths use different URL construction strategies at the presentation boundary."
+          ],
+          "suggestion": "Change artefacts.ts repo values to include the owner prefix (e.g., 'JasonWarrenUK/nihilistic-onboarder') and update Artefacts.svelte to use 'https://github.com/{artefact.repo}' for consistency with ProjectCard. This aligns both data models on the same repo path convention.",
+          "reasoning": "",
+          "content_hash": "7cf99743"
+        }
+      }
     },
     "review::.::holistic::test_strategy::untested_fetch_functions": {
       "id": "review::.::holistic::test_strategy::untested_fetch_functions",
@@ -1948,16 +2001,42 @@
         "reasoning": "",
         "content_hash": "03c9ef1c"
       },
-      "status": "open",
-      "note": null,
+      "status": "wontfix",
+      "note": "Already fixed: accentColors moved to src/lib/constants.ts",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:09:08+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+        "attested_at": "2026-03-12T09:09:08+00:00",
+        "scan_verified": false
+      },
+      "wontfix_scan_count": 7,
+      "wontfix_snapshot": {
+        "captured_at": "2026-03-12T09:09:08+00:00",
+        "scan_count": 7,
+        "tier": 2,
+        "confidence": "medium",
+        "detail": {
+          "holistic": true,
+          "dimension": "package_organization",
+          "related_files": [
+            "src/lib/types/index.ts"
+          ],
+          "evidence": [
+            "src/lib/types/index.ts defines accentColors as a runtime Record<SectionAccent, string> constant alongside pure type/interface exports (ProjectGitHubData, Project, Artefact, TerminalFrame). The directory name 'types/' implies pure type declarations, but this file also serves as a runtime module."
+          ],
+          "suggestion": "Move the accentColors constant and SectionAccent type to a new file src/lib/data/accents.ts or src/lib/theme.ts, keeping types/index.ts purely for interface/type exports. Staged plan: 1) Create src/lib/data/accents.ts with the SectionAccent type and accentColors export. 2) Update imports in any components that reference accentColors. 3) Verify with 'bun run build' that no import paths break.",
+          "reasoning": "",
+          "content_hash": "03c9ef1c"
+        }
+      }
     },
     "review::.::holistic::design_coherence::page_svelte_mixed_concerns": {
       "id": "review::.::holistic::design_coherence::page_svelte_mixed_concerns",
@@ -1982,16 +2061,45 @@
         "reasoning": "",
         "content_hash": "c952cc0a"
       },
-      "status": "open",
-      "note": null,
+      "status": "wontfix",
+      "note": "85 lines is appropriate for a single-page app composition root",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:09:22+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+        "attested_at": "2026-03-12T09:09:22+00:00",
+        "scan_verified": false
+      },
+      "wontfix_scan_count": 7,
+      "wontfix_snapshot": {
+        "captured_at": "2026-03-12T09:09:22+00:00",
+        "scan_count": 7,
+        "tier": 2,
+        "confidence": "medium",
+        "detail": {
+          "holistic": true,
+          "dimension": "design_coherence",
+          "related_files": [
+            "src/routes/+page.svelte"
+          ],
+          "evidence": [
+            "attachGithubData() on line 22 is data transformation logic embedded in the view component",
+            "First $effect (line 40) handles scroll-reveal animation with IntersectionObserver",
+            "Second $effect (line 63) handles background tint transitions with a separate IntersectionObserver",
+            "sectionTints constant (line 29) is presentation configuration mixed into the component script"
+          ],
+          "suggestion": "Extract the two animation behaviors into reusable Svelte actions or separate utility modules: 1) Create src/lib/utils/reveal.ts exporting a Svelte action for scroll-reveal behavior. 2) Create src/lib/utils/tint.ts exporting a Svelte action for background tint transitions, with sectionTints as a parameter. 3) Move attachGithubData to src/lib/utils/projects.ts or inline the merge in +page.server.ts so the page component receives ready-to-render data. This keeps +page.svelte as pure composition/layout.",
+          "reasoning": "",
+          "content_hash": "c952cc0a"
+        }
+      }
     },
     "review::.::holistic::naming_quality::fetchJson_hides_null": {
       "id": "review::.::holistic::naming_quality::fetchJson_hides_null",
@@ -2044,16 +2152,42 @@
         "reasoning": "",
         "content_hash": "3148b8ec"
       },
-      "status": "open",
-      "note": null,
+      "status": "wontfix",
+      "note": "Not redundant: responseOk distinguishes no-response (0) from response-without-Link (1 commit)",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:09:21+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+        "attested_at": "2026-03-12T09:09:21+00:00",
+        "scan_verified": false
+      },
+      "wontfix_scan_count": 7,
+      "wontfix_snapshot": {
+        "captured_at": "2026-03-12T09:09:21+00:00",
+        "scan_count": 7,
+        "tier": 2,
+        "confidence": "medium",
+        "detail": {
+          "holistic": true,
+          "dimension": "logic_clarity",
+          "related_files": [
+            "src/lib/utils/github.ts"
+          ],
+          "evidence": [
+            "fetchGitHub returns null for non-ok responses, so when commitsRes is non-null, the response was ok. The caller passes 'commitsRes !== null' as responseOk, which is tautologically true when commitsRes exists (line 71). The fallback 'return responseOk ? 1 : 0' is reached only when linkHeader has no match, and at that point responseOk is always true because commitsRes was non-null to reach this code path."
+          ],
+          "suggestion": "Remove the responseOk parameter from parseCommitCount. The function only needs the linkHeader string. If no Link header match is found, return 1 (a valid response with no pagination means exactly 1 page of commits). The caller simplifies to parseCommitCount(commitsRes?.headers.get('Link') ?? null).",
+          "reasoning": "",
+          "content_hash": "3148b8ec"
+        }
+      }
     },
     "review::.::holistic::logic_clarity::incomplete_type_guard": {
       "id": "review::.::holistic::logic_clarity::incomplete_type_guard",
@@ -2075,16 +2209,42 @@
         "reasoning": "",
         "content_hash": "6403d59d"
       },
-      "status": "open",
-      "note": null,
+      "status": "wontfix",
+      "note": "Already fixed: guard validates all fields",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:09:09+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+        "attested_at": "2026-03-12T09:09:09+00:00",
+        "scan_verified": false
+      },
+      "wontfix_scan_count": 7,
+      "wontfix_snapshot": {
+        "captured_at": "2026-03-12T09:09:09+00:00",
+        "scan_count": 7,
+        "tier": 2,
+        "confidence": "medium",
+        "detail": {
+          "holistic": true,
+          "dimension": "logic_clarity",
+          "related_files": [
+            "src/lib/utils/github.ts"
+          ],
+          "evidence": [
+            "The RepoResponse interface declares open_issues_count: number and language: string | null, but isRepoResponse only checks typeof stargazers_count === 'number' and typeof updated_at === 'string'. The 'in' check confirms key presence but not value types for all fields."
+          ],
+          "suggestion": "Add typeof checks for open_issues_count (number) to match the interface. The language field is string | null so its check is less critical, but open_issues_count is used directly in the return value (line 80) and should be validated.",
+          "reasoning": "",
+          "content_hash": "6403d59d"
+        }
+      }
     },
     "review::.::holistic::type_safety::fetchJson_untyped_return": {
       "id": "review::.::holistic::type_safety::fetchJson_untyped_return",
@@ -2168,16 +2328,42 @@
         "reasoning": "",
         "content_hash": "d757b42c"
       },
-      "status": "open",
-      "note": null,
+      "status": "wontfix",
+      "note": "Already fixed: isRepoResponse checks all 4 fields",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:09:08+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+        "attested_at": "2026-03-12T09:09:08+00:00",
+        "scan_verified": false
+      },
+      "wontfix_scan_count": 7,
+      "wontfix_snapshot": {
+        "captured_at": "2026-03-12T09:09:08+00:00",
+        "scan_count": 7,
+        "tier": 1,
+        "confidence": "high",
+        "detail": {
+          "holistic": true,
+          "dimension": "contract_coherence",
+          "related_files": [
+            "src/lib/utils/github.ts"
+          ],
+          "evidence": [
+            "isRepoResponse (line 29) returns 'data is RepoResponse' but only validates typeof for stargazers_count and updated_at. The RepoResponse interface also includes open_issues_count: number and language: string | null, neither of which has typeof validation. A caller trusting the type guard would assume all fields are type-safe, but open_issues_count could be a non-number value."
+          ],
+          "suggestion": "Add typeof (data as RepoResponse).open_issues_count === 'number' to the guard. For language, check typeof === 'string' || value === null. This makes the guard's implementation match its stated contract.",
+          "reasoning": "",
+          "content_hash": "d757b42c"
+        }
+      }
     },
     "review::.::holistic::error_consistency::silent_error_swallowing": {
       "id": "review::.::holistic::error_consistency::silent_error_swallowing",
@@ -2261,16 +2447,42 @@
         "reasoning": "",
         "content_hash": "9ab24a8d"
       },
-      "status": "open",
-      "note": null,
+      "status": "wontfix",
+      "note": "Already fixed: accentColors moved to src/lib/constants.ts",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:09:07+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+        "attested_at": "2026-03-12T09:09:07+00:00",
+        "scan_verified": false
+      },
+      "wontfix_scan_count": 7,
+      "wontfix_snapshot": {
+        "captured_at": "2026-03-12T09:09:07+00:00",
+        "scan_count": 7,
+        "tier": 2,
+        "confidence": "medium",
+        "detail": {
+          "holistic": true,
+          "dimension": "abstraction_fitness",
+          "related_files": [
+            "src/lib/types/index.ts"
+          ],
+          "evidence": [
+            "accentColors is a runtime Record<SectionAccent, string> value exported from the types module, which otherwise contains only interfaces and type aliases. This mixes concerns: consumers importing types also pull in runtime values."
+          ],
+          "suggestion": "Move accentColors to a dedicated constants file (e.g., src/lib/data/constants.ts or src/lib/data/accents.ts) and keep types/index.ts purely for type definitions.",
+          "reasoning": "",
+          "content_hash": "9ab24a8d"
+        }
+      }
     },
     "review::.::holistic::ai_generated_debt::uniform_description_prose": {
       "id": "review::.::holistic::ai_generated_debt::uniform_description_prose",
@@ -2323,16 +2535,42 @@
         "reasoning": "",
         "content_hash": "e5083b10"
       },
-      "status": "open",
-      "note": null,
+      "status": "wontfix",
+      "note": "Two observers with different configs and callbacks; extracting is over-engineering for 2 uses",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:09:22+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+        "attested_at": "2026-03-12T09:09:22+00:00",
+        "scan_verified": false
+      },
+      "wontfix_scan_count": 7,
+      "wontfix_snapshot": {
+        "captured_at": "2026-03-12T09:09:22+00:00",
+        "scan_count": 7,
+        "tier": 2,
+        "confidence": "medium",
+        "detail": {
+          "holistic": true,
+          "dimension": "low_level_elegance",
+          "related_files": [
+            "src/routes/+page.svelte"
+          ],
+          "evidence": [
+            "Lines 40-61 and 63-84 both create an IntersectionObserver, configure it with options, observe a set of elements, and return a cleanup function. The structure is identical; only the callback behavior and options differ."
+          ],
+          "suggestion": "Extract a reusable helper like createSectionObserver(selector, options, onIntersect) that handles observer lifecycle, and call it from each $effect with different callbacks and options.",
+          "reasoning": "",
+          "content_hash": "e5083b10"
+        }
+      }
     },
     "review::.::holistic::low_level_elegance::sequential_commits_fetch": {
       "id": "review::.::holistic::low_level_elegance::sequential_commits_fetch",
@@ -2354,16 +2592,42 @@
         "reasoning": "",
         "content_hash": "6a1a139e"
       },
-      "status": "open",
-      "note": null,
+      "status": "wontfix",
+      "note": "Already fixed: commits in Promise.all",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:09:09+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have reviewed this triage skip against the code and I am not gaming the score by suppressing a real defect.",
+        "attested_at": "2026-03-12T09:09:09+00:00",
+        "scan_verified": false
+      },
+      "wontfix_scan_count": 7,
+      "wontfix_snapshot": {
+        "captured_at": "2026-03-12T09:09:09+00:00",
+        "scan_count": 7,
+        "tier": 1,
+        "confidence": "high",
+        "detail": {
+          "holistic": true,
+          "dimension": "low_level_elegance",
+          "related_files": [
+            "src/lib/utils/github.ts"
+          ],
+          "evidence": [
+            "Lines 57-61 use Promise.all to fetch repo, languages, and contributors in parallel. But line 68 fetches commits sequentially after the parallel batch completes. The commits fetch is independent of the other three and could be included in the Promise.all."
+          ],
+          "suggestion": "Include the commits fetch in the Promise.all call: add fetchGitHub(`${repoUrl}/commits?per_page=1`) as a fourth element, then destructure and process the commits response alongside the others.",
+          "reasoning": "",
+          "content_hash": "6a1a139e"
+        }
+      }
     },
     "review::.::holistic::cross_module_architecture::parallel_project_imports": {
       "id": "review::.::holistic::cross_module_architecture::parallel_project_imports",
@@ -2523,7 +2787,10 @@
         "Delegation Density": 96.0,
         "Definition Directness": 90.0,
         "Type Discipline": 88.0
-      }
+      },
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_wontfix",
+      "stale_since": "2026-03-12T09:09:07+00:00"
     },
     "ai_generated_debt": {
       "score": 89.0,
@@ -2543,7 +2810,10 @@
     "contract_coherence": {
       "score": 80.1,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:00:10+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_wontfix",
+      "stale_since": "2026-03-12T09:09:08+00:00"
     },
     "convention_outlier": {
       "score": 80.5,
@@ -2563,7 +2833,10 @@
     "design_coherence": {
       "score": 82.4,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:00:10+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_wontfix",
+      "stale_since": "2026-03-12T09:09:22+00:00"
     },
     "error_consistency": {
       "score": 67.3,
@@ -2573,7 +2846,10 @@
     "high_level_elegance": {
       "score": 85.4,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:00:10+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_wontfix",
+      "stale_since": "2026-03-12T09:09:07+00:00"
     },
     "incomplete_migration": {
       "score": 92.0,
@@ -2588,17 +2864,26 @@
     "logic_clarity": {
       "score": 78.1,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:00:10+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_wontfix",
+      "stale_since": "2026-03-12T09:09:21+00:00"
     },
     "low_level_elegance": {
       "score": 80.5,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:00:10+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_wontfix",
+      "stale_since": "2026-03-12T09:09:22+00:00"
     },
     "mid_level_elegance": {
       "score": 77.8,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:00:10+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_wontfix",
+      "stale_since": "2026-03-12T09:09:09+00:00"
     },
     "naming_quality": {
       "score": 86.0,
@@ -2608,7 +2893,10 @@
     "package_organization": {
       "score": 85.9,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:00:10+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "review_issue_wontfix",
+      "stale_since": "2026-03-12T09:09:08+00:00"
     },
     "test_strategy": {
       "score": 55.2,
@@ -3757,13 +4045,13 @@
       "strict": 85.9,
       "verified_strict_score": 85.9,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.859,
-          "failing": 1,
+          "failing": 0,
           "weighted_failures": 1.41,
           "assessment_score": 85.9,
           "placeholder": false,
@@ -3856,13 +4144,13 @@
       "strict": 80.1,
       "verified_strict_score": 80.1,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.801,
-          "failing": 1,
+          "failing": 0,
           "weighted_failures": 1.99,
           "assessment_score": 80.1,
           "placeholder": false,
@@ -3940,13 +4228,13 @@
       "strict": 82.4,
       "verified_strict_score": 82.4,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.824,
-          "failing": 1,
+          "failing": 0,
           "weighted_failures": 1.76,
           "assessment_score": 82.4,
           "placeholder": false,
@@ -3982,13 +4270,13 @@
       "strict": 85.4,
       "verified_strict_score": 85.4,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.854,
-          "failing": 1,
+          "failing": 0,
           "weighted_failures": 1.46,
           "assessment_score": 85.4,
           "placeholder": false,
@@ -4045,13 +4333,13 @@
       "strict": 78.1,
       "verified_strict_score": 78.1,
       "checks": 10,
-      "failing": 2,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.781,
-          "failing": 2,
+          "failing": 0,
           "weighted_failures": 2.19,
           "assessment_score": 78.1,
           "placeholder": false,
@@ -4066,13 +4354,13 @@
       "strict": 80.5,
       "verified_strict_score": 80.5,
       "checks": 10,
-      "failing": 2,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.805,
-          "failing": 2,
+          "failing": 0,
           "weighted_failures": 1.95,
           "assessment_score": 80.5,
           "placeholder": false,
@@ -4087,13 +4375,13 @@
       "strict": 77.8,
       "verified_strict_score": 77.8,
       "checks": 10,
-      "failing": 2,
+      "failing": 1,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.778,
-          "failing": 2,
+          "failing": 1,
           "weighted_failures": 2.22,
           "assessment_score": 77.8,
           "placeholder": false,
@@ -4129,13 +4417,13 @@
       "strict": 85.9,
       "verified_strict_score": 85.9,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
           "pass_rate": 0.859,
-          "failing": 1,
+          "failing": 0,
           "weighted_failures": 1.41,
           "assessment_score": 85.9,
           "placeholder": false,
