@@ -19,7 +19,7 @@
 
 	let { data }: Props = $props();
 
-	function withGithub(projects: Omit<Project, 'github'>[]): Project[] {
+	function attachGithubData(projects: Omit<Project, 'github'>[]): Project[] {
 		return projects.map((p) => ({
 			...p,
 			github: data.githubData?.[p.repo] ?? null
@@ -39,30 +39,28 @@
 
 	$effect(() => {
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (prefersReducedMotion) return;
 
-		// Reveal animations: only when motion is acceptable
-		let revealObserver: IntersectionObserver | undefined;
-		if (!prefersReducedMotion) {
-			const elements = document.querySelectorAll('.reveal-section');
-			elements.forEach((el) => el.classList.add('reveal-ready'));
+		const elements = document.querySelectorAll('.reveal-section');
+		elements.forEach((el) => el.classList.add('reveal-ready'));
 
-			revealObserver = new IntersectionObserver(
-				(entries) => {
-					for (const entry of entries) {
-						if (entry.isIntersecting) {
-							entry.target.classList.add('revealed');
-							revealObserver!.unobserve(entry.target);
-						}
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('revealed');
+						observer.unobserve(entry.target);
 					}
-				},
-				{ threshold: 0.1 }
-			);
+				}
+			},
+			{ threshold: 0.1 }
+		);
 
-			elements.forEach((el) => revealObserver!.observe(el));
-		}
+		elements.forEach((el) => observer.observe(el));
+		return () => observer.disconnect();
+	});
 
-		// Scroll-driven background colour transitions (always active;
-		// CSS handles transition duration and prefers-reduced-motion)
+	$effect(() => {
 		const tintObserver = new IntersectionObserver(
 			(entries) => {
 				for (const entry of entries) {
@@ -75,8 +73,6 @@
 				}
 			},
 			{
-				// Collapse observation region to viewport midpoint:
-				// only the section straddling the centre triggers
 				rootMargin: '-50% 0px -50% 0px',
 				threshold: 0
 			}
@@ -84,11 +80,7 @@
 
 		const sections = document.querySelectorAll('section[id]');
 		sections.forEach((section) => tintObserver.observe(section));
-
-		return () => {
-			revealObserver?.disconnect();
-			tintObserver.disconnect();
-		};
+		return () => tintObserver.disconnect();
 	});
 </script>
 
@@ -111,7 +103,7 @@
 <About />
 
 <Section id="impact" title="Impact Work" accent="primary">
-	{#each withGithub(impactProjects) as project}
+	{#each attachGithubData(impactProjects) as project}
 		{#if project.repo === 'foundersandcoders/iris'}
 			<ProjectCard {project} accent="primary">
 				<Terminal frames={irisSession} title="iris validate" />
@@ -128,7 +120,7 @@
 		philosophy, narrative, poetry) and builds a system that lets users engage with it on its
 		own terms.
 	</p>
-	{#each withGithub(explorationProjects) as project}
+	{#each attachGithubData(explorationProjects) as project}
 		<ProjectCard {project} accent="warm" />
 	{/each}
 </Section>
@@ -138,7 +130,7 @@
 		How I think about tooling and workflow. Most developers use tools. Some configure them. This is
 		what happens when you encode your entire development methodology into a system.
 	</p>
-	{#each withGithub(metaProjects) as project}
+	{#each attachGithubData(metaProjects) as project}
 		<ProjectCard {project} accent="secondary" />
 	{/each}
 

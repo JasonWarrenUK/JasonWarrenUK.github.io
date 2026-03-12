@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Project, SectionAccent } from '$lib/types';
+	import { accentColors, type Project, type SectionAccent } from '$lib/types';
 	import type { Snippet } from 'svelte';
 
 	interface Props {
@@ -9,13 +9,6 @@
 	}
 
 	let { project, accent = 'primary', children }: Props = $props();
-
-	const accentColors: Record<SectionAccent, string> = {
-		primary: 'var(--accent-primary)',
-		warm: 'var(--accent-warm)',
-		secondary: 'var(--accent-secondary)',
-		none: 'var(--border)'
-	};
 
 	const langColors: Record<string, string> = {
 		TypeScript: 'var(--accent-primary)',

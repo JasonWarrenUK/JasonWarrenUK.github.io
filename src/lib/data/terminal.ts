@@ -1,7 +1,4 @@
-export interface TerminalFrame {
-	text: string;
-	delay: number;
-}
+import type { TerminalFrame } from '$lib/types';
 
 export const irisSession: TerminalFrame[] = [
 	{ text: '$ iris validate --input learners.csv', delay: 800 },

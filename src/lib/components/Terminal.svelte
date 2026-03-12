@@ -1,7 +1,6 @@
 <script lang="ts">
-	import type { TerminalFrame } from '$lib/data/terminal';
+	import type { TerminalFrame } from '$lib/types';
 	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
 
 	interface Props {
 		frames: TerminalFrame[];
@@ -14,12 +13,9 @@
 	let showCursor = $state(true);
 	let hasPlayed = $state(false);
 	let containerEl: HTMLElement | undefined = $state();
-	let prefersReducedMotion = $state(false);
 
 	onMount(() => {
-		if (browser) {
-			prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-		}
+		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 		if (prefersReducedMotion) {
 			visibleLines = frames.map((f) => f.text);

@@ -22,4 +22,16 @@ export interface Artefact {
 	description: string;
 }
 
+export interface TerminalFrame {
+	text: string;
+	delay: number;
+}
+
 export type SectionAccent = 'primary' | 'warm' | 'secondary' | 'none';
+
+export const accentColors: Record<SectionAccent, string> = {
+	primary: 'var(--accent-primary)',
+	warm: 'var(--accent-warm)',
+	secondary: 'var(--accent-secondary)',
+	none: 'var(--border)'
+};

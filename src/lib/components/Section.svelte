@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { SectionAccent } from '$lib/types';
+	import { accentColors, type SectionAccent } from '$lib/types';
 
 	interface Props {
 		id: string;
@@ -9,13 +9,6 @@
 	}
 
 	let { id, title, accent = 'none', children }: Props = $props();
-
-	const accentColors: Record<SectionAccent, string> = {
-		primary: 'var(--accent-primary)',
-		warm: 'var(--accent-warm)',
-		secondary: 'var(--accent-secondary)',
-		none: 'transparent'
-	};
 </script>
 
 <section {id} class="mx-auto max-w-3xl px-6 py-32">
