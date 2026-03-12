@@ -18,4 +18,15 @@ describe('terminal data', () => {
 		const lastFrame = irisSession[irisSession.length - 1];
 		expect(lastFrame.delay).toBe(0);
 	});
+
+	it('total animation duration is reasonable', () => {
+		const totalDelay = irisSession.reduce((sum, frame) => sum + frame.delay, 0);
+		expect(totalDelay).toBeGreaterThan(0);
+		expect(totalDelay).toBeLessThan(30000);
+	});
+
+	it('first frame represents a command prompt', () => {
+		const first = irisSession[0];
+		expect(first.text.length).toBeGreaterThan(0);
+	});
 });

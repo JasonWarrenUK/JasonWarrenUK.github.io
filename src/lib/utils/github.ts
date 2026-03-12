@@ -1,4 +1,4 @@
-import type { ProjectGitHubData } from '$lib/types';
+import type { Project, ProjectGitHubData } from '$lib/types';
 
 const API_BASE = 'https://api.github.com';
 const GITHUB_HEADERS = { Accept: 'application/vnd.github.v3+json' };
@@ -12,15 +12,21 @@ async function fetchGitHub(url: string): Promise<Response | null> {
 		}
 		return res;
 	} catch (e) {
-		console.warn('[GitHub API] Fetch failed', { url, error: (e as Error).message });
+		const message = e instanceof Error ? e.message : String(e);
+		console.warn('[GitHub API] Fetch failed', { url, error: message });
 		return null;
 	}
 }
 
-async function tryFetchJson(url: string): Promise<unknown | null> {
+async function tryFetchJson(url: string): Promise<unknown> {
 	const res = await fetchGitHub(url);
 	if (!res) return null;
-	return res.json();
+	try {
+		return await res.json();
+	} catch {
+		console.warn('[GitHub API] JSON parse failed', { url });
+		return null;
+	}
 }
 
 interface RepoResponse {
@@ -90,4 +96,14 @@ export async function fetchAllRepoData(
 	const unique = [...new Set(repoNames)];
 	const results = await Promise.all(unique.map((name) => fetchRepoData(name)));
 	return Object.fromEntries(unique.map((name, i) => [name, results[i]]));
+}
+
+export function attachGithubData(
+	projects: Omit<Project, 'github'>[],
+	githubData: Record<string, ProjectGitHubData | null>
+): Project[] {
+	return projects.map((p) => ({
+		...p,
+		github: githubData[p.repo] ?? null
+	}));
 }
