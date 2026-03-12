@@ -1,0 +1,69 @@
+{
+  "batch": "abstraction_fitness",
+  "batch_index": 12,
+  "assessments": {
+    "abstraction_fitness": 91.0
+  },
+  "dimension_notes": {
+    "abstraction_fitness": {
+      "evidence": [
+        "Types in src/lib/types/index.ts are minimal and directly consumed: Project, ProjectGitHubData, Artefact, SectionAccent each have multiple consumers across components and data files",
+        "fetchJson<T> in github.ts is a generic helper with three distinct concrete type instantiations (RepoResponse, Record<string, number>, ContributorResponse[]), justifying the generic",
+        "RepoResponse and ContributorResponse are private interfaces in github.ts scoping GitHub API shape knowledge; this is intentional SDK isolation, not ceremony",
+        "Omit<Project, 'github'> in projects.ts is a precise utility type usage that reflects the real data shape difference between static project data and runtime-enriched data",
+        "No delegation-heavy classes, no facade modules, no wrapper chains detected; mechanical scan confirms zero wrappers, zero one-implementation interfaces, zero indirection hotspots",
+        "TerminalFrame interface defined locally in terminal.ts rather than in types/index.ts; this is the only type defined outside the central types file, but it is consumed only by terminal.ts and Terminal.svelte, so co-location is defensible"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "accentColors mapping is duplicated between Section.svelte and ProjectCard.svelte with slightly different 'none' values, representing a minor missed shared abstraction; TerminalFrame is defined in data file rather than types module, creating a small inconsistency in type definition location",
+      "sub_axes": {
+        "abstraction_leverage": 92.0,
+        "indirection_cost": 95.0,
+        "interface_honesty": 93.0,
+        "delegation_density": 97.0,
+        "definition_directness": 90.0,
+        "type_discipline": 90.0
+      }
+    }
+  },
+  "dimension_judgment": {
+    "abstraction_fitness": {
+      "strengths": [
+        "Every type and interface has multiple consumers; no single-implementation ceremony exists anywhere in the codebase",
+        "fetchJson<T> earns its generic parameter with three distinct concrete instantiations across the same module",
+        "The Omit<Project, 'github'> pattern precisely models the real distinction between static data and runtime-enriched data without introducing a separate interface",
+        "No wrapper chains or pass-through layers; data flows from data files through page.server.ts to components with zero unnecessary indirection",
+        "Private API response interfaces (RepoResponse, ContributorResponse) are scoped to github.ts where they belong, isolating external API shape without polluting the public type surface"
+      ],
+      "issue_character": "Minor consistency gaps in where types are defined and where shared configuration maps live, not structural abstraction problems.",
+      "score_rationale": "This is a small, direct codebase where abstractions consistently earn their keep. Every type has multiple consumers, the one generic utility function is justified by multiple instantiations, and there are no pass-through wrappers or ceremony layers. The score sits at 91 rather than higher because of a duplicated accentColors mapping across two components (with subtly different default values) and the TerminalFrame type living outside the central types module. These are minor friction points, not abstraction fitness problems in any structural sense."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "abstraction_fitness",
+      "identifier": "duplicated_accent_color_map",
+      "summary": "accentColors record duplicated in Section.svelte and ProjectCard.svelte with divergent 'none' values",
+      "related_files": [
+        "src/lib/components/Section.svelte",
+        "src/lib/components/ProjectCard.svelte"
+      ],
+      "evidence": [
+        "Section.svelte defines accentColors with none: 'transparent' (line 13-18), while ProjectCard.svelte defines it with none: 'var(--border)' (line 13-18). Both are Record<SectionAccent, string> mapping the same SectionAccent type to CSS values."
+      ],
+      "suggestion": "Extract a shared accentColors mapping (or a getAccentColor utility) into a shared location (e.g. a small helper alongside the SectionAccent type). If the 'none' value intentionally differs per context, make the divergence explicit through a parameter rather than silent duplication.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": [
+      "duplicated_accent_color_map may be intentional if the two components genuinely need different fallback colors for the 'none' accent"
+    ]
+  }
+}

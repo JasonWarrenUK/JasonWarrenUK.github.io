@@ -1,0 +1,61 @@
+{
+  "batch": "abstraction_fitness",
+  "batch_index": 13,
+  "assessments": {
+    "abstraction_fitness": 92.0
+  },
+  "dimension_notes": {
+    "abstraction_fitness": {
+      "evidence": [
+        "Types in src/lib/types/index.ts are directly consumed by components and data files with no unnecessary intermediate layers",
+        "fetchGitHub and fetchJson in github.ts are small helpers that each add behavior (error handling, JSON parsing) rather than pass-through wrappers",
+        "isRepoResponse and isLanguagesResponse are runtime type guards that earn their existence by validating unknown API data",
+        "The Omit<Project, 'github'> pattern in projects.ts is a precise type narrowing that avoids duplicating the Project interface",
+        "No single-implementation interfaces exist; all interfaces (Project, Artefact, TerminalFrame, ProjectGitHubData) are used directly by multiple consumers",
+        "Component props use Svelte 5 interface Props pattern consistently, which is framework-required, not ceremony"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The accentColors record and SectionAccent type live in types/index.ts alongside pure data interfaces; this mixes runtime values with type definitions. The langColors record in ProjectCard.svelte duplicates color mapping logic that partially overlaps with accentColors.",
+      "sub_axes": {
+        "abstraction_leverage": 93.0,
+        "indirection_cost": 95.0,
+        "interface_honesty": 94.0,
+        "delegation_density": 96.0,
+        "definition_directness": 90.0,
+        "type_discipline": 88.0
+      }
+    }
+  },
+  "dimension_judgment": {
+    "abstraction_fitness": {
+      "strengths": [
+        "Zero pass-through wrappers: every function in the codebase adds behavior, validation, or data transformation",
+        "Type guards (isRepoResponse, isLanguagesResponse) earn their existence by validating unknown external data at the API boundary",
+        "Omit<Project, 'github'> precisely narrows the Project type for static data files without duplicating the interface",
+        "No single-implementation interface ecosystem; all interfaces serve multiple concrete consumers across components and data modules"
+      ],
+      "issue_character": "Issues are minor and localized: a runtime value (accentColors) co-located with pure type definitions, and a minor color mapping overlap between types/index.ts and ProjectCard.svelte.",
+      "score_rationale": "The codebase demonstrates strong abstraction fitness with no unnecessary indirection, no ceremony-only types, and no pass-through patterns. Every abstraction layer adds concrete value. The minor issue of runtime values mixed with type definitions and a small color mapping overlap prevent a higher score, but these are cosmetic rather than structural. This places the codebase solidly in the 90+ range per the global anchors."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "abstraction_fitness",
+      "identifier": "runtime_value_in_types_module",
+      "summary": "accentColors runtime record exported from types/index.ts alongside pure type definitions",
+      "related_files": ["src/lib/types/index.ts"],
+      "evidence": ["accentColors is a runtime Record<SectionAccent, string> value exported from the types module, which otherwise contains only interfaces and type aliases. This mixes concerns: consumers importing types also pull in runtime values."],
+      "suggestion": "Move accentColors to a dedicated constants file (e.g., src/lib/data/constants.ts or src/lib/data/accents.ts) and keep types/index.ts purely for type definitions.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "multi_file_refactor"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Small codebase with simple, flat architecture naturally avoids abstraction ceremony"],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

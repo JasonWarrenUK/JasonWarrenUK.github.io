@@ -1,0 +1,42 @@
+{
+  "batch": "initialization_coupling",
+  "batch_index": 7,
+  "assessments": {
+    "initialization_coupling": 95.0
+  },
+  "dimension_notes": {
+    "initialization_coupling": {
+      "evidence": [
+        "All data modules (projects.ts, artefacts.ts, terminal.ts) export only top-level const arrays of plain object literals with no computation, no side effects, and no dependency on other modules having been imported first.",
+        "github.ts defines a single const string (API_BASE) at module scope and exports only pure async functions; no connections, caches, or mutable state are initialized at import time.",
+        "+page.server.ts performs network I/O exclusively inside SvelteKit's load() function, which is framework-managed lifecycle, not import-time execution.",
+        "No environment variable reads at module scope anywhere in the seed files or their consumers.",
+        "No circular import chains: data modules depend only on $lib/types, github.ts depends only on $lib/types, and +page.server.ts imports from both data and utils without forming a cycle.",
+        "The TerminalFrame interface is co-located with its data in terminal.ts and re-exported as a type import by Terminal.svelte, which is clean but slightly atypical versus the central types/index.ts pattern."
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The TerminalFrame type is defined in terminal.ts rather than in the central types/index.ts file, creating a minor inconsistency in where types live. While harmless, it means a developer importing types must check two locations. Otherwise the initialization story is exemplary for a codebase of this size."
+    }
+  },
+  "dimension_judgment": {
+    "initialization_coupling": {
+      "strengths": [
+        "All module-scope values are immutable const declarations of plain data; no computed constants, no dynamic initialization, no singletons.",
+        "Network I/O (GitHub API calls) is confined entirely within SvelteKit's load() lifecycle function, never at import time.",
+        "No environment variable reads at module scope; the codebase would work identically in any test or build environment without import-order concerns.",
+        "Import graph is a clean DAG with no cycles: types <- data modules <- page.server.ts, with no back-edges or conditional imports.",
+        "No global mutable state anywhere; data flows from server load function through props, following SvelteKit's unidirectional data flow."
+      ],
+      "issue_character": "No initialization coupling issues exist. The codebase is a static site with pure data modules and framework-managed lifecycle hooks; the architecture naturally avoids boot-order fragility.",
+      "score_rationale": "A developer can import any module in this codebase in any order without side effects or boot-order dependencies. All data is const, all I/O is lifecycle-managed, and there are no singletons or mutable globals. This maps cleanly to the 90-95 anchor range (strong, with only minor friction). The minor type location inconsistency (TerminalFrame in data vs types) is the only rough edge, preventing a perfect score but not causing any real initialization fragility."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

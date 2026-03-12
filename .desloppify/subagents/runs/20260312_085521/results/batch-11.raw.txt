@@ -1,0 +1,50 @@
+{
+  "batch": "contract_coherence",
+  "batch_index": 11,
+  "assessments": {"contract_coherence": 83.0},
+  "dimension_notes": {
+    "contract_coherence": {
+      "evidence": [
+        "fetchRepoData returns Promise<ProjectGitHubData | null> and all code paths honor this: null on validation failure, full ProjectGitHubData object on success",
+        "fetchAllRepoData returns Promise<Record<string, ProjectGitHubData | null>> which accurately reflects that individual repo fetches may fail independently",
+        "isRepoResponse claims to validate RepoResponse but does not fully validate all fields (open_issues_count type, language type); the guard's contract is slightly broader than its implementation",
+        "Data exports (impactProjects, explorationProjects, metaProjects) use Omit<Project, 'github'>[] which honestly communicates that GitHub data is not present at the data layer",
+        "parseCommitCount's parameter name 'responseOk' implies an HTTP status check but the caller passes a null-check result; the name promises more than the value delivers",
+        "+page.server.ts load function returns { githubData } matching SvelteKit PageServerLoad contract"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "medium"
+    }
+  },
+  "dimension_judgment": {
+    "contract_coherence": {
+      "strengths": [
+        "Return types across all functions accurately reflect their possible outputs including null/failure cases",
+        "The Omit<Project, 'github'> pattern explicitly communicates the contract boundary between static data and runtime-enriched data",
+        "Type guard functions (isRepoResponse, isLanguagesResponse) follow the standard TypeScript narrowing contract pattern",
+        "SvelteKit conventions (+page.server.ts load, +layout.ts exports) are followed correctly"
+      ],
+      "issue_character": "Issues are minor contract mismatches within github.ts: a type guard that does not fully validate its claimed shape, and a parameter name that overpromises relative to what callers actually pass.",
+      "score_rationale": "Functions generally honor their stated contracts. Return types match actual return paths, and the data layer's use of Omit honestly signals the shape boundary. The type guard incompleteness and parameter naming in parseCommitCount are real but minor contract gaps. Against global anchors, a developer would mostly trust that APIs do what they promise, with occasional need to verify details in github.ts. This places the score solidly in the low-to-mid 80s."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "contract_coherence",
+      "identifier": "type_guard_contract_gap",
+      "summary": "isRepoResponse claims to validate RepoResponse shape but does not verify all field types",
+      "related_files": ["src/lib/utils/github.ts"],
+      "evidence": ["isRepoResponse (line 29) returns 'data is RepoResponse' but only validates typeof for stargazers_count and updated_at. The RepoResponse interface also includes open_issues_count: number and language: string | null, neither of which has typeof validation. A caller trusting the type guard would assume all fields are type-safe, but open_issues_count could be a non-number value."],
+      "suggestion": "Add typeof (data as RepoResponse).open_issues_count === 'number' to the guard. For language, check typeof === 'string' || value === null. This makes the guard's implementation match its stated contract.",
+      "confidence": "high",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Type guard was written with a 'good enough' approach, validating the most critical fields but not achieving full coverage of its declared type"],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

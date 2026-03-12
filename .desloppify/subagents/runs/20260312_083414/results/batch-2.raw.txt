@@ -1,0 +1,61 @@
+{
+  "batch": "convention_outlier",
+  "batch_index": 2,
+  "assessments": {
+    "convention_outlier": 85.0
+  },
+  "dimension_notes": {
+    "convention_outlier": {
+      "evidence": [
+        "src/lib/data/artefacts.ts and src/lib/data/projects.ts both import their domain types from '$lib/types', but src/lib/data/terminal.ts defines its TerminalFrame interface inline (line 1-4) instead of centralizing it in the shared types module",
+        "All three data files use named exports of typed const arrays, which is consistent",
+        "Naming conventions are uniform: camelCase for variables/functions across all modules, PascalCase for interfaces and components",
+        "Export patterns are consistent: all data modules use named exports, no default exports anywhere"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "medium",
+      "issues_preventing_higher_score": "The TerminalFrame type definition in terminal.ts breaks the sibling convention of importing domain types from $lib/types. While minor, it means a developer seeing the pattern in artefacts.ts or projects.ts cannot trust it holds in terminal.ts."
+    }
+  },
+  "dimension_judgment": {
+    "convention_outlier": {
+      "strengths": [
+        "All data modules in src/lib/data/ use consistent named exports of typed const arrays",
+        "Naming conventions are uniform across the codebase: camelCase for variables and functions, PascalCase for interfaces and components",
+        "File organization follows a clear, predictable pattern: components in components/, data in data/, types in types/, utils in utils/",
+        "No mixed export patterns: every module uses named exports exclusively"
+      ],
+      "issue_character": "A single, isolated convention divergence where one data module defines its type inline rather than importing from the centralized types module, breaking the pattern established by its siblings.",
+      "score_rationale": "The codebase is small (7 files, 273 LOC) and conventions are largely consistent. Naming, export patterns, and file organization are uniform. The one convention outlier is terminal.ts defining TerminalFrame locally instead of importing from $lib/types like its sibling data modules do. This is a minor deviation that would cause a moment of 'why is this different?' but does not materially impede navigation or understanding. Score of 85 reflects strong consistency with one clear but low-impact outlier."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "convention_outlier",
+      "identifier": "terminal_inline_type_definition",
+      "summary": "terminal.ts defines TerminalFrame inline while sibling data modules import types from $lib/types",
+      "related_files": [
+        "src/lib/data/terminal.ts",
+        "src/lib/types/index.ts"
+      ],
+      "evidence": [
+        "src/lib/data/artefacts.ts imports 'type { Artefact } from $lib/types' (line 1)",
+        "src/lib/data/projects.ts imports 'type { Project } from $lib/types' (line 1)",
+        "src/lib/data/terminal.ts defines 'export interface TerminalFrame' inline (lines 1-4) instead of importing from the shared types module",
+        "The holistic_context sibling_behavior scan confirms terminal.ts is missing the 'type' pattern that 2/3 siblings share"
+      ],
+      "suggestion": "Move the TerminalFrame interface to src/lib/types/index.ts alongside Project, Artefact, and SectionAccent. Then change terminal.ts to import it: import type { TerminalFrame } from '$lib/types';",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": [
+      "terminal.ts was likely written independently or at a different time than its siblings, and the TerminalFrame type was small enough that defining it inline felt natural"
+    ],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "batch": "package_organization",
+  "batch_index": 6,
+  "assessments": {
+    "package_organization": 90.0
+  },
+  "dimension_notes": {
+    "package_organization": {
+      "evidence": [
+        "Project has 21 source files total (7 TS + 8 Svelte components + config/HTML files) across a clean SvelteKit-conventional directory layout: src/lib/components/, src/lib/data/, src/lib/types/, src/lib/utils/, src/routes/",
+        "src/lib/data/ contains 3 files (artefacts.ts, projects.ts, terminal.ts) all serving the same purpose: static data exports consumed by components. Cohesive grouping.",
+        "src/lib/types/index.ts centralizes all type definitions (ProjectGitHubData, Project, Artefact, SectionAccent) in a single barrel file, appropriate for a project of this size",
+        "src/lib/utils/github.ts is the sole utility file; no straggler roots or misplaced files at project root",
+        "No coupling_matrix or fan_in/fan_out data available (avg_fan_in and avg_fan_out are 0.0 for all directories), consistent with the scanner not resolving Svelte component imports",
+        "Directory structure follows SvelteKit framework conventions exactly; no deviation from expected layout"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "terminal.ts defines its own TerminalFrame interface inline rather than placing it in src/lib/types/index.ts alongside the other shared types. This is a minor placement inconsistency: the types file centralizes Artefact, Project, ProjectGitHubData, and SectionAccent, but TerminalFrame lives with its data. At this project size it causes minimal friction, but it breaks the pattern that types live in types/."
+    }
+  },
+  "dimension_judgment": {
+    "package_organization": {
+      "strengths": [
+        "Directory layout maps cleanly to domain responsibilities: data/, components/, types/, utils/ each contain files matching their stated purpose",
+        "SvelteKit framework conventions are followed exactly, so any SvelteKit developer can navigate the project immediately",
+        "No straggler root files: all source code lives under src/ with appropriate subdirectory placement",
+        "Data files (artefacts.ts, projects.ts, terminal.ts) are cohesively grouped by their shared role as static content exports",
+        "Single types barrel file (src/lib/types/index.ts) provides a predictable location for all shared type definitions"
+      ],
+      "issue_character": "The only organizational inconsistency is a single type definition (TerminalFrame) placed inline in its data file rather than in the centralized types directory, which is a minor pattern break in an otherwise consistent layout.",
+      "score_rationale": "This is a small project (21 files, 273 LOC of TypeScript) with a directory structure that follows SvelteKit conventions precisely. A developer can predict where to find and place files based on directory names alone. The skip criterion for projects under 20 files nearly applies, though the Svelte components push the count just above that threshold. The one placement inconsistency (TerminalFrame type defined in data/ rather than types/) prevents a score above 90, but it is genuinely minor. The score of 90 reflects strong organization with one isolated rough edge."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "package_organization",
+      "identifier": "terminal_frame_type_placement",
+      "summary": "TerminalFrame interface defined in data/terminal.ts instead of centralized types/index.ts",
+      "related_files": [
+        "src/lib/data/terminal.ts",
+        "src/lib/types/index.ts"
+      ],
+      "evidence": [
+        "src/lib/types/index.ts centralizes all other shared types (Project, ProjectGitHubData, Artefact, SectionAccent), but TerminalFrame is defined inline at src/lib/data/terminal.ts:1-4",
+        "artefacts.ts and projects.ts both import their types from '$lib/types', establishing a convention that terminal.ts breaks"
+      ],
+      "suggestion": "Move the TerminalFrame interface to src/lib/types/index.ts alongside the other type definitions, then import it in terminal.ts. Staged plan: (1) Add 'export interface TerminalFrame { text: string; delay: number; }' to src/lib/types/index.ts. (2) Replace the inline interface in src/lib/data/terminal.ts with 'import type { TerminalFrame } from \"$lib/types\";'. (3) Update any component that may import TerminalFrame from terminal.ts to import from $lib/types instead. (4) Run 'bun run build' to verify no import errors.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "multi_file_refactor"
+    }
+  ],
+  "retrospective": {
+    "root_causes": [
+      "terminal.ts was likely authored independently or at a different time than artefacts.ts and projects.ts, and the type-import convention was not applied"
+    ],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

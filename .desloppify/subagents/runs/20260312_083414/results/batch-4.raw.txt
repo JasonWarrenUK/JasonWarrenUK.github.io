@@ -1,0 +1,54 @@
+{
+  "batch": "naming_quality",
+  "batch_index": 4,
+  "assessments": {
+    "naming_quality": 88.5
+  },
+  "dimension_notes": {
+    "naming_quality": {
+      "evidence": [
+        "Interface and type names are precise and domain-specific: TerminalFrame, ProjectGitHubData, SectionAccent, Artefact, Project",
+        "Function names in github.ts communicate intent well: fetchJson, fetchRepoData, fetchAllRepoData",
+        "Component names map directly to their visual/semantic role: Hero, Nav, Section, ProjectCard, Terminal, Artefacts, Contact, Background",
+        "Variable names in ProjectCard.svelte are descriptive: accentColors, langColors, getLanguageSegments, splitOverview",
+        "Data export names encode their semantic category: impactProjects, explorationProjects, metaProjects, irisSession",
+        "The withGithub helper in +page.svelte is a borderline generic name for what is specifically an enrichment/merge operation"
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "A few names are slightly imprecise: 'withGithub' does not communicate that it merges static project data with fetched GitHub metadata; 'sectionTints' mixes the concept of section identity with color values without clarifying the mapping; the callback parameter 'r' in setTimeout promise is cryptic but extremely short-lived."
+    }
+  },
+  "dimension_judgment": {
+    "naming_quality": {
+      "strengths": [
+        "Type and interface names are domain-specific and self-documenting: TerminalFrame, ProjectGitHubData, SectionAccent communicate their shape and purpose without needing to read definitions",
+        "Data exports use semantic categorisation that mirrors the site's information architecture: impactProjects, explorationProjects, metaProjects create a clear vocabulary",
+        "Component file names have a 1:1 relationship with their visual role, making the component tree immediately navigable",
+        "Utility functions in github.ts follow a consistent fetch* naming convention that accurately describes their read-only, data-retrieval nature",
+        "Local helper functions in ProjectCard.svelte (getLanguageSegments, splitOverview, formatDate) precisely describe their transformation"
+      ],
+      "issue_character": "Issues are isolated and minor: a couple of function names could be slightly more precise about their specific operation, but none are misleading or ambiguous enough to cause real confusion.",
+      "score_rationale": "Naming across this codebase is strong. A developer can read names and correctly predict behavior in nearly all cases. The vocabulary is consistent (fetch* for API calls, *Projects for data collections, accent/tint for visual theming). The few imprecise names (withGithub, sectionTints) are localized to single usage sites and do not create confusion at module boundaries. This places the codebase solidly in the 85-90 range: names are mostly precise with only minor opportunities for improvement."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "naming_quality",
+      "identifier": "withGithub_imprecise_name",
+      "summary": "withGithub does not communicate that it merges static project data with fetched GitHub metadata",
+      "related_files": ["src/routes/+page.svelte"],
+      "evidence": ["The function 'withGithub' on line 22 of +page.svelte takes projects without GitHub data and enriches them by looking up their repo in the fetched githubData record. The name 'withGithub' reads like a predicate or filter rather than an enrichment/merge operation."],
+      "suggestion": "Rename to 'enrichWithGithubData' or 'mergeGithubData' to communicate the enrichment operation: function enrichWithGithubData(projects: Omit<Project, 'github'>[]): Project[]",
+      "confidence": "medium",
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": ["withGithub_imprecise_name could be considered acceptable given it is used only twice in the same file and the Omit<Project, 'github'> type signature already communicates the transformation"]
+  }
+}

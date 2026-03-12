@@ -1,0 +1,52 @@
+{
+  "batch": "convention_outlier",
+  "batch_index": 17,
+  "assessments": {"convention_outlier": 82.5},
+  "dimension_notes": {
+    "convention_outlier": {
+      "evidence": [
+        "Terminal.svelte uses onMount() for lifecycle while +page.svelte uses $effect() runes for equivalent IntersectionObserver setup; these are sibling-level components following different lifecycle protocols",
+        "All data modules in src/lib/data/ follow a consistent pattern: import type, export const with typed array",
+        "All components use consistent Props interface pattern with $props() destructuring",
+        "Naming is consistently camelCase for functions/variables across all TypeScript files",
+        "Export pattern is consistently named exports across all data modules and utility modules"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "medium"
+    }
+  },
+  "dimension_judgment": {
+    "convention_outlier": {
+      "strengths": [
+        "All three data modules (artefacts.ts, projects.ts, terminal.ts) follow an identical pattern: type import, typed const export",
+        "Components consistently use the Svelte 5 Props interface + $props() destructuring pattern",
+        "Naming conventions are uniformly camelCase for functions and variables across all TypeScript modules",
+        "Export patterns are consistently named exports throughout; no mixed default/named exports"
+      ],
+      "issue_character": "The single convention inconsistency is a lifecycle pattern split between onMount and $effect runes across sibling components, representing incomplete adoption of the newer Svelte 5 idiom.",
+      "score_rationale": "The codebase is small and highly consistent in naming, file organization, export patterns, and component structure. The one notable drift is Terminal.svelte using onMount() while +page.svelte uses $effect() for the same kind of IntersectionObserver setup. This is a minor style island in an otherwise uniform codebase, pulling the score slightly below 85 but well above 80."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "convention_outlier",
+      "identifier": "mixed_lifecycle_pattern",
+      "summary": "Terminal.svelte uses onMount() while +page.svelte uses $effect() for equivalent IntersectionObserver setup",
+      "related_files": ["src/lib/components/Terminal.svelte", "src/routes/+page.svelte"],
+      "evidence": [
+        "Terminal.svelte line 17: onMount(() => { ... new IntersectionObserver ... }) uses the Svelte 4 lifecycle import",
+        "+page.svelte line 40: $effect(() => { ... new IntersectionObserver ... }) uses the Svelte 5 rune for equivalent observer setup"
+      ],
+      "suggestion": "Migrate Terminal.svelte from onMount() to $effect() to match the runes-based lifecycle pattern used in +page.svelte, which aligns with the project's stated Svelte 5 runes convention in CLAUDE.md.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Svelte 5 migration may have updated +page.svelte to runes while Terminal.svelte retained the onMount pattern"],
+    "likely_symptoms": [],
+    "possible_false_positives": ["onMount vs $effect may be intentional since onMount runs once while $effect can re-run, though in Terminal.svelte the observer setup does not depend on reactive state"]
+  }
+}

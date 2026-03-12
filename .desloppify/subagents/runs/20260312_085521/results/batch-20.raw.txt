@@ -1,0 +1,39 @@
+{
+  "batch": "incomplete_migration",
+  "batch_index": 20,
+  "assessments": {"incomplete_migration": 92.0},
+  "dimension_notes": {
+    "incomplete_migration": {
+      "evidence": [
+        "All source files are TypeScript (.ts) or Svelte (.svelte) with lang='ts'; no .js source files exist, indicating a complete TypeScript migration",
+        "No TODO, FIXME, DEPRECATED, or legacy migration markers found anywhere in the codebase",
+        "No deprecated Svelte 4 API patterns like createEventDispatcher or export let for props; components use Svelte 5 $props() runes consistently",
+        "No mixed old/new API patterns: single HTTP client (fetch), single framework version, single styling approach (Tailwind 4 + CSS custom properties)",
+        "Terminal.svelte uses onMount from svelte, which is still a valid Svelte 5 API but represents an older pattern compared to the $effect rune used elsewhere"
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "Terminal.svelte retains onMount() while sibling code uses $effect() for equivalent patterns; this is a minor old-pattern residue rather than a true migration gap, since onMount remains a supported API."
+    }
+  },
+  "dimension_judgment": {
+    "incomplete_migration": {
+      "strengths": [
+        "Complete TypeScript adoption with zero .js source files",
+        "Consistent Svelte 5 runes adoption: $props(), $state(), $derived(), $effect() used throughout",
+        "No deprecated-but-called symbols or DEPRECATED markers anywhere in the codebase",
+        "No compatibility shims or legacy wrappers present",
+        "No stale migration TODOs or FIXMEs referencing legacy code"
+      ],
+      "issue_character": "The only trace of older patterns is Terminal.svelte using onMount() alongside the $effect() rune used in sibling files, which is a minor style residue rather than a blocking migration gap.",
+      "score_rationale": "The codebase shows a clean, complete adoption of its target stack: TypeScript throughout, Svelte 5 runes for state and props, Tailwind CSS 4, and modern SvelteKit conventions. The single onMount() usage in Terminal.svelte is a minor old-pattern residue that keeps the score below exemplary but does not cause confusion or dual-path problems. This places comfortably in the 'strong' range."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": ["The onMount usage in Terminal.svelte could be flagged as incomplete migration from Svelte 4 lifecycle to Svelte 5 runes, but onMount remains a supported and valid API in Svelte 5, so this is better characterized as a convention outlier than an incomplete migration"]
+  }
+}

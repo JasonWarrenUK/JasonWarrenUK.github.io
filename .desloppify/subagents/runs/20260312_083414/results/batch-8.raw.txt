@@ -1,0 +1,74 @@
+{
+  "batch": "design_coherence",
+  "batch_index": 8,
+  "assessments": {
+    "design_coherence": 82.0
+  },
+  "dimension_notes": {
+    "design_coherence": {
+      "evidence": [
+        "fetchRepoData in github.ts uses the fetchJson helper for three of its four API calls but bypasses it for the commit-count fetch (lines 42-53), duplicating header setup and error handling inline",
+        "Three project arrays (impactProjects, explorationProjects, metaProjects) share identical types and are consumed identically in both +page.svelte and +page.server.ts, requiring manual spreading in the server loader",
+        "Artefacts.svelte hardcodes the GitHub owner 'JasonWarrenUK' in its URL template (line 25) while ProjectCard.svelte uses the full repo path from data, creating inconsistent URL construction patterns for the same domain",
+        "All data files (projects.ts, artefacts.ts, terminal.ts) are clean static declarations with no mixed concerns",
+        "Functions are generally focused: fetchJson, fetchRepoData, fetchAllRepoData, withGithub, splitOverview, getLanguageSegments each have a single coherent responsibility"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "multi_file_refactor",
+      "confidence": "high",
+      "issues_preventing_higher_score": "fetchRepoData has an internal inconsistency where one of its four API calls bypasses the shared fetchJson helper, duplicating fetch configuration. The three-array project structure forces repetitive spreading in consumers and would benefit from a unified categorized collection."
+    }
+  },
+  "dimension_judgment": {
+    "design_coherence": {
+      "strengths": [
+        "Data layer cleanly separates static content (projects, artefacts, terminal frames) from runtime fetching (github.ts), with the server loader as the only bridge",
+        "Functions are individually focused: fetchJson handles HTTP, fetchRepoData handles GitHub API shape, fetchAllRepoData handles batching and deduplication",
+        "Component props use typed interfaces with Svelte 5 $props() consistently across all components",
+        "Helper functions in ProjectCard (getLanguageSegments, formatDate, splitOverview) each do exactly one thing with clear inputs and outputs"
+      ],
+      "issue_character": "Issues are minor structural inconsistencies rather than deep design problems: a helper function bypassed in one call site, and a data shape that forces repetition in its consumers.",
+      "score_rationale": "The codebase demonstrates solid design coherence for a small portfolio site. Functions are focused, abstractions are earned (fetchJson genuinely reduces duplication for 3 of 4 calls), and the data/component/page layering is clean. The score sits at 82 rather than 90 because of two recurring friction points: fetchRepoData's inconsistent use of its own helper, and the three-array project structure that forces identical spreading patterns in every consumer. These are 'why is this different?' moments rather than deep structural problems."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "design_coherence",
+      "identifier": "fetch_helper_bypass",
+      "summary": "fetchRepoData bypasses its own fetchJson helper for the commit-count request",
+      "related_files": ["src/lib/utils/github.ts"],
+      "evidence": [
+        "Lines 31-35 use fetchJson<T> for repo, languages, and contributors calls, but lines 42-53 use raw fetch() with manually duplicated Accept header for commit count",
+        "The raw fetch block also duplicates the try/catch-return-null pattern that fetchJson already encapsulates"
+      ],
+      "suggestion": "Extract the commit-count fetch into a small helper (e.g., fetchCommitCount) that uses fetchJson or at minimum reuses the same header constant. The Link-header parsing is the genuinely distinct logic; the fetch setup and error handling should not be repeated.",
+      "confidence": "high",
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "design_coherence",
+      "identifier": "parallel_project_arrays",
+      "summary": "Three identically-typed project arrays force repetitive spreading in every consumer",
+      "related_files": ["src/lib/data/projects.ts", "src/routes/+page.server.ts", "src/routes/+page.svelte"],
+      "evidence": [
+        "+page.server.ts lines 7-10 manually spreads all three arrays to collect repo names: [...impactProjects.map(p => p.repo), ...explorationProjects.map(p => p.repo), ...metaProjects.map(p => p.repo)]",
+        "+page.svelte imports all three arrays separately and calls withGithub() on each independently (lines 114, 131, 142)",
+        "All three arrays share the exact same type: Omit<Project, 'github'>[]"
+      ],
+      "suggestion": "Define a single allProjects array or record keyed by category ('impact' | 'exploration' | 'meta'). Consumers can then iterate or filter by category, and adding a new category requires only a data change, not updates to every consumer.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "multi_file_refactor"
+    }
+  ],
+  "retrospective": {
+    "root_causes": [
+      "The project data was likely authored category-by-category rather than as a unified collection, and the initial shape was never refactored as consumers multiplied"
+    ],
+    "likely_symptoms": [],
+    "possible_false_positives": [
+      "All four 'orphaned' mechanical signals are false positives: +page.server.ts is a SvelteKit convention file loaded by the framework without explicit imports, and projects.ts/artefacts.ts/terminal.ts are imported by +page.svelte which the scanner did not trace through .svelte files"
+    ]
+  }
+}

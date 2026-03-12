@@ -1,0 +1,50 @@
+{
+  "batch": "naming_quality",
+  "batch_index": 8,
+  "assessments": {"naming_quality": 88.0},
+  "dimension_notes": {
+    "naming_quality": {
+      "evidence": [
+        "github.ts uses precise, descriptive function names: fetchGitHub, fetchJson, isRepoResponse, isLanguagesResponse, parseCommitCount, fetchRepoData, fetchAllRepoData — each name accurately predicts the function's behavior",
+        "Type names are clear and domain-appropriate: ProjectGitHubData, TerminalFrame, SectionAccent, Artefact",
+        "Data exports use descriptive category names: impactProjects, explorationProjects, metaProjects — the prefix communicates the project category",
+        "fetchJson returns unknown (nullable via fetchGitHub returning null), but the name 'fetchJson' implies it returns parsed JSON — when fetchGitHub returns null, fetchJson also returns null, so the return type is actually 'unknown | null' though typed as Promise<unknown>",
+        "The variable name 'contribRaw' abbreviates 'contributors' inconsistently — sibling variables use 'repoRaw' and 'langRaw' where 'repo' and 'lang' are standard abbreviations, but 'contrib' is less established"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "Minor naming friction: fetchJson's name does not communicate that it can return null (unlike fetchGitHub which has a nullable return type annotation). The 'p' parameter name in lambda callbacks (projects.map((p) => p.repo)) is terse but acceptable for inline lambdas."
+    }
+  },
+  "dimension_judgment": {
+    "naming_quality": {
+      "strengths": [
+        "github.ts function names form a readable progression: fetchGitHub (raw HTTP) -> fetchJson (parsed) -> fetchRepoData (single) -> fetchAllRepoData (batch) — naming reveals the abstraction layer",
+        "Type guard functions follow the 'is' prefix convention consistently: isRepoResponse, isLanguagesResponse",
+        "Data file exports clearly communicate their content category: impactProjects, explorationProjects, metaProjects, irisSession, artefacts",
+        "Interface field names use domain-appropriate vocabulary: commitCount, lastUpdated, stargazers_count (mirroring GitHub API), techLine"
+      ],
+      "issue_character": "Naming issues are minor and isolated — a few names that slightly obscure null-return behavior or use inconsistent abbreviation, but no systemic naming problems.",
+      "score_rationale": "The codebase demonstrates strong naming discipline overall. Function names predict behavior accurately, type names communicate their domain, and data exports use clear categorical prefixes. The score of 88 reflects that a developer can mostly read names and correctly predict behavior. It falls short of 90+ because fetchJson's name does not communicate its nullable return semantics, and there is a minor abbreviation inconsistency (contribRaw vs the more standard repoRaw/langRaw pattern)."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "naming_quality",
+      "identifier": "fetchJson_hides_null",
+      "summary": "fetchJson name does not communicate that it returns null on HTTP failure",
+      "related_files": ["src/lib/utils/github.ts"],
+      "evidence": ["fetchJson (line 16) returns Promise<unknown> but actually returns null when fetchGitHub returns null on HTTP failure. The name 'fetchJson' implies it fetches and parses JSON, but the null-on-failure behavior is hidden. Callers must know to check for null, which the name does not suggest."],
+      "suggestion": "Rename to fetchJsonOrNull or tryFetchJson to communicate the nullable return semantics, matching the pattern where fetchGitHub already returns Promise<Response | null>. Alternatively, add the null to the return type annotation: Promise<unknown | null>.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["The null-return convention established by fetchGitHub is not carried through to fetchJson's name, creating a minor naming/contract gap"],
+    "likely_symptoms": [],
+    "possible_false_positives": ["The 'contribRaw' abbreviation concern is borderline — 'contrib' is reasonably understood in context, and the destructuring makes the full meaning clear"]
+  }
+}

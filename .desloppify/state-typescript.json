@@ -1,0 +1,1678 @@
+{
+  "version": 1,
+  "created": "2026-03-12T08:33:27+00:00",
+  "last_scan": "2026-03-12T09:00:02+00:00",
+  "scan_count": 2,
+  "overall_score": 38.5,
+  "objective_score": 96.2,
+  "strict_score": 29.4,
+  "verified_strict_score": 96.2,
+  "stats": {
+    "total": 15,
+    "auto_resolved": 9,
+    "false_positive": 0,
+    "fixed": 0,
+    "open": 6,
+    "wontfix": 0,
+    "by_tier": {
+      "3": {
+        "auto_resolved": 8,
+        "false_positive": 0,
+        "fixed": 0,
+        "open": 1,
+        "wontfix": 0
+      },
+      "4": {
+        "auto_resolved": 1,
+        "false_positive": 0,
+        "fixed": 0,
+        "open": 5,
+        "wontfix": 0
+      }
+    }
+  },
+  "issues": {
+    "single_use::src/app.css": {
+      "id": "single_use::src/app.css",
+      "detector": "single_use",
+      "file": "src/app.css",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Single-use (269 LOC): only imported by src/routes/+layout.svelte",
+      "detail": {
+        "loc": 269,
+        "sole_importer": "src/routes/+layout.svelte"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T09:00:02+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T09:00:02+00:00",
+      "suppression_pattern": "single_use::src/app.css"
+    },
+    "orphaned::src/lib/components/ProjectCard.svelte": {
+      "id": "orphaned::src/lib/components/ProjectCard.svelte",
+      "detector": "orphaned",
+      "file": "src/lib/components/ProjectCard.svelte",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (227 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 227
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T09:00:02+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T09:00:02+00:00",
+      "suppression_pattern": "orphaned::src/lib/components/*"
+    },
+    "orphaned::src/routes/+page.svelte": {
+      "id": "orphaned::src/routes/+page.svelte",
+      "detector": "orphaned",
+      "file": "src/routes/+page.svelte",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (156 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 156
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T09:00:02+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T09:00:02+00:00",
+      "suppression_pattern": "orphaned::src/routes/*"
+    },
+    "orphaned::src/lib/components/Terminal.svelte": {
+      "id": "orphaned::src/lib/components/Terminal.svelte",
+      "detector": "orphaned",
+      "file": "src/lib/components/Terminal.svelte",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (116 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 116
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T09:00:02+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T09:00:02+00:00",
+      "suppression_pattern": "orphaned::src/lib/components/*"
+    },
+    "orphaned::src/lib/data/projects.ts": {
+      "id": "orphaned::src/lib/data/projects.ts",
+      "detector": "orphaned",
+      "file": "src/lib/data/projects.ts",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (96 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 96
+      },
+      "status": "auto_resolved",
+      "note": "Disappeared from scan \u2014 likely fixed",
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T08:33:36+00:00",
+      "resolved_at": "2026-03-12T09:00:02+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "scan_verified",
+        "text": "Disappeared from detector output",
+        "attested_at": "2026-03-12T09:00:02+00:00",
+        "scan_verified": true
+      }
+    },
+    "orphaned::src/lib/utils/github.ts": {
+      "id": "orphaned::src/lib/utils/github.ts",
+      "detector": "orphaned",
+      "file": "src/lib/utils/github.ts",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (77 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 77
+      },
+      "status": "auto_resolved",
+      "note": "Disappeared from scan \u2014 likely fixed",
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T08:33:36+00:00",
+      "resolved_at": "2026-03-12T09:00:02+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "scan_verified",
+        "text": "Disappeared from detector output",
+        "attested_at": "2026-03-12T09:00:02+00:00",
+        "scan_verified": true
+      }
+    },
+    "orphaned::src/lib/components/Artefacts.svelte": {
+      "id": "orphaned::src/lib/components/Artefacts.svelte",
+      "detector": "orphaned",
+      "file": "src/lib/components/Artefacts.svelte",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (70 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 70
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T09:00:02+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T09:00:02+00:00",
+      "suppression_pattern": "orphaned::src/lib/components/*"
+    },
+    "orphaned::src/lib/components/Section.svelte": {
+      "id": "orphaned::src/lib/components/Section.svelte",
+      "detector": "orphaned",
+      "file": "src/lib/components/Section.svelte",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (23 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 23
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T09:00:02+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T09:00:02+00:00",
+      "suppression_pattern": "orphaned::src/lib/components/*"
+    },
+    "orphaned::src/lib/data/artefacts.ts": {
+      "id": "orphaned::src/lib/data/artefacts.ts",
+      "detector": "orphaned",
+      "file": "src/lib/data/artefacts.ts",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (24 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 24
+      },
+      "status": "auto_resolved",
+      "note": "Disappeared from scan \u2014 likely fixed",
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T08:33:36+00:00",
+      "resolved_at": "2026-03-12T09:00:02+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "scan_verified",
+        "text": "Disappeared from detector output",
+        "attested_at": "2026-03-12T09:00:02+00:00",
+        "scan_verified": true
+      }
+    },
+    "orphaned::src/routes/+page.server.ts": {
+      "id": "orphaned::src/routes/+page.server.ts",
+      "detector": "orphaned",
+      "file": "src/routes/+page.server.ts",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (15 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 15
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T09:00:02+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T09:00:02+00:00",
+      "suppression_pattern": "orphaned::src/routes/*"
+    },
+    "orphaned::src/routes/+layout.svelte": {
+      "id": "orphaned::src/routes/+layout.svelte",
+      "detector": "orphaned",
+      "file": "src/routes/+layout.svelte",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (16 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 16
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T09:00:02+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T09:00:02+00:00",
+      "suppression_pattern": "orphaned::src/routes/*"
+    },
+    "test_coverage::src/lib/data/projects.ts": {
+      "id": "test_coverage::src/lib/data/projects.ts",
+      "detector": "test_coverage",
+      "file": "src/lib/data/projects.ts",
+      "tier": 3,
+      "confidence": "high",
+      "summary": "Untested module (96 LOC, 0 importers) \u2014 no test files found",
+      "detail": {
+        "kind": "untested_module",
+        "loc": 96,
+        "importer_count": 0,
+        "loc_weight": 9.797958971132712
+      },
+      "status": "auto_resolved",
+      "note": "Disappeared from scan \u2014 likely fixed",
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T08:33:36+00:00",
+      "resolved_at": "2026-03-12T09:00:02+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "scan_verified",
+        "text": "Disappeared from detector output",
+        "attested_at": "2026-03-12T09:00:02+00:00",
+        "scan_verified": true
+      }
+    },
+    "test_coverage::src/lib/utils/github.ts": {
+      "id": "test_coverage::src/lib/utils/github.ts",
+      "detector": "test_coverage",
+      "file": "src/lib/utils/github.ts",
+      "tier": 3,
+      "confidence": "high",
+      "summary": "Untested module (77 LOC, 0 importers) \u2014 no test files found",
+      "detail": {
+        "kind": "untested_module",
+        "loc": 77,
+        "importer_count": 0,
+        "loc_weight": 8.774964387392123
+      },
+      "status": "auto_resolved",
+      "note": "Disappeared from scan \u2014 likely fixed",
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T08:33:36+00:00",
+      "resolved_at": "2026-03-12T09:00:02+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "scan_verified",
+        "text": "Disappeared from detector output",
+        "attested_at": "2026-03-12T09:00:02+00:00",
+        "scan_verified": true
+      }
+    },
+    "test_coverage::src/lib/data/terminal.ts": {
+      "id": "test_coverage::src/lib/data/terminal.ts",
+      "detector": "test_coverage",
+      "file": "src/lib/data/terminal.ts",
+      "tier": 3,
+      "confidence": "high",
+      "summary": "Untested module (27 LOC, 0 importers) \u2014 no test files found",
+      "detail": {
+        "kind": "untested_module",
+        "loc": 27,
+        "importer_count": 0,
+        "loc_weight": 5.196152422706632
+      },
+      "status": "auto_resolved",
+      "note": "Disappeared from scan \u2014 likely fixed",
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T08:33:36+00:00",
+      "resolved_at": "2026-03-12T09:00:02+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "scan_verified",
+        "text": "Disappeared from detector output",
+        "attested_at": "2026-03-12T09:00:02+00:00",
+        "scan_verified": true
+      }
+    },
+    "test_coverage::src/lib/data/artefacts.ts": {
+      "id": "test_coverage::src/lib/data/artefacts.ts",
+      "detector": "test_coverage",
+      "file": "src/lib/data/artefacts.ts",
+      "tier": 3,
+      "confidence": "high",
+      "summary": "Untested module (24 LOC, 0 importers) \u2014 no test files found",
+      "detail": {
+        "kind": "untested_module",
+        "loc": 24,
+        "importer_count": 0,
+        "loc_weight": 4.898979485566356
+      },
+      "status": "auto_resolved",
+      "note": "Disappeared from scan \u2014 likely fixed",
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T08:33:36+00:00",
+      "resolved_at": "2026-03-12T09:00:02+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "scan_verified",
+        "text": "Disappeared from detector output",
+        "attested_at": "2026-03-12T09:00:02+00:00",
+        "scan_verified": true
+      }
+    },
+    "test_coverage::src/routes/+page.server.ts": {
+      "id": "test_coverage::src/routes/+page.server.ts",
+      "detector": "test_coverage",
+      "file": "src/routes/+page.server.ts",
+      "tier": 3,
+      "confidence": "high",
+      "summary": "Untested module (22 LOC, 0 importers) \u2014 no test files found",
+      "detail": {
+        "kind": "untested_module",
+        "loc": 22,
+        "importer_count": 0,
+        "loc_weight": 4.69041575982343
+      },
+      "status": "auto_resolved",
+      "note": "Disappeared from scan \u2014 likely fixed",
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T08:33:36+00:00",
+      "resolved_at": "2026-03-12T09:00:02+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "scan_verified",
+        "text": "Disappeared from detector output",
+        "attested_at": "2026-03-12T09:00:02+00:00",
+        "scan_verified": true
+      }
+    },
+    "smells::src/lib/data/projects.ts::hardcoded_url": {
+      "id": "smells::src/lib/data/projects.ts::hardcoded_url",
+      "detector": "smells",
+      "file": "src/lib/data/projects.ts",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "2x Hardcoded URL in source code",
+      "detail": {
+        "smell_id": "hardcoded_url",
+        "severity": "medium",
+        "count": 2,
+        "lines": [
+          62,
+          70
+        ]
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T09:00:02+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T09:00:02+00:00",
+      "suppression_pattern": "smells::src/lib/data/projects.ts::hardcoded_url"
+    },
+    "smells::src/app.css::css_important_overuse": {
+      "id": "smells::src/app.css::css_important_overuse",
+      "detector": "smells",
+      "file": "src/app.css",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "1x Heavy !important usage in stylesheet",
+      "detail": {
+        "smell_id": "css_important_overuse",
+        "severity": "low",
+        "count": 1,
+        "lines": [
+          221
+        ]
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T09:00:02+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T09:00:02+00:00",
+      "suppression_pattern": "smells::src/app.css::css_important_overuse"
+    },
+    "smells::README.md::docs_scripts_drift": {
+      "id": "smells::README.md::docs_scripts_drift",
+      "detector": "smells",
+      "file": "README.md",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "1x README missing key package scripts",
+      "detail": {
+        "smell_id": "docs_scripts_drift",
+        "severity": "low",
+        "count": 1,
+        "lines": [
+          1
+        ]
+      },
+      "status": "auto_resolved",
+      "note": "Out of current scan scope (scan_path: src)",
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T08:33:36+00:00",
+      "resolved_at": "2026-03-12T09:00:02+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "out_of_scope",
+        "text": "Out of current scan scope (scan_path: src)",
+        "attested_at": "2026-03-12T09:00:02+00:00",
+        "scan_verified": false
+      }
+    },
+    "subjective_review::src/lib/data/artefacts.ts::unreviewed": {
+      "id": "subjective_review::src/lib/data/artefacts.ts::unreviewed",
+      "detector": "subjective_review",
+      "file": "src/lib/data/artefacts.ts",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "No design review on record \u2014 run `desloppify review --prepare`",
+      "detail": {
+        "reason": "unreviewed",
+        "loc": 24
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T09:00:02+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "subjective_review::src/lib/data/projects.ts::unreviewed": {
+      "id": "subjective_review::src/lib/data/projects.ts::unreviewed",
+      "detector": "subjective_review",
+      "file": "src/lib/data/projects.ts",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "No design review on record \u2014 run `desloppify review --prepare`",
+      "detail": {
+        "reason": "unreviewed",
+        "loc": 96
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T09:00:02+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "subjective_review::src/lib/data/terminal.ts::unreviewed": {
+      "id": "subjective_review::src/lib/data/terminal.ts::unreviewed",
+      "detector": "subjective_review",
+      "file": "src/lib/data/terminal.ts",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "No design review on record \u2014 run `desloppify review --prepare`",
+      "detail": {
+        "reason": "unreviewed",
+        "loc": 24
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T09:00:02+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "subjective_review::src/lib/utils/github.ts::unreviewed": {
+      "id": "subjective_review::src/lib/utils/github.ts::unreviewed",
+      "detector": "subjective_review",
+      "file": "src/lib/utils/github.ts",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "No design review on record \u2014 run `desloppify review --prepare`",
+      "detail": {
+        "reason": "unreviewed",
+        "loc": 90
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T09:00:02+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "subjective_review::src/routes/+page.server.ts::unreviewed": {
+      "id": "subjective_review::src/routes/+page.server.ts::unreviewed",
+      "detector": "subjective_review",
+      "file": "src/routes/+page.server.ts",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "No design review on record \u2014 run `desloppify review --prepare`",
+      "detail": {
+        "reason": "unreviewed",
+        "loc": 22
+      },
+      "status": "auto_resolved",
+      "note": "Disappeared from scan \u2014 likely fixed",
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T08:33:36+00:00",
+      "resolved_at": "2026-03-12T09:00:02+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "scan_verified",
+        "text": "Disappeared from detector output",
+        "attested_at": "2026-03-12T09:00:02+00:00",
+        "scan_verified": true
+      }
+    },
+    "subjective_review::.::holistic_unreviewed": {
+      "id": "subjective_review::.::holistic_unreviewed",
+      "detector": "subjective_review",
+      "file": ".",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "No holistic codebase review on record \u2014 run `desloppify review --prepare`",
+      "detail": {
+        "reason": "unreviewed"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:33:36+00:00",
+      "last_seen": "2026-03-12T09:00:02+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "stale_exclude::docs::docs": {
+      "id": "stale_exclude::docs::docs",
+      "detector": "stale_exclude",
+      "file": "docs",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "Excluded directory 'docs' has 0 references from scanned code \u2014 may be stale",
+      "detail": {
+        "directory": "docs",
+        "references": 0
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:33:41+00:00",
+      "last_seen": "2026-03-12T09:00:02+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "test_coverage::src/routes/+page.server.ts::untested_module": {
+      "id": "test_coverage::src/routes/+page.server.ts::untested_module",
+      "detector": "test_coverage",
+      "file": "src/routes/+page.server.ts",
+      "tier": 3,
+      "confidence": "high",
+      "summary": "Untested module (15 LOC, 0 importers)",
+      "detail": {
+        "kind": "untested_module",
+        "loc": 15,
+        "importer_count": 0,
+        "loc_weight": 3.872983346207417
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T09:00:01+00:00",
+      "last_seen": "2026-03-12T09:00:01+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "stale_exclude::.svelte-kit::.svelte-kit": {
+      "id": "stale_exclude::.svelte-kit::.svelte-kit",
+      "detector": "stale_exclude",
+      "file": ".svelte-kit",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "Excluded directory '.svelte-kit' has 0 references from scanned code \u2014 may be stale",
+      "detail": {
+        "directory": ".svelte-kit",
+        "references": 0
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T09:00:02+00:00",
+      "last_seen": "2026-03-12T09:00:02+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "stale_exclude::.desloppify::.desloppify": {
+      "id": "stale_exclude::.desloppify::.desloppify",
+      "detector": "stale_exclude",
+      "file": ".desloppify",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "Excluded directory '.desloppify' has 0 references from scanned code \u2014 may be stale",
+      "detail": {
+        "directory": ".desloppify",
+        "references": 0
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T09:00:02+00:00",
+      "last_seen": "2026-03-12T09:00:02+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    }
+  },
+  "scan_coverage": {
+    "typescript": {
+      "status": "full",
+      "confidence": 1.0,
+      "detectors": {
+        "security": {
+          "detector": "security",
+          "status": "full",
+          "confidence": 1.0,
+          "summary": "Security coverage complete for enabled detectors.",
+          "impact": "",
+          "remediation": "",
+          "tool": "",
+          "reason": ""
+        }
+      },
+      "warnings": [],
+      "updated_at": "2026-03-12T09:00:02+00:00"
+    }
+  },
+  "score_confidence": {
+    "status": "full",
+    "confidence": 1.0,
+    "detectors": [],
+    "dimensions": []
+  },
+  "subjective_integrity": {
+    "status": "pass",
+    "target_score": 95.0,
+    "matched_count": 0,
+    "matched_dimensions": [],
+    "reset_dimensions": []
+  },
+  "subjective_assessments": {},
+  "scan_history": [
+    {
+      "timestamp": "2026-03-12T08:33:41+00:00",
+      "lang": "typescript",
+      "strict_score": 26.5,
+      "verified_strict_score": 66.3,
+      "objective_score": 66.3,
+      "overall_score": 26.5,
+      "open": 26,
+      "diff_new": 26,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 26,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "pass",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": 95.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 85.7,
+          "strict": 85.7
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Duplication": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 7.5,
+          "strict": 7.5
+        },
+        "Abstraction fit": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "AI generated debt": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "API coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Auth consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Contracts": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Convention drift": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Cross-module arch": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Dep health": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Design coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Error consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "High elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Stale migration": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Init coupling": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Logic clarity": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Low elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Mid elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Naming quality": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Structure nav": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Test strategy": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Type safety": {
+          "score": 0.0,
+          "strict": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:00:02+00:00",
+      "lang": "typescript",
+      "strict_score": 29.4,
+      "verified_strict_score": 96.2,
+      "objective_score": 96.2,
+      "overall_score": 38.5,
+      "open": 6,
+      "diff_new": 3,
+      "diff_resolved": 9,
+      "ignored": 10,
+      "raw_issues": 19,
+      "suppressed_pct": 52.6,
+      "ignore_patterns": 7,
+      "subjective_integrity": {
+        "status": "pass",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": 95.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 100.0,
+          "strict": 96.5
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Duplication": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 87.5,
+          "strict": 18.2
+        },
+        "Abstraction fit": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "AI generated debt": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "API coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Auth consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Contracts": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Convention drift": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Cross-module arch": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Dep health": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Design coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Error consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "High elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Stale migration": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Init coupling": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Logic clarity": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Low elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Mid elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Naming quality": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Structure nav": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Test strategy": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Type safety": {
+          "score": 0.0,
+          "strict": 0.0
+        }
+      }
+    }
+  ],
+  "lang_capabilities": {
+    "typescript": {
+      "fixers": [
+        "dead-useeffect",
+        "debug-logs",
+        "empty-if-chain",
+        "unused-imports",
+        "unused-params",
+        "unused-vars"
+      ],
+      "typecheck_cmd": "npx tsc --noEmit"
+    }
+  },
+  "zone_distribution": {
+    "test": 5,
+    "production": 7
+  },
+  "tool_hash": "18d10939aa40",
+  "scan_path": "src",
+  "scan_completeness": {
+    "typescript": "full"
+  },
+  "potentials": {
+    "typescript": {
+      "logs": 8,
+      "unused": 8,
+      "exports": 0,
+      "deprecated": 0,
+      "structural": 7,
+      "flat_dirs": 5,
+      "props": 0,
+      "single_use": 0,
+      "coupling": 0,
+      "cycles": 13,
+      "orphaned": 13,
+      "patterns": 0,
+      "naming": 4,
+      "facade": 13,
+      "test_coverage": 39,
+      "smells": 9,
+      "react": 0,
+      "security": 7,
+      "subjective_review": 4,
+      "boilerplate_duplication": 0,
+      "dupes": 4,
+      "stale_wontfix": 0
+    }
+  },
+  "codebase_metrics": {
+    "typescript": {
+      "total_files": 12,
+      "total_loc": 454,
+      "total_directories": 4
+    }
+  },
+  "dimension_scores": {
+    "Code quality": {
+      "score": 100.0,
+      "strict": 96.5,
+      "verified_strict_score": 100.0,
+      "checks": 60,
+      "failing": 0,
+      "tier": 3,
+      "detectors": {
+        "unused": {
+          "potential": 8,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "logs": {
+          "potential": 8,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "smells": {
+          "potential": 9,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "orphaned": {
+          "potential": 13,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "flat_dirs": {
+          "potential": 5,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "naming": {
+          "potential": 4,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "facade": {
+          "potential": 13,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        }
+      }
+    },
+    "Security": {
+      "score": 100.0,
+      "strict": 100.0,
+      "verified_strict_score": 100.0,
+      "checks": 20,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "cycles": {
+          "potential": 13,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "security": {
+          "potential": 7,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        }
+      }
+    },
+    "File health": {
+      "score": 100.0,
+      "strict": 100.0,
+      "verified_strict_score": 100.0,
+      "checks": 7,
+      "failing": 0,
+      "tier": 3,
+      "detectors": {
+        "structural": {
+          "potential": 7,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        }
+      }
+    },
+    "Duplication": {
+      "score": 100.0,
+      "strict": 100.0,
+      "verified_strict_score": 100.0,
+      "checks": 4,
+      "failing": 0,
+      "tier": 3,
+      "detectors": {
+        "dupes": {
+          "potential": 4,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        }
+      }
+    },
+    "Test health": {
+      "score": 87.5,
+      "strict": 18.2,
+      "verified_strict_score": 87.5,
+      "checks": 43,
+      "failing": 6,
+      "tier": 4,
+      "detectors": {
+        "test_coverage": {
+          "potential": 39,
+          "pass_rate": 0.9006927347126302,
+          "failing": 1,
+          "weighted_failures": 3.872983346207417
+        },
+        "subjective_review": {
+          "potential": 4,
+          "pass_rate": 0.625,
+          "failing": 5,
+          "weighted_failures": 1.5
+        }
+      }
+    },
+    "Abstraction fit": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "abstraction_fitness",
+          "configured_weight": 8.0,
+          "components": []
+        }
+      }
+    },
+    "AI generated debt": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "ai_generated_debt",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "API coherence": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "api_surface_coherence",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Auth consistency": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "authorization_consistency",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Contracts": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "contract_coherence",
+          "configured_weight": 12.0,
+          "components": []
+        }
+      }
+    },
+    "Convention drift": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "convention_outlier",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Cross-module arch": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "cross_module_architecture",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Dep health": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "dependency_health",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Design coherence": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "design_coherence",
+          "configured_weight": 10.0,
+          "components": []
+        }
+      }
+    },
+    "Error consistency": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "error_consistency",
+          "configured_weight": 3.0,
+          "components": []
+        }
+      }
+    },
+    "High elegance": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "high_level_elegance",
+          "configured_weight": 22.0,
+          "components": []
+        }
+      }
+    },
+    "Stale migration": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "incomplete_migration",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Init coupling": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "initialization_coupling",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Logic clarity": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "logic_clarity",
+          "configured_weight": 6.0,
+          "components": []
+        }
+      }
+    },
+    "Low elegance": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "low_level_elegance",
+          "configured_weight": 12.0,
+          "components": []
+        }
+      }
+    },
+    "Mid elegance": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "mid_level_elegance",
+          "configured_weight": 22.0,
+          "components": []
+        }
+      }
+    },
+    "Naming quality": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "naming_quality",
+          "configured_weight": 2.0,
+          "components": []
+        }
+      }
+    },
+    "Structure nav": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "package_organization",
+          "configured_weight": 5.0,
+          "components": []
+        }
+      }
+    },
+    "Test strategy": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "test_strategy",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Type safety": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": true,
+          "dimension_key": "type_safety",
+          "configured_weight": 12.0,
+          "components": []
+        }
+      }
+    }
+  },
+  "reminder_history": {
+    "zone_classification": 2,
+    "report_scores": 2,
+    "feedback_nudge": 1
+  }
+}

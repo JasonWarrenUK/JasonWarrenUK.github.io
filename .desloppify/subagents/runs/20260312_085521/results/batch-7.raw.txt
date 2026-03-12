@@ -1,0 +1,55 @@
+{
+  "batch": "design_coherence",
+  "batch_index": 7,
+  "assessments": {"design_coherence": 85.0},
+  "dimension_notes": {
+    "design_coherence": {
+      "evidence": [
+        "src/routes/+page.server.ts is cleanly focused: it collects repo names from three project arrays and fetches GitHub data — single responsibility, 15 LOC",
+        "src/lib/utils/github.ts has well-decomposed functions: fetchGitHub (HTTP), fetchJson (parse), isRepoResponse (type guard), fetchRepoData (single repo), fetchAllRepoData (batch) — each does one thing",
+        "src/routes/+page.svelte mixes three concerns: (1) project data assembly with attachGithubData, (2) scroll-reveal animation via IntersectionObserver, (3) section tint color transitions via another IntersectionObserver — two distinct $effect blocks doing DOM manipulation",
+        "The attachGithubData function in +page.svelte merges static project data with server-fetched GitHub data — this is data transformation logic living in a view component rather than in a data/utility module",
+        "signal_density flags +page.server.ts with 2 detectors (orphaned, test_coverage), but 'orphaned' is a false positive for SvelteKit convention files"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "multi_file_refactor",
+      "confidence": "medium",
+      "issues_preventing_higher_score": "The main page component (+page.svelte) accumulates three distinct responsibilities: data transformation, scroll-reveal animation, and background tinting. While manageable at current scale, this mixing makes the component harder to reason about and test independently."
+    }
+  },
+  "dimension_judgment": {
+    "design_coherence": {
+      "strengths": [
+        "github.ts demonstrates clean functional decomposition — each function has a single purpose and they compose naturally (fetchGitHub -> fetchJson -> fetchRepoData -> fetchAllRepoData)",
+        "Data modules (artefacts.ts, projects.ts, terminal.ts) are pure data declarations with no logic — appropriately simple",
+        "Type guards (isRepoResponse, isLanguagesResponse) are extracted as standalone, testable functions rather than inline type assertions",
+        "+page.server.ts is minimal and focused — collects repos, fetches data, returns it"
+      ],
+      "issue_character": "The primary design concern is responsibility accumulation in the main page component, where data transformation and two distinct animation behaviors coexist in a single file.",
+      "score_rationale": "The TypeScript modules demonstrate strong design coherence — functions are focused, abstractions are earned, and the decomposition in github.ts is particularly clean. The score is pulled down from 90+ by the +page.svelte component accumulating three responsibilities (data merging, reveal animations, tint transitions) that would benefit from extraction. At 85, this reflects a codebase that is 'solid but with one uneven spot' — the backend/data layer is well-designed while the view layer shows some concern mixing."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "design_coherence",
+      "identifier": "page_svelte_mixed_concerns",
+      "summary": "+page.svelte mixes data transformation, reveal animation, and tint transition into one component",
+      "related_files": ["src/routes/+page.svelte"],
+      "evidence": [
+        "attachGithubData() on line 22 is data transformation logic embedded in the view component",
+        "First $effect (line 40) handles scroll-reveal animation with IntersectionObserver",
+        "Second $effect (line 63) handles background tint transitions with a separate IntersectionObserver",
+        "sectionTints constant (line 29) is presentation configuration mixed into the component script"
+      ],
+      "suggestion": "Extract the two animation behaviors into reusable Svelte actions or separate utility modules: 1) Create src/lib/utils/reveal.ts exporting a Svelte action for scroll-reveal behavior. 2) Create src/lib/utils/tint.ts exporting a Svelte action for background tint transitions, with sectionTints as a parameter. 3) Move attachGithubData to src/lib/utils/projects.ts or inline the merge in +page.server.ts so the page component receives ready-to-render data. This keeps +page.svelte as pure composition/layout.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "multi_file_refactor"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Single-page app architecture naturally concentrates page-level orchestration in one component — extracting behaviors requires intentional effort"],
+    "likely_symptoms": [],
+    "possible_false_positives": ["The concern mixing in +page.svelte is manageable at current scale (144 lines) and may not warrant extraction until the component grows further"]
+  }
+}

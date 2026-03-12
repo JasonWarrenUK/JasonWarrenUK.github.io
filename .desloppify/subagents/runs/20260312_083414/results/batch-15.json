@@ -1,0 +1,62 @@
+{
+  "batch": "cross_module_architecture",
+  "batch_index": 15,
+  "assessments": {
+    "cross_module_architecture": 82.0
+  },
+  "dimension_notes": {
+    "cross_module_architecture": {
+      "evidence": [
+        "The codebase has a clean three-layer architecture: data (src/lib/data/), types (src/lib/types/), utils (src/lib/utils/), components (src/lib/components/), and routes (src/routes/). Dependencies flow consistently downward: routes -> components/data/utils, components -> types/data, data -> types, utils -> types.",
+        "No dependency cycles exist in the import graph. The import graph is a clean DAG.",
+        "TerminalFrame interface is defined in src/lib/data/terminal.ts rather than src/lib/types/index.ts, creating an inconsistent type export boundary. Terminal.svelte imports TerminalFrame from the data module, while all other components import their types from $lib/types.",
+        "The codebase is very small (7 production TS files, 273 LOC total) so architectural concerns have limited scope. No hub modules, no god modules, no shared mutable state.",
+        "+page.svelte imports from both data modules and components, which is expected for a page-level orchestrator in SvelteKit."
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "TerminalFrame type defined in data module rather than the types module breaks the otherwise consistent type boundary pattern. The codebase is too small to fully evaluate architectural resilience under growth pressure."
+    }
+  },
+  "dimension_judgment": {
+    "cross_module_architecture": {
+      "strengths": [
+        "Clean DAG dependency graph with no cycles: routes -> lib -> types, no back-references",
+        "Consistent use of $lib/types as the single type authority for Project, Artefact, ProjectGitHubData, and SectionAccent",
+        "Data modules (artefacts, projects, terminal) are pure static data exports with no cross-dependencies between them",
+        "GitHub utility module has a clear single-direction relationship: only consumed by +page.server.ts, imports only from $lib/types"
+      ],
+      "issue_character": "A single minor boundary inconsistency where one type lives in a data module instead of the types module; otherwise the architecture is clean and appropriate for this codebase size.",
+      "score_rationale": "The dependency graph is a clean DAG with no cycles, no hub modules, and no shared mutable state. Boundaries between data, types, utils, components, and routes are well-defined and consistently respected, with one exception: the TerminalFrame type lives in the data layer instead of the types layer. For a 273-LOC codebase this architecture is solid but the type boundary inconsistency and the small size (which limits how much can be evaluated) prevent a score above the mid-80s."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "cross_module_architecture",
+      "identifier": "terminal_frame_type_boundary",
+      "summary": "TerminalFrame interface defined in data module instead of the shared types module",
+      "related_files": [
+        "src/lib/data/terminal.ts",
+        "src/lib/types/index.ts",
+        "src/lib/components/Terminal.svelte"
+      ],
+      "evidence": [
+        "src/lib/data/terminal.ts defines and exports 'TerminalFrame' interface at line 1, while all other domain types (Project, ProjectGitHubData, Artefact, SectionAccent) live in src/lib/types/index.ts",
+        "src/lib/components/Terminal.svelte imports TerminalFrame from '$lib/data/terminal' (line 2), unlike sibling components (Artefacts.svelte, ProjectCard.svelte, Section.svelte) which all import types from '$lib/types'"
+      ],
+      "suggestion": "Move the TerminalFrame interface to src/lib/types/index.ts alongside the other domain types, and update the imports in both terminal.ts and Terminal.svelte to use '$lib/types'. This aligns with the established pattern where all domain interfaces live in the types module.",
+      "confidence": "high",
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "root_cause_cluster": "type_boundary_inconsistency"
+    }
+  ],
+  "retrospective": {
+    "root_causes": [
+      "TerminalFrame was likely co-located with its data for convenience during initial development, and was never moved to the centralized types module as the pattern was established for other types."
+    ],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

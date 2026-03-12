@@ -1,0 +1,62 @@
+{
+  "batch": "contract_coherence",
+  "batch_index": 11,
+  "assessments": {
+    "contract_coherence": 87.0
+  },
+  "dimension_notes": {
+    "contract_coherence": {
+      "evidence": [
+        "fetchJson<T> declares Promise<T | null> and honors it on all three return paths (catch -> null, !res.ok -> null, success -> parsed JSON)",
+        "fetchRepoData declares Promise<ProjectGitHubData | null> and returns null when repo fetch fails, full object otherwise; all fields of ProjectGitHubData are populated",
+        "fetchAllRepoData declares Promise<Record<string, ProjectGitHubData | null>> and returns exactly that shape",
+        "Data modules (artefacts.ts, projects.ts) export typed arrays that match their declared types",
+        "projects.ts exports Omit<Project, 'github'>[] which accurately reflects that GitHub data is attached later in +page.svelte via withGithub()",
+        "TerminalFrame interface is defined in src/lib/data/terminal.ts rather than src/lib/types/index.ts where all other shared types live, breaking the module-level API convention for type exports",
+        "fetchJson uses 'as T' cast without runtime validation, meaning the Promise<T | null> contract trusts the external API to match the declared shape"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "TerminalFrame type is co-located with data rather than in the types module, breaking the established convention for where shared types live. The fetchJson cast means the type contract relies on external API shape without validation."
+    }
+  },
+  "dimension_judgment": {
+    "contract_coherence": {
+      "strengths": [
+        "All function return types accurately describe every return path: fetchJson, fetchRepoData, and fetchAllRepoData all honor their Promise<X | null> signatures",
+        "The Omit<Project, 'github'> pattern in projects.ts is an honest contract that communicates exactly what the data layer provides vs. what gets attached at runtime",
+        "Function names align with behavior: fetchJson fetches and parses, fetchRepoData fetches repo data, fetchAllRepoData fetches all repo data; no hidden side effects",
+        "+page.server.ts load function returns a shape that honestly degrades: githubData is {} on failure, which is a valid Record<string, ProjectGitHubData | null>"
+      ],
+      "issue_character": "Issues are minor and isolated: one type placement inconsistency and one standard-practice unsafe cast at an external boundary.",
+      "score_rationale": "The codebase's contracts are reliable. A developer can trust function signatures, return types, and naming to predict behavior without reading implementations. The Omit<Project, 'github'> pattern is a particularly thoughtful contract choice. The only friction points are the TerminalFrame type living outside the types module (breaking the established convention) and the fetchJson cast, which is standard TypeScript practice but technically an unvalidated contract. These are minor enough that the score sits solidly above 85 but below 90 due to the convention break."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "contract_coherence",
+      "identifier": "terminal_frame_type_misplaced",
+      "summary": "TerminalFrame interface defined in data file instead of types module, breaking module-level API convention",
+      "related_files": [
+        "src/lib/data/terminal.ts",
+        "src/lib/types/index.ts",
+        "src/lib/components/Terminal.svelte"
+      ],
+      "evidence": [
+        "All other shared types (Project, ProjectGitHubData, Artefact, SectionAccent) are exported from src/lib/types/index.ts",
+        "TerminalFrame is defined and exported from src/lib/data/terminal.ts (line 1-4)",
+        "Terminal.svelte imports TerminalFrame from '$lib/data/terminal' rather than '$lib/types', meaning a component must import from a data module to get a type"
+      ],
+      "suggestion": "Move the TerminalFrame interface to src/lib/types/index.ts and re-export it. Update the import in src/lib/data/terminal.ts and src/lib/components/Terminal.svelte to use '$lib/types'.",
+      "confidence": "high",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

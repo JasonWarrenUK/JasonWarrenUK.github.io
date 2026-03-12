@@ -1,0 +1,85 @@
+{
+  "batch": "type_safety",
+  "batch_index": 10,
+  "assessments": {
+    "type_safety": 82.5
+  },
+  "dimension_notes": {
+    "type_safety": {
+      "evidence": [
+        "TypeScript strict mode enabled in tsconfig.json with checkJs, forceConsistentCasingInFileNames, and strict: true",
+        "All public API functions in github.ts have explicit return type annotations (Promise<T | null>, Promise<Record<string, ProjectGitHubData | null>>)",
+        "Svelte components use typed Props interfaces with $props() rune destructuring throughout",
+        "fetchJson<T> in github.ts uses an unsafe 'as T' cast on the JSON response without runtime validation, meaning the type promise is not enforced at the API boundary",
+        "TerminalFrame interface is defined in src/lib/data/terminal.ts rather than src/lib/types/index.ts where all other shared interfaces live, creating an inconsistent type source pattern",
+        "ProjectGitHubData.commitCount is typed as number, but 0 is used as both 'no commits' and 'could not determine count', conflating absence with zero"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "multi_file_refactor",
+      "confidence": "high",
+      "issues_preventing_higher_score": "Unsafe 'as T' cast at the GitHub API boundary means type annotations promise a shape the runtime does not validate. TerminalFrame type lives outside the canonical types directory, fragmenting the type source of truth."
+    }
+  },
+  "dimension_judgment": {
+    "type_safety": {
+      "strengths": [
+        "TypeScript strict mode is enabled project-wide with no escape hatches like skipLibCheck for project code",
+        "All public functions (fetchRepoData, fetchAllRepoData, withGithub) carry explicit return type annotations that accurately describe their output",
+        "Svelte components consistently define typed Props interfaces using the Svelte 5 $props() pattern, ensuring component contracts are explicit",
+        "The Omit<Project, 'github'> usage in projects.ts correctly models that static project data lacks GitHub metadata until hydration in +page.svelte"
+      ],
+      "issue_character": "Issues are isolated to the API boundary layer where external JSON data enters the type system without validation, and one organizational inconsistency in where shared types are defined.",
+      "score_rationale": "The codebase demonstrates solid type discipline overall: strict mode, explicit annotations on public APIs, and proper use of utility types like Omit. What prevents a higher score is the unsafe 'as T' cast at the GitHub API boundary, which is the one place where runtime data enters and type safety matters most. This is a real gap, but it is contained to one module. The TerminalFrame placement is a minor organizational issue. A developer working here would mostly trust the types but should not trust the GitHub data shapes without adding runtime validation. This places the codebase solidly above 80 but below 85."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "type_safety",
+      "identifier": "unsafe_as_cast_api_boundary",
+      "summary": "fetchJson uses unsafe 'as T' cast on unvalidated API response JSON",
+      "related_files": ["src/lib/utils/github.ts"],
+      "evidence": [
+        "Line 11: 'return (await res.json()) as T' casts the parsed JSON to generic type T without any runtime validation. RepoResponse, Record<string, number>, and ContributorResponse[] are all asserted but never checked against actual API response shape."
+      ],
+      "suggestion": "Add a lightweight runtime shape check (e.g., using Zod or a manual guard function) before the cast, or at minimum validate that expected fields exist. For example, for RepoResponse, check that 'stargazers_count' and 'updated_at' are present and of correct types before returning.",
+      "confidence": "high",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "type_safety",
+      "identifier": "terminal_frame_type_location",
+      "summary": "TerminalFrame interface defined in data file instead of canonical types directory",
+      "related_files": ["src/lib/data/terminal.ts", "src/lib/types/index.ts"],
+      "evidence": [
+        "TerminalFrame is defined and exported from src/lib/data/terminal.ts (lines 1-4), while all other shared interfaces (Project, ProjectGitHubData, Artefact, SectionAccent) are defined in src/lib/types/index.ts. The Terminal.svelte component imports the type from the data file: import type { TerminalFrame } from '$lib/data/terminal'."
+      ],
+      "suggestion": "Move the TerminalFrame interface to src/lib/types/index.ts alongside the other shared types, and update imports in both terminal.ts and Terminal.svelte to import from '$lib/types'.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "type_safety",
+      "identifier": "commitcount_zero_ambiguity",
+      "summary": "commitCount typed as number uses 0 for both 'zero commits' and 'unknown count'",
+      "related_files": ["src/lib/utils/github.ts", "src/lib/types/index.ts"],
+      "evidence": [
+        "In github.ts lines 40-53, commitCount is initialized to 0 and stays at 0 if the link header is missing, the regex doesn't match, or the fetch throws. The type ProjectGitHubData.commitCount is 'number', making 0 indistinguishable from 'could not determine'. A consumer displaying commit count cannot differentiate between a repo with no commits and a failed count retrieval."
+      ],
+      "suggestion": "Type commitCount as 'number | null' in ProjectGitHubData, use null to represent 'unknown', and update consumers to handle the null case (e.g., show 'N/A' instead of '0').",
+      "confidence": "medium",
+      "impact_scope": "subsystem",
+      "fix_scope": "multi_file_refactor"
+    }
+  ],
+  "retrospective": {
+    "root_causes": [
+      "No runtime validation at external data boundaries (GitHub API responses are trusted at compile time only)"
+    ],
+    "likely_symptoms": [],
+    "possible_false_positives": [
+      "terminal_frame_type_location may be an intentional co-location choice, keeping the type with its data"
+    ]
+  }
+}

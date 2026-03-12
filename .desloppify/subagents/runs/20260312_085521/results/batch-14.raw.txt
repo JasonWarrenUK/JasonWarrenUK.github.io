@@ -1,0 +1,54 @@
+{
+  "batch": "ai_generated_debt",
+  "batch_index": 14,
+  "assessments": {
+    "ai_generated_debt": 93.0
+  },
+  "dimension_notes": {
+    "ai_generated_debt": {
+      "evidence": [
+        "Zero restating comments across the entire codebase; the only comments are structural HTML comments in Terminal.svelte ('Title bar', 'Terminal content') and a regex-behavior comment in ProjectCard.svelte, both of which add navigation value",
+        "No debug logging anywhere in the codebase; console.log is entirely absent",
+        "No docstring bloat; functions are uncommented but self-documenting through naming",
+        "No generic names like handleData or processItem; domain-specific names used throughout (fetchRepoData, parseCommitCount, attachGithubData, splitOverview, getLanguageSegments)",
+        "No identical boilerplate error handling; the try-catch in fetchGitHub is the only error handler and exists at a genuine network I/O boundary",
+        "The codebase comment ratio is 0.0 per the scan evidence, confirming no comment noise"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The project descriptions in projects.ts read as LLM-generated prose: long, multi-sentence descriptions with a consistent rhetorical pattern (technical description followed by an interpretive gloss). While this is content data rather than code logic, the uniform voice across all 12 project descriptions is a subtle AI-debt signal."
+    }
+  },
+  "dimension_judgment": {
+    "ai_generated_debt": {
+      "strengths": [
+        "Zero restating comments; the codebase achieves a 0.0 comment ratio without sacrificing clarity",
+        "No defensive overengineering: the try-catch in fetchGitHub wraps a genuine network call, not a pure expression",
+        "Domain-specific function names throughout (parseCommitCount, splitOverview, getLanguageSegments) with no generic handleData-style naming",
+        "No boilerplate error handling duplication; error strategy is concentrated in one utility module",
+        "No debug logging or console dumps anywhere in production code"
+      ],
+      "issue_character": "The only AI-debt signal is in content data (project description prose style), not in code structure, logic, or patterns.",
+      "score_rationale": "The codebase is remarkably clean from an AI-debt perspective. There are no restating comments, no defensive overengineering, no boilerplate duplication, and no generic naming. The code reads as purpose-driven throughout. The minor concern about uniform prose style in project descriptions is a content-level observation rather than a code-quality issue, keeping the score in the strong 90+ range per global anchors."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "ai_generated_debt",
+      "identifier": "uniform_description_prose",
+      "summary": "Project descriptions in projects.ts follow a uniform rhetorical pattern suggesting AI-generated prose",
+      "related_files": ["src/lib/data/projects.ts"],
+      "evidence": ["All 12 project descriptions follow the same pattern: technical capability statement, followed by an architectural insight, ending with an interpretive gloss (e.g., 'Relationships as the primary data structure, not an afterthought', 'The process of building it is the transferable skill, not the specifics'). This consistent voice across diverse projects reads as AI-generated content."],
+      "suggestion": "Vary the description style across projects: some could be shorter and punchier, some could lead with the problem rather than the solution, and the interpretive glosses could be reserved for projects where they add genuine insight rather than applied uniformly.",
+      "confidence": "low",
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Content data (prose) may have been drafted with AI assistance even though the code itself shows no AI-debt patterns"],
+    "likely_symptoms": [],
+    "possible_false_positives": ["uniform_description_prose may be an intentional authorial voice rather than AI-generated content"]
+  }
+}

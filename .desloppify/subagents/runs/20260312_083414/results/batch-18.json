@@ -1,0 +1,54 @@
+{
+  "batch": "api_surface_coherence",
+  "batch_index": 18,
+  "assessments": {
+    "api_surface_coherence": 87.0
+  },
+  "dimension_notes": {
+    "api_surface_coherence": {
+      "evidence": [
+        "All three data modules (artefacts.ts, projects.ts, terminal.ts) export typed const arrays as named exports, forming a consistent pattern for static data provision.",
+        "GitHub utility functions follow a uniform async pattern: fetchJson<T> returns Promise<T | null>, fetchRepoData returns Promise<ProjectGitHubData | null>, fetchAllRepoData returns Promise<Record<string, ProjectGitHubData | null>>. The null-return error contract is consistent across the module.",
+        "terminal.ts defines TerminalFrame locally (line 1-4) rather than in src/lib/types/index.ts where Project, Artefact, ProjectGitHubData, and SectionAccent are centralized. This is a minor API surface inconsistency: a developer looking for data shape definitions would check types/index.ts and not find TerminalFrame there.",
+        "No function in the codebase exceeds 5 parameters. fetchJson takes 1, fetchRepoData takes 1, fetchAllRepoData takes 1. Parameter shapes are minimal and consistent.",
+        "The page server load function composes the data and GitHub APIs cleanly: it maps project arrays to repo strings, passes them to fetchAllRepoData, and returns the result. The API boundary between data modules and the GitHub utility is straightforward."
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "TerminalFrame type is defined locally in terminal.ts rather than in the centralized types module, breaking the convention established by the other data files. This is a minor inconsistency but prevents a developer from predicting where all data shape definitions live."
+    }
+  },
+  "dimension_judgment": {
+    "api_surface_coherence": {
+      "strengths": [
+        "Consistent null-return error contract across all GitHub API functions: fetchJson, fetchRepoData, and fetchAllRepoData all use T | null, making failure behavior predictable.",
+        "Data modules follow a uniform export pattern: named const arrays with explicit type annotations imported from a central types file (artefacts.ts and projects.ts both import from $lib/types).",
+        "No overloaded interfaces or functions doing multiple things based on argument types; each function has a single clear responsibility.",
+        "Parameter counts are uniformly minimal (0-1 parameters per public function), keeping API surfaces narrow and predictable."
+      ],
+      "issue_character": "The single inconsistency is a type definition placement outlier in one data module; no systemic API shape problems exist.",
+      "score_rationale": "A developer can predict API shape and behavior from seeing one example in this codebase. The data modules export typed arrays consistently, the GitHub utility follows a uniform async/null-return pattern, and parameter shapes are minimal. The only friction is that TerminalFrame breaks the convention of centralizing types, which is a minor localized inconsistency in an otherwise coherent surface. This places the codebase solidly above the 80 anchor (no recurring irregularities) and close to the 90 anchor (mostly coherent with minor inconsistency)."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "api_surface_coherence",
+      "identifier": "terminal_frame_type_placement",
+      "summary": "TerminalFrame interface defined locally in terminal.ts instead of centralized types module",
+      "related_files": ["src/lib/data/terminal.ts", "src/lib/types/index.ts"],
+      "evidence": [
+        "terminal.ts defines TerminalFrame at lines 1-4, while artefacts.ts imports Artefact from $lib/types and projects.ts imports Project from $lib/types. The convention established by sibling data modules is to define data shapes in src/lib/types/index.ts."
+      ],
+      "suggestion": "Move the TerminalFrame interface to src/lib/types/index.ts alongside Project, Artefact, ProjectGitHubData, and SectionAccent. Update terminal.ts to import it from $lib/types.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["This is a very small codebase (273 LOC) with a narrow API surface, which naturally limits the scope for API coherence issues."],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

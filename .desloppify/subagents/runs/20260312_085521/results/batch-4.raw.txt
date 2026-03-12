@@ -1,0 +1,51 @@
+{
+  "batch": "api_surface_coherence",
+  "batch_index": 4,
+  "assessments": {
+    "api_surface_coherence": 82.0
+  },
+  "dimension_notes": {
+    "api_surface_coherence": {
+      "evidence": [
+        "github.ts exports a coherent API surface: two type guard functions (isRepoResponse, isLanguagesResponse), one pure parser (parseCommitCount), and two async fetch functions (fetchRepoData, fetchAllRepoData)",
+        "The naming convention is consistent: 'fetch' prefix for async data retrieval, 'is' prefix for type guards, 'parse' prefix for data transformation",
+        "fetchRepoData returns Promise<ProjectGitHubData | null> and fetchAllRepoData returns Promise<Record<string, ProjectGitHubData | null>>, both using null to represent failure consistently",
+        "The module mixes sync and async functions in its public API: isRepoResponse (sync), isLanguagesResponse (sync), parseCommitCount (sync), fetchRepoData (async), fetchAllRepoData (async), which is flagged by scan evidence",
+        "Internal helpers fetchGitHub and fetchJson are properly kept private (not exported)"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "high"
+    }
+  },
+  "dimension_judgment": {
+    "api_surface_coherence": {
+      "strengths": [
+        "Consistent naming vocabulary: fetch* for async data retrieval, is* for type guards, parse* for transformation; a developer can predict function behavior from the name prefix",
+        "Error contract is uniform: all fetch functions return null on failure, type guards return boolean, parser returns number; no mixed throw/return-null within the same concern",
+        "Parameter shapes are minimal and unsurprising: fetchRepoData takes a string repo path, fetchAllRepoData takes string[], parseCommitCount takes a nullable string and boolean",
+        "The public API is small (5 exports) with clear separation between validation utilities and data fetching"
+      ],
+      "issue_character": "The mixed sync/async exports are a minor coherence concern but justified by the nature of the functions (type guards are inherently synchronous); the more substantive issue is that the sync utility functions are exported primarily for testability rather than as a deliberate public API for external consumers.",
+      "score_rationale": "The API surface is well-structured with consistent naming, predictable parameter shapes, and a uniform error contract. A developer seeing fetchRepoData can predict what fetchAllRepoData does. The sync/async mix is flagged by the scanner but is justified: type guards and parsers are inherently synchronous while data fetching is inherently async, so mixing them in a single module is the natural choice. The score sits at 82 because the sync utilities (parseCommitCount, isRepoResponse, isLanguagesResponse) are exported for testability but are implementation details that external consumers should not need to call, slightly widening the API surface beyond its natural boundary."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "api_surface_coherence",
+      "identifier": "internal_helpers_exported_for_testing",
+      "summary": "Type guards and parseCommitCount are exported as public API but serve only as internal validation helpers",
+      "related_files": ["src/lib/utils/github.ts", "src/lib/utils/github.test.ts"],
+      "evidence": ["isRepoResponse (line 29), isLanguagesResponse (line 41), and parseCommitCount (line 46) are exported from github.ts. They are only consumed by fetchRepoData internally and by github.test.ts for testing. No other module imports them. These functions are implementation details of the fetch pipeline, exposed as public API solely for testability, which widens the module's contract surface."],
+      "suggestion": "Consider testing these indirectly through fetchRepoData (with mocked fetch) rather than exporting them. If keeping them exported for direct testing is preferred, document this intent with a comment (e.g., '// Exported for testing') so future developers understand the export is deliberate rather than indicating these are part of the public contract.",
+      "confidence": "low",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Exporting internal helpers for testability is a common pragmatic choice that slightly widens the API surface"],
+    "likely_symptoms": [],
+    "possible_false_positives": ["internal_helpers_exported_for_testing: reasonable engineers may disagree on whether exporting for testability is a defect or an acceptable trade-off"]
+  }
+}

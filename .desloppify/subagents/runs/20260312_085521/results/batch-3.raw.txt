@@ -1,0 +1,64 @@
+{
+  "batch": "test_strategy",
+  "batch_index": 3,
+  "assessments": {
+    "test_strategy": 62.0
+  },
+  "dimension_notes": {
+    "test_strategy": {
+      "evidence": [
+        "5 test files exist covering data modules (artefacts, projects, terminal), types, and github utils",
+        "github.test.ts tests the three pure exported functions (parseCommitCount, isRepoResponse, isLanguagesResponse) with good edge case coverage including null, wrong types, multi-digit numbers, and missing fields",
+        "Data module tests (projects.test.ts, artefacts.test.ts, terminal.test.ts) verify structural invariants: non-empty arrays, required field presence, repo format validation, last-frame delay convention",
+        "No tests exist for the async fetch functions (fetchGitHub, fetchJson, fetchRepoData, fetchAllRepoData) which contain the actual integration logic with external API calls",
+        "+page.server.ts has zero test coverage; the scan evidence confirms it as an untested module",
+        "No integration tests verify the data flow from server load through to component rendering",
+        "No test infrastructure for Svelte components exists (no @testing-library/svelte or similar)"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "multi_file_refactor",
+      "confidence": "high"
+    }
+  },
+  "dimension_judgment": {
+    "test_strategy": {
+      "strengths": [
+        "Pure function testing in github.test.ts is thorough: parseCommitCount covers valid link headers, missing headers, non-last pages, and multi-digit page numbers",
+        "Type guard tests (isRepoResponse, isLanguagesResponse) verify both positive and negative cases including null, missing fields, and wrong value types",
+        "Data module tests enforce meaningful structural contracts rather than just snapshot comparisons: repo format validation, required field checks, terminal frame delay conventions",
+        "Tests use Vitest with clean describe/it structure and no unnecessary mocking"
+      ],
+      "issue_character": "The test strategy covers the easy-to-test pure functions and static data but leaves the critical async integration paths (GitHub API fetching, server-side data loading, data merging) entirely unvalidated, creating a significant confidence gap for the code paths most likely to break.",
+      "score_rationale": "The existing tests are well-written and cover the pure function layer effectively. However, the async fetch functions in github.ts (fetchGitHub, fetchJson, fetchRepoData, fetchAllRepoData) represent the most complex and failure-prone code in the codebase and have zero test coverage. The server load function in +page.server.ts is also untested. A developer making changes to the GitHub integration or data loading pipeline would have no test safety net. This places the score at 62: the test strategy has meaningful gaps in the areas where tests would provide the most value, even though the existing tests are good quality."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "test_strategy",
+      "identifier": "untested_fetch_functions",
+      "summary": "Async fetch functions in github.ts (fetchRepoData, fetchAllRepoData) have zero test coverage",
+      "related_files": ["src/lib/utils/github.ts", "src/lib/utils/github.test.ts"],
+      "evidence": ["github.test.ts tests only the three pure exported functions: parseCommitCount, isRepoResponse, isLanguagesResponse. The async functions fetchGitHub (line 6), fetchJson (line 16), fetchRepoData (line 54), and fetchAllRepoData (line 84) are untested. These functions contain the core integration logic: HTTP requests, response parsing, error handling via null returns, Promise.all orchestration, and data assembly into ProjectGitHubData."],
+      "suggestion": "Add tests for fetchRepoData and fetchAllRepoData using a mocked global fetch (vi.stubGlobal or vi.spyOn). Test cases should cover: successful fetch returning valid ProjectGitHubData, API returning non-ok status (should return null), network error (should return null), partial API failures (some repos succeed, some fail), and deduplication in fetchAllRepoData.",
+      "confidence": "high",
+      "impact_scope": "subsystem",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "test_strategy",
+      "identifier": "untested_server_load",
+      "summary": "+page.server.ts load function has no test coverage for build-time data fetching",
+      "related_files": ["src/routes/+page.server.ts"],
+      "evidence": ["The load function in +page.server.ts aggregates all repo paths from three project arrays and calls fetchAllRepoData. It is flagged by scan evidence as an untested module (15 LOC, 0 importers). While the function is simple, it is the single entry point for all build-time data fetching and any failure here would produce a broken static build."],
+      "suggestion": "Add a test that mocks fetchAllRepoData and verifies the load function correctly aggregates repos from all three project arrays and passes them to fetchAllRepoData. This validates the wiring between static data and GitHub API integration.",
+      "confidence": "medium",
+      "impact_scope": "subsystem",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Testing focused on easily testable pure functions first, with async integration tests deferred; no mocking infrastructure established for fetch-based functions"],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

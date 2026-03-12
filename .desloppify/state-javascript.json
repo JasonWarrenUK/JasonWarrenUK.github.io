@@ -1,0 +1,4329 @@
+{
+  "version": 1,
+  "created": "2026-03-12T08:46:06+00:00",
+  "last_scan": "2026-03-12T09:00:10+00:00",
+  "scan_count": 7,
+  "overall_score": 88.3,
+  "objective_score": 99.1,
+  "strict_score": 87.2,
+  "verified_strict_score": 99.1,
+  "stats": {
+    "total": 70,
+    "auto_resolved": 39,
+    "false_positive": 0,
+    "fixed": 0,
+    "open": 30,
+    "wontfix": 1,
+    "by_tier": {
+      "1": {
+        "auto_resolved": 8,
+        "false_positive": 0,
+        "fixed": 0,
+        "open": 6,
+        "wontfix": 0
+      },
+      "2": {
+        "auto_resolved": 14,
+        "false_positive": 0,
+        "fixed": 0,
+        "open": 14,
+        "wontfix": 1
+      },
+      "3": {
+        "auto_resolved": 9,
+        "false_positive": 0,
+        "fixed": 0,
+        "open": 7,
+        "wontfix": 0
+      },
+      "4": {
+        "auto_resolved": 8,
+        "false_positive": 0,
+        "fixed": 0,
+        "open": 3,
+        "wontfix": 0
+      }
+    }
+  },
+  "issues": {
+    "unused::svelte.config.js::unused_import::1": {
+      "id": "unused::svelte.config.js::unused_import::1",
+      "detector": "unused",
+      "file": "svelte.config.js",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Unused import: adapter-static",
+      "detail": {},
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:46:09+00:00",
+      "last_seen": "2026-03-12T08:46:09+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "javascript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "unused::svelte.config.js::unused_import::2": {
+      "id": "unused::svelte.config.js::unused_import::2",
+      "detector": "unused",
+      "file": "svelte.config.js",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Unused import: vite-plugin-svelte",
+      "detail": {},
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:46:09+00:00",
+      "last_seen": "2026-03-12T08:46:09+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "javascript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "orphaned::svelte.config.js": {
+      "id": "orphaned::svelte.config.js",
+      "detector": "orphaned",
+      "file": "svelte.config.js",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (18 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 18
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:46:09+00:00",
+      "last_seen": "2026-03-12T08:46:09+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "javascript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "test_coverage::svelte.config.js": {
+      "id": "test_coverage::svelte.config.js",
+      "detector": "test_coverage",
+      "file": "svelte.config.js",
+      "tier": 3,
+      "confidence": "high",
+      "summary": "Untested module (18 LOC, 0 importers) \u2014 no test files found",
+      "detail": {
+        "kind": "untested_module",
+        "loc": 18,
+        "importer_count": 0,
+        "loc_weight": 4.242640687119285
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:46:09+00:00",
+      "last_seen": "2026-03-12T08:46:09+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "javascript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "single_use::src/app.css": {
+      "id": "single_use::src/app.css",
+      "detector": "single_use",
+      "file": "src/app.css",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Single-use (269 LOC): only imported by src/routes/+layout.svelte",
+      "detail": {
+        "loc": 269,
+        "sole_importer": "src/routes/+layout.svelte"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:55:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T08:55:13+00:00",
+      "suppression_pattern": "single_use::src/app.css"
+    },
+    "orphaned::src/lib/components/ProjectCard.svelte": {
+      "id": "orphaned::src/lib/components/ProjectCard.svelte",
+      "detector": "orphaned",
+      "file": "src/lib/components/ProjectCard.svelte",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (227 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 227
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:55:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T08:55:13+00:00",
+      "suppression_pattern": "orphaned::src/lib/components/*"
+    },
+    "orphaned::src/routes/+page.svelte": {
+      "id": "orphaned::src/routes/+page.svelte",
+      "detector": "orphaned",
+      "file": "src/routes/+page.svelte",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (156 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 156
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:55:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T08:55:13+00:00",
+      "suppression_pattern": "orphaned::src/routes/*"
+    },
+    "orphaned::src/lib/components/Terminal.svelte": {
+      "id": "orphaned::src/lib/components/Terminal.svelte",
+      "detector": "orphaned",
+      "file": "src/lib/components/Terminal.svelte",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (116 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 116
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:55:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T08:55:13+00:00",
+      "suppression_pattern": "orphaned::src/lib/components/*"
+    },
+    "orphaned::src/lib/data/projects.ts": {
+      "id": "orphaned::src/lib/data/projects.ts",
+      "detector": "orphaned",
+      "file": "src/lib/data/projects.ts",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (96 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 96
+      },
+      "status": "auto_resolved",
+      "note": "Disappeared from scan \u2014 likely fixed",
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:49:58+00:00",
+      "resolved_at": "2026-03-12T08:55:13+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "scan_verified",
+        "text": "Disappeared from detector output",
+        "attested_at": "2026-03-12T08:55:13+00:00",
+        "scan_verified": true
+      }
+    },
+    "orphaned::src/lib/components/Artefacts.svelte": {
+      "id": "orphaned::src/lib/components/Artefacts.svelte",
+      "detector": "orphaned",
+      "file": "src/lib/components/Artefacts.svelte",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (70 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 70
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:55:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T08:55:13+00:00",
+      "suppression_pattern": "orphaned::src/lib/components/*"
+    },
+    "orphaned::src/lib/data/artefacts.ts": {
+      "id": "orphaned::src/lib/data/artefacts.ts",
+      "detector": "orphaned",
+      "file": "src/lib/data/artefacts.ts",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (24 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 24
+      },
+      "status": "auto_resolved",
+      "note": "Disappeared from scan \u2014 likely fixed",
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:49:58+00:00",
+      "resolved_at": "2026-03-12T08:55:13+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "scan_verified",
+        "text": "Disappeared from detector output",
+        "attested_at": "2026-03-12T08:55:13+00:00",
+        "scan_verified": true
+      }
+    },
+    "orphaned::src/lib/data/terminal.ts": {
+      "id": "orphaned::src/lib/data/terminal.ts",
+      "detector": "orphaned",
+      "file": "src/lib/data/terminal.ts",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (24 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 24
+      },
+      "status": "auto_resolved",
+      "note": "Disappeared from scan \u2014 likely fixed",
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:49:58+00:00",
+      "resolved_at": "2026-03-12T08:55:13+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "scan_verified",
+        "text": "Disappeared from detector output",
+        "attested_at": "2026-03-12T08:55:13+00:00",
+        "scan_verified": true
+      }
+    },
+    "orphaned::src/lib/components/Section.svelte": {
+      "id": "orphaned::src/lib/components/Section.svelte",
+      "detector": "orphaned",
+      "file": "src/lib/components/Section.svelte",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (23 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 23
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:55:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T08:55:13+00:00",
+      "suppression_pattern": "orphaned::src/lib/components/*"
+    },
+    "orphaned::src/routes/+page.server.ts": {
+      "id": "orphaned::src/routes/+page.server.ts",
+      "detector": "orphaned",
+      "file": "src/routes/+page.server.ts",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (15 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 15
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:55:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T08:55:13+00:00",
+      "suppression_pattern": "orphaned::src/routes/*"
+    },
+    "orphaned::src/routes/+layout.svelte": {
+      "id": "orphaned::src/routes/+layout.svelte",
+      "detector": "orphaned",
+      "file": "src/routes/+layout.svelte",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "Orphaned file (16 LOC): zero importers, not an entry point",
+      "detail": {
+        "loc": 16
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:55:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T08:55:13+00:00",
+      "suppression_pattern": "orphaned::src/routes/*"
+    },
+    "test_coverage::src/lib/data/artefacts.ts::untested_module": {
+      "id": "test_coverage::src/lib/data/artefacts.ts::untested_module",
+      "detector": "test_coverage",
+      "file": "src/lib/data/artefacts.ts",
+      "tier": 3,
+      "confidence": "high",
+      "summary": "Untested module (24 LOC, 0 importers)",
+      "detail": {
+        "kind": "untested_module",
+        "loc": 24,
+        "importer_count": 0,
+        "loc_weight": 4.898979485566356
+      },
+      "status": "auto_resolved",
+      "note": "Disappeared from scan \u2014 likely fixed",
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:49:58+00:00",
+      "resolved_at": "2026-03-12T08:55:13+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "scan_verified",
+        "text": "Disappeared from detector output",
+        "attested_at": "2026-03-12T08:55:13+00:00",
+        "scan_verified": true
+      }
+    },
+    "test_coverage::src/lib/data/terminal.ts::untested_module": {
+      "id": "test_coverage::src/lib/data/terminal.ts::untested_module",
+      "detector": "test_coverage",
+      "file": "src/lib/data/terminal.ts",
+      "tier": 3,
+      "confidence": "high",
+      "summary": "Untested module (24 LOC, 0 importers)",
+      "detail": {
+        "kind": "untested_module",
+        "loc": 24,
+        "importer_count": 0,
+        "loc_weight": 4.898979485566356
+      },
+      "status": "auto_resolved",
+      "note": "Disappeared from scan \u2014 likely fixed",
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:49:58+00:00",
+      "resolved_at": "2026-03-12T08:55:13+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "scan_verified",
+        "text": "Disappeared from detector output",
+        "attested_at": "2026-03-12T08:55:13+00:00",
+        "scan_verified": true
+      }
+    },
+    "test_coverage::src/routes/+page.server.ts::untested_module": {
+      "id": "test_coverage::src/routes/+page.server.ts::untested_module",
+      "detector": "test_coverage",
+      "file": "src/routes/+page.server.ts",
+      "tier": 3,
+      "confidence": "high",
+      "summary": "Untested module (15 LOC, 0 importers)",
+      "detail": {
+        "kind": "untested_module",
+        "loc": 15,
+        "importer_count": 0,
+        "loc_weight": 3.872983346207417
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:55:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "test_coverage::src/lib/types/index.ts::untested_module": {
+      "id": "test_coverage::src/lib/types/index.ts::untested_module",
+      "detector": "test_coverage",
+      "file": "src/lib/types/index.ts",
+      "tier": 3,
+      "confidence": "high",
+      "summary": "Untested module (37 LOC, 0 importers)",
+      "detail": {
+        "kind": "untested_module",
+        "loc": 37,
+        "importer_count": 0,
+        "loc_weight": 6.082762530298219
+      },
+      "status": "auto_resolved",
+      "note": "Disappeared from scan \u2014 likely fixed",
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:49:58+00:00",
+      "resolved_at": "2026-03-12T08:55:13+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "scan_verified",
+        "text": "Disappeared from detector output",
+        "attested_at": "2026-03-12T08:55:13+00:00",
+        "scan_verified": true
+      }
+    },
+    "test_coverage::src/lib/data/projects.ts::untested_module": {
+      "id": "test_coverage::src/lib/data/projects.ts::untested_module",
+      "detector": "test_coverage",
+      "file": "src/lib/data/projects.ts",
+      "tier": 3,
+      "confidence": "high",
+      "summary": "Untested module (96 LOC, 0 importers)",
+      "detail": {
+        "kind": "untested_module",
+        "loc": 96,
+        "importer_count": 0,
+        "loc_weight": 9.797958971132712
+      },
+      "status": "auto_resolved",
+      "note": "Disappeared from scan \u2014 likely fixed",
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:49:58+00:00",
+      "resolved_at": "2026-03-12T08:55:13+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "scan_verified",
+        "text": "Disappeared from detector output",
+        "attested_at": "2026-03-12T08:55:13+00:00",
+        "scan_verified": true
+      }
+    },
+    "smells::src/lib/data/projects.ts::hardcoded_url": {
+      "id": "smells::src/lib/data/projects.ts::hardcoded_url",
+      "detector": "smells",
+      "file": "src/lib/data/projects.ts",
+      "tier": 3,
+      "confidence": "medium",
+      "summary": "2x Hardcoded URL in source code",
+      "detail": {
+        "smell_id": "hardcoded_url",
+        "severity": "medium",
+        "count": 2,
+        "lines": [
+          62,
+          70
+        ]
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:55:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T08:55:13+00:00",
+      "suppression_pattern": "smells::src/lib/data/projects.ts::hardcoded_url"
+    },
+    "smells::src/app.css::css_important_overuse": {
+      "id": "smells::src/app.css::css_important_overuse",
+      "detector": "smells",
+      "file": "src/app.css",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "1x Heavy !important usage in stylesheet",
+      "detail": {
+        "smell_id": "css_important_overuse",
+        "severity": "low",
+        "count": 1,
+        "lines": [
+          221
+        ]
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:55:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": true,
+      "suppressed_at": "2026-03-12T08:55:13+00:00",
+      "suppression_pattern": "smells::src/app.css::css_important_overuse"
+    },
+    "smells::README.md::docs_scripts_drift": {
+      "id": "smells::README.md::docs_scripts_drift",
+      "detector": "smells",
+      "file": "README.md",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "1x README missing key package scripts",
+      "detail": {
+        "smell_id": "docs_scripts_drift",
+        "severity": "low",
+        "count": 1,
+        "lines": [
+          1
+        ]
+      },
+      "status": "auto_resolved",
+      "note": "Out of current scan scope (scan_path: src)",
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:49:58+00:00",
+      "resolved_at": "2026-03-12T08:55:13+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "out_of_scope",
+        "text": "Out of current scan scope (scan_path: src)",
+        "attested_at": "2026-03-12T08:55:13+00:00",
+        "scan_verified": false
+      }
+    },
+    "subjective_review::src/lib/data/artefacts.ts::unreviewed": {
+      "id": "subjective_review::src/lib/data/artefacts.ts::unreviewed",
+      "detector": "subjective_review",
+      "file": "src/lib/data/artefacts.ts",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "No design review on record \u2014 run `desloppify review --prepare`",
+      "detail": {
+        "reason": "unreviewed",
+        "loc": 24
+      },
+      "status": "auto_resolved",
+      "note": "resolved by reviewed_files cache refresh",
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:46:39+00:00",
+      "resolved_at": "2026-03-12T08:46:49+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Per-file review cache refreshed for this file",
+        "attested_at": "2026-03-12T08:46:49+00:00",
+        "scan_verified": false
+      }
+    },
+    "subjective_review::src/lib/data/projects.ts::unreviewed": {
+      "id": "subjective_review::src/lib/data/projects.ts::unreviewed",
+      "detector": "subjective_review",
+      "file": "src/lib/data/projects.ts",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "No design review on record \u2014 run `desloppify review --prepare`",
+      "detail": {
+        "reason": "unreviewed",
+        "loc": 96
+      },
+      "status": "auto_resolved",
+      "note": "resolved by reviewed_files cache refresh",
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:46:39+00:00",
+      "resolved_at": "2026-03-12T08:46:49+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Per-file review cache refreshed for this file",
+        "attested_at": "2026-03-12T08:46:49+00:00",
+        "scan_verified": false
+      }
+    },
+    "subjective_review::src/lib/data/terminal.ts::unreviewed": {
+      "id": "subjective_review::src/lib/data/terminal.ts::unreviewed",
+      "detector": "subjective_review",
+      "file": "src/lib/data/terminal.ts",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "No design review on record \u2014 run `desloppify review --prepare`",
+      "detail": {
+        "reason": "unreviewed",
+        "loc": 24
+      },
+      "status": "auto_resolved",
+      "note": "resolved by reviewed_files cache refresh",
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:46:39+00:00",
+      "resolved_at": "2026-03-12T08:46:49+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Per-file review cache refreshed for this file",
+        "attested_at": "2026-03-12T08:46:49+00:00",
+        "scan_verified": false
+      }
+    },
+    "subjective_review::src/lib/utils/github.ts::unreviewed": {
+      "id": "subjective_review::src/lib/utils/github.ts::unreviewed",
+      "detector": "subjective_review",
+      "file": "src/lib/utils/github.ts",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "No design review on record \u2014 run `desloppify review --prepare`",
+      "detail": {
+        "reason": "unreviewed",
+        "loc": 99
+      },
+      "status": "auto_resolved",
+      "note": "resolved by reviewed_files cache refresh",
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:46:39+00:00",
+      "resolved_at": "2026-03-12T08:46:49+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Per-file review cache refreshed for this file",
+        "attested_at": "2026-03-12T08:46:49+00:00",
+        "scan_verified": false
+      }
+    },
+    "subjective_review::src/routes/+page.server.ts::unreviewed": {
+      "id": "subjective_review::src/routes/+page.server.ts::unreviewed",
+      "detector": "subjective_review",
+      "file": "src/routes/+page.server.ts",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "No design review on record \u2014 run `desloppify review --prepare`",
+      "detail": {
+        "reason": "unreviewed",
+        "loc": 22
+      },
+      "status": "auto_resolved",
+      "note": "resolved by reviewed_files cache refresh",
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:46:39+00:00",
+      "resolved_at": "2026-03-12T08:46:49+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Per-file review cache refreshed for this file",
+        "attested_at": "2026-03-12T08:46:49+00:00",
+        "scan_verified": false
+      }
+    },
+    "subjective_review::.::holistic_unreviewed": {
+      "id": "subjective_review::.::holistic_unreviewed",
+      "detector": "subjective_review",
+      "file": ".",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "No holistic codebase review on record \u2014 run `desloppify review --prepare`",
+      "detail": {
+        "reason": "unreviewed"
+      },
+      "status": "auto_resolved",
+      "note": "resolved by holistic review import",
+      "first_seen": "2026-03-12T08:46:39+00:00",
+      "last_seen": "2026-03-12T08:46:39+00:00",
+      "resolved_at": "2026-03-12T08:46:49+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Holistic review refreshed; coverage marker superseded",
+        "attested_at": "2026-03-12T08:46:49+00:00",
+        "scan_verified": false
+      }
+    },
+    "stale_exclude::docs::docs": {
+      "id": "stale_exclude::docs::docs",
+      "detector": "stale_exclude",
+      "file": "docs",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "Excluded directory 'docs' has 0 references from scanned code \u2014 may be stale",
+      "detail": {
+        "directory": "docs",
+        "references": 0
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:46:41+00:00",
+      "last_seen": "2026-03-12T08:55:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "stale_exclude::.svelte-kit::.svelte-kit": {
+      "id": "stale_exclude::.svelte-kit::.svelte-kit",
+      "detector": "stale_exclude",
+      "file": ".svelte-kit",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "Excluded directory '.svelte-kit' has 0 references from scanned code \u2014 may be stale",
+      "detail": {
+        "directory": ".svelte-kit",
+        "references": 0
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:46:41+00:00",
+      "last_seen": "2026-03-12T08:55:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "stale_exclude::.desloppify::.desloppify": {
+      "id": "stale_exclude::.desloppify::.desloppify",
+      "detector": "stale_exclude",
+      "file": ".desloppify",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "Excluded directory '.desloppify' has 0 references from scanned code \u2014 may be stale",
+      "detail": {
+        "directory": ".desloppify",
+        "references": 0
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:46:41+00:00",
+      "last_seen": "2026-03-12T08:55:13+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::high_level_elegance::terminal_frame_type_misplaced": {
+      "id": "review::.::holistic::high_level_elegance::terminal_frame_type_misplaced",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "TerminalFrame interface defined in data/terminal.ts instead of centralized types/index.ts",
+      "detail": {
+        "holistic": true,
+        "dimension": "high_level_elegance",
+        "related_files": [
+          "src/lib/data/terminal.ts",
+          "src/lib/types/index.ts"
+        ],
+        "evidence": [
+          "src/lib/types/index.ts exports Artefact, Project, ProjectGitHubData, and SectionAccent \u2014 establishing a clear convention that domain types live here",
+          "src/lib/data/artefacts.ts imports its Artefact type from '$lib/types', following the convention",
+          "src/lib/data/projects.ts imports its Project type from '$lib/types', following the convention",
+          "src/lib/data/terminal.ts defines TerminalFrame locally on line 1 and exports it from the data file, breaking the established type-ownership pattern"
+        ],
+        "suggestion": "Move the TerminalFrame interface to src/lib/types/index.ts and import it in terminal.ts, matching the pattern used by artefacts.ts and projects.ts.",
+        "reasoning": "",
+        "content_hash": "8b8a853a"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::convention_outlier::terminal_inline_type_definition": {
+      "id": "review::.::holistic::convention_outlier::terminal_inline_type_definition",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "terminal.ts defines TerminalFrame inline while sibling data modules import types from $lib/types",
+      "detail": {
+        "holistic": true,
+        "dimension": "convention_outlier",
+        "related_files": [
+          "src/lib/data/terminal.ts",
+          "src/lib/types/index.ts"
+        ],
+        "evidence": [
+          "src/lib/data/artefacts.ts imports 'type { Artefact } from $lib/types' (line 1)",
+          "src/lib/data/projects.ts imports 'type { Project } from $lib/types' (line 1)",
+          "src/lib/data/terminal.ts defines 'export interface TerminalFrame' inline (lines 1-4) instead of importing from the shared types module",
+          "The holistic_context sibling_behavior scan confirms terminal.ts is missing the 'type' pattern that 2/3 siblings share"
+        ],
+        "suggestion": "Move the TerminalFrame interface to src/lib/types/index.ts alongside Project, Artefact, and SectionAccent. Then change terminal.ts to import it: import type { TerminalFrame } from '$lib/types';",
+        "reasoning": "",
+        "content_hash": "d2c7d8bb"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::error_consistency::silent_error_swallowing_github": {
+      "id": "review::.::holistic::error_consistency::silent_error_swallowing_github",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "All catch blocks in github.ts discard error context, making network failures invisible during builds",
+      "detail": {
+        "holistic": true,
+        "dimension": "error_consistency",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "fetchJson (line 12): catch block returns null with no logging or error wrapping, discarding HTTP status, rate-limit headers, and exception details",
+          "fetchRepoData commit-count block (line 52): catch swallows with only a comment, silently producing commitCount: 0 for any failure",
+          "Three separate catch blocks, all following the same silent-swallow pattern"
+        ],
+        "suggestion": "Add a minimal console.warn in each catch block that includes the URL and error message (e.g., console.warn(`GitHub fetch failed for ${url}:`, error)). This preserves the graceful-degradation behavior while giving developers build-time visibility into API failures, rate limiting, or network issues.",
+        "reasoning": "",
+        "content_hash": "982b7d33"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::error_consistency::redundant_try_catch_page_server": {
+      "id": "review::.::holistic::error_consistency::redundant_try_catch_page_server",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "Outer try-catch in +page.server.ts is redundant since fetchAllRepoData already handles all errors internally",
+      "detail": {
+        "holistic": true,
+        "dimension": "error_consistency",
+        "related_files": [
+          "src/routes/+page.server.ts",
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "+page.server.ts line 15-19: wraps fetchAllRepoData in try-catch, but fetchAllRepoData delegates to fetchRepoData which delegates to fetchJson, and all failures are already caught and converted to null at the inner layers",
+          "The outer catch can only fire if Promise.all itself throws (an engine-level failure) or if the .map/.filter on project arrays throws, neither of which is a network error"
+        ],
+        "suggestion": "Either remove the outer try-catch (since the callee already guarantees no throws for network failures) or, if defensive coding at the SvelteKit load boundary is intentional, add a comment explaining that this guards against unexpected non-network failures rather than duplicating the network error handling.",
+        "reasoning": "",
+        "content_hash": "c11b7f54"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::naming_quality::withGithub_imprecise_name": {
+      "id": "review::.::holistic::naming_quality::withGithub_imprecise_name",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "withGithub does not communicate that it merges static project data with fetched GitHub metadata",
+      "detail": {
+        "holistic": true,
+        "dimension": "naming_quality",
+        "related_files": [
+          "src/routes/+page.svelte"
+        ],
+        "evidence": [
+          "The function 'withGithub' on line 22 of +page.svelte takes projects without GitHub data and enriches them by looking up their repo in the fetched githubData record. The name 'withGithub' reads like a predicate or filter rather than an enrichment/merge operation."
+        ],
+        "suggestion": "Rename to 'enrichWithGithubData' or 'mergeGithubData' to communicate the enrichment operation: function enrichWithGithubData(projects: Omit<Project, 'github'>[]): Project[]",
+        "reasoning": "",
+        "content_hash": "6dd6e4cb"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::mid_level_elegance::duplicated_accent_colors_mapping": {
+      "id": "review::.::holistic::mid_level_elegance::duplicated_accent_colors_mapping",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "accentColors record duplicated in Section.svelte and ProjectCard.svelte with divergent 'none' values",
+      "detail": {
+        "holistic": true,
+        "dimension": "mid_level_elegance",
+        "related_files": [
+          "src/lib/components/Section.svelte",
+          "src/lib/components/ProjectCard.svelte"
+        ],
+        "evidence": [
+          "Section.svelte defines accentColors with none: 'transparent', while ProjectCard.svelte defines the same mapping with none: 'var(--border)'. Both components independently translate SectionAccent to CSS values, meaning this boundary concept is resolved in two places with inconsistent results."
+        ],
+        "suggestion": "Extract the accentColors mapping to a shared location (e.g., a small utility in $lib/utils/accent.ts or alongside the SectionAccent type in $lib/types/index.ts). If the 'none' value intentionally differs between contexts, make that explicit with two named exports (e.g., sectionAccentColors and cardAccentColors) so the divergence is visible and intentional rather than accidental.",
+        "reasoning": "",
+        "content_hash": "e24a6b55"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::mid_level_elegance::terminal_type_import_inconsistency": {
+      "id": "review::.::holistic::mid_level_elegance::terminal_type_import_inconsistency",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "Terminal.svelte imports TerminalFrame from data module instead of types barrel, unlike all other components",
+      "detail": {
+        "holistic": true,
+        "dimension": "mid_level_elegance",
+        "related_files": [
+          "src/lib/components/Terminal.svelte",
+          "src/lib/data/terminal.ts",
+          "src/lib/types/index.ts"
+        ],
+        "evidence": [
+          "Terminal.svelte imports TerminalFrame from '$lib/data/terminal', while ProjectCard.svelte, Artefacts.svelte, and Section.svelte all import their types from '$lib/types'. The TerminalFrame interface is defined directly in terminal.ts rather than in the types barrel, creating an import path inconsistency at the data-component boundary."
+        ],
+        "suggestion": "Move the TerminalFrame interface to $lib/types/index.ts alongside Project, Artefact, and SectionAccent. Update terminal.ts to import and use it from there, and update Terminal.svelte to import from '$lib/types'. This makes the type boundary consistent: all component prop types come from $lib/types, all data modules export typed values.",
+        "reasoning": "",
+        "content_hash": "23822aef"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::package_organization::terminal_frame_type_placement": {
+      "id": "review::.::holistic::package_organization::terminal_frame_type_placement",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "TerminalFrame interface defined in data/terminal.ts instead of centralized types/index.ts",
+      "detail": {
+        "holistic": true,
+        "dimension": "package_organization",
+        "related_files": [
+          "src/lib/data/terminal.ts",
+          "src/lib/types/index.ts"
+        ],
+        "evidence": [
+          "src/lib/types/index.ts centralizes all other shared types (Project, ProjectGitHubData, Artefact, SectionAccent), but TerminalFrame is defined inline at src/lib/data/terminal.ts:1-4",
+          "artefacts.ts and projects.ts both import their types from '$lib/types', establishing a convention that terminal.ts breaks"
+        ],
+        "suggestion": "Move the TerminalFrame interface to src/lib/types/index.ts alongside the other type definitions, then import it in terminal.ts. Staged plan: (1) Add 'export interface TerminalFrame { text: string; delay: number; }' to src/lib/types/index.ts. (2) Replace the inline interface in src/lib/data/terminal.ts with 'import type { TerminalFrame } from \"$lib/types\";'. (3) Update any component that may import TerminalFrame from terminal.ts to import from $lib/types instead. (4) Run 'bun run build' to verify no import errors.",
+        "reasoning": "",
+        "content_hash": "8b8a853a"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::design_coherence::fetch_helper_bypass": {
+      "id": "review::.::holistic::design_coherence::fetch_helper_bypass",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "fetchRepoData bypasses its own fetchJson helper for the commit-count request",
+      "detail": {
+        "holistic": true,
+        "dimension": "design_coherence",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "Lines 31-35 use fetchJson<T> for repo, languages, and contributors calls, but lines 42-53 use raw fetch() with manually duplicated Accept header for commit count",
+          "The raw fetch block also duplicates the try/catch-return-null pattern that fetchJson already encapsulates"
+        ],
+        "suggestion": "Extract the commit-count fetch into a small helper (e.g., fetchCommitCount) that uses fetchJson or at minimum reuses the same header constant. The Link-header parsing is the genuinely distinct logic; the fetch setup and error handling should not be repeated.",
+        "reasoning": "",
+        "content_hash": "a9f1f950"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::design_coherence::parallel_project_arrays": {
+      "id": "review::.::holistic::design_coherence::parallel_project_arrays",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "Three identically-typed project arrays force repetitive spreading in every consumer",
+      "detail": {
+        "holistic": true,
+        "dimension": "design_coherence",
+        "related_files": [
+          "src/lib/data/projects.ts",
+          "src/routes/+page.server.ts",
+          "src/routes/+page.svelte"
+        ],
+        "evidence": [
+          "+page.server.ts lines 7-10 manually spreads all three arrays to collect repo names: [...impactProjects.map(p => p.repo), ...explorationProjects.map(p => p.repo), ...metaProjects.map(p => p.repo)]",
+          "+page.svelte imports all three arrays separately and calls withGithub() on each independently (lines 114, 131, 142)",
+          "All three arrays share the exact same type: Omit<Project, 'github'>[]"
+        ],
+        "suggestion": "Define a single allProjects array or record keyed by category ('impact' | 'exploration' | 'meta'). Consumers can then iterate or filter by category, and adding a new category requires only a data change, not updates to every consumer.",
+        "reasoning": "",
+        "content_hash": "730b371f"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::logic_clarity::redundant_browser_check_in_onmount": {
+      "id": "review::.::holistic::logic_clarity::redundant_browser_check_in_onmount",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "Redundant `if (browser)` guard inside onMount which only runs in the browser",
+      "detail": {
+        "holistic": true,
+        "dimension": "logic_clarity",
+        "related_files": [
+          "src/lib/components/Terminal.svelte"
+        ],
+        "evidence": [
+          "Line 20: `if (browser) {` inside onMount callback. SvelteKit's onMount is guaranteed to run only in the browser, making this check always true and the import of `browser` from `$app/environment` unnecessary for this purpose."
+        ],
+        "suggestion": "Remove the `if (browser)` wrapper and the `browser` import. Assign `prefersReducedMotion` directly: `prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;`",
+        "reasoning": "",
+        "content_hash": "317906d0"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::logic_clarity::always_true_repo_filter": {
+      "id": "review::.::holistic::logic_clarity::always_true_repo_filter",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "`.filter((repo) => repo.length > 0)` is always true; all repo strings in the data are non-empty",
+      "detail": {
+        "holistic": true,
+        "dimension": "logic_clarity",
+        "related_files": [
+          "src/routes/+page.server.ts",
+          "src/lib/data/projects.ts"
+        ],
+        "evidence": [
+          "Line 11 of +page.server.ts filters repos by length > 0, but every project in impactProjects, explorationProjects, and metaProjects has a non-empty `repo` string literal. The filter never removes any element."
+        ],
+        "suggestion": "Remove the `.filter((repo) => repo.length > 0)` call. If the intent is defensive (guarding against future data with empty repos), add a comment explaining the guard, e.g., `// Skip entries without a repo path`.",
+        "reasoning": "",
+        "content_hash": "c39d25d3"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::type_safety::unsafe_as_cast_api_boundary": {
+      "id": "review::.::holistic::type_safety::unsafe_as_cast_api_boundary",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "fetchJson uses unsafe 'as T' cast on unvalidated API response JSON",
+      "detail": {
+        "holistic": true,
+        "dimension": "type_safety",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "Line 11: 'return (await res.json()) as T' casts the parsed JSON to generic type T without any runtime validation. RepoResponse, Record<string, number>, and ContributorResponse[] are all asserted but never checked against actual API response shape."
+        ],
+        "suggestion": "Add a lightweight runtime shape check (e.g., using Zod or a manual guard function) before the cast, or at minimum validate that expected fields exist. For example, for RepoResponse, check that 'stargazers_count' and 'updated_at' are present and of correct types before returning.",
+        "reasoning": "",
+        "content_hash": "a10607fb"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::type_safety::terminal_frame_type_location": {
+      "id": "review::.::holistic::type_safety::terminal_frame_type_location",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "TerminalFrame interface defined in data file instead of canonical types directory",
+      "detail": {
+        "holistic": true,
+        "dimension": "type_safety",
+        "related_files": [
+          "src/lib/data/terminal.ts",
+          "src/lib/types/index.ts"
+        ],
+        "evidence": [
+          "TerminalFrame is defined and exported from src/lib/data/terminal.ts (lines 1-4), while all other shared interfaces (Project, ProjectGitHubData, Artefact, SectionAccent) are defined in src/lib/types/index.ts. The Terminal.svelte component imports the type from the data file: import type { TerminalFrame } from '$lib/data/terminal'."
+        ],
+        "suggestion": "Move the TerminalFrame interface to src/lib/types/index.ts alongside the other shared types, and update imports in both terminal.ts and Terminal.svelte to import from '$lib/types'.",
+        "reasoning": "",
+        "content_hash": "2a7f7c9b"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::type_safety::commitcount_zero_ambiguity": {
+      "id": "review::.::holistic::type_safety::commitcount_zero_ambiguity",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "commitCount typed as number uses 0 for both 'zero commits' and 'unknown count'",
+      "detail": {
+        "holistic": true,
+        "dimension": "type_safety",
+        "related_files": [
+          "src/lib/utils/github.ts",
+          "src/lib/types/index.ts"
+        ],
+        "evidence": [
+          "In github.ts lines 40-53, commitCount is initialized to 0 and stays at 0 if the link header is missing, the regex doesn't match, or the fetch throws. The type ProjectGitHubData.commitCount is 'number', making 0 indistinguishable from 'could not determine'. A consumer displaying commit count cannot differentiate between a repo with no commits and a failed count retrieval."
+        ],
+        "suggestion": "Type commitCount as 'number | null' in ProjectGitHubData, use null to represent 'unknown', and update consumers to handle the null case (e.g., show 'N/A' instead of '0').",
+        "reasoning": "",
+        "content_hash": "7a7382a1"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::contract_coherence::terminal_frame_type_misplaced": {
+      "id": "review::.::holistic::contract_coherence::terminal_frame_type_misplaced",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "TerminalFrame interface defined in data file instead of types module, breaking module-level API convention",
+      "detail": {
+        "holistic": true,
+        "dimension": "contract_coherence",
+        "related_files": [
+          "src/lib/data/terminal.ts",
+          "src/lib/types/index.ts",
+          "src/lib/components/Terminal.svelte"
+        ],
+        "evidence": [
+          "All other shared types (Project, ProjectGitHubData, Artefact, SectionAccent) are exported from src/lib/types/index.ts",
+          "TerminalFrame is defined and exported from src/lib/data/terminal.ts (line 1-4)",
+          "Terminal.svelte imports TerminalFrame from '$lib/data/terminal' rather than '$lib/types', meaning a component must import from a data module to get a type"
+        ],
+        "suggestion": "Move the TerminalFrame interface to src/lib/types/index.ts and re-export it. Update the import in src/lib/data/terminal.ts and src/lib/components/Terminal.svelte to use '$lib/types'.",
+        "reasoning": "",
+        "content_hash": "e641e6a3"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::abstraction_fitness::duplicated_accent_color_map": {
+      "id": "review::.::holistic::abstraction_fitness::duplicated_accent_color_map",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "accentColors record duplicated in Section.svelte and ProjectCard.svelte with divergent 'none' values",
+      "detail": {
+        "holistic": true,
+        "dimension": "abstraction_fitness",
+        "related_files": [
+          "src/lib/components/Section.svelte",
+          "src/lib/components/ProjectCard.svelte"
+        ],
+        "evidence": [
+          "Section.svelte defines accentColors with none: 'transparent' (line 13-18), while ProjectCard.svelte defines it with none: 'var(--border)' (line 13-18). Both are Record<SectionAccent, string> mapping the same SectionAccent type to CSS values."
+        ],
+        "suggestion": "Extract a shared accentColors mapping (or a getAccentColor utility) into a shared location (e.g. a small helper alongside the SectionAccent type). If the 'none' value intentionally differs per context, make the divergence explicit through a parameter rather than silent duplication.",
+        "reasoning": "",
+        "content_hash": "e24a6b55"
+      },
+      "status": "wontfix",
+      "note": "Already fixed: extracted shared accentColors to types/index.ts",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:47:43+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "manual",
+        "text": "I have reviewed this issue and the fix is in place. I am not gaming the score.",
+        "attested_at": "2026-03-12T08:47:43+00:00",
+        "scan_verified": false
+      },
+      "wontfix_scan_count": 3,
+      "wontfix_snapshot": {
+        "captured_at": "2026-03-12T08:47:43+00:00",
+        "scan_count": 3,
+        "tier": 2,
+        "confidence": "medium",
+        "detail": {
+          "holistic": true,
+          "dimension": "abstraction_fitness",
+          "related_files": [
+            "src/lib/components/Section.svelte",
+            "src/lib/components/ProjectCard.svelte"
+          ],
+          "evidence": [
+            "Section.svelte defines accentColors with none: 'transparent' (line 13-18), while ProjectCard.svelte defines it with none: 'var(--border)' (line 13-18). Both are Record<SectionAccent, string> mapping the same SectionAccent type to CSS values."
+          ],
+          "suggestion": "Extract a shared accentColors mapping (or a getAccentColor utility) into a shared location (e.g. a small helper alongside the SectionAccent type). If the 'none' value intentionally differs per context, make the divergence explicit through a parameter rather than silent duplication.",
+          "reasoning": "",
+          "content_hash": "e24a6b55"
+        }
+      }
+    },
+    "review::.::holistic::low_level_elegance::combined_effect_observers": {
+      "id": "review::.::holistic::low_level_elegance::combined_effect_observers",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "$effect in +page.svelte combines two unrelated observer responsibilities in a single 50-line block",
+      "detail": {
+        "holistic": true,
+        "dimension": "low_level_elegance",
+        "related_files": [
+          "src/routes/+page.svelte"
+        ],
+        "evidence": [
+          "Lines 40-92 of +page.svelte contain a single $effect that sets up both a reveal animation IntersectionObserver and a scroll-driven background tint IntersectionObserver, with a combined cleanup function"
+        ],
+        "suggestion": "Extract two separate functions (e.g., setupRevealObserver and setupTintObserver) and call both from the $effect, or use two separate $effect blocks. Each observer has independent lifecycle and purpose.",
+        "reasoning": "",
+        "content_hash": "b9c9a0c3"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::low_level_elegance::commit_count_bypasses_fetchjson": {
+      "id": "review::.::holistic::low_level_elegance::commit_count_bypasses_fetchjson",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "Commit count fetch in fetchRepoData bypasses the module's own fetchJson helper, duplicating fetch setup",
+      "detail": {
+        "holistic": true,
+        "dimension": "low_level_elegance",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "Lines 41-54: fetchRepoData manually calls fetch() with the same Accept header that fetchJson already encapsulates, but needs access to response headers. This creates two fetch patterns in the same module."
+        ],
+        "suggestion": "Extract a lower-level helper (e.g., fetchResponse) that returns the Response object, then build fetchJson on top of it. Use fetchResponse for the commit-count call where header access is needed. This keeps one fetch configuration point.",
+        "reasoning": "",
+        "content_hash": "ac451ea4"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::low_level_elegance::foreach_index_correlation": {
+      "id": "review::.::holistic::low_level_elegance::foreach_index_correlation",
+      "detector": "review",
+      "file": ".",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "fetchAllRepoData uses forEach with index to correlate names to results instead of a more direct construction",
+      "detail": {
+        "holistic": true,
+        "dimension": "low_level_elegance",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "Lines 72-76: unique.forEach((name, i) => { data[name] = results[i]; }) relies on positional correlation between the unique array and Promise.all results, which is correct but indirect"
+        ],
+        "suggestion": "Replace with Object.fromEntries(unique.map((name, i) => [name, results[i]])) or a reduce, which makes the name-to-result mapping declarative rather than imperative.",
+        "reasoning": "",
+        "content_hash": "79187e7a"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::cross_module_architecture::terminal_frame_type_boundary": {
+      "id": "review::.::holistic::cross_module_architecture::terminal_frame_type_boundary",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "TerminalFrame interface defined in data module instead of the shared types module",
+      "detail": {
+        "holistic": true,
+        "dimension": "cross_module_architecture",
+        "related_files": [
+          "src/lib/data/terminal.ts",
+          "src/lib/types/index.ts",
+          "src/lib/components/Terminal.svelte"
+        ],
+        "evidence": [
+          "src/lib/data/terminal.ts defines and exports 'TerminalFrame' interface at line 1, while all other domain types (Project, ProjectGitHubData, Artefact, SectionAccent) live in src/lib/types/index.ts",
+          "src/lib/components/Terminal.svelte imports TerminalFrame from '$lib/data/terminal' (line 2), unlike sibling components (Artefacts.svelte, ProjectCard.svelte, Section.svelte) which all import types from '$lib/types'"
+        ],
+        "suggestion": "Move the TerminalFrame interface to src/lib/types/index.ts alongside the other domain types, and update the imports in both terminal.ts and Terminal.svelte to use '$lib/types'. This aligns with the established pattern where all domain interfaces live in the types module.",
+        "reasoning": "",
+        "content_hash": "d6403897"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::test_strategy::zero_test_infrastructure": {
+      "id": "review::.::holistic::test_strategy::zero_test_infrastructure",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "No test framework, test files, or test scripts exist anywhere in the codebase",
+      "detail": {
+        "holistic": true,
+        "dimension": "test_strategy",
+        "related_files": [
+          "package.json"
+        ],
+        "evidence": [
+          "package.json contains no test-related devDependencies (vitest, jest, etc.)",
+          "No .test.ts, .spec.ts, or __tests__/ files found in the entire repository",
+          "package.json scripts only define dev, build, and preview; no test command exists"
+        ],
+        "suggestion": "Install vitest (already compatible with the Vite build): add vitest to devDependencies, add a 'test' script to package.json, and create at least a vitest.config.ts. Start with tests for github.ts since it contains the most critical parsing logic.",
+        "reasoning": "",
+        "content_hash": "ee7c3bbc"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::test_strategy::untested_github_api_parsing": {
+      "id": "review::.::holistic::test_strategy::untested_github_api_parsing",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "GitHub API response parsing and Link header extraction have zero test coverage",
+      "detail": {
+        "holistic": true,
+        "dimension": "test_strategy",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "fetchJson performs HTTP calls with JSON parsing and error handling (lines 5-15) with no tests",
+          "fetchRepoData parses Link headers via regex (line 47: /page=(\\d+)>; rel=\"last\"/) to extract commit counts, with a fallback to 1 when no header exists but response is OK; this branching logic is untested",
+          "fetchAllRepoData deduplicates repo names and zips results back into a record; the index-based correlation between unique names and results is fragile without tests"
+        ],
+        "suggestion": "Write unit tests for github.ts by mocking fetch: test fetchJson with success, HTTP error, and network error cases; test fetchRepoData with various Link header formats (present, absent, malformed); test fetchAllRepoData with duplicate repo names to verify deduplication and correct result mapping.",
+        "reasoning": "",
+        "content_hash": "74657a20"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::api_surface_coherence::terminal_frame_type_placement": {
+      "id": "review::.::holistic::api_surface_coherence::terminal_frame_type_placement",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "TerminalFrame interface defined locally in terminal.ts instead of centralized types module",
+      "detail": {
+        "holistic": true,
+        "dimension": "api_surface_coherence",
+        "related_files": [
+          "src/lib/data/terminal.ts",
+          "src/lib/types/index.ts"
+        ],
+        "evidence": [
+          "terminal.ts defines TerminalFrame at lines 1-4, while artefacts.ts imports Artefact from $lib/types and projects.ts imports Project from $lib/types. The convention established by sibling data modules is to define data shapes in src/lib/types/index.ts."
+        ],
+        "suggestion": "Move the TerminalFrame interface to src/lib/types/index.ts alongside Project, Artefact, ProjectGitHubData, and SectionAccent. Update terminal.ts to import it from $lib/types.",
+        "reasoning": "",
+        "content_hash": "44882275"
+      },
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
+      "first_seen": "2026-03-12T08:46:49+00:00",
+      "last_seen": "2026-03-12T08:46:49+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "subjective_review::src/lib/utils/github.ts::changed": {
+      "id": "subjective_review::src/lib/utils/github.ts::changed",
+      "detector": "subjective_review",
+      "file": "src/lib/utils/github.ts",
+      "tier": 4,
+      "confidence": "medium",
+      "summary": "File changed since last review \u2014 re-review recommended",
+      "detail": {
+        "reason": "changed",
+        "loc": 90
+      },
+      "status": "auto_resolved",
+      "note": "resolved by reviewed_files cache refresh",
+      "first_seen": "2026-03-12T08:55:11+00:00",
+      "last_seen": "2026-03-12T08:55:11+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Per-file review cache refreshed for this file",
+        "attested_at": "2026-03-12T08:59:56+00:00",
+        "scan_verified": false
+      }
+    },
+    "subjective_review::.::holistic_stale": {
+      "id": "subjective_review::.::holistic_stale",
+      "detector": "subjective_review",
+      "file": ".",
+      "tier": 4,
+      "confidence": "low",
+      "summary": "Codebase changed significantly since holistic review (7\u219212 files) \u2014 re-review recommended",
+      "detail": {
+        "reason": "drift",
+        "old_files": 7,
+        "new_files": 12
+      },
+      "status": "auto_resolved",
+      "note": "resolved by holistic review import",
+      "first_seen": "2026-03-12T08:55:11+00:00",
+      "last_seen": "2026-03-12T08:55:11+00:00",
+      "resolved_at": "2026-03-12T08:59:56+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Holistic review refreshed; coverage marker superseded",
+        "attested_at": "2026-03-12T08:59:56+00:00",
+        "scan_verified": false
+      }
+    },
+    "review::.::holistic::high_level_elegance::runtime_value_in_types_module": {
+      "id": "review::.::holistic::high_level_elegance::runtime_value_in_types_module",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "accentColors runtime constant exported from types/index.ts alongside pure type definitions",
+      "detail": {
+        "holistic": true,
+        "dimension": "high_level_elegance",
+        "related_files": [
+          "src/lib/types/index.ts"
+        ],
+        "evidence": [
+          "accentColors is a Record<SectionAccent, string> runtime constant defined at line 32-37 of src/lib/types/index.ts, which otherwise contains only interfaces and type aliases. This mixes runtime values with type-only definitions, blurring the module's role as a pure contract layer."
+        ],
+        "suggestion": "Move accentColors to a dedicated src/lib/data/theme.ts or src/lib/data/accents.ts module, keeping src/lib/types/index.ts as a pure type definition module. Update imports in Section.svelte and ProjectCard.svelte accordingly.",
+        "reasoning": "",
+        "content_hash": "3ecc18b0"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::mid_level_elegance::github_data_merge_in_presentation": {
+      "id": "review::.::holistic::mid_level_elegance::github_data_merge_in_presentation",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "attachGithubData merges server data with static data in +page.svelte instead of +page.server.ts",
+      "detail": {
+        "holistic": true,
+        "dimension": "mid_level_elegance",
+        "related_files": [
+          "src/routes/+page.svelte",
+          "src/routes/+page.server.ts"
+        ],
+        "evidence": [
+          "In +page.svelte lines 22-27, attachGithubData maps over static project arrays and attaches github data from the page's server-loaded data. This data assembly could happen in +page.server.ts where the GitHub data is fetched, returning fully assembled Project[] arrays. Currently the page component must know about the Omit<Project, 'github'> shape and the githubData record key structure."
+        ],
+        "suggestion": "Move the merge logic into +page.server.ts so it returns { impactProjects: Project[], explorationProjects: Project[], metaProjects: Project[] } with github data already attached. This keeps data assembly on the server side and simplifies the page component to pure presentation.",
+        "reasoning": "",
+        "content_hash": "082f1d15"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::mid_level_elegance::artefact_hardcoded_owner_url": {
+      "id": "review::.::holistic::mid_level_elegance::artefact_hardcoded_owner_url",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "Artefacts.svelte hardcodes GitHub owner URL prefix instead of deriving from data contract",
+      "detail": {
+        "holistic": true,
+        "dimension": "mid_level_elegance",
+        "related_files": [
+          "src/lib/components/Artefacts.svelte",
+          "src/lib/data/artefacts.ts"
+        ],
+        "evidence": [
+          "Artefacts.svelte line 25 constructs URLs as 'https://github.com/JasonWarrenUK/{artefact.repo}', hardcoding the owner. In contrast, ProjectCard.svelte line 123 uses 'https://github.com/{project.repo}' where the repo field already contains 'owner/repo'. The Artefact type's repo field contains only the repo name (e.g., 'nihilistic-onboarder'), while Project's repo field contains 'owner/repo' (e.g., 'JasonWarrenUK/sparker'). This inconsistency means the two parallel data paths use different URL construction strategies at the presentation boundary."
+        ],
+        "suggestion": "Change artefacts.ts repo values to include the owner prefix (e.g., 'JasonWarrenUK/nihilistic-onboarder') and update Artefacts.svelte to use 'https://github.com/{artefact.repo}' for consistency with ProjectCard. This aligns both data models on the same repo path convention.",
+        "reasoning": "",
+        "content_hash": "7cf99743"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::test_strategy::untested_fetch_functions": {
+      "id": "review::.::holistic::test_strategy::untested_fetch_functions",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "Async fetch functions in github.ts (fetchRepoData, fetchAllRepoData) have zero test coverage",
+      "detail": {
+        "holistic": true,
+        "dimension": "test_strategy",
+        "related_files": [
+          "src/lib/utils/github.ts",
+          "src/lib/utils/github.test.ts"
+        ],
+        "evidence": [
+          "github.test.ts tests only the three pure exported functions: parseCommitCount, isRepoResponse, isLanguagesResponse. The async functions fetchGitHub (line 6), fetchJson (line 16), fetchRepoData (line 54), and fetchAllRepoData (line 84) are untested. These functions contain the core integration logic: HTTP requests, response parsing, error handling via null returns, Promise.all orchestration, and data assembly into ProjectGitHubData."
+        ],
+        "suggestion": "Add tests for fetchRepoData and fetchAllRepoData using a mocked global fetch (vi.stubGlobal or vi.spyOn). Test cases should cover: successful fetch returning valid ProjectGitHubData, API returning non-ok status (should return null), network error (should return null), partial API failures (some repos succeed, some fail), and deduplication in fetchAllRepoData.",
+        "reasoning": "",
+        "content_hash": "a0392f1a"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::test_strategy::untested_server_load": {
+      "id": "review::.::holistic::test_strategy::untested_server_load",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "+page.server.ts load function has no test coverage for build-time data fetching",
+      "detail": {
+        "holistic": true,
+        "dimension": "test_strategy",
+        "related_files": [
+          "src/routes/+page.server.ts"
+        ],
+        "evidence": [
+          "The load function in +page.server.ts aggregates all repo paths from three project arrays and calls fetchAllRepoData. It is flagged by scan evidence as an untested module (15 LOC, 0 importers). While the function is simple, it is the single entry point for all build-time data fetching and any failure here would produce a broken static build."
+        ],
+        "suggestion": "Add a test that mocks fetchAllRepoData and verifies the load function correctly aggregates repos from all three project arrays and passes them to fetchAllRepoData. This validates the wiring between static data and GitHub API integration.",
+        "reasoning": "",
+        "content_hash": "086f8ab2"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::api_surface_coherence::internal_helpers_exported_for_testing": {
+      "id": "review::.::holistic::api_surface_coherence::internal_helpers_exported_for_testing",
+      "detector": "review",
+      "file": ".",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "Type guards and parseCommitCount are exported as public API but serve only as internal validation helpers",
+      "detail": {
+        "holistic": true,
+        "dimension": "api_surface_coherence",
+        "related_files": [
+          "src/lib/utils/github.ts",
+          "src/lib/utils/github.test.ts"
+        ],
+        "evidence": [
+          "isRepoResponse (line 29), isLanguagesResponse (line 41), and parseCommitCount (line 46) are exported from github.ts. They are only consumed by fetchRepoData internally and by github.test.ts for testing. No other module imports them. These functions are implementation details of the fetch pipeline, exposed as public API solely for testability, which widens the module's contract surface."
+        ],
+        "suggestion": "Consider testing these indirectly through fetchRepoData (with mocked fetch) rather than exporting them. If keeping them exported for direct testing is preferred, document this intent with a comment (e.g., '// Exported for testing') so future developers understand the export is deliberate rather than indicating these are part of the public contract.",
+        "reasoning": "",
+        "content_hash": "c49b2063"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::package_organization::types_dir_mixes_runtime": {
+      "id": "review::.::holistic::package_organization::types_dir_mixes_runtime",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "types/index.ts exports runtime value (accentColors) alongside type definitions",
+      "detail": {
+        "holistic": true,
+        "dimension": "package_organization",
+        "related_files": [
+          "src/lib/types/index.ts"
+        ],
+        "evidence": [
+          "src/lib/types/index.ts defines accentColors as a runtime Record<SectionAccent, string> constant alongside pure type/interface exports (ProjectGitHubData, Project, Artefact, TerminalFrame). The directory name 'types/' implies pure type declarations, but this file also serves as a runtime module."
+        ],
+        "suggestion": "Move the accentColors constant and SectionAccent type to a new file src/lib/data/accents.ts or src/lib/theme.ts, keeping types/index.ts purely for interface/type exports. Staged plan: 1) Create src/lib/data/accents.ts with the SectionAccent type and accentColors export. 2) Update imports in any components that reference accentColors. 3) Verify with 'bun run build' that no import paths break.",
+        "reasoning": "",
+        "content_hash": "03c9ef1c"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::design_coherence::page_svelte_mixed_concerns": {
+      "id": "review::.::holistic::design_coherence::page_svelte_mixed_concerns",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "+page.svelte mixes data transformation, reveal animation, and tint transition into one component",
+      "detail": {
+        "holistic": true,
+        "dimension": "design_coherence",
+        "related_files": [
+          "src/routes/+page.svelte"
+        ],
+        "evidence": [
+          "attachGithubData() on line 22 is data transformation logic embedded in the view component",
+          "First $effect (line 40) handles scroll-reveal animation with IntersectionObserver",
+          "Second $effect (line 63) handles background tint transitions with a separate IntersectionObserver",
+          "sectionTints constant (line 29) is presentation configuration mixed into the component script"
+        ],
+        "suggestion": "Extract the two animation behaviors into reusable Svelte actions or separate utility modules: 1) Create src/lib/utils/reveal.ts exporting a Svelte action for scroll-reveal behavior. 2) Create src/lib/utils/tint.ts exporting a Svelte action for background tint transitions, with sectionTints as a parameter. 3) Move attachGithubData to src/lib/utils/projects.ts or inline the merge in +page.server.ts so the page component receives ready-to-render data. This keeps +page.svelte as pure composition/layout.",
+        "reasoning": "",
+        "content_hash": "c952cc0a"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::naming_quality::fetchJson_hides_null": {
+      "id": "review::.::holistic::naming_quality::fetchJson_hides_null",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "fetchJson name does not communicate that it returns null on HTTP failure",
+      "detail": {
+        "holistic": true,
+        "dimension": "naming_quality",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "fetchJson (line 16) returns Promise<unknown> but actually returns null when fetchGitHub returns null on HTTP failure. The name 'fetchJson' implies it fetches and parses JSON, but the null-on-failure behavior is hidden. Callers must know to check for null, which the name does not suggest."
+        ],
+        "suggestion": "Rename to fetchJsonOrNull or tryFetchJson to communicate the nullable return semantics, matching the pattern where fetchGitHub already returns Promise<Response | null>. Alternatively, add the null to the return type annotation: Promise<unknown | null>.",
+        "reasoning": "",
+        "content_hash": "e7cf22f5"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::logic_clarity::parseCommitCount_redundant_param": {
+      "id": "review::.::holistic::logic_clarity::parseCommitCount_redundant_param",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "parseCommitCount 'responseOk' parameter is always equivalent to 'linkHeader !== null || response exists'",
+      "detail": {
+        "holistic": true,
+        "dimension": "logic_clarity",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "fetchGitHub returns null for non-ok responses, so when commitsRes is non-null, the response was ok. The caller passes 'commitsRes !== null' as responseOk, which is tautologically true when commitsRes exists (line 71). The fallback 'return responseOk ? 1 : 0' is reached only when linkHeader has no match, and at that point responseOk is always true because commitsRes was non-null to reach this code path."
+        ],
+        "suggestion": "Remove the responseOk parameter from parseCommitCount. The function only needs the linkHeader string. If no Link header match is found, return 1 (a valid response with no pagination means exactly 1 page of commits). The caller simplifies to parseCommitCount(commitsRes?.headers.get('Link') ?? null).",
+        "reasoning": "",
+        "content_hash": "3148b8ec"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::logic_clarity::incomplete_type_guard": {
+      "id": "review::.::holistic::logic_clarity::incomplete_type_guard",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "isRepoResponse validates stargazers_count and updated_at types but not open_issues_count or language",
+      "detail": {
+        "holistic": true,
+        "dimension": "logic_clarity",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "The RepoResponse interface declares open_issues_count: number and language: string | null, but isRepoResponse only checks typeof stargazers_count === 'number' and typeof updated_at === 'string'. The 'in' check confirms key presence but not value types for all fields."
+        ],
+        "suggestion": "Add typeof checks for open_issues_count (number) to match the interface. The language field is string | null so its check is less critical, but open_issues_count is used directly in the return value (line 80) and should be validated.",
+        "reasoning": "",
+        "content_hash": "6403d59d"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::type_safety::fetchJson_untyped_return": {
+      "id": "review::.::holistic::type_safety::fetchJson_untyped_return",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "fetchJson returns Promise<unknown> but can return null; callers get no type guidance on possible shapes",
+      "detail": {
+        "holistic": true,
+        "dimension": "type_safety",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "fetchJson (line 16) returns Promise<unknown> which technically covers null, but callers must independently know what shapes to expect. The function returns null when fetchGitHub returns null, or the parsed JSON otherwise. A return type of Promise<unknown | null> would be more explicit, though the real improvement would be a generic overload or documenting the null case."
+        ],
+        "suggestion": "Change the return type to Promise<unknown | null> to explicitly signal the null case. Alternatively, consider making fetchJson generic with a type guard parameter: async function fetchJson<T>(url: string, guard: (data: unknown) => data is T): Promise<T | null> to push type narrowing into the fetch call.",
+        "reasoning": "",
+        "content_hash": "f6a5187e"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::type_safety::unused_interface_field": {
+      "id": "review::.::holistic::type_safety::unused_interface_field",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "RepoResponse includes 'language' field that is validated by isRepoResponse but never read by fetchRepoData",
+      "detail": {
+        "holistic": true,
+        "dimension": "type_safety",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "RepoResponse interface (line 22) declares language: string | null. isRepoResponse does not validate this field's type (only presence via 'in' check is absent for language). fetchRepoData (line 54) destructures/uses stargazers_count, open_issues_count, and updated_at but never accesses repo.language. The field exists in the interface but serves no purpose."
+        ],
+        "suggestion": "Remove 'language' from the RepoResponse interface since it is not used by any consumer. If it is intended for future use, add a comment explaining the intent.",
+        "reasoning": "",
+        "content_hash": "80adebf3"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::contract_coherence::type_guard_contract_gap": {
+      "id": "review::.::holistic::contract_coherence::type_guard_contract_gap",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "isRepoResponse claims to validate RepoResponse shape but does not verify all field types",
+      "detail": {
+        "holistic": true,
+        "dimension": "contract_coherence",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "isRepoResponse (line 29) returns 'data is RepoResponse' but only validates typeof for stargazers_count and updated_at. The RepoResponse interface also includes open_issues_count: number and language: string | null, neither of which has typeof validation. A caller trusting the type guard would assume all fields are type-safe, but open_issues_count could be a non-number value."
+        ],
+        "suggestion": "Add typeof (data as RepoResponse).open_issues_count === 'number' to the guard. For language, check typeof === 'string' || value === null. This makes the guard's implementation match its stated contract.",
+        "reasoning": "",
+        "content_hash": "d757b42c"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::error_consistency::silent_error_swallowing": {
+      "id": "review::.::holistic::error_consistency::silent_error_swallowing",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "fetchGitHub catches all errors and returns null without logging or preserving error context",
+      "detail": {
+        "holistic": true,
+        "dimension": "error_consistency",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "The catch block on line 11 catches any error and returns null. A rate limit (429), network failure, DNS error, and server error (500) all produce the same null result. No console.warn, no error categorization, no way for callers to distinguish failure modes. During build-time SSG, a rate-limited API call silently produces empty GitHub data with no build log evidence."
+        ],
+        "suggestion": "Add a console.warn in the catch block logging the URL and error message. Consider returning a discriminated result type like { ok: false, reason: 'network' | 'rate_limit' | 'not_found' | 'server_error' } instead of bare null, or at minimum log the HTTP status code for non-ok responses before returning null.",
+        "reasoning": "",
+        "content_hash": "34556ba1"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::error_consistency::broad_catch_no_discrimination": {
+      "id": "review::.::holistic::error_consistency::broad_catch_no_discrimination",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "fetchGitHub conflates non-ok HTTP responses with network/parse exceptions into a single null",
+      "detail": {
+        "holistic": true,
+        "dimension": "error_consistency",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "Lines 8-9 check res.ok and return null for non-ok responses. Lines 10-13 catch network exceptions and also return null. These are fundamentally different failure modes (the server responded with an error vs the request never completed) but produce identical results. A 403 rate limit could be retried after a delay; a network error might indicate a build environment issue."
+        ],
+        "suggestion": "Separate the non-ok response path from the exception path. For non-ok responses, log the status code (res.status) and consider special handling for 403/429 (rate limit). For caught exceptions, log the error. Even if both ultimately return null for graceful degradation, the logging distinction aids debugging.",
+        "reasoning": "",
+        "content_hash": "91942d7a"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::abstraction_fitness::runtime_value_in_types_module": {
+      "id": "review::.::holistic::abstraction_fitness::runtime_value_in_types_module",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "accentColors runtime record exported from types/index.ts alongside pure type definitions",
+      "detail": {
+        "holistic": true,
+        "dimension": "abstraction_fitness",
+        "related_files": [
+          "src/lib/types/index.ts"
+        ],
+        "evidence": [
+          "accentColors is a runtime Record<SectionAccent, string> value exported from the types module, which otherwise contains only interfaces and type aliases. This mixes concerns: consumers importing types also pull in runtime values."
+        ],
+        "suggestion": "Move accentColors to a dedicated constants file (e.g., src/lib/data/constants.ts or src/lib/data/accents.ts) and keep types/index.ts purely for type definitions.",
+        "reasoning": "",
+        "content_hash": "9ab24a8d"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::ai_generated_debt::uniform_description_prose": {
+      "id": "review::.::holistic::ai_generated_debt::uniform_description_prose",
+      "detector": "review",
+      "file": ".",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "Project descriptions in projects.ts follow a uniform rhetorical pattern suggesting AI-generated prose",
+      "detail": {
+        "holistic": true,
+        "dimension": "ai_generated_debt",
+        "related_files": [
+          "src/lib/data/projects.ts"
+        ],
+        "evidence": [
+          "All 12 project descriptions follow the same pattern: technical capability statement, followed by an architectural insight, ending with an interpretive gloss (e.g., 'Relationships as the primary data structure, not an afterthought', 'The process of building it is the transferable skill, not the specifics'). This consistent voice across diverse projects reads as AI-generated content."
+        ],
+        "suggestion": "Vary the description style across projects: some could be shorter and punchier, some could lead with the problem rather than the solution, and the interpretive glosses could be reserved for projects where they add genuine insight rather than applied uniformly.",
+        "reasoning": "",
+        "content_hash": "ed8154a3"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::low_level_elegance::duplicated_observer_pattern": {
+      "id": "review::.::holistic::low_level_elegance::duplicated_observer_pattern",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "Two $effect blocks in +page.svelte duplicate IntersectionObserver setup/teardown boilerplate",
+      "detail": {
+        "holistic": true,
+        "dimension": "low_level_elegance",
+        "related_files": [
+          "src/routes/+page.svelte"
+        ],
+        "evidence": [
+          "Lines 40-61 and 63-84 both create an IntersectionObserver, configure it with options, observe a set of elements, and return a cleanup function. The structure is identical; only the callback behavior and options differ."
+        ],
+        "suggestion": "Extract a reusable helper like createSectionObserver(selector, options, onIntersect) that handles observer lifecycle, and call it from each $effect with different callbacks and options.",
+        "reasoning": "",
+        "content_hash": "e5083b10"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::low_level_elegance::sequential_commits_fetch": {
+      "id": "review::.::holistic::low_level_elegance::sequential_commits_fetch",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "fetchRepoData makes commits API call sequentially after the parallel Promise.all batch",
+      "detail": {
+        "holistic": true,
+        "dimension": "low_level_elegance",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "Lines 57-61 use Promise.all to fetch repo, languages, and contributors in parallel. But line 68 fetches commits sequentially after the parallel batch completes. The commits fetch is independent of the other three and could be included in the Promise.all."
+        ],
+        "suggestion": "Include the commits fetch in the Promise.all call: add fetchGitHub(`${repoUrl}/commits?per_page=1`) as a fourth element, then destructure and process the commits response alongside the others.",
+        "reasoning": "",
+        "content_hash": "6a1a139e"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::cross_module_architecture::parallel_project_imports": {
+      "id": "review::.::holistic::cross_module_architecture::parallel_project_imports",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "Project data arrays imported independently by both +page.server.ts and +page.svelte, creating parallel consumption paths",
+      "detail": {
+        "holistic": true,
+        "dimension": "cross_module_architecture",
+        "related_files": [
+          "src/routes/+page.server.ts",
+          "src/routes/+page.svelte"
+        ],
+        "evidence": [
+          "+page.server.ts imports impactProjects, explorationProjects, metaProjects to extract repo names for GitHub fetching. +page.svelte independently imports the same three arrays to render project sections. The server could return categorized projects with GitHub data attached, eliminating the client-side attachGithubData function and the duplicate import."
+        ],
+        "suggestion": "Have +page.server.ts return { impactProjects: Project[], explorationProjects: Project[], metaProjects: Project[] } with GitHub data already attached, eliminating the need for +page.svelte to import from lib/data/projects and removing the attachGithubData helper.",
+        "reasoning": "",
+        "content_hash": "15efda96"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::convention_outlier::mixed_lifecycle_pattern": {
+      "id": "review::.::holistic::convention_outlier::mixed_lifecycle_pattern",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "Terminal.svelte uses onMount() while +page.svelte uses $effect() for equivalent IntersectionObserver setup",
+      "detail": {
+        "holistic": true,
+        "dimension": "convention_outlier",
+        "related_files": [
+          "src/lib/components/Terminal.svelte",
+          "src/routes/+page.svelte"
+        ],
+        "evidence": [
+          "Terminal.svelte line 17: onMount(() => { ... new IntersectionObserver ... }) uses the Svelte 4 lifecycle import",
+          "+page.svelte line 40: $effect(() => { ... new IntersectionObserver ... }) uses the Svelte 5 rune for equivalent observer setup"
+        ],
+        "suggestion": "Migrate Terminal.svelte from onMount() to $effect() to match the runes-based lifecycle pattern used in +page.svelte, which aligns with the project's stated Svelte 5 runes convention in CLAUDE.md.",
+        "reasoning": "",
+        "content_hash": "b1bad2dd"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T08:59:56+00:00",
+      "last_seen": "2026-03-12T09:00:10+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    }
+  },
+  "scan_coverage": {
+    "javascript": {
+      "status": "reduced",
+      "confidence": 0.0,
+      "detectors": {
+        "eslint_warning": {
+          "detector": "eslint_warning",
+          "status": "reduced",
+          "confidence": 0.0,
+          "summary": "ESLint tooling unavailable (parser_error)",
+          "impact": "Detector results may be under-reported for this scan.",
+          "remediation": "Install/fix the tool command and rerun scan.",
+          "tool": "ESLint",
+          "reason": "parser_error"
+        },
+        "security": {
+          "detector": "security",
+          "status": "full",
+          "confidence": 1.0,
+          "summary": "Security coverage complete for enabled detectors.",
+          "impact": "",
+          "remediation": "",
+          "tool": "",
+          "reason": ""
+        }
+      },
+      "warnings": [
+        {
+          "detector": "eslint_warning",
+          "status": "reduced",
+          "confidence": 0.0,
+          "summary": "ESLint tooling unavailable (parser_error)",
+          "impact": "Detector results may be under-reported for this scan.",
+          "remediation": "Install/fix the tool command and rerun scan.",
+          "tool": "ESLint",
+          "reason": "parser_error"
+        }
+      ],
+      "updated_at": "2026-03-12T08:46:17+00:00"
+    },
+    "typescript": {
+      "status": "full",
+      "confidence": 1.0,
+      "detectors": {
+        "security": {
+          "detector": "security",
+          "status": "full",
+          "confidence": 1.0,
+          "summary": "Security coverage complete for enabled detectors.",
+          "impact": "",
+          "remediation": "",
+          "tool": "",
+          "reason": ""
+        }
+      },
+      "warnings": [],
+      "updated_at": "2026-03-12T08:55:13+00:00"
+    }
+  },
+  "score_confidence": {
+    "status": "full",
+    "confidence": 1.0,
+    "detectors": [],
+    "dimensions": []
+  },
+  "subjective_integrity": {
+    "status": "disabled",
+    "target_score": null,
+    "matched_count": 0,
+    "matched_dimensions": [],
+    "reset_dimensions": []
+  },
+  "subjective_assessments": {
+    "abstraction_fitness": {
+      "score": 85.9,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00",
+      "components": [
+        "Abstraction Leverage",
+        "Indirection Cost",
+        "Interface Honesty",
+        "Delegation Density",
+        "Definition Directness",
+        "Type Discipline"
+      ],
+      "component_scores": {
+        "Abstraction Leverage": 93.0,
+        "Indirection Cost": 95.0,
+        "Interface Honesty": 94.0,
+        "Delegation Density": 96.0,
+        "Definition Directness": 90.0,
+        "Type Discipline": 88.0
+      }
+    },
+    "ai_generated_debt": {
+      "score": 89.0,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00"
+    },
+    "api_surface_coherence": {
+      "score": 81.1,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00"
+    },
+    "authorization_consistency": {
+      "score": 95.0,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00"
+    },
+    "contract_coherence": {
+      "score": 80.1,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00"
+    },
+    "convention_outlier": {
+      "score": 80.5,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00"
+    },
+    "cross_module_architecture": {
+      "score": 84.9,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00"
+    },
+    "dependency_health": {
+      "score": 95.0,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00"
+    },
+    "design_coherence": {
+      "score": 82.4,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00"
+    },
+    "error_consistency": {
+      "score": 67.3,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00"
+    },
+    "high_level_elegance": {
+      "score": 85.4,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00"
+    },
+    "incomplete_migration": {
+      "score": 92.0,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00"
+    },
+    "initialization_coupling": {
+      "score": 93.0,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00"
+    },
+    "logic_clarity": {
+      "score": 78.1,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00"
+    },
+    "low_level_elegance": {
+      "score": 80.5,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00"
+    },
+    "mid_level_elegance": {
+      "score": 77.8,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00"
+    },
+    "naming_quality": {
+      "score": 86.0,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00"
+    },
+    "package_organization": {
+      "score": 85.9,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00"
+    },
+    "test_strategy": {
+      "score": 55.2,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00"
+    },
+    "type_safety": {
+      "score": 75.2,
+      "source": "holistic",
+      "assessed_at": "2026-03-12T09:00:10+00:00"
+    }
+  },
+  "scan_history": [
+    {
+      "timestamp": "2026-03-12T08:46:17+00:00",
+      "lang": "javascript",
+      "strict_score": 24.7,
+      "verified_strict_score": 61.9,
+      "objective_score": 61.9,
+      "overall_score": 24.7,
+      "open": 94,
+      "diff_new": 94,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 98,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "pass",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": 95.0
+      },
+      "score_confidence": {
+        "status": "reduced",
+        "confidence": 0.0,
+        "detector_count": 1,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 71.3,
+          "strict": 71.3
+        },
+        "Security": {
+          "score": 98.6,
+          "strict": 98.6
+        },
+        "File health": {
+          "score": 85.6,
+          "strict": 85.6
+        },
+        "Duplication": {
+          "score": 99.0,
+          "strict": 99.0
+        },
+        "Test health": {
+          "score": 0.1,
+          "strict": 0.1
+        },
+        "Abstraction fit": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "AI generated debt": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "API coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Auth consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Contracts": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Convention drift": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Cross-module arch": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Dep health": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Design coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Error consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "High elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Stale migration": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Init coupling": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Logic clarity": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Low elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Mid elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Naming quality": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Structure nav": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Test strategy": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Type safety": {
+          "score": 0.0,
+          "strict": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-12T08:46:41+00:00",
+      "lang": "typescript",
+      "strict_score": 38.5,
+      "verified_strict_score": 96.2,
+      "objective_score": 96.2,
+      "overall_score": 38.5,
+      "open": 24,
+      "diff_new": 28,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 28,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "pass",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": 95.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 92.7,
+          "strict": 92.7
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Duplication": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 91.2,
+          "strict": 91.2
+        },
+        "Abstraction fit": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "AI generated debt": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "API coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Auth consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Contracts": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Convention drift": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Cross-module arch": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Dep health": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Design coherence": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Error consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "High elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Stale migration": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Init coupling": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Logic clarity": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Low elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Mid elegance": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Naming quality": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Structure nav": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Test strategy": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Type safety": {
+          "score": 0.0,
+          "strict": 0.0
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-12T08:46:49+00:00",
+      "lang": "typescript",
+      "strict_score": 87.1,
+      "verified_strict_score": 95.5,
+      "objective_score": 95.5,
+      "overall_score": 87.1,
+      "open": 56,
+      "diff_new": 24,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 24,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "disabled",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": null
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 90.7,
+          "strict": 90.7
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Duplication": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 90.0,
+          "strict": 90.0
+        },
+        "Abstraction fit": {
+          "score": 86.8,
+          "strict": 86.8
+        },
+        "AI generated debt": {
+          "score": 93.0,
+          "strict": 93.0
+        },
+        "API coherence": {
+          "score": 85.0,
+          "strict": 85.0
+        },
+        "Auth consistency": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Contracts": {
+          "score": 84.1,
+          "strict": 84.1
+        },
+        "Convention drift": {
+          "score": 83.0,
+          "strict": 83.0
+        },
+        "Cross-module arch": {
+          "score": 79.1,
+          "strict": 79.1
+        },
+        "Dep health": {
+          "score": 95.0,
+          "strict": 95.0
+        },
+        "Design coherence": {
+          "score": 76.4,
+          "strict": 76.4
+        },
+        "Error consistency": {
+          "score": 73.7,
+          "strict": 73.7
+        },
+        "High elegance": {
+          "score": 85.1,
+          "strict": 85.1
+        },
+        "Stale migration": {
+          "score": 95.0,
+          "strict": 95.0
+        },
+        "Init coupling": {
+          "score": 95.0,
+          "strict": 95.0
+        },
+        "Logic clarity": {
+          "score": 83.2,
+          "strict": 83.2
+        },
+        "Low elegance": {
+          "score": 81.2,
+          "strict": 81.2
+        },
+        "Mid elegance": {
+          "score": 80.0,
+          "strict": 80.0
+        },
+        "Naming quality": {
+          "score": 87.0,
+          "strict": 87.0
+        },
+        "Structure nav": {
+          "score": 85.9,
+          "strict": 85.9
+        },
+        "Test strategy": {
+          "score": 30.0,
+          "strict": 30.0
+        },
+        "Type safety": {
+          "score": 72.8,
+          "strict": 72.8
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-12T08:49:58+00:00",
+      "lang": "typescript",
+      "strict_score": 86.0,
+      "verified_strict_score": 96.4,
+      "objective_score": 96.4,
+      "overall_score": 86.1,
+      "open": 41,
+      "diff_new": 0,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 22,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "penalized",
+        "matched_count": 3,
+        "reset_count": 3,
+        "target_score": 95.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 92.7,
+          "strict": 92.7
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Duplication": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 91.7,
+          "strict": 91.2
+        },
+        "Abstraction fit": {
+          "score": 86.8,
+          "strict": 86.8
+        },
+        "AI generated debt": {
+          "score": 93.0,
+          "strict": 93.0
+        },
+        "API coherence": {
+          "score": 85.0,
+          "strict": 85.0
+        },
+        "Auth consistency": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Contracts": {
+          "score": 84.1,
+          "strict": 84.1
+        },
+        "Convention drift": {
+          "score": 83.0,
+          "strict": 83.0
+        },
+        "Cross-module arch": {
+          "score": 79.1,
+          "strict": 79.1
+        },
+        "Dep health": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Design coherence": {
+          "score": 76.4,
+          "strict": 76.4
+        },
+        "Error consistency": {
+          "score": 73.7,
+          "strict": 73.7
+        },
+        "High elegance": {
+          "score": 85.1,
+          "strict": 85.1
+        },
+        "Stale migration": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Init coupling": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Logic clarity": {
+          "score": 83.2,
+          "strict": 83.2
+        },
+        "Low elegance": {
+          "score": 81.2,
+          "strict": 81.2
+        },
+        "Mid elegance": {
+          "score": 80.0,
+          "strict": 80.0
+        },
+        "Naming quality": {
+          "score": 87.0,
+          "strict": 87.0
+        },
+        "Structure nav": {
+          "score": 85.9,
+          "strict": 85.9
+        },
+        "Test strategy": {
+          "score": 30.0,
+          "strict": 30.0
+        },
+        "Type safety": {
+          "score": 72.8,
+          "strict": 72.8
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-12T08:55:13+00:00",
+      "lang": "typescript",
+      "strict_score": 86.4,
+      "verified_strict_score": 99.6,
+      "objective_score": 99.6,
+      "overall_score": 87.4,
+      "open": 26,
+      "diff_new": 2,
+      "diff_resolved": 7,
+      "ignored": 10,
+      "raw_issues": 16,
+      "suppressed_pct": 62.5,
+      "ignore_patterns": 7,
+      "subjective_integrity": {
+        "status": "penalized",
+        "matched_count": 3,
+        "reset_count": 3,
+        "target_score": 95.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 100.0,
+          "strict": 98.3
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Duplication": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 98.7,
+          "strict": 91.1
+        },
+        "Abstraction fit": {
+          "score": 86.8,
+          "strict": 86.8
+        },
+        "AI generated debt": {
+          "score": 93.0,
+          "strict": 93.0
+        },
+        "API coherence": {
+          "score": 85.0,
+          "strict": 85.0
+        },
+        "Auth consistency": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Contracts": {
+          "score": 84.1,
+          "strict": 84.1
+        },
+        "Convention drift": {
+          "score": 83.0,
+          "strict": 83.0
+        },
+        "Cross-module arch": {
+          "score": 79.1,
+          "strict": 79.1
+        },
+        "Dep health": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Design coherence": {
+          "score": 76.4,
+          "strict": 76.4
+        },
+        "Error consistency": {
+          "score": 73.7,
+          "strict": 73.7
+        },
+        "High elegance": {
+          "score": 85.1,
+          "strict": 85.1
+        },
+        "Stale migration": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Init coupling": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Logic clarity": {
+          "score": 83.2,
+          "strict": 83.2
+        },
+        "Low elegance": {
+          "score": 81.2,
+          "strict": 81.2
+        },
+        "Mid elegance": {
+          "score": 80.0,
+          "strict": 80.0
+        },
+        "Naming quality": {
+          "score": 87.0,
+          "strict": 87.0
+        },
+        "Structure nav": {
+          "score": 85.9,
+          "strict": 85.9
+        },
+        "Test strategy": {
+          "score": 30.0,
+          "strict": 30.0
+        },
+        "Type safety": {
+          "score": 72.8,
+          "strict": 72.8
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-12T08:59:56+00:00",
+      "lang": "typescript",
+      "strict_score": 87.2,
+      "verified_strict_score": 99.0,
+      "objective_score": 99.0,
+      "overall_score": 88.2,
+      "open": 55,
+      "diff_new": 22,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 22,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "disabled",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": null
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 98.3,
+          "strict": 96.3
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Duplication": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 97.5,
+          "strict": 89.9
+        },
+        "Abstraction fit": {
+          "score": 85.9,
+          "strict": 85.9
+        },
+        "AI generated debt": {
+          "score": 89.0,
+          "strict": 89.0
+        },
+        "API coherence": {
+          "score": 81.1,
+          "strict": 81.1
+        },
+        "Auth consistency": {
+          "score": 95.0,
+          "strict": 95.0
+        },
+        "Contracts": {
+          "score": 80.1,
+          "strict": 80.1
+        },
+        "Convention drift": {
+          "score": 80.5,
+          "strict": 80.5
+        },
+        "Cross-module arch": {
+          "score": 84.9,
+          "strict": 84.9
+        },
+        "Dep health": {
+          "score": 95.0,
+          "strict": 95.0
+        },
+        "Design coherence": {
+          "score": 82.4,
+          "strict": 82.4
+        },
+        "Error consistency": {
+          "score": 67.3,
+          "strict": 67.3
+        },
+        "High elegance": {
+          "score": 85.4,
+          "strict": 85.4
+        },
+        "Stale migration": {
+          "score": 92.0,
+          "strict": 92.0
+        },
+        "Init coupling": {
+          "score": 93.0,
+          "strict": 93.0
+        },
+        "Logic clarity": {
+          "score": 78.1,
+          "strict": 78.1
+        },
+        "Low elegance": {
+          "score": 80.5,
+          "strict": 80.5
+        },
+        "Mid elegance": {
+          "score": 77.8,
+          "strict": 77.8
+        },
+        "Naming quality": {
+          "score": 86.0,
+          "strict": 86.0
+        },
+        "Structure nav": {
+          "score": 85.9,
+          "strict": 85.9
+        },
+        "Test strategy": {
+          "score": 55.2,
+          "strict": 55.2
+        },
+        "Type safety": {
+          "score": 75.2,
+          "strict": 75.2
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:00:10+00:00",
+      "lang": "typescript",
+      "strict_score": 87.2,
+      "verified_strict_score": 99.1,
+      "objective_score": 99.1,
+      "overall_score": 88.3,
+      "open": 30,
+      "diff_new": 0,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 22,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "disabled",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": null
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 98.3,
+          "strict": 96.3
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Duplication": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 97.8,
+          "strict": 89.9
+        },
+        "Abstraction fit": {
+          "score": 85.9,
+          "strict": 85.9
+        },
+        "AI generated debt": {
+          "score": 89.0,
+          "strict": 89.0
+        },
+        "API coherence": {
+          "score": 81.1,
+          "strict": 81.1
+        },
+        "Auth consistency": {
+          "score": 95.0,
+          "strict": 95.0
+        },
+        "Contracts": {
+          "score": 80.1,
+          "strict": 80.1
+        },
+        "Convention drift": {
+          "score": 80.5,
+          "strict": 80.5
+        },
+        "Cross-module arch": {
+          "score": 84.9,
+          "strict": 84.9
+        },
+        "Dep health": {
+          "score": 95.0,
+          "strict": 95.0
+        },
+        "Design coherence": {
+          "score": 82.4,
+          "strict": 82.4
+        },
+        "Error consistency": {
+          "score": 67.3,
+          "strict": 67.3
+        },
+        "High elegance": {
+          "score": 85.4,
+          "strict": 85.4
+        },
+        "Stale migration": {
+          "score": 92.0,
+          "strict": 92.0
+        },
+        "Init coupling": {
+          "score": 93.0,
+          "strict": 93.0
+        },
+        "Logic clarity": {
+          "score": 78.1,
+          "strict": 78.1
+        },
+        "Low elegance": {
+          "score": 80.5,
+          "strict": 80.5
+        },
+        "Mid elegance": {
+          "score": 77.8,
+          "strict": 77.8
+        },
+        "Naming quality": {
+          "score": 86.0,
+          "strict": 86.0
+        },
+        "Structure nav": {
+          "score": 85.9,
+          "strict": 85.9
+        },
+        "Test strategy": {
+          "score": 55.2,
+          "strict": 55.2
+        },
+        "Type safety": {
+          "score": 75.2,
+          "strict": 75.2
+        }
+      }
+    }
+  ],
+  "lang_capabilities": {
+    "javascript": {
+      "fixers": [
+        "eslint-warning"
+      ],
+      "typecheck_cmd": ""
+    },
+    "typescript": {
+      "fixers": [
+        "dead-useeffect",
+        "debug-logs",
+        "empty-if-chain",
+        "unused-imports",
+        "unused-params",
+        "unused-vars"
+      ],
+      "typecheck_cmd": "npx tsc --noEmit"
+    }
+  },
+  "zone_distribution": {
+    "test": 5,
+    "production": 7
+  },
+  "tool_hash": "18d10939aa40",
+  "scan_path": null,
+  "scan_completeness": {
+    "javascript": "full",
+    "typescript": "full"
+  },
+  "potentials": {
+    "javascript": {
+      "structural": 36,
+      "flat_dirs": 24,
+      "empty_catch": 8,
+      "unreachable_code": 2,
+      "responsibility_cohesion": 1,
+      "unused_imports": 19,
+      "signature": 2,
+      "security": 36,
+      "single_use": 0,
+      "cycles": 36,
+      "orphaned": 36,
+      "test_coverage": 320,
+      "boilerplate_duplication": 5,
+      "dupes": 520,
+      "stale_wontfix": 0
+    },
+    "typescript": {
+      "logs": 8,
+      "unused": 8,
+      "exports": 0,
+      "deprecated": 0,
+      "structural": 7,
+      "flat_dirs": 5,
+      "props": 0,
+      "single_use": 0,
+      "coupling": 0,
+      "cycles": 13,
+      "orphaned": 13,
+      "patterns": 0,
+      "naming": 4,
+      "facade": 13,
+      "test_coverage": 39,
+      "smells": 9,
+      "react": 0,
+      "security": 7,
+      "subjective_review": 4,
+      "boilerplate_duplication": 0,
+      "dupes": 4,
+      "stale_wontfix": 0,
+      "review": 10
+    }
+  },
+  "codebase_metrics": {
+    "javascript": {
+      "total_files": 48,
+      "total_loc": 10399,
+      "total_directories": 16
+    },
+    "typescript": {
+      "total_files": 12,
+      "total_loc": 454,
+      "total_directories": 4
+    }
+  },
+  "dimension_scores": {
+    "Code quality": {
+      "score": 98.3,
+      "strict": 96.3,
+      "verified_strict_score": 98.3,
+      "checks": 121,
+      "failing": 3,
+      "tier": 3,
+      "detectors": {
+        "unused": {
+          "potential": 8,
+          "pass_rate": 0.825,
+          "failing": 2,
+          "weighted_failures": 1.4
+        },
+        "logs": {
+          "potential": 8,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "smells": {
+          "potential": 9,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "orphaned": {
+          "potential": 49,
+          "pass_rate": 0.9857142857142857,
+          "failing": 1,
+          "weighted_failures": 0.7
+        },
+        "flat_dirs": {
+          "potential": 29,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "naming": {
+          "potential": 4,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "facade": {
+          "potential": 13,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "responsibility_cohesion": {
+          "potential": 1,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        }
+      }
+    },
+    "Security": {
+      "score": 100.0,
+      "strict": 100.0,
+      "verified_strict_score": 100.0,
+      "checks": 92,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "cycles": {
+          "potential": 49,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "security": {
+          "potential": 43,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        }
+      }
+    },
+    "File health": {
+      "score": 100.0,
+      "strict": 100.0,
+      "verified_strict_score": 100.0,
+      "checks": 43,
+      "failing": 0,
+      "tier": 3,
+      "detectors": {
+        "structural": {
+          "potential": 43,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        }
+      }
+    },
+    "Duplication": {
+      "score": 100.0,
+      "strict": 100.0,
+      "verified_strict_score": 100.0,
+      "checks": 529,
+      "failing": 0,
+      "tier": 3,
+      "detectors": {
+        "dupes": {
+          "potential": 524,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        },
+        "boilerplate_duplication": {
+          "potential": 5,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        }
+      }
+    },
+    "Test health": {
+      "score": 97.8,
+      "strict": 89.9,
+      "verified_strict_score": 97.8,
+      "checks": 363,
+      "failing": 2,
+      "tier": 4,
+      "detectors": {
+        "test_coverage": {
+          "potential": 359,
+          "pass_rate": 0.9773938049210955,
+          "failing": 2,
+          "weighted_failures": 8.115624033326702
+        },
+        "subjective_review": {
+          "potential": 4,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
+        }
+      }
+    },
+    "Abstraction fit": {
+      "score": 85.9,
+      "strict": 85.9,
+      "verified_strict_score": 85.9,
+      "checks": 10,
+      "failing": 1,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.859,
+          "failing": 1,
+          "weighted_failures": 1.41,
+          "assessment_score": 85.9,
+          "placeholder": false,
+          "dimension_key": "abstraction_fitness",
+          "configured_weight": 8.0,
+          "components": [
+            "Abstraction Leverage",
+            "Indirection Cost",
+            "Interface Honesty",
+            "Delegation Density",
+            "Definition Directness",
+            "Type Discipline"
+          ],
+          "component_scores": {
+            "Abstraction Leverage": 93.0,
+            "Indirection Cost": 95.0,
+            "Interface Honesty": 94.0,
+            "Delegation Density": 96.0,
+            "Definition Directness": 90.0,
+            "Type Discipline": 88.0
+          }
+        }
+      }
+    },
+    "AI generated debt": {
+      "score": 89.0,
+      "strict": 89.0,
+      "verified_strict_score": 89.0,
+      "checks": 10,
+      "failing": 1,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.89,
+          "failing": 1,
+          "weighted_failures": 1.1,
+          "assessment_score": 89.0,
+          "placeholder": false,
+          "dimension_key": "ai_generated_debt",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "API coherence": {
+      "score": 81.1,
+      "strict": 81.1,
+      "verified_strict_score": 81.1,
+      "checks": 10,
+      "failing": 1,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.811,
+          "failing": 1,
+          "weighted_failures": 1.89,
+          "assessment_score": 81.1,
+          "placeholder": false,
+          "dimension_key": "api_surface_coherence",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Auth consistency": {
+      "score": 95.0,
+      "strict": 95.0,
+      "verified_strict_score": 95.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.95,
+          "failing": 0,
+          "weighted_failures": 0.5,
+          "assessment_score": 95.0,
+          "placeholder": false,
+          "dimension_key": "authorization_consistency",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Contracts": {
+      "score": 80.1,
+      "strict": 80.1,
+      "verified_strict_score": 80.1,
+      "checks": 10,
+      "failing": 1,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.801,
+          "failing": 1,
+          "weighted_failures": 1.99,
+          "assessment_score": 80.1,
+          "placeholder": false,
+          "dimension_key": "contract_coherence",
+          "configured_weight": 12.0,
+          "components": []
+        }
+      }
+    },
+    "Convention drift": {
+      "score": 80.5,
+      "strict": 80.5,
+      "verified_strict_score": 80.5,
+      "checks": 10,
+      "failing": 1,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.805,
+          "failing": 1,
+          "weighted_failures": 1.95,
+          "assessment_score": 80.5,
+          "placeholder": false,
+          "dimension_key": "convention_outlier",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Cross-module arch": {
+      "score": 84.9,
+      "strict": 84.9,
+      "verified_strict_score": 84.9,
+      "checks": 10,
+      "failing": 1,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.849,
+          "failing": 1,
+          "weighted_failures": 1.51,
+          "assessment_score": 84.9,
+          "placeholder": false,
+          "dimension_key": "cross_module_architecture",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Dep health": {
+      "score": 95.0,
+      "strict": 95.0,
+      "verified_strict_score": 95.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.95,
+          "failing": 0,
+          "weighted_failures": 0.5,
+          "assessment_score": 95.0,
+          "placeholder": false,
+          "dimension_key": "dependency_health",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Design coherence": {
+      "score": 82.4,
+      "strict": 82.4,
+      "verified_strict_score": 82.4,
+      "checks": 10,
+      "failing": 1,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.824,
+          "failing": 1,
+          "weighted_failures": 1.76,
+          "assessment_score": 82.4,
+          "placeholder": false,
+          "dimension_key": "design_coherence",
+          "configured_weight": 10.0,
+          "components": []
+        }
+      }
+    },
+    "Error consistency": {
+      "score": 67.3,
+      "strict": 67.3,
+      "verified_strict_score": 67.3,
+      "checks": 10,
+      "failing": 2,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.673,
+          "failing": 2,
+          "weighted_failures": 3.27,
+          "assessment_score": 67.3,
+          "placeholder": false,
+          "dimension_key": "error_consistency",
+          "configured_weight": 3.0,
+          "components": []
+        }
+      }
+    },
+    "High elegance": {
+      "score": 85.4,
+      "strict": 85.4,
+      "verified_strict_score": 85.4,
+      "checks": 10,
+      "failing": 1,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.854,
+          "failing": 1,
+          "weighted_failures": 1.46,
+          "assessment_score": 85.4,
+          "placeholder": false,
+          "dimension_key": "high_level_elegance",
+          "configured_weight": 22.0,
+          "components": []
+        }
+      }
+    },
+    "Stale migration": {
+      "score": 92.0,
+      "strict": 92.0,
+      "verified_strict_score": 92.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.92,
+          "failing": 0,
+          "weighted_failures": 0.8,
+          "assessment_score": 92.0,
+          "placeholder": false,
+          "dimension_key": "incomplete_migration",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Init coupling": {
+      "score": 93.0,
+      "strict": 93.0,
+      "verified_strict_score": 93.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.93,
+          "failing": 0,
+          "weighted_failures": 0.7,
+          "assessment_score": 93.0,
+          "placeholder": false,
+          "dimension_key": "initialization_coupling",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Logic clarity": {
+      "score": 78.1,
+      "strict": 78.1,
+      "verified_strict_score": 78.1,
+      "checks": 10,
+      "failing": 2,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.781,
+          "failing": 2,
+          "weighted_failures": 2.19,
+          "assessment_score": 78.1,
+          "placeholder": false,
+          "dimension_key": "logic_clarity",
+          "configured_weight": 6.0,
+          "components": []
+        }
+      }
+    },
+    "Low elegance": {
+      "score": 80.5,
+      "strict": 80.5,
+      "verified_strict_score": 80.5,
+      "checks": 10,
+      "failing": 2,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.805,
+          "failing": 2,
+          "weighted_failures": 1.95,
+          "assessment_score": 80.5,
+          "placeholder": false,
+          "dimension_key": "low_level_elegance",
+          "configured_weight": 12.0,
+          "components": []
+        }
+      }
+    },
+    "Mid elegance": {
+      "score": 77.8,
+      "strict": 77.8,
+      "verified_strict_score": 77.8,
+      "checks": 10,
+      "failing": 2,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.778,
+          "failing": 2,
+          "weighted_failures": 2.22,
+          "assessment_score": 77.8,
+          "placeholder": false,
+          "dimension_key": "mid_level_elegance",
+          "configured_weight": 22.0,
+          "components": []
+        }
+      }
+    },
+    "Naming quality": {
+      "score": 86.0,
+      "strict": 86.0,
+      "verified_strict_score": 86.0,
+      "checks": 10,
+      "failing": 1,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.86,
+          "failing": 1,
+          "weighted_failures": 1.4,
+          "assessment_score": 86.0,
+          "placeholder": false,
+          "dimension_key": "naming_quality",
+          "configured_weight": 2.0,
+          "components": []
+        }
+      }
+    },
+    "Structure nav": {
+      "score": 85.9,
+      "strict": 85.9,
+      "verified_strict_score": 85.9,
+      "checks": 10,
+      "failing": 1,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.859,
+          "failing": 1,
+          "weighted_failures": 1.41,
+          "assessment_score": 85.9,
+          "placeholder": false,
+          "dimension_key": "package_organization",
+          "configured_weight": 5.0,
+          "components": []
+        }
+      }
+    },
+    "Test strategy": {
+      "score": 55.2,
+      "strict": 55.2,
+      "verified_strict_score": 55.2,
+      "checks": 10,
+      "failing": 2,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.552,
+          "failing": 2,
+          "weighted_failures": 4.48,
+          "assessment_score": 55.2,
+          "placeholder": false,
+          "dimension_key": "test_strategy",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Type safety": {
+      "score": 75.2,
+      "strict": 75.2,
+      "verified_strict_score": 75.2,
+      "checks": 10,
+      "failing": 2,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.752,
+          "failing": 2,
+          "weighted_failures": 2.48,
+          "assessment_score": 75.2,
+          "placeholder": false,
+          "dimension_key": "type_safety",
+          "configured_weight": 12.0,
+          "components": []
+        }
+      }
+    }
+  },
+  "reminder_history": {
+    "zone_classification": 3,
+    "report_scores": 4,
+    "feedback_nudge": 3,
+    "review_issues_pending": 2,
+    "stagnant_nudge": 3,
+    "wontfix_growing": 1
+  },
+  "review_cache": {
+    "files": {
+      "src/lib/data/projects.ts": {
+        "content_hash": "7d41cdb689adfcb7",
+        "reviewed_at": "2026-03-12T09:00:10+00:00",
+        "issue_count": 0
+      },
+      "src/routes/+page.server.ts": {
+        "content_hash": "a9ea53d2c6225c7d",
+        "reviewed_at": "2026-03-12T09:00:10+00:00",
+        "issue_count": 0
+      },
+      "src/lib/data/artefacts.ts": {
+        "content_hash": "97e6de75df451522",
+        "reviewed_at": "2026-03-12T09:00:10+00:00",
+        "issue_count": 0
+      },
+      "src/lib/data/terminal.ts": {
+        "content_hash": "d7a6185bdbd7aed9",
+        "reviewed_at": "2026-03-12T09:00:10+00:00",
+        "issue_count": 0
+      },
+      "src/lib/utils/github.ts": {
+        "content_hash": "098839f43b4de450",
+        "reviewed_at": "2026-03-12T09:00:10+00:00",
+        "issue_count": 0
+      },
+      "src/routes/+layout.ts": {
+        "content_hash": "1fe67243c3784fca",
+        "reviewed_at": "2026-03-12T09:00:10+00:00",
+        "issue_count": 0
+      }
+    },
+    "holistic": {
+      "reviewed_at": "2026-03-12T09:00:10+00:00",
+      "file_count_at_review": 7,
+      "issue_count": 22,
+      "reviewed_files_count": 6,
+      "full_sweep_included": false
+    }
+  },
+  "assessment_import_audit": [
+    {
+      "timestamp": "2026-03-12T08:46:49+00:00",
+      "mode": "trusted_internal",
+      "trusted": true,
+      "reason": "trusted import-run replay from 20260312_083414",
+      "override_used": false,
+      "attested_external": false,
+      "provisional": false,
+      "provisional_count": 0,
+      "attest": "",
+      "import_file": "/home/user/JasonWarrenUK.github.io/.desloppify/subagents/runs/20260312_083414/holistic_issues_merged.json"
+    },
+    {
+      "timestamp": "2026-03-12T08:59:56+00:00",
+      "mode": "trusted_internal",
+      "trusted": true,
+      "reason": "trusted import-run replay from 20260312_085521",
+      "override_used": false,
+      "attested_external": false,
+      "provisional": false,
+      "provisional_count": 0,
+      "attest": "",
+      "import_file": "/home/user/JasonWarrenUK.github.io/.desloppify/subagents/runs/20260312_085521/holistic_issues_merged.json"
+    },
+    {
+      "timestamp": "2026-03-12T09:00:10+00:00",
+      "mode": "trusted_internal",
+      "trusted": true,
+      "reason": "trusted import-run replay from 20260312_085521",
+      "override_used": false,
+      "attested_external": false,
+      "provisional": false,
+      "provisional_count": 0,
+      "attest": "",
+      "import_file": "/home/user/JasonWarrenUK.github.io/.desloppify/subagents/runs/20260312_085521/holistic_issues_merged.json"
+    }
+  ],
+  "attestation_log": [
+    {
+      "timestamp": "2026-03-12T08:49:58+00:00",
+      "command": "suppress",
+      "pattern": "orphaned::src/routes/*",
+      "attestation": "I have actually reviewed these files and they are SvelteKit entry points imported by the framework, not orphaned code. I am not gaming the score.",
+      "affected": 3
+    },
+    {
+      "timestamp": "2026-03-12T08:49:58+00:00",
+      "command": "suppress",
+      "pattern": "orphaned::src/lib/components/*",
+      "attestation": "I have actually reviewed these files and they are Svelte components imported via template syntax rather than TypeScript imports. I am not gaming the score.",
+      "affected": 4
+    },
+    {
+      "timestamp": "2026-03-12T08:49:58+00:00",
+      "command": "suppress",
+      "pattern": "orphaned::src/lib/data/*",
+      "attestation": "I have actually reviewed these files and they are data modules imported by Svelte components. I am not gaming the score.",
+      "affected": 3
+    },
+    {
+      "timestamp": "2026-03-12T08:49:58+00:00",
+      "command": "suppress",
+      "pattern": "smells::src/lib/data/projects.ts::hardcoded_url",
+      "attestation": "I have actually reviewed these URLs and they are intentional live deployment URLs for user-facing project links, not configuration that should be extracted. I am not gaming the score.",
+      "affected": 1
+    },
+    {
+      "timestamp": "2026-03-12T08:49:58+00:00",
+      "command": "suppress",
+      "pattern": "orphaned::src/lib/utils/*",
+      "attestation": "I have actually reviewed these files and they are utility modules imported by SvelteKit route files. I am not gaming the score.",
+      "affected": 0
+    },
+    {
+      "timestamp": "2026-03-12T08:49:58+00:00",
+      "command": "suppress",
+      "pattern": "single_use::src/app.css",
+      "attestation": "I have actually reviewed this file and it is the global stylesheet for a SvelteKit app, correctly imported once by the layout. I am not gaming the score.",
+      "affected": 1
+    },
+    {
+      "timestamp": "2026-03-12T08:49:58+00:00",
+      "command": "suppress",
+      "pattern": "smells::src/app.css::css_important_overuse",
+      "attestation": "I have actually reviewed the !important usage and it is exclusively in @media print rules where !important is the standard approach to override screen styles. I am not gaming the score.",
+      "affected": 1
+    }
+  ]
+}

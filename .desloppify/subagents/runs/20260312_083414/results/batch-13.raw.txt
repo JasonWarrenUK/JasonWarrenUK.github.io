@@ -1,0 +1,43 @@
+{
+  "batch": "ai_generated_debt",
+  "batch_index": 13,
+  "assessments": {
+    "ai_generated_debt": 93.0
+  },
+  "dimension_notes": {
+    "ai_generated_debt": {
+      "evidence": [
+        "Codebase-wide comment ratio is 0.01 — virtually no comments exist, and the few that do explain intent (e.g., 'Graceful degradation; static content still works' in +page.server.ts line 18, 'Match '. ' or '.\" ' as sentence boundaries' in ProjectCard.svelte line 58)",
+        "Zero debug logging statements across all files — no console.log, console.debug, or entry/exit logging anywhere",
+        "No docstrings on any functions; functions are short enough that names and types communicate their purpose (fetchJson, fetchRepoData, getLanguageSegments, formatDate, splitOverview, playFrames)",
+        "No defensive null checks on non-nullable typed values; the null checks that exist (e.g., if (!repo) return null in github.ts line 37, Array.isArray(contributors) in line 60) guard values that genuinely can be null due to network failures",
+        "No pass-through wrapper functions; every function adds meaningful logic (fetchAllRepoData deduplicates repos and parallelizes, withGithub in +page.svelte merges static and dynamic data)",
+        "Domain-specific naming throughout: fetchRepoData, getLanguageSegments, splitOverview, playFrames, irisSession — no generic handleData/processItem patterns",
+        "try-catch blocks are used only at genuine I/O boundaries (network fetch in fetchJson, commit count fetch, top-level GitHub data load) — not around pure expressions"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "Minor duplicated accentColors record between Section.svelte and ProjectCard.svelte is a small boilerplate pattern; the 'Get commit count from the default branch' comment in github.ts line 39 mildly restates what the code does, though it also clarifies why a separate fetch is needed."
+    }
+  },
+  "dimension_judgment": {
+    "ai_generated_debt": {
+      "strengths": [
+        "Near-zero comment density (0.01 ratio) with the few comments that exist explaining design intent ('Graceful degradation', 'Collapse observation region to viewport midpoint') rather than restating code",
+        "Complete absence of debug logging — no console.log, console.debug, or entry/exit logging in any file",
+        "All defensive checks (null guards, try-catch, Array.isArray) are at genuine API/network boundaries, not around type-safe pure expressions",
+        "Domain-specific function and variable names throughout — fetchRepoData, getLanguageSegments, splitOverview, irisSession — with no generic handleData/processItem patterns",
+        "No docstring bloat: functions are short, typed, and self-documenting without multi-line documentation on trivial helpers"
+      ],
+      "issue_character": "The codebase has almost no AI-generated debt patterns; the only signals are a mildly restating comment and a duplicated color mapping record, both minor and isolated.",
+      "score_rationale": "A developer working in this codebase would spend their attention on logic, not noise. Comments are rare and purposeful, defensive patterns are applied only where runtime uncertainty genuinely exists (network I/O), naming is domain-specific, and there is no formulaic boilerplate. The code reads as intentional and handcrafted. The minor duplicated accentColors mapping and one borderline-restating comment prevent a score above 93, but these are isolated and do not create meaningful cognitive overhead."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "batch": "mid_level_elegance",
+  "batch_index": 2,
+  "assessments": {
+    "mid_level_elegance": 85.5
+  },
+  "dimension_notes": {
+    "mid_level_elegance": {
+      "evidence": [
+        "+page.server.ts fetches GitHub data via fetchAllRepoData, passing repo paths extracted from all three project arrays; clean composition with minimal boundary crossing",
+        "+page.svelte receives githubData via $props() and merges it with static project data through attachGithubData(), a single translation point at the data/presentation boundary",
+        "The data layer exports Omit<Project, 'github'>[] and the page adds the github field, creating a clear split: static data modules own content, the page owns the GitHub enrichment",
+        "Type guards (isRepoResponse, isLanguagesResponse) are co-located with the fetch functions that use them, keeping validation at the boundary where untrusted data enters",
+        "The Artefact data flow is simpler: artefacts array flows directly from data module to Artefacts.svelte component with no transformation needed"
+      ],
+      "impact_scope": "subsystem",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The attachGithubData function in +page.svelte performs data merging inline in the presentation layer rather than in the server load function, meaning the Project type assembly happens client-side when it could be completed server-side. The Artefact component hardcodes the GitHub owner URL prefix rather than receiving it through the data contract."
+    }
+  },
+  "dimension_judgment": {
+    "mid_level_elegance": {
+      "strengths": [
+        "Data translation at the GitHub API boundary happens in exactly one place: github.ts type guards validate, fetchRepoData transforms to ProjectGitHubData, and the result flows upward",
+        "The Omit<Project, 'github'> pattern in data modules makes the handoff contract explicit: static data does not carry GitHub fields, the page composes them",
+        "Error propagation from GitHub API follows a consistent null-return pattern: fetchGitHub returns null on failure, fetchRepoData returns null, and the page gracefully handles null github fields",
+        "Orchestration in +page.server.ts reads as clean composition: collect repos, fetch all data, return result",
+        "Component props interfaces are explicit and minimal, using Svelte 5 $props() pattern consistently"
+      ],
+      "issue_character": "Issues are about where data assembly happens (presentation vs server) rather than about tangled or unclear handoffs; the seams exist and are clean, but one transformation could be better placed.",
+      "score_rationale": "The handoff design between data modules, server load, and page composition is generally well-structured. The GitHub data enrichment flow is explicit and the boundary between static content and dynamic API data is clear. The score sits at 85.5 because the seams are clean and predictable, but the attachGithubData transformation happening in the page component rather than the server load function is a misplaced boundary concern. The Artefacts component hardcoding the GitHub owner URL is a minor seam inconsistency compared to how ProjectCard derives its URL from the repo field. These are refinement opportunities rather than structural problems."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "mid_level_elegance",
+      "identifier": "github_data_merge_in_presentation",
+      "summary": "attachGithubData merges server data with static data in +page.svelte instead of +page.server.ts",
+      "related_files": ["src/routes/+page.svelte", "src/routes/+page.server.ts"],
+      "evidence": ["In +page.svelte lines 22-27, attachGithubData maps over static project arrays and attaches github data from the page's server-loaded data. This data assembly could happen in +page.server.ts where the GitHub data is fetched, returning fully assembled Project[] arrays. Currently the page component must know about the Omit<Project, 'github'> shape and the githubData record key structure."],
+      "suggestion": "Move the merge logic into +page.server.ts so it returns { impactProjects: Project[], explorationProjects: Project[], metaProjects: Project[] } with github data already attached. This keeps data assembly on the server side and simplifies the page component to pure presentation.",
+      "confidence": "medium",
+      "impact_scope": "subsystem",
+      "fix_scope": "multi_file_refactor"
+    },
+    {
+      "dimension": "mid_level_elegance",
+      "identifier": "artefact_hardcoded_owner_url",
+      "summary": "Artefacts.svelte hardcodes GitHub owner URL prefix instead of deriving from data contract",
+      "related_files": ["src/lib/components/Artefacts.svelte", "src/lib/data/artefacts.ts"],
+      "evidence": ["Artefacts.svelte line 25 constructs URLs as 'https://github.com/JasonWarrenUK/{artefact.repo}', hardcoding the owner. In contrast, ProjectCard.svelte line 123 uses 'https://github.com/{project.repo}' where the repo field already contains 'owner/repo'. The Artefact type's repo field contains only the repo name (e.g., 'nihilistic-onboarder'), while Project's repo field contains 'owner/repo' (e.g., 'JasonWarrenUK/sparker'). This inconsistency means the two parallel data paths use different URL construction strategies at the presentation boundary."],
+      "suggestion": "Change artefacts.ts repo values to include the owner prefix (e.g., 'JasonWarrenUK/nihilistic-onboarder') and update Artefacts.svelte to use 'https://github.com/{artefact.repo}' for consistency with ProjectCard. This aligns both data models on the same repo path convention.",
+      "confidence": "high",
+      "impact_scope": "module",
+      "fix_scope": "multi_file_refactor"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Artefacts were likely added separately from the main project system and followed a simpler convention without considering alignment with the existing repo path pattern"],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

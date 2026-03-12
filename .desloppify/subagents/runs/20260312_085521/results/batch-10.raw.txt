@@ -1,0 +1,62 @@
+{
+  "batch": "type_safety",
+  "batch_index": 10,
+  "assessments": {"type_safety": 79.5},
+  "dimension_notes": {
+    "type_safety": {
+      "evidence": [
+        "fetchJson declares return type Promise<unknown> but actually returns null (from the null check) or the parsed JSON; the return type is technically correct (null is unknown) but callers must narrow without guidance on what the possible shapes are",
+        "fetchGitHub declares Promise<Response | null> which accurately covers both paths; this is well-typed",
+        "isRepoResponse and isLanguagesResponse are proper user-defined type guards with correct 'data is X' return types",
+        "Data files use explicit typed exports (Artefact[], Omit<Project, 'github'>[], TerminalFrame[]) which is precise",
+        "The RepoResponse interface is defined locally in github.ts but the 'language' field (string | null) is never actually used after validation; it is part of the interface shape but fetchRepoData does not extract or return it",
+        "parseCommitCount has fully explicit parameter and return types"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "medium"
+    }
+  },
+  "dimension_judgment": {
+    "type_safety": {
+      "strengths": [
+        "All public API functions in github.ts have explicit return type annotations",
+        "User-defined type guards (isRepoResponse, isLanguagesResponse) correctly narrow unknown to typed shapes",
+        "Data modules use precise types from the shared types/index.ts, including Omit<Project, 'github'> which accurately reflects the partial shape before GitHub data enrichment",
+        "TypeScript strict mode is enabled per project configuration",
+        "The types/index.ts file provides clean, minimal interfaces with appropriate optionality (liveUrl?: string)"
+      ],
+      "issue_character": "Issues are concentrated in the github.ts utility module where the boundary between untyped API responses and typed internal models creates opportunities for type gaps; the rest of the codebase is well-typed by construction.",
+      "score_rationale": "The codebase uses TypeScript strict mode and most types are accurate. However, fetchJson's return type of Promise<unknown> pushes all narrowing responsibility to callers without any typed alternative, and the RepoResponse interface includes a field (language) that is validated but never used. The data layer and types are precise. Against global anchors, a developer would mostly trust types but would encounter a few spots in github.ts where annotations do not fully document runtime behavior, placing this around 80 but slightly below due to the fetchJson gap."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "type_safety",
+      "identifier": "fetchJson_untyped_return",
+      "summary": "fetchJson returns Promise<unknown> but can return null; callers get no type guidance on possible shapes",
+      "related_files": ["src/lib/utils/github.ts"],
+      "evidence": ["fetchJson (line 16) returns Promise<unknown> which technically covers null, but callers must independently know what shapes to expect. The function returns null when fetchGitHub returns null, or the parsed JSON otherwise. A return type of Promise<unknown | null> would be more explicit, though the real improvement would be a generic overload or documenting the null case."],
+      "suggestion": "Change the return type to Promise<unknown | null> to explicitly signal the null case. Alternatively, consider making fetchJson generic with a type guard parameter: async function fetchJson<T>(url: string, guard: (data: unknown) => data is T): Promise<T | null> to push type narrowing into the fetch call.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "type_safety",
+      "identifier": "unused_interface_field",
+      "summary": "RepoResponse includes 'language' field that is validated by isRepoResponse but never read by fetchRepoData",
+      "related_files": ["src/lib/utils/github.ts"],
+      "evidence": ["RepoResponse interface (line 22) declares language: string | null. isRepoResponse does not validate this field's type (only presence via 'in' check is absent for language). fetchRepoData (line 54) destructures/uses stargazers_count, open_issues_count, and updated_at but never accesses repo.language. The field exists in the interface but serves no purpose."],
+      "suggestion": "Remove 'language' from the RepoResponse interface since it is not used by any consumer. If it is intended for future use, add a comment explaining the intent.",
+      "confidence": "medium",
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["The GitHub API response shape was likely copied from documentation rather than trimmed to what the application actually uses"],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

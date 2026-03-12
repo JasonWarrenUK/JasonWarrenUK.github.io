@@ -1,0 +1,79 @@
+{
+  "batch": "mid_level_elegance",
+  "batch_index": 5,
+  "assessments": {
+    "mid_level_elegance": 86.0
+  },
+  "dimension_notes": {
+    "mid_level_elegance": {
+      "evidence": [
+        "The data -> page handoff is clean: data modules export typed arrays, +page.server.ts fetches supplementary GitHub data, and +page.svelte combines them via a single withGithub() helper that adds the github field to project records in one obvious place",
+        "The Omit<Project, 'github'> pattern in data modules and the withGithub() merger in +page.svelte creates a clear, single translation point at the boundary between static data and runtime-fetched data",
+        "Terminal.svelte imports TerminalFrame from the data module rather than from the types barrel, creating a minor but real coupling inconsistency compared to other components that import types from $lib/types",
+        "The accentColors mapping is duplicated between Section.svelte and ProjectCard.svelte with slightly different values for the 'none' key ('transparent' vs 'var(--border)'), meaning the accent color translation happens in two places with divergent behavior",
+        "Error propagation from GitHub API is predictable: github.ts returns null on failure, +page.server.ts catches and falls back to empty, components guard with optional chaining"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "multi_file_refactor",
+      "confidence": "high",
+      "issues_preventing_higher_score": "Duplicated accentColors mapping across Section and ProjectCard creates a boundary where accent semantics are translated in two places with divergent values. Terminal.svelte imports its type from the data module rather than the types barrel, breaking the otherwise consistent import pattern."
+    }
+  },
+  "dimension_judgment": {
+    "mid_level_elegance": {
+      "strengths": [
+        "The withGithub() function in +page.svelte is the single, obvious place where static project data meets runtime GitHub data; the boundary translation is explicit and minimal",
+        "The Omit<Project, 'github'> type in data modules cleanly communicates that GitHub data is added later, making the handoff contract self-documenting",
+        "Error propagation across the GitHub fetch boundary follows a consistent null-return pattern through fetchJson -> fetchRepoData -> fetchAllRepoData -> +page.server.ts catch -> optional chaining in components",
+        "Orchestration in +page.svelte reads as straightforward composition: import data, merge with server data, render sections with typed components",
+        "The SvelteKit load function in +page.server.ts acts as a clean orchestration boundary, collecting all repo paths from data modules and delegating to a single fetchAllRepoData call"
+      ],
+      "issue_character": "Issues are minor and localized: a duplicated color mapping across two sibling components and a minor import path inconsistency. These are small seam friction points, not structural problems.",
+      "score_rationale": "The codebase handoffs are generally explicit and unsurprising. A developer can follow data from static modules through the server load function to components without encountering tangled orchestration or glue-code entropy. The withGithub() pattern and Omit-based typing are particularly clean boundary designs. The duplicated accentColors mapping is a real but minor seam issue that prevents a higher score, as it means accent semantics are translated in two divergent places rather than one. Overall this is strong but with minor friction, placing it just above 85."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "mid_level_elegance",
+      "identifier": "duplicated_accent_colors_mapping",
+      "summary": "accentColors record duplicated in Section.svelte and ProjectCard.svelte with divergent 'none' values",
+      "related_files": [
+        "src/lib/components/Section.svelte",
+        "src/lib/components/ProjectCard.svelte"
+      ],
+      "evidence": [
+        "Section.svelte defines accentColors with none: 'transparent', while ProjectCard.svelte defines the same mapping with none: 'var(--border)'. Both components independently translate SectionAccent to CSS values, meaning this boundary concept is resolved in two places with inconsistent results."
+      ],
+      "suggestion": "Extract the accentColors mapping to a shared location (e.g., a small utility in $lib/utils/accent.ts or alongside the SectionAccent type in $lib/types/index.ts). If the 'none' value intentionally differs between contexts, make that explicit with two named exports (e.g., sectionAccentColors and cardAccentColors) so the divergence is visible and intentional rather than accidental.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "multi_file_refactor",
+      "root_cause_cluster": "accent_color_duplication"
+    },
+    {
+      "dimension": "mid_level_elegance",
+      "identifier": "terminal_type_import_inconsistency",
+      "summary": "Terminal.svelte imports TerminalFrame from data module instead of types barrel, unlike all other components",
+      "related_files": [
+        "src/lib/components/Terminal.svelte",
+        "src/lib/data/terminal.ts",
+        "src/lib/types/index.ts"
+      ],
+      "evidence": [
+        "Terminal.svelte imports TerminalFrame from '$lib/data/terminal', while ProjectCard.svelte, Artefacts.svelte, and Section.svelte all import their types from '$lib/types'. The TerminalFrame interface is defined directly in terminal.ts rather than in the types barrel, creating an import path inconsistency at the data-component boundary."
+      ],
+      "suggestion": "Move the TerminalFrame interface to $lib/types/index.ts alongside Project, Artefact, and SectionAccent. Update terminal.ts to import and use it from there, and update Terminal.svelte to import from '$lib/types'. This makes the type boundary consistent: all component prop types come from $lib/types, all data modules export typed values.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "multi_file_refactor",
+      "root_cause_cluster": "type_boundary_inconsistency"
+    }
+  ],
+  "retrospective": {
+    "root_causes": [
+      "The codebase is small enough that boundary design decisions were likely made ad-hoc rather than from a shared convention, leading to minor inconsistencies in where shared concepts (accent colors, type definitions) are resolved."
+    ],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "batch": "test_strategy",
+  "batch_index": 17,
+  "assessments": {
+    "test_strategy": 42.0
+  },
+  "dimension_notes": {
+    "test_strategy": {
+      "evidence": [
+        "No test framework is installed: package.json has zero test-related devDependencies (no vitest, jest, mocha, or any other test runner)",
+        "No test files exist anywhere in the repository: zero .test.*, .spec.*, or __tests__/ files found",
+        "No test script in package.json: only dev, build, and preview scripts are defined",
+        "src/lib/utils/github.ts contains the most critical testable logic: HTTP fetching, Link header parsing for commit counts (regex match on pagination headers), null-coalescing fallbacks, and data transformation from GitHub API response shapes to ProjectGitHubData",
+        "The Link header parsing logic in fetchRepoData (lines 46-48) is particularly fragile to test manually: it uses regex to extract page counts from pagination headers, with a fallback to commitCount=1 when no Link header exists but the response is OK",
+        "src/routes/+page.server.ts orchestrates data loading with error handling and repo deduplication, another path that would benefit from verification"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "architectural_change",
+      "confidence": "high"
+    }
+  },
+  "dimension_judgment": {
+    "test_strategy": {
+      "strengths": [
+        "The codebase is small (7 TS files, 11 Svelte components) which limits the blast radius of untested code",
+        "Static data files (artefacts.ts, projects.ts, terminal.ts) are pure constants with typed exports, making them low-risk without tests",
+        "The site is designed for graceful degradation: GitHub data is supplementary and failures are caught, so runtime failures in the most complex code path do not break the site"
+      ],
+      "issue_character": "The absence of any test infrastructure is a single systemic gap rather than a collection of isolated issues; the codebase has zero test coverage across all files, with the GitHub API utility containing the most consequential untested logic.",
+      "score_rationale": "A developer making changes to this codebase has zero automated validation that their changes work correctly. While the site is small and mostly static data, the GitHub API utility contains real parsing logic (Link header regex, response shape transformation, null handling) that could silently break during maintenance. The complete absence of a test framework, test files, and test scripts means a developer cannot make changes confidently to any code path. This falls below 'significant drag' (60) because the gap is total rather than partial: there is no test portfolio at all, not even a single smoke test. However, the small codebase size and the graceful degradation design prevent this from being catastrophic (20), landing it around 42."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "test_strategy",
+      "identifier": "zero_test_infrastructure",
+      "summary": "No test framework, test files, or test scripts exist anywhere in the codebase",
+      "related_files": [
+        "package.json"
+      ],
+      "evidence": [
+        "package.json contains no test-related devDependencies (vitest, jest, etc.)",
+        "No .test.ts, .spec.ts, or __tests__/ files found in the entire repository",
+        "package.json scripts only define dev, build, and preview; no test command exists"
+      ],
+      "suggestion": "Install vitest (already compatible with the Vite build): add vitest to devDependencies, add a 'test' script to package.json, and create at least a vitest.config.ts. Start with tests for github.ts since it contains the most critical parsing logic.",
+      "confidence": "high",
+      "impact_scope": "codebase",
+      "fix_scope": "architectural_change"
+    },
+    {
+      "dimension": "test_strategy",
+      "identifier": "untested_github_api_parsing",
+      "summary": "GitHub API response parsing and Link header extraction have zero test coverage",
+      "related_files": [
+        "src/lib/utils/github.ts"
+      ],
+      "evidence": [
+        "fetchJson performs HTTP calls with JSON parsing and error handling (lines 5-15) with no tests",
+        "fetchRepoData parses Link headers via regex (line 47: /page=(\\d+)>; rel=\"last\"/) to extract commit counts, with a fallback to 1 when no header exists but response is OK; this branching logic is untested",
+        "fetchAllRepoData deduplicates repo names and zips results back into a record; the index-based correlation between unique names and results is fragile without tests"
+      ],
+      "suggestion": "Write unit tests for github.ts by mocking fetch: test fetchJson with success, HTTP error, and network error cases; test fetchRepoData with various Link header formats (present, absent, malformed); test fetchAllRepoData with duplicate repo names to verify deduplication and correct result mapping.",
+      "confidence": "high",
+      "impact_scope": "module",
+      "fix_scope": "multi_file_refactor"
+    }
+  ],
+  "retrospective": {
+    "root_causes": [
+      "The project was likely built as a quick portfolio site where the cost of adding test infrastructure was deprioritized given the small scope and static nature of most content"
+    ],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

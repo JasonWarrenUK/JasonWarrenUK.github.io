@@ -1,0 +1,50 @@
+{
+  "batch": "package_organization",
+  "batch_index": 5,
+  "assessments": {"package_organization": 90.0},
+  "dimension_notes": {
+    "package_organization": {
+      "evidence": [
+        "src/lib/ is cleanly divided into components/ (8 Svelte files), data/ (3 data modules), types/ (1 index file), and utils/ (1 github helper) — each directory has a clear, single purpose",
+        "src/routes/ contains only SvelteKit-required files: +page.svelte, +page.server.ts, +layout.svelte, +layout.ts — no stray files",
+        "directory_profiles show src/lib/data/ has 3 files with avg_fan_in=1.0 and avg_fan_out=0.0, indicating cohesive leaf modules that export data without cross-dependencies",
+        "Total codebase is 7 production TS files across 288 LOC — small enough that the current flat-within-directory structure is proportionate",
+        "All imports follow clean paths: data files import from types/, page.server imports from utils/ and data/, components import from data/ and types/ — no circular or bidirectional coupling"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The types/index.ts barrel file mixes type definitions (interfaces) with runtime values (accentColors constant and SectionAccent type). As the project grows, this conflation could cause consumers to import runtime code when they only need types, and makes it unclear whether types/ is a pure type-declaration directory or also a runtime module."
+    }
+  },
+  "dimension_judgment": {
+    "package_organization": {
+      "strengths": [
+        "Clear four-way split under src/lib/ (components, data, types, utils) with each directory serving a distinct purpose",
+        "No straggler root-level files — all files live in appropriate directories",
+        "Import directions are consistently downward: routes -> lib/utils, routes -> lib/data, lib/data -> lib/types, lib/utils -> lib/types",
+        "Directory naming is unambiguous — a new developer can predict contents from names alone"
+      ],
+      "issue_character": "The only organizational concern is a minor type/runtime mixing issue in a single file; the codebase is otherwise well-organized for its scale.",
+      "score_rationale": "At 7 production files and 288 LOC, this codebase is well within the range where the current directory structure is proportionate and navigable. The four-directory split under src/lib/ provides clear ownership boundaries. The only friction point is the mixing of runtime values into types/index.ts, which prevents a perfect score but does not meaningfully impede navigation today. Score of 90 reflects strong organization with one minor structural impurity."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "package_organization",
+      "identifier": "types_dir_mixes_runtime",
+      "summary": "types/index.ts exports runtime value (accentColors) alongside type definitions",
+      "related_files": ["src/lib/types/index.ts"],
+      "evidence": ["src/lib/types/index.ts defines accentColors as a runtime Record<SectionAccent, string> constant alongside pure type/interface exports (ProjectGitHubData, Project, Artefact, TerminalFrame). The directory name 'types/' implies pure type declarations, but this file also serves as a runtime module."],
+      "suggestion": "Move the accentColors constant and SectionAccent type to a new file src/lib/data/accents.ts or src/lib/theme.ts, keeping types/index.ts purely for interface/type exports. Staged plan: 1) Create src/lib/data/accents.ts with the SectionAccent type and accentColors export. 2) Update imports in any components that reference accentColors. 3) Verify with 'bun run build' that no import paths break.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "multi_file_refactor"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Small codebase with minimal organizational pressure — the types/runtime mixing likely happened because there was only one obvious place to put shared constants"],
+    "likely_symptoms": [],
+    "possible_false_positives": ["The types_dir_mixes_runtime issue is borderline given the codebase size; in a 7-file project, strict separation of types from runtime values may be over-engineering"]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "batch": "initialization_coupling",
+  "batch_index": 6,
+  "assessments": {"initialization_coupling": 93.0},
+  "dimension_notes": {
+    "initialization_coupling": {
+      "evidence": [
+        "src/routes/+page.server.ts uses SvelteKit's load function pattern — all async work (GitHub API fetches) happens inside the load function, not at module scope",
+        "src/lib/utils/github.ts defines API_BASE and GITHUB_HEADERS as module-level constants, but these are pure string/object literals with no side effects",
+        "src/lib/data/ files (artefacts.ts, projects.ts, terminal.ts) export only static data arrays — no import-time side effects, no I/O, no environment variable reads",
+        "src/routes/+layout.ts exports only two boolean constants (prerender=true, csr=true) — no side effects",
+        "No global singletons, no mutable module-level state, no environment variable reads at import time across the entire codebase",
+        "No circular import dependencies detected; all import paths are acyclic"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The accentColors runtime constant in types/index.ts is evaluated at import time, though this is a pure data structure with no external dependencies. More significantly, the GitHub API fetch in +page.server.ts uses hardcoded URL constants rather than configuration, making it slightly harder to redirect API calls in testing contexts — though this is idiomatic for SvelteKit SSG."
+    }
+  },
+  "dimension_judgment": {
+    "initialization_coupling": {
+      "strengths": [
+        "All async I/O is confined to SvelteKit's load() function — no network calls at module scope",
+        "Module-level constants are all pure literals (strings, static arrays, objects) with zero external dependencies",
+        "No environment variable reads at import time anywhere in the codebase",
+        "No mutable global singletons or shared state that could create boot-order dependencies",
+        "Import graph is fully acyclic with clean unidirectional flow"
+      ],
+      "issue_character": "No initialization coupling issues were found; the codebase is essentially free of boot-order dependencies.",
+      "score_rationale": "This codebase demonstrates strong initialization hygiene. All I/O is properly deferred to SvelteKit's load lifecycle, module-level code consists entirely of pure data declarations, and there are no singletons or environment reads at import time. The score of 93 reflects near-exemplary practice, held back only slightly by the hardcoded API constants that make test-time redirection marginally harder — a very minor concern in a static site context."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": ["The scan_evidence flagged +page.server.ts as orphaned/signal_density, but this is a SvelteKit convention file that is implicitly loaded by the framework — not an initialization coupling concern"]
+  }
+}

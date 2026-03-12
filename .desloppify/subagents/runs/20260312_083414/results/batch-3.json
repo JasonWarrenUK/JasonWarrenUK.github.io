@@ -1,0 +1,74 @@
+{
+  "batch": "error_consistency",
+  "batch_index": 3,
+  "assessments": {
+    "error_consistency": 78.0
+  },
+  "dimension_notes": {
+    "error_consistency": {
+      "evidence": [
+        "All network-facing code in github.ts uses a consistent return-null pattern: fetchJson returns T | null, fetchRepoData returns ProjectGitHubData | null, fetchAllRepoData returns Record<string, ... | null>",
+        "Error context is universally discarded: all three catch blocks in github.ts silently return null or swallow with only a comment, losing HTTP status codes, network error details, and rate-limit information",
+        "+page.server.ts wraps fetchAllRepoData in a redundant try-catch; the underlying functions already catch and return null, so the outer catch can never fire under normal operation",
+        "The commit-count catch block in fetchRepoData (line 52) swallows errors with only a comment ('graceful degradation'), meaning a persistent API issue would silently produce commitCount: 0 with no diagnostic trace",
+        "Data files (terminal.ts, artefacts.ts, projects.ts) are pure constant exports with no I/O boundaries, so absence of error handling there is correct"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "multi_file_refactor",
+      "confidence": "medium"
+    }
+  },
+  "dimension_judgment": {
+    "error_consistency": {
+      "strengths": [
+        "Consistent return-null strategy across all network fetch functions in github.ts: fetchJson, fetchRepoData, and fetchAllRepoData all follow the same pattern",
+        "The architecture explicitly documents that GitHub data is supplementary and static content works without it, making graceful degradation a deliberate design choice rather than accidental",
+        "Type signatures honestly reflect the null-return strategy: Promise<T | null> appears consistently, so callers know to expect null"
+      ],
+      "issue_character": "The issues are localized to a single module (github.ts and its caller +page.server.ts) and stem from a single root cause: the graceful-degradation strategy discards all error context, making debugging network issues during development or build invisible.",
+      "score_rationale": "The codebase has a consistent error strategy (return null for network failures), which is the most important attribute for error_consistency. However, the universal context loss across all catch blocks means a developer debugging build-time GitHub API failures would have no diagnostic information. The redundant try-catch in +page.server.ts suggests the error boundary design is not fully thought through. For a 273-LOC codebase with only one I/O boundary, the issues are modest but real. Score lands around 78: the strategy is coherent but the implementation loses context that would help developers, placing it slightly below the 80 anchor of 'solid but uneven.'"
+    }
+  },
+  "issues": [
+    {
+      "dimension": "error_consistency",
+      "identifier": "silent_error_swallowing_github",
+      "summary": "All catch blocks in github.ts discard error context, making network failures invisible during builds",
+      "related_files": ["src/lib/utils/github.ts"],
+      "evidence": [
+        "fetchJson (line 12): catch block returns null with no logging or error wrapping, discarding HTTP status, rate-limit headers, and exception details",
+        "fetchRepoData commit-count block (line 52): catch swallows with only a comment, silently producing commitCount: 0 for any failure",
+        "Three separate catch blocks, all following the same silent-swallow pattern"
+      ],
+      "suggestion": "Add a minimal console.warn in each catch block that includes the URL and error message (e.g., console.warn(`GitHub fetch failed for ${url}:`, error)). This preserves the graceful-degradation behavior while giving developers build-time visibility into API failures, rate limiting, or network issues.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "root_cause_cluster": "silent_degradation"
+    },
+    {
+      "dimension": "error_consistency",
+      "identifier": "redundant_try_catch_page_server",
+      "summary": "Outer try-catch in +page.server.ts is redundant since fetchAllRepoData already handles all errors internally",
+      "related_files": ["src/routes/+page.server.ts", "src/lib/utils/github.ts"],
+      "evidence": [
+        "+page.server.ts line 15-19: wraps fetchAllRepoData in try-catch, but fetchAllRepoData delegates to fetchRepoData which delegates to fetchJson, and all failures are already caught and converted to null at the inner layers",
+        "The outer catch can only fire if Promise.all itself throws (an engine-level failure) or if the .map/.filter on project arrays throws, neither of which is a network error"
+      ],
+      "suggestion": "Either remove the outer try-catch (since the callee already guarantees no throws for network failures) or, if defensive coding at the SvelteKit load boundary is intentional, add a comment explaining that this guards against unexpected non-network failures rather than duplicating the network error handling.",
+      "confidence": "medium",
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "root_cause_cluster": "silent_degradation"
+    }
+  ],
+  "retrospective": {
+    "root_causes": [
+      "The graceful-degradation design philosophy ('GitHub data is supplementary') was implemented as universal silent swallowing rather than as structured fallback with diagnostic output"
+    ],
+    "likely_symptoms": [],
+    "possible_false_positives": [
+      "redundant_try_catch_page_server: the outer catch could be an intentional SvelteKit load-boundary guard rather than a redundant network error handler"
+    ]
+  }
+}
