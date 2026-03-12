@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { parseCommitCount, isRepoResponse, isLanguagesResponse, fetchRepoData, fetchAllRepoData } from './github';
+import { parseCommitCount, isRepoResponse, isLanguagesResponse, fetchRepoData, fetchAllRepoData, attachGithubData } from './github';
+import type { ProjectGitHubData } from '$lib/types';
 
 describe('parseCommitCount', () => {
 	it('extracts count from a valid Link header', () => {
@@ -149,6 +150,23 @@ describe('fetchRepoData', () => {
 		const result = await fetchRepoData('owner/repo');
 		expect(result).toBeNull();
 	});
+
+	it('returns null when json parsing fails', async () => {
+		vi.mocked(fetch).mockResolvedValue({
+			ok: true,
+			status: 200,
+			json: () => Promise.reject(new SyntaxError('Unexpected token')),
+			headers: new Headers()
+		} as unknown as Response);
+		const result = await fetchRepoData('owner/repo');
+		expect(result).toBeNull();
+	});
+
+	it('handles non-Error thrown values in catch', async () => {
+		vi.mocked(fetch).mockRejectedValue('string error');
+		const result = await fetchRepoData('owner/repo');
+		expect(result).toBeNull();
+	});
 });
 
 describe('fetchAllRepoData', () => {
@@ -192,5 +210,28 @@ describe('fetchAllRepoData', () => {
 		const result = await fetchAllRepoData(['owner/good-repo', 'owner/bad-repo']);
 		expect(result['owner/good-repo']).not.toBeNull();
 		expect(result['owner/bad-repo']).toBeNull();
+	});
+});
+
+describe('attachGithubData', () => {
+	const mockGithub: ProjectGitHubData = {
+		languages: { TypeScript: 5000 },
+		commitCount: 42,
+		lastUpdated: '2024-01-01T00:00:00Z',
+		contributors: 3,
+		stars: 5,
+		openIssues: 2
+	};
+
+	it('attaches github data to matching projects', () => {
+		const projects = [{ title: 'A', repo: 'owner/a', description: 'desc', techLine: 'TS' }];
+		const result = attachGithubData(projects, { 'owner/a': mockGithub });
+		expect(result[0].github).toEqual(mockGithub);
+	});
+
+	it('defaults to null for missing repos', () => {
+		const projects = [{ title: 'B', repo: 'owner/b', description: 'desc', techLine: 'TS' }];
+		const result = attachGithubData(projects, {});
+		expect(result[0].github).toBeNull();
 	});
 });
