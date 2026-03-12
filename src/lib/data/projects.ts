@@ -50,7 +50,7 @@ export const explorationProjects: Omit<Project, 'github'>[] = [
 		title: 'The Work',
 		repo: 'JasonWarrenUK/the-work',
 		description:
-			'A narrative game about writing a PhD thesis in one night while staving off existential angst. Built with a custom Ink/Svelte runtime engine (Nib) that\'s extractable for reuse. 67 observations across 7 intellectual domains, an orthodoxy scoring system, 21 emergent disciplines from domain pairings, and a thesis defence that adapts to what you\'ve written. The game\'s idea progression (Observation, Inkling, Idea, Concept, Argument, Thesis) is itself a knowledge system.',
+			'A narrative game about writing a PhD thesis in one night while staving off existential angst. Built with a custom Ink/Svelte runtime engine (Nib), now extracted as a standalone package. 67 observations across 7 intellectual domains, an orthodoxy scoring system, 21 emergent disciplines from domain pairings, and a thesis defence that adapts to what you\'ve written. The game\'s idea progression (Observation, Inkling, Idea, Concept, Argument, Thesis) is itself a knowledge system.',
 		techLine: 'SvelteKit / TypeScript / Ink (via inkjs) / Svelte 5 runes'
 	},
 	{
@@ -65,7 +65,7 @@ export const explorationProjects: Omit<Project, 'github'>[] = [
 		title: 'Flyt',
 		repo: 'JasonWarrenUK/flyt',
 		description:
-			'A Norse contest of words: defend your honour through flyting, the ancient art of ritualised insult poetry. Interactive fiction built with DendryNexus and Svelte 5. Different narrative engine to The Work (DendryNexus vs Ink), same Svelte wrapper pattern. Custom .dry story file compilation pipeline.',
+			'A Norse contest of words: defend your honour through flyting, the ancient art of ritualised insult poetry. Interactive fiction built with DendryNexus and Svelte 5. Its reactive engine (Riffle) has been extracted as a standalone package; the same pattern applied to The Work and Nib. Custom .dry story file compilation pipeline.',
 		techLine: 'SvelteKit / TypeScript / DendryNexus / Svelte 5',
 		liveUrl: 'https://flyt-delta.vercel.app'
 	},
@@ -88,9 +88,16 @@ export const metaProjects: Omit<Project, 'github'>[] = [
 	},
 	{
 		title: 'Nib',
-		repo: 'JasonWarrenUK/the-work',
+		repo: 'JasonWarrenUK/nib',
 		description:
-			'A generic Ink + Svelte 5 runtime engine, living inside The Work\'s src/lib/engine/ directory. Handles story loading, reactive state via Svelte 5 runes, tag processing, and save/load, with zero knowledge of any particular game\'s mechanics. Game-specific logic is injected through a single onInit callback. Copy the engine directory to any SvelteKit project and it works. The ability to identify a reusable abstraction inside a bespoke project and extract it cleanly.',
+			'A small runtime for playing Ink narratives in SvelteKit applications, extracted from The Work into a standalone package. Provides story.svelte.ts (reactive engine) and tags.ts (Ink tag parser). Methods: continue(), choose(), saveState(), loadState(), getVariable(), setVariable(). Zero imports from game-specific code; all game logic integrates through a single onInit callback. Svelte 5 runes for all reactivity. Identified a reusable abstraction inside a bespoke project, then extracted it cleanly.',
 		techLine: 'SvelteKit / TypeScript / Ink (via inkjs) / Svelte 5 runes'
+	},
+	{
+		title: 'Riffle',
+		repo: 'JasonWarrenUK/riffle',
+		description:
+			'A Svelte 5 reactive game engine for interactive fiction, wrapping DendryNexus compiled game JSON; extracted from Flyt as a standalone package. Branching narrative navigation, choice system with priority and visibility conditions, difficulty checks with configurable scales, card and deck mechanics across multiple hands, quality attributes with typed displays, conditional content rendering, arena topology with concentric zones and spatial adjacency. The same extraction pattern as Nib, applied to a completely different narrative system (DendryNexus vs Ink), proving the approach generalises.',
+		techLine: 'SvelteKit / TypeScript / DendryNexus / Svelte 5 runes'
 	}
 ];
