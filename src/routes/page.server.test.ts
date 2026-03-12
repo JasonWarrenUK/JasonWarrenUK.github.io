@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { attachGithubData } from '$lib/utils/github';
+import { attachGitHubData } from '$lib/utils/github';
 import type { ProjectGitHubData } from '$lib/types';
 
 const mockGithub: ProjectGitHubData = {
@@ -11,7 +11,7 @@ const mockGithub: ProjectGitHubData = {
 	openIssues: 2
 };
 
-describe('attachGithubData', () => {
+describe('attachGitHubData', () => {
 	it('attaches matching github data to projects', () => {
 		const projects = [
 			{ title: 'A', repo: 'owner/a', description: 'desc', techLine: 'TS' }
@@ -20,7 +20,7 @@ describe('attachGithubData', () => {
 			'owner/a': mockGithub
 		};
 
-		const result = attachGithubData(projects, githubData);
+		const result = attachGitHubData(projects, githubData);
 		expect(result).toHaveLength(1);
 		expect(result[0].github).toEqual(mockGithub);
 		expect(result[0].title).toBe('A');
@@ -32,7 +32,7 @@ describe('attachGithubData', () => {
 		];
 		const githubData: Record<string, ProjectGitHubData | null> = {};
 
-		const result = attachGithubData(projects, githubData);
+		const result = attachGitHubData(projects, githubData);
 		expect(result[0].github).toBeNull();
 	});
 
@@ -44,7 +44,7 @@ describe('attachGithubData', () => {
 			'owner/c': null
 		};
 
-		const result = attachGithubData(projects, githubData);
+		const result = attachGitHubData(projects, githubData);
 		expect(result[0].github).toBeNull();
 	});
 
@@ -59,7 +59,7 @@ describe('attachGithubData', () => {
 			'owner/e': null
 		};
 
-		const result = attachGithubData(projects, githubData);
+		const result = attachGitHubData(projects, githubData);
 		expect(result[0].github).toEqual(mockGithub);
 		expect(result[1].github).toBeNull();
 		expect(result[2].github).toBeNull();
@@ -73,7 +73,7 @@ describe('attachGithubData', () => {
 			'owner/g': mockGithub
 		};
 
-		const result = attachGithubData(projects, githubData);
+		const result = attachGitHubData(projects, githubData);
 		expect(result[0].title).toBe('G');
 		expect(result[0].repo).toBe('owner/g');
 		expect(result[0].description).toBe('A description');

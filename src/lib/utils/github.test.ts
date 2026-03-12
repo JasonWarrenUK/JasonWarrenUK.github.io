@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { parseCommitCount, isRepoResponse, isLanguagesResponse, fetchRepoData, fetchAllRepoData, attachGithubData } from './github';
+import { parseCommitCount, isRepoResponse, isLanguagesResponse, fetchRepoData, fetchAllRepoData, attachGitHubData } from './github';
 import type { ProjectGitHubData } from '$lib/types';
 
 describe('parseCommitCount', () => {
@@ -213,7 +213,7 @@ describe('fetchAllRepoData', () => {
 	});
 });
 
-describe('attachGithubData', () => {
+describe('attachGitHubData', () => {
 	const mockGithub: ProjectGitHubData = {
 		languages: { TypeScript: 5000 },
 		commitCount: 42,
@@ -225,13 +225,13 @@ describe('attachGithubData', () => {
 
 	it('attaches github data to matching projects', () => {
 		const projects = [{ title: 'A', repo: 'owner/a', description: 'desc', techLine: 'TS' }];
-		const result = attachGithubData(projects, { 'owner/a': mockGithub });
+		const result = attachGitHubData(projects, { 'owner/a': mockGithub });
 		expect(result[0].github).toEqual(mockGithub);
 	});
 
 	it('defaults to null for missing repos', () => {
 		const projects = [{ title: 'B', repo: 'owner/b', description: 'desc', techLine: 'TS' }];
-		const result = attachGithubData(projects, {});
+		const result = attachGitHubData(projects, {});
 		expect(result[0].github).toBeNull();
 	});
 });

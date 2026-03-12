@@ -23,8 +23,9 @@ async function tryFetchJson(url: string): Promise<unknown> {
 	if (!res) return null;
 	try {
 		return await res.json();
-	} catch {
-		console.warn('[GitHub API] JSON parse failed', { url });
+	} catch (e) {
+		const message = e instanceof Error ? e.message : String(e);
+		console.warn('[GitHub API] JSON parse failed', { url, error: message });
 		return null;
 	}
 }
@@ -53,12 +54,12 @@ export function isLanguagesResponse(data: unknown): data is Record<string, numbe
 }
 
 // Exported for testing
-export function parseCommitCount(linkHeader: string | null, responseOk: boolean): number {
+export function parseCommitCount(linkHeader: string | null, hasResponse: boolean): number {
 	if (linkHeader) {
 		const match = linkHeader.match(/page=(\d+)>; rel="last"/);
 		if (match) return parseInt(match[1], 10);
 	}
-	return responseOk ? 1 : 0;
+	return hasResponse ? 1 : 0;
 }
 
 export async function fetchRepoData(repoPath: string): Promise<ProjectGitHubData | null> {
@@ -98,7 +99,7 @@ export async function fetchAllRepoData(
 	return Object.fromEntries(unique.map((name, i) => [name, results[i]]));
 }
 
-export function attachGithubData(
+export function attachGitHubData(
 	projects: Omit<Project, 'github'>[],
 	githubData: Record<string, ProjectGitHubData | null>
 ): Project[] {

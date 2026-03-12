@@ -10,12 +10,17 @@
 
 	import { artefacts } from '$lib/data/artefacts';
 	import { irisSession } from '$lib/data/terminal';
+	import type { TerminalFrame } from '$lib/types';
 
 	interface Props {
 		data: import('./$types').PageData;
 	}
 
 	let { data }: Props = $props();
+
+	const terminalDemos: Record<string, { frames: TerminalFrame[]; title: string }> = {
+		'foundersandcoders/iris': { frames: irisSession, title: 'iris validate' }
+	};
 
 	const sectionTints: Record<string, string> = {
 		top: '#0f0e0d',
@@ -95,9 +100,10 @@
 
 <Section id="impact" title="Impact Work" accent="primary">
 	{#each data.impactProjects as project}
-		{#if project.repo === 'foundersandcoders/iris'}
+		{@const demo = terminalDemos[project.repo]}
+		{#if demo}
 			<ProjectCard {project} accent="primary">
-				<Terminal frames={irisSession} title="iris validate" />
+				<Terminal frames={demo.frames} title={demo.title} />
 			</ProjectCard>
 		{:else}
 			<ProjectCard {project} accent="primary" />

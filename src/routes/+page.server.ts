@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { fetchAllRepoData, attachGithubData } from '$lib/utils/github';
+import { fetchAllRepoData, attachGitHubData } from '$lib/utils/github';
 import { impactProjects, explorationProjects, metaProjects } from '$lib/data/projects';
 
 export const load: PageServerLoad = async () => {
@@ -9,11 +9,18 @@ export const load: PageServerLoad = async () => {
 		...metaProjects.map((p) => p.repo)
 	];
 
-	const githubData = await fetchAllRepoData(allRepos);
+	let githubData;
+	try {
+		githubData = await fetchAllRepoData(allRepos);
+	} catch (e) {
+		const message = e instanceof Error ? e.message : String(e);
+		console.warn('[SSG] GitHub data fetch failed, building without GitHub data', { error: message });
+		githubData = {};
+	}
 
 	return {
-		impactProjects: attachGithubData(impactProjects, githubData),
-		explorationProjects: attachGithubData(explorationProjects, githubData),
-		metaProjects: attachGithubData(metaProjects, githubData)
+		impactProjects: attachGitHubData(impactProjects, githubData),
+		explorationProjects: attachGitHubData(explorationProjects, githubData),
+		metaProjects: attachGitHubData(metaProjects, githubData)
 	};
 };
