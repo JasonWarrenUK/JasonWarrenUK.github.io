@@ -1,0 +1,41 @@
+{
+  "batch": "cross_module_architecture",
+  "batch_index": 16,
+  "assessments": {"cross_module_architecture": 93.0},
+  "dimension_notes": {
+    "cross_module_architecture": {
+      "evidence": [
+        "Dependency direction is clean and unidirectional: routes import from lib/data and lib/utils; lib/utils imports from lib/types; components import from lib/types, lib/constants, and lib/data. No reverse dependencies observed.",
+        "No god modules: the top-imported files (artefacts.ts, projects.ts, terminal.ts, github.ts, app.css) each have exactly 1 importer, indicating no hub-module pressure.",
+        "No circular imports detected across any module pair in the graph.",
+        "Cross-module coordination occurs only through typed data shapes (Project, Artefact, TerminalFrame) defined in lib/types/index.ts, not through shared mutable state or import-time side effects.",
+        "The one minor boundary curiosity: +page.svelte imports artefacts and irisSession directly from lib/data (bypassing the server load), while impactProjects/explorationProjects/metaProjects flow through +page.server.ts. This is intentional: static data that needs no GitHub enrichment is inlined, enriched data is server-loaded. The pattern is coherent.",
+        "No compatibility shims or dual-path coexistence observed anywhere in the codebase.",
+        "Package size census flags src/ as 100% of total LOC, but this is a trivially small codebase (308 LOC total, 8 files) where a flat structure is appropriate per the skip rule for projects <20 files."
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The split import strategy (some data via server load, some direct from lib/data into the page component) is logically coherent but creates a subtle asymmetry: a new contributor looking at +page.svelte must understand why artefacts and irisSession bypass the load function while project lists do not. This is a minor navigational friction, not a boundary violation, and does not warrant an issue finding."
+    }
+  },
+  "dimension_judgment": {
+    "cross_module_architecture": {
+      "strengths": [
+        "Dependency direction is strictly unidirectional: routes consume lib; lib/utils consumes lib/types; no upstream imports observed.",
+        "No hub modules: every data/utils file has exactly one importer, so no single module creates a high blast radius.",
+        "Cross-module coordination happens entirely through immutable typed data, not shared mutable state or import-time side effects.",
+        "No circular dependency cycles anywhere in the import graph.",
+        "No compatibility shims or deprecated-but-retained boundary code anywhere in the codebase."
+      ],
+      "issue_character": "No structural boundary violations were found; the only note is a minor asymmetry in where static vs. enriched data is loaded, which is intentional and coherent.",
+      "score_rationale": "The codebase demonstrates clean, unidirectional dependency flow with no cycles, no hub modules, and no shared mutable state across boundaries. At 308 LOC across 8 files this is a small but well-structured system. The slight asymmetry in data loading paths (artefacts/terminal direct vs. projects via server load) is a meaningful design choice, not a boundary violation. A score of 93 reflects exemplary boundary discipline with minimal friction from the dual-load pattern."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": ["scan_evidence orphaned flag on +page.server.ts is a false positive: it is a SvelteKit server load entry point consumed by the framework router, not an importer-tracked module"]
+  }
+}

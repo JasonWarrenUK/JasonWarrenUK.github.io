@@ -1,0 +1,55 @@
+{
+  "batch": "contract_coherence",
+  "batch_index": 11,
+  "assessments": {"contract_coherence": 91.0},
+  "dimension_notes": {
+    "contract_coherence": {
+      "evidence": [
+        "fetchGitHub(url): Promise<Response | null> — returns null on non-ok status and on thrown network errors; both paths honored",
+        "fetchRepoData(repoPath): Promise<ProjectGitHubData | null> — returns null when isRepoResponse guard fails; all paths return correct type",
+        "parseCommitCount(linkHeader, responseOk): number — three distinct return paths all produce number; no path can return undefined or null",
+        "isRepoResponse and isLanguagesResponse are type guard predicates (returns data is X) — always return boolean, no side effects, no mutation",
+        "attachGithubData is a pure transform: takes Omit<Project,'github'>[] and a lookup map, returns Project[] with github field attached — contract fully honored",
+        "tryFetchJson(url): Promise<unknown | null> — calls res.json() without await, meaning a JSON parse failure (malformed response body) would produce an unhandled rejection rather than returning null; the null-return contract is not honored for parse errors"
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "tryFetchJson's null-return contract is violated for JSON parse failures: res.json() is not awaited inside a try/catch, so a malformed response body produces an unhandled rejection instead of returning null as the signature implies."
+    }
+  },
+  "dimension_judgment": {
+    "contract_coherence": {
+      "strengths": [
+        "All return type annotations are accurate across every code path in the public API (fetchGitHub, fetchRepoData, parseCommitCount, fetchAllRepoData)",
+        "Type guard functions isRepoResponse and isLanguagesResponse honor the data is X predicate contract precisely — no mutation, no side effects, pure boolean",
+        "attachGithubData is a pure transform with no hidden side effects; its name and signature match its behavior exactly",
+        "Data modules (artefacts.ts, projects.ts, terminal.ts) export typed arrays with no API surface beyond the named export — zero contract surface to violate"
+      ],
+      "issue_character": "The single issue is a narrow contract gap in one internal helper where the null-return promise is not enforced for the JSON parse failure path — isolated to one function in one file.",
+      "score_rationale": "The codebase is nearly exemplary on contract coherence: every public function does what its name and return type say, type guards are honest, and there are no getter/mutation mismatches. The one deduction is tryFetchJson, where a JSON parse error would produce an unhandled rejection rather than the null the signature implies — a real but localized gap. Against the global anchor of 90 (trustworthy with only minor friction), this sits just above that line with one concrete but narrow issue."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "contract_coherence",
+      "identifier": "try_fetch_json_parse_contract",
+      "summary": "tryFetchJson's null-return contract is not honored for JSON parse errors",
+      "related_files": ["src/lib/utils/github.ts"],
+      "evidence": [
+        "tryFetchJson calls res.json() without await and without a surrounding try/catch; if the response body is malformed JSON, res.json() rejects and the promise propagates instead of returning null",
+        "The function signature implies Promise<unknown | null> — callers expect null on any failure, but parse errors escape as rejections"
+      ],
+      "suggestion": "Wrap the json parse in a try/catch: `try { return await res.json(); } catch { return null; }` — this makes the null-return contract cover all failure modes including malformed response bodies.",
+      "confidence": "high",
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "root_cause_cluster": "error_boundary_completeness"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["The null-return strategy is correctly applied to network and HTTP-status failures but the JSON parse step was not included in the error boundary — a small oversight in an otherwise consistent pattern"],
+    "likely_symptoms": ["try_fetch_json_parse_contract"],
+    "possible_false_positives": []
+  }
+}

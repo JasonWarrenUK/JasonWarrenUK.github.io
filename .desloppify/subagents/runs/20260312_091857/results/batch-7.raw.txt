@@ -1,0 +1,59 @@
+{
+  "batch": "design_coherence",
+  "batch_index": 7,
+  "assessments": {"design_coherence": 82.0},
+  "dimension_notes": {
+    "design_coherence": {
+      "evidence": [
+        "src/routes/+page.server.ts: attachGithubData is a focused, single-responsibility helper; load() is clean and does one thing (fetch GitHub data, merge with static projects, return). No mixing of concerns.",
+        "src/lib/utils/github.ts: fetchRepoData does parallel fetching plus parsing plus assembly — three conceptually distinct concerns in one function body. The parsing/guard logic (isRepoResponse, isLanguagesResponse, parseCommitCount) is correctly extracted, but the assembly step (constructing ProjectGitHubData) sits alongside the fetch orchestration.",
+        "src/lib/components/ProjectCard.svelte: contains three distinct responsibilities — language bar computation (getLanguageSegments), date formatting (formatDate), and description splitting (splitOverview) — all co-located in a single component script. Each helper is focused, but their presence means ProjectCard mixes data transformation with presentation.",
+        "src/routes/+page.svelte: the $effect for reveal-section observer and the $effect for background tint observer are both inlined in the page script. Each does a single thing, but they both query the DOM with querySelectorAll rather than being driven by a typed reference — a pattern inconsistency with how containerEl is used in Terminal.svelte.",
+        "src/lib/components/Terminal.svelte: playFrames is a focused async loop; the IntersectionObserver setup in $effect is appropriately self-contained.",
+        "The mechanical signal flagging +page.server.ts as 'orphaned' is a false positive: SvelteKit +page.server.ts files are framework entry points, not normal importable modules. The file is not dead code.",
+        "Nav.svelte: sections array is defined inline in the script as a module-level constant — navigation data is not shared with any other consumer, so it is correctly scoped. No design issue.",
+        "No repeated structural patterns that should be data-driven were found beyond the three-category project enumeration in load()."
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "ProjectCard.svelte mixes three data-transformation helpers with component presentation logic. The helpers are individually sound, but their colocation means the component has a wider responsibility surface than its name implies. Extracting them to a utility module would sharpen the component's focus without adding indirection cost."
+    }
+  },
+  "dimension_judgment": {
+    "design_coherence": {
+      "strengths": [
+        "The load function in +page.server.ts is a clean orchestrator: it delegates fetching to fetchAllRepoData and merging to attachGithubData, keeping each step single-purpose",
+        "github.ts correctly extracts validation logic (isRepoResponse, isLanguagesResponse, parseCommitCount) from the fetch-and-assemble flow, making each validator independently testable",
+        "Terminal.svelte maintains a clean separation between animation state (playFrames) and intersection observation, with a proper cleanup return from $effect",
+        "The type system enforces the Project / Omit<Project, 'github'> distinction, preventing static data from being passed where hydrated data is expected — a design decision that enforces the two-phase data model"
+      ],
+      "issue_character": "The primary design concern is colocation of data-transformation helpers inside component scripts (ProjectCard.svelte), giving components a wider responsibility surface than their name implies — a single extractable issue rather than a systemic pattern.",
+      "score_rationale": "A score of 82 reflects a codebase with sound core design: focused functions, appropriate delegation, and a coherent two-phase data model. The deduction comes from ProjectCard.svelte carrying three transformation helpers that belong in a utility module, and from the two $effects in +page.svelte querying the DOM imperatively rather than through typed bindings. Neither issue is severe, but they represent avoidable responsibility diffusion that a developer would notice when extending the component. This places the codebase in the 'solid with addressable friction' band."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "design_coherence",
+      "identifier": "dc_project_card_helpers",
+      "summary": "ProjectCard.svelte contains three data-transformation helpers that mix presentation with data processing logic",
+      "related_files": ["src/lib/components/ProjectCard.svelte"],
+      "evidence": [
+        "getLanguageSegments computes display segments from a Record<string, number> — pure data transformation",
+        "formatDate converts ISO string to locale string — pure utility",
+        "splitOverview splits a description string on sentence boundary — pure text processing",
+        "All three functions are defined inside the component script alongside reactive state and template logic"
+      ],
+      "suggestion": "Extract getLanguageSegments, formatDate, and splitOverview to src/lib/utils/display.ts (or similar). Import them into ProjectCard. This keeps the component responsible only for rendering and state, not transformation.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "multi_file_refactor",
+      "root_cause_cluster": "responsibility_diffusion"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Transformation helpers were written inline during initial component development and never promoted to a utility module as the component grew."],
+    "likely_symptoms": ["dc_project_card_helpers"],
+    "possible_false_positives": ["The 'orphaned file' signal for +page.server.ts is a confirmed false positive — SvelteKit framework entry points have no importers by design."]
+  }
+}

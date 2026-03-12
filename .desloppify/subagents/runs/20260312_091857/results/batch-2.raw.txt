@@ -1,0 +1,67 @@
+{
+  "batch": "mid_level_elegance",
+  "batch_index": 2,
+  "assessments": {"mid_level_elegance": 85.0},
+  "dimension_notes": {
+    "mid_level_elegance": {
+      "evidence": [
+        "+page.server.ts uses attachGithubData as a focused boundary function: it takes Omit<Project, 'github'>[] and Record<string, ProjectGitHubData | null> and returns Project[]. The translation is in one place and explicit.",
+        "fetchAllRepoData returns Record<string, ProjectGitHubData | null>; the null sentinel propagates cleanly through attachGithubData via nullish coalescing, and components handle null github gracefully (ProjectCard checks `if (project.github)`).",
+        "The route/component boundary passes typed PageData; +page.svelte destructures data.impactProjects, data.explorationProjects, data.metaProjects directly. No ad-hoc remapping at the component level.",
+        "Terminal.svelte receives TerminalFrame[] through a typed Props interface. The frames data contract is minimal and explicit.",
+        "Section.svelte receives id, title, accent, and children snippet. The accent -> style translation is done locally via accentColors lookup, not via prop drilling of raw color strings.",
+        "One seam concern: +page.svelte passes irisSession directly from data/terminal.ts and hard-codes the condition `if (project.repo === 'foundersandcoders/iris')` to decide which ProjectCard gets the Terminal child. This is a fragile repo-string match at the integration seam rather than a clean data-driven property.",
+        "The load function in +page.server.ts constructs allRepos by mapping over all three arrays and concatenating — this is implicit coupling to the number of project categories. If a fourth category is added, the load function must be updated manually.",
+        "Artefacts.svelte receives artefacts: Artefact[] directly passed from +page.svelte (which reads from the data import). This is clean, but artefacts bypass the server load entirely and are imported client-side from src/lib/data/artefacts.ts, creating a different data pathway from projects. The asymmetry is not problematic at this scale but is a seam inconsistency."
+      ],
+      "impact_scope": "subsystem",
+      "fix_scope": "multi_file_refactor",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The hard-coded repo-string match to inject the Terminal component into a specific ProjectCard is a fragile integration seam. The artefacts data pathway (client import) differs from the projects pathway (server load), creating asymmetric handoff patterns for similar content types.",
+      "sub_axes": null
+    }
+  },
+  "dimension_judgment": {
+    "mid_level_elegance": {
+      "strengths": [
+        "attachGithubData provides a single, explicit translation point between raw API data and typed Project objects.",
+        "Error/null propagation from GitHub API failures is handled cleanly through the null sentinel pattern, with consistent fallback in components.",
+        "Component props interfaces are minimal and typed; no ad-hoc any-typed prop passing.",
+        "The route-to-component data handoff for projects is clean: server returns typed arrays, page destructures them directly."
+      ],
+      "issue_character": "Integration seams are mostly clean, but one fragile repo-string match injects a presentation concern (Terminal demo) at the orchestration layer rather than via a data-driven flag, and artefacts take a different (client-side) data path than projects, creating mild asymmetry.",
+      "score_rationale": "The codebase reaches the 85 boundary: seams are explicit, translation is localised, and error propagation is consistent. Two issues keep it from higher: the iris terminal injection relies on a magic string comparison rather than a data property, and artefacts vs. projects use structurally different data pathways for no stated reason. Neither is severe enough to drop below 80, but both introduce predictable friction when extending the site."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "mid_level_elegance",
+      "identifier": "mle_iris_magic_string",
+      "summary": "Terminal demo injected via hard-coded repo string match rather than a data-driven flag",
+      "related_files": ["src/routes/+page.svelte", "src/lib/data/projects.ts"],
+      "evidence": ["{#if project.repo === 'foundersandcoders/iris'} in +page.svelte line 98 — the decision to embed Terminal is made by comparing a repo path string rather than reading a property on the Project type."],
+      "suggestion": "Add an optional terminalFrames?: TerminalFrame[] field to the Project type (or a separate featuredTerminal property). Populate it for the Iris entry in projects.ts. In +page.svelte, render <Terminal> if project.terminalFrames is defined. This moves the integration decision to the data layer where it belongs.",
+      "confidence": "high",
+      "impact_scope": "module",
+      "fix_scope": "multi_file_refactor",
+      "root_cause_cluster": "magic_string_integration"
+    },
+    {
+      "dimension": "mid_level_elegance",
+      "identifier": "mle_artefacts_pathway_asymmetry",
+      "summary": "Artefacts use a client-side data import while projects go through the server load function, creating asymmetric data pathways for similar content",
+      "related_files": ["src/routes/+page.svelte", "src/routes/+page.server.ts", "src/lib/data/artefacts.ts"],
+      "evidence": ["+page.svelte imports artefacts directly from '$lib/data/artefacts' at line 11. Projects are loaded via the server load function in +page.server.ts. Both are static content arrays; there is no functional reason for the pathway difference."],
+      "suggestion": "Either include artefacts in the +page.server.ts load return (making all page data come from one place), or document that artefacts intentionally never get GitHub enrichment and add a comment explaining the asymmetry. The former is cleaner.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "root_cause_cluster": "data_pathway_asymmetry"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Incremental feature addition (terminal demo, artefacts section) without revisiting data flow architecture created mild seam inconsistencies."],
+    "likely_symptoms": ["mle_iris_magic_string"],
+    "possible_false_positives": []
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "batch": "initialization_coupling",
+  "batch_index": 6,
+  "assessments": {"initialization_coupling": 91.0},
+  "dimension_notes": {
+    "initialization_coupling": {
+      "evidence": [
+        "src/routes/+page.server.ts: imports impactProjects, explorationProjects, metaProjects from '$lib/data/projects' at module scope — these are pure static data arrays, not connections or singletons, so the import-time cost is acceptable",
+        "src/lib/utils/github.ts: API_BASE and GITHUB_HEADERS are module-level constants (strings/objects); they are genuinely constant and do not depend on runtime environment, so no fragility",
+        "src/lib/utils/github.ts: no environment variable reads at module scope — no process.env or import.meta.env access at import time",
+        "src/lib/constants.ts: accentColors is a Record computed at module scope from a SectionAccent Literal type; the computation is pure and the object is never mutated, so there is no stale-snapshot risk",
+        "src/routes/+layout.ts: only exports two constants (prerender, csr) — no side effects",
+        "No circular import dependencies detected across the small module graph: data -> types, utils -> types, server -> data + utils, components -> types + constants",
+        "No DB connections, network calls, or file I/O at module scope in any file — all network calls are inside async functions (fetchGitHub, fetchRepoData, fetchAllRepoData)"
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The codebase is nearly clean for this dimension. The sole marginal concern is that +page.server.ts enumerates all three project arrays at build-time to derive allRepos; if a future developer added a fourth category they would need to remember to update both the array spread and the attachGithubData call site. This is a maintenance coupling risk, not a runtime initialization risk, and is too minor to file as a formal issue."
+    }
+  },
+  "dimension_judgment": {
+    "initialization_coupling": {
+      "strengths": [
+        "All network I/O is deferred into async functions; nothing touches the network at module load time",
+        "Module-level constants (API_BASE, GITHUB_HEADERS, accentColors) are genuinely immutable — no getter/snapshot divergence possible",
+        "No environment variable reads at import time; the codebase has no auth tokens or config at all (public GitHub API only)",
+        "The import graph is shallow and acyclic: data modules depend only on types, utilities depend only on types, the server route depends on data and utilities",
+        "No global singletons with construction-order dependencies"
+      ],
+      "issue_character": "There are no initialization coupling defects in the traditional sense; the only theoretical future risk is the manual list of project categories in the load function, which would require a developer to remember to extend multiple call sites if a new category were added.",
+      "score_rationale": "A score of 91 reflects a codebase that is essentially clean against this dimension: no import-time side effects, no fragile env reads, no singleton ordering issues, and a well-contained async boundary for all I/O. The small deduction is for the manually enumerated project-category list in +page.server.ts, which is a latent maintenance coupling that would surface if the category count ever grew. This places it solidly in the 'good, minor friction' band, short of perfect only because a data-driven approach (iterating a registry of categories) would eliminate the coupling entirely."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": ["The orphaned-file signal for +page.server.ts (from the design_coherence batch prompt) is a false positive for this dimension: SvelteKit +page.server.ts files are framework entry points, not normal modules, so zero importers is expected and correct."]
+  }
+}
