@@ -8,23 +8,14 @@
 	import Background from '$lib/components/Background.svelte';
 	import Contact from '$lib/components/Contact.svelte';
 
-	import { impactProjects, explorationProjects, metaProjects } from '$lib/data/projects';
 	import { artefacts } from '$lib/data/artefacts';
 	import { irisSession } from '$lib/data/terminal';
-	import type { Project } from '$lib/types';
 
 	interface Props {
 		data: import('./$types').PageData;
 	}
 
 	let { data }: Props = $props();
-
-	function attachGithubData(projects: Omit<Project, 'github'>[]): Project[] {
-		return projects.map((p) => ({
-			...p,
-			github: data.githubData?.[p.repo] ?? null
-		}));
-	}
 
 	const sectionTints: Record<string, string> = {
 		top: '#0f0e0d',
@@ -103,7 +94,7 @@
 <About />
 
 <Section id="impact" title="Impact Work" accent="primary">
-	{#each attachGithubData(impactProjects) as project}
+	{#each data.impactProjects as project}
 		{#if project.repo === 'foundersandcoders/iris'}
 			<ProjectCard {project} accent="primary">
 				<Terminal frames={irisSession} title="iris validate" />
@@ -120,7 +111,7 @@
 		philosophy, narrative, poetry) and builds a system that lets users engage with it on its
 		own terms.
 	</p>
-	{#each attachGithubData(explorationProjects) as project}
+	{#each data.explorationProjects as project}
 		<ProjectCard {project} accent="warm" />
 	{/each}
 </Section>
@@ -130,7 +121,7 @@
 		How I think about tooling and workflow. Most developers use tools. Some configure them. This is
 		what happens when you encode your entire development methodology into a system.
 	</p>
-	{#each attachGithubData(metaProjects) as project}
+	{#each data.metaProjects as project}
 		<ProjectCard {project} accent="secondary" />
 	{/each}
 

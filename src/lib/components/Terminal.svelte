@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { TerminalFrame } from '$lib/types';
-	import { onMount } from 'svelte';
 
 	interface Props {
 		frames: TerminalFrame[];
@@ -14,7 +13,7 @@
 	let hasPlayed = $state(false);
 	let containerEl: HTMLElement | undefined = $state();
 
-	onMount(() => {
+	$effect(() => {
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 		if (prefersReducedMotion) {
