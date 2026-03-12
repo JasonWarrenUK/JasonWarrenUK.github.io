@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { accentColors } from './index';
+import { accentColors } from '$lib/constants';
 
 describe('types module', () => {
 	it('exports accentColors with all four accent values', () => {

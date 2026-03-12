@@ -21,7 +21,7 @@
 		{#each artefacts as artefact}
 			<li class="reveal-section">
 				<a
-					href="https://github.com/JasonWarrenUK/{artefact.repo}"
+					href="https://github.com/{artefact.repo}"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="artefact-link"

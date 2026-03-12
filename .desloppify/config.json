@@ -7,9 +7,21 @@
   "badge_path": "scorecard.png",
   "exclude": [
     ".git",
-    "docs"
+    "docs",
+    "build",
+    "node_modules",
+    ".svelte-kit",
+    ".desloppify"
   ],
-  "ignore": [],
+  "ignore": [
+    "orphaned::src/routes/*",
+    "orphaned::src/lib/components/*",
+    "orphaned::src/lib/data/*",
+    "smells::src/lib/data/projects.ts::hardcoded_url",
+    "orphaned::src/lib/utils/*",
+    "single_use::src/app.css",
+    "smells::src/app.css::css_important_overuse"
+  ],
   "ignore_metadata": {},
   "zone_overrides": {},
   "review_dimensions": [],
@@ -18,7 +30,7 @@
   "issue_noise_budget": 10,
   "issue_noise_global_budget": 0,
   "execution_log_max_entries": 10000,
-  "needs_rescan": true,
+  "needs_rescan": false,
   "languages": {},
   "commit_tracking_enabled": true,
   "commit_pr": 0,

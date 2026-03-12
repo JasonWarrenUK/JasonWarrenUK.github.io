@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { accentColors, type SectionAccent } from '$lib/types';
+	import type { SectionAccent } from '$lib/types';
+	import { accentColors } from '$lib/constants';
 
 	interface Props {
 		id: string;

@@ -13,4 +13,10 @@ describe('artefact data', () => {
 			expect(a.description).toBeTruthy();
 		}
 	});
+
+	it('every repo uses owner/repo format', () => {
+		for (const a of artefacts) {
+			expect(a.repo).toMatch(/^[^/]+\/[^/]+$/);
+		}
+	});
 });

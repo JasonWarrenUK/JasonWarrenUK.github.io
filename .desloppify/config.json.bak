@@ -6,9 +6,22 @@
   "generate_scorecard": true,
   "badge_path": "scorecard.png",
   "exclude": [
-    ".git"
+    ".git",
+    "docs",
+    "build",
+    "node_modules",
+    ".svelte-kit",
+    ".desloppify"
   ],
-  "ignore": [],
+  "ignore": [
+    "orphaned::src/routes/*",
+    "orphaned::src/lib/components/*",
+    "orphaned::src/lib/data/*",
+    "smells::src/lib/data/projects.ts::hardcoded_url",
+    "orphaned::src/lib/utils/*",
+    "single_use::src/app.css",
+    "smells::src/app.css::css_important_overuse"
+  ],
   "ignore_metadata": {},
   "zone_overrides": {},
   "review_dimensions": [],

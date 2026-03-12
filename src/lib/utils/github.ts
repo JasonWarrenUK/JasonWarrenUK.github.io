@@ -27,14 +27,13 @@ interface RepoResponse {
 }
 
 export function isRepoResponse(data: unknown): data is RepoResponse {
+	if (typeof data !== 'object' || data === null) return false;
+	const obj = data as Record<string, unknown>;
 	return (
-		typeof data === 'object' &&
-		data !== null &&
-		'stargazers_count' in data &&
-		'open_issues_count' in data &&
-		'updated_at' in data &&
-		typeof (data as RepoResponse).stargazers_count === 'number' &&
-		typeof (data as RepoResponse).updated_at === 'string'
+		typeof obj.stargazers_count === 'number' &&
+		typeof obj.open_issues_count === 'number' &&
+		typeof obj.updated_at === 'string' &&
+		(obj.language === null || typeof obj.language === 'string')
 	);
 }
 
@@ -54,18 +53,17 @@ export function parseCommitCount(linkHeader: string | null, responseOk: boolean)
 export async function fetchRepoData(repoPath: string): Promise<ProjectGitHubData | null> {
 	const repoUrl = `${API_BASE}/repos/${repoPath}`;
 
-	const [repoRaw, langRaw, contribRaw] = await Promise.all([
+	const [repoRaw, langRaw, contribRaw, commitsRes] = await Promise.all([
 		fetchJson(repoUrl),
 		fetchJson(`${repoUrl}/languages`),
-		fetchJson(`${repoUrl}/contributors?per_page=100`)
+		fetchJson(`${repoUrl}/contributors?per_page=100`),
+		fetchGitHub(`${repoUrl}/commits?per_page=1`)
 	]);
 
 	if (!isRepoResponse(repoRaw)) return null;
 	const repo = repoRaw;
 	const languages = isLanguagesResponse(langRaw) ? langRaw : {};
 	const contributors = Array.isArray(contribRaw) ? contribRaw.length : 0;
-
-	const commitsRes = await fetchGitHub(`${repoUrl}/commits?per_page=1`);
 	const commitCount = parseCommitCount(
 		commitsRes?.headers.get('Link') ?? null,
 		commitsRes !== null

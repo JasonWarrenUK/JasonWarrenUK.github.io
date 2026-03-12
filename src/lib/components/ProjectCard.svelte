@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { accentColors, type Project, type SectionAccent } from '$lib/types';
+	import type { Project, SectionAccent } from '$lib/types';
+	import { accentColors } from '$lib/constants';
 	import type { Snippet } from 'svelte';
 
 	interface Props {
