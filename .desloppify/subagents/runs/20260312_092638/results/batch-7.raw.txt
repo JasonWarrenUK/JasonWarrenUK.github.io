@@ -1,0 +1,38 @@
+{
+  "batch": "design_coherence",
+  "batch_index": 7,
+  "assessments": {"design_coherence": 88.0},
+  "dimension_notes": {
+    "design_coherence": {
+      "evidence": [
+        "attachGithubData in +page.server.ts is a focused pure function: takes projects and github data, returns enriched projects",
+        "The load function has a single coherent responsibility: gather repos, fetch GitHub data, attach and return",
+        "github.ts functions are well-decomposed: fetchGitHub (low-level fetch), tryFetchJson (JSON parsing layer), type guards (isRepoResponse, isLanguagesResponse), fetchRepoData (single repo), fetchAllRepoData (batch)",
+        "Data files are simple typed constant arrays with no logic to evaluate for design coherence",
+        "No deep nesting anywhere in the codebase; control flow is flat and direct"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The repeated .map(p => p.repo) pattern in the load function across three project arrays is a minor structural repetition that could be data-driven, though it is not worth flagging as a defect given the small scale."
+    }
+  },
+  "dimension_judgment": {
+    "design_coherence": {
+      "strengths": [
+        "Functions are focused with single responsibilities throughout: fetchGitHub, tryFetchJson, isRepoResponse, parseCommitCount, fetchRepoData, fetchAllRepoData each do exactly one thing",
+        "No deep nesting anywhere; the deepest nesting is a single level of conditional inside a map callback",
+        "The separation between data modules (static content), utility modules (GitHub API), and route modules (orchestration) is clean and earned",
+        "Type guards (isRepoResponse, isLanguagesResponse) are properly extracted as standalone predicates rather than inline checks"
+      ],
+      "issue_character": "The only minor structural concern is a repetitive pattern in the load function that maps three project arrays identically, but this is proportionate to the domain's three-category structure and does not warrant a defect finding.",
+      "score_rationale": "The codebase demonstrates strong design coherence. Functions are focused, abstractions are earned (not speculative), and patterns are consistent. The score of 88 reflects genuinely solid structural decisions throughout a small but well-organized codebase. The gap from higher scores reflects that the codebase is small enough that design coherence has not been tested by complexity pressure."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": ["The orphaned file concern signal on +page.server.ts is a false positive; SvelteKit loads this file via its file-based routing convention, not via direct import statements"]
+  }
+}

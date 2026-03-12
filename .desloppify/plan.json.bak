@@ -1,7 +1,7 @@
 {
   "version": 8,
   "created": "2026-03-12T08:33:41+00:00",
-  "updated": "2026-03-12T09:18:41+00:00",
+  "updated": "2026-03-12T09:33:24+00:00",
   "queue_order": [
     "workflow::communicate-score",
     "workflow::create-plan",
@@ -127,6 +127,86 @@
       "created_at": "2026-03-12T09:09:22+00:00",
       "review_after": null,
       "skipped_at_scan": 7
+    },
+    "orphaned::svelte.config.js": {
+      "issue_id": "orphaned::svelte.config.js",
+      "kind": "temporary",
+      "reason": "wontfix",
+      "note": "Framework config file loaded by SvelteKit at build time, not imported by application code",
+      "attestation": null,
+      "created_at": "2026-03-12T09:27:49+00:00",
+      "review_after": null,
+      "skipped_at_scan": 10
+    },
+    "test_coverage::svelte.config.js": {
+      "issue_id": "test_coverage::svelte.config.js",
+      "kind": "temporary",
+      "reason": "wontfix",
+      "note": "Framework config file loaded by SvelteKit at build time, not application code requiring unit tests",
+      "attestation": null,
+      "created_at": "2026-03-12T09:27:50+00:00",
+      "review_after": null,
+      "skipped_at_scan": 10
+    },
+    "stale_exclude::.desloppify::.desloppify": {
+      "issue_id": "stale_exclude::.desloppify::.desloppify",
+      "kind": "temporary",
+      "reason": "wontfix",
+      "note": "Desloppify state directory, correctly excluded from scans",
+      "attestation": null,
+      "created_at": "2026-03-12T09:27:51+00:00",
+      "review_after": null,
+      "skipped_at_scan": 10
+    },
+    "stale_exclude::.svelte-kit::.svelte-kit": {
+      "issue_id": "stale_exclude::.svelte-kit::.svelte-kit",
+      "kind": "temporary",
+      "reason": "wontfix",
+      "note": "SvelteKit generated directory, correctly excluded from scans",
+      "attestation": null,
+      "created_at": "2026-03-12T09:27:52+00:00",
+      "review_after": null,
+      "skipped_at_scan": 10
+    },
+    "stale_exclude::docs::docs": {
+      "issue_id": "stale_exclude::docs::docs",
+      "kind": "temporary",
+      "reason": "wontfix",
+      "note": "Documentation directory excluded per user instruction",
+      "attestation": null,
+      "created_at": "2026-03-12T09:27:56+00:00",
+      "review_after": null,
+      "skipped_at_scan": 10
+    },
+    "exports::.svelte-kit/types/src/routes/proxy+page.server.ts::load": {
+      "issue_id": "exports::.svelte-kit/types/src/routes/proxy+page.server.ts::load",
+      "kind": "temporary",
+      "reason": "wontfix",
+      "note": "Generated file in .svelte-kit directory, already in exclusion list",
+      "attestation": null,
+      "created_at": "2026-03-12T09:27:57+00:00",
+      "review_after": null,
+      "skipped_at_scan": 10
+    },
+    "unused::svelte.config.js::unused_import::1": {
+      "issue_id": "unused::svelte.config.js::unused_import::1",
+      "kind": "temporary",
+      "reason": "wontfix",
+      "note": "Framework config file, imports used by SvelteKit build system",
+      "attestation": null,
+      "created_at": "2026-03-12T09:28:56+00:00",
+      "review_after": null,
+      "skipped_at_scan": 10
+    },
+    "unused::svelte.config.js::unused_import::2": {
+      "issue_id": "unused::svelte.config.js::unused_import::2",
+      "kind": "temporary",
+      "reason": "wontfix",
+      "note": "Framework config file, imports used by SvelteKit build system",
+      "attestation": null,
+      "created_at": "2026-03-12T09:28:56+00:00",
+      "review_after": null,
+      "skipped_at_scan": 10
     }
   },
   "active_cluster": null,
@@ -225,25 +305,25 @@
       "issue_id": "subjective_review::src/lib/data/artefacts.ts::unreviewed",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/subjective_review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective_review::src/lib/data/projects.ts::unreviewed": {
       "issue_id": "subjective_review::src/lib/data/projects.ts::unreviewed",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/subjective_review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective_review::src/lib/data/terminal.ts::unreviewed": {
       "issue_id": "subjective_review::src/lib/data/terminal.ts::unreviewed",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/subjective_review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective_review::src/lib/utils/github.ts::unreviewed": {
       "issue_id": "subjective_review::src/lib/utils/github.ts::unreviewed",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/subjective_review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective_review::src/routes/+page.server.ts::unreviewed": {
       "issue_id": "subjective_review::src/routes/+page.server.ts::unreviewed",
@@ -255,127 +335,127 @@
       "issue_id": "subjective_review::.::holistic_unreviewed",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/subjective_review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::abstraction_fitness": {
       "issue_id": "subjective::abstraction_fitness",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::ai_generated_debt": {
       "issue_id": "subjective::ai_generated_debt",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::api_surface_coherence": {
       "issue_id": "subjective::api_surface_coherence",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::authorization_consistency": {
       "issue_id": "subjective::authorization_consistency",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::contract_coherence": {
       "issue_id": "subjective::contract_coherence",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::convention_outlier": {
       "issue_id": "subjective::convention_outlier",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::cross_module_architecture": {
       "issue_id": "subjective::cross_module_architecture",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::dependency_health": {
       "issue_id": "subjective::dependency_health",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::design_coherence": {
       "issue_id": "subjective::design_coherence",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::error_consistency": {
       "issue_id": "subjective::error_consistency",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::high_level_elegance": {
       "issue_id": "subjective::high_level_elegance",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::incomplete_migration": {
       "issue_id": "subjective::incomplete_migration",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::initialization_coupling": {
       "issue_id": "subjective::initialization_coupling",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::logic_clarity": {
       "issue_id": "subjective::logic_clarity",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::low_level_elegance": {
       "issue_id": "subjective::low_level_elegance",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::mid_level_elegance": {
       "issue_id": "subjective::mid_level_elegance",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::naming_quality": {
       "issue_id": "subjective::naming_quality",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::package_organization": {
       "issue_id": "subjective::package_organization",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::test_strategy": {
       "issue_id": "subjective::test_strategy",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "subjective::type_safety": {
       "issue_id": "subjective::type_safety",
       "created_at": "2026-03-12T08:33:41+00:00",
       "cluster": "auto/initial-review",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "structural::.svelte-kit/output/server/index.js": {
       "issue_id": "structural::.svelte-kit/output/server/index.js",
@@ -507,13 +587,13 @@
       "issue_id": "unused::svelte.config.js::unused_import::1",
       "created_at": "2026-03-12T08:46:17+00:00",
       "cluster": null,
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "unused::svelte.config.js::unused_import::2": {
       "issue_id": "unused::svelte.config.js::unused_import::2",
       "created_at": "2026-03-12T08:46:17+00:00",
       "cluster": null,
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "security::.svelte-kit/output/client/_app/immutable/chunks/B0aWyCNM.js::security::log_sensitive::.svelte-kit/output/client/_app/immutable/chunks/B0aWyCNM.js::10": {
       "issue_id": "security::.svelte-kit/output/client/_app/immutable/chunks/B0aWyCNM.js::security::log_sensitive::.svelte-kit/output/client/_app/immutable/chunks/B0aWyCNM.js::10",
@@ -783,7 +863,7 @@
       "issue_id": "test_coverage::svelte.config.js",
       "created_at": "2026-03-12T08:46:17+00:00",
       "cluster": null,
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "test_coverage::.svelte-kit/output/server/internal.js": {
       "issue_id": "test_coverage::.svelte-kit/output/server/internal.js",
@@ -861,7 +941,7 @@
       "issue_id": "test_coverage::src/routes/+page.server.ts::untested_module",
       "created_at": "2026-03-12T08:46:41+00:00",
       "cluster": null,
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "test_coverage::src/lib/types/index.ts::untested_module": {
       "issue_id": "test_coverage::src/lib/types/index.ts::untested_module",
@@ -879,19 +959,19 @@
       "issue_id": "stale_exclude::docs::docs",
       "created_at": "2026-03-12T08:46:41+00:00",
       "cluster": "auto/stale_exclude",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "stale_exclude::.svelte-kit::.svelte-kit": {
       "issue_id": "stale_exclude::.svelte-kit::.svelte-kit",
       "created_at": "2026-03-12T08:46:41+00:00",
       "cluster": "auto/stale_exclude",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "stale_exclude::.desloppify::.desloppify": {
       "issue_id": "stale_exclude::.desloppify::.desloppify",
       "created_at": "2026-03-12T08:46:41+00:00",
       "cluster": "auto/stale_exclude",
-      "updated_at": "2026-03-12T09:00:02+00:00"
+      "updated_at": "2026-03-12T09:32:14+00:00"
     },
     "review::.::holistic::error_consistency::broad_catch_no_discrimination": {
       "issue_id": "review::.::holistic::error_consistency::broad_catch_no_discrimination",
@@ -964,6 +1044,18 @@
       "created_at": "2026-03-12T09:09:41+00:00",
       "cluster": "architecture-minor",
       "updated_at": "2026-03-12T09:09:41+00:00"
+    },
+    "subjective_review::src/lib/data/artefacts.ts::changed": {
+      "issue_id": "subjective_review::src/lib/data/artefacts.ts::changed",
+      "created_at": "2026-03-12T09:21:24+00:00",
+      "cluster": null,
+      "updated_at": "2026-03-12T09:32:14+00:00"
+    },
+    "subjective_review::src/routes/+page.server.ts::changed": {
+      "issue_id": "subjective_review::src/routes/+page.server.ts::changed",
+      "created_at": "2026-03-12T09:21:24+00:00",
+      "cluster": null,
+      "updated_at": "2026-03-12T09:32:14+00:00"
     }
   },
   "clusters": {
@@ -978,7 +1070,7 @@
         "subjective_review::.::holistic_unreviewed"
       ],
       "created_at": "2026-03-12T08:46:41+00:00",
-      "updated_at": "2026-03-12T09:00:02+00:00",
+      "updated_at": "2026-03-12T09:32:14+00:00",
       "auto": true,
       "cluster_key": "detector::subjective_review",
       "action": "run `desloppify review --prepare` to evaluate files against quality dimensions",
@@ -997,38 +1089,6 @@
       "auto": true,
       "cluster_key": "detector::stale_exclude",
       "action": "remove stale exclusion or verify it's still needed",
-      "user_modified": false
-    },
-    "auto/initial-review": {
-      "name": "auto/initial-review",
-      "description": "Initial review of 20 unscored subjective dimensions",
-      "issue_ids": [
-        "subjective::abstraction_fitness",
-        "subjective::ai_generated_debt",
-        "subjective::api_surface_coherence",
-        "subjective::authorization_consistency",
-        "subjective::contract_coherence",
-        "subjective::convention_outlier",
-        "subjective::cross_module_architecture",
-        "subjective::dependency_health",
-        "subjective::design_coherence",
-        "subjective::error_consistency",
-        "subjective::high_level_elegance",
-        "subjective::incomplete_migration",
-        "subjective::initialization_coupling",
-        "subjective::logic_clarity",
-        "subjective::low_level_elegance",
-        "subjective::mid_level_elegance",
-        "subjective::naming_quality",
-        "subjective::package_organization",
-        "subjective::test_strategy",
-        "subjective::type_safety"
-      ],
-      "created_at": "2026-03-12T08:46:41+00:00",
-      "updated_at": "2026-03-12T08:46:41+00:00",
-      "auto": true,
-      "cluster_key": "subjective::unscored",
-      "action": "desloppify review --prepare --dimensions abstraction_fitness,ai_generated_debt,api_surface_coherence,authorization_consistency,contract_coherence,convention_outlier,cross_module_architecture,dependency_health,design_coherence,error_consistency,high_level_elegance,incomplete_migration,initialization_coupling,logic_clarity,low_level_elegance,mid_level_elegance,naming_quality,package_organization,test_strategy,type_safety",
       "user_modified": false
     },
     "error-visibility": {
@@ -1209,6 +1269,38 @@
           ]
         }
       ]
+    },
+    "auto/initial-review": {
+      "name": "auto/initial-review",
+      "description": "Initial review of 20 unscored subjective dimensions",
+      "issue_ids": [
+        "subjective::abstraction_fitness",
+        "subjective::ai_generated_debt",
+        "subjective::api_surface_coherence",
+        "subjective::authorization_consistency",
+        "subjective::contract_coherence",
+        "subjective::convention_outlier",
+        "subjective::cross_module_architecture",
+        "subjective::dependency_health",
+        "subjective::design_coherence",
+        "subjective::error_consistency",
+        "subjective::high_level_elegance",
+        "subjective::incomplete_migration",
+        "subjective::initialization_coupling",
+        "subjective::logic_clarity",
+        "subjective::low_level_elegance",
+        "subjective::mid_level_elegance",
+        "subjective::naming_quality",
+        "subjective::package_organization",
+        "subjective::test_strategy",
+        "subjective::type_safety"
+      ],
+      "created_at": "2026-03-12T09:32:14+00:00",
+      "updated_at": "2026-03-12T09:32:14+00:00",
+      "auto": true,
+      "cluster_key": "subjective::unscored",
+      "action": "desloppify review --prepare --dimensions abstraction_fitness,ai_generated_debt,api_surface_coherence,authorization_consistency,contract_coherence,convention_outlier,cross_module_architecture,dependency_health,design_coherence,error_consistency,high_level_elegance,incomplete_migration,initialization_coupling,logic_clarity,low_level_elegance,mid_level_elegance,naming_quality,package_organization,test_strategy,type_safety",
+      "user_modified": false
     }
   },
   "superseded": {
@@ -2477,10 +2569,155 @@
       "superseded_at": "2026-03-12T09:00:02+00:00",
       "remapped_to": null,
       "candidates": []
+    },
+    "review::.::holistic::ai_generated_debt::verbose_project_descriptions": {
+      "original_id": "review::.::holistic::ai_generated_debt::verbose_project_descriptions",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:32:14+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "review::.::holistic::api_surface_coherence::testing_exports_inflate_api_surface": {
+      "original_id": "review::.::holistic::api_surface_coherence::testing_exports_inflate_api_surface",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:32:14+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "review::.::holistic::contract_coherence::tryFetchJson_redundant_union": {
+      "original_id": "review::.::holistic::contract_coherence::tryFetchJson_redundant_union",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:32:14+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "review::.::holistic::convention_outlier::artefacts_bypasses_section_wrapper": {
+      "original_id": "review::.::holistic::convention_outlier::artefacts_bypasses_section_wrapper",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:32:14+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "review::.::holistic::error_consistency::mixed_fallback_strategies": {
+      "original_id": "review::.::holistic::error_consistency::mixed_fallback_strategies",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:32:14+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "review::.::holistic::error_consistency::unprotected_json_parse": {
+      "original_id": "review::.::holistic::error_consistency::unprotected_json_parse",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:32:14+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "review::.::holistic::low_level_elegance::duplicate_observer_effects": {
+      "original_id": "review::.::holistic::low_level_elegance::duplicate_observer_effects",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:32:14+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "review::.::holistic::mid_level_elegance::section_tints_implicit_contract": {
+      "original_id": "review::.::holistic::mid_level_elegance::section_tints_implicit_contract",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:32:14+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "review::.::holistic::test_strategy::data_tests_shape_only": {
+      "original_id": "review::.::holistic::test_strategy::data_tests_shape_only",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:32:14+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "review::.::holistic::test_strategy::untested_page_server_orchestration": {
+      "original_id": "review::.::holistic::test_strategy::untested_page_server_orchestration",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:32:14+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "review::.::holistic::type_safety::redundant_unknown_null_union": {
+      "original_id": "review::.::holistic::type_safety::redundant_unknown_null_union",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:32:14+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "review::.::holistic::type_safety::unsafe_error_cast": {
+      "original_id": "review::.::holistic::type_safety::unsafe_error_cast",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:32:14+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "subjective_review::src/lib/data/artefacts.ts::changed": {
+      "original_id": "subjective_review::src/lib/data/artefacts.ts::changed",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:32:14+00:00",
+      "remapped_to": null,
+      "candidates": []
+    },
+    "subjective_review::src/routes/+page.server.ts::changed": {
+      "original_id": "subjective_review::src/routes/+page.server.ts::changed",
+      "original_detector": "",
+      "original_file": "",
+      "original_summary": "",
+      "status": "superseded",
+      "superseded_at": "2026-03-12T09:32:14+00:00",
+      "remapped_to": null,
+      "candidates": []
     }
   },
   "promoted_ids": [],
-  "plan_start_scores": {},
+  "plan_start_scores": {
+    "strict": 29.5,
+    "overall": 38.1,
+    "objective": 95.3,
+    "verified": 95.3
+  },
   "refresh_state": {},
   "execution_log": [
     {
@@ -4404,6 +4641,518 @@
       "detail": {
         "injected": true
       }
+    },
+    {
+      "timestamp": "2026-03-12T09:21:24+00:00",
+      "action": "sync_unscored",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "changes": true
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:21:24+00:00",
+      "action": "sync_stale",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "changes": true
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:21:24+00:00",
+      "action": "auto_cluster",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "changes": true
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:21:24+00:00",
+      "action": "seed_start_scores",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:21:24+00:00",
+      "action": "complete_postflight_scan",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "scan_count": 9
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:25:43+00:00",
+      "action": "done",
+      "issue_ids": [
+        "review::.::holistic::error_consistency::broad_catch_no_discrimination"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Added console.warn with distinct messages for HTTP vs network errors",
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:25:44+00:00",
+      "action": "done",
+      "issue_ids": [
+        "review::.::holistic::error_consistency::silent_error_swallowing"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "fetchGitHub now logs url, status, and error message via console.warn",
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:25:46+00:00",
+      "action": "done",
+      "issue_ids": [
+        "review::.::holistic::test_strategy::untested_fetch_functions"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Added 6 tests for fetchRepoData and fetchAllRepoData with mocked fetch",
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:25:48+00:00",
+      "action": "done",
+      "issue_ids": [
+        "review::.::holistic::convention_outlier::mixed_lifecycle_pattern"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Terminal.svelte migrated from onMount to dollar-effect",
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:25:50+00:00",
+      "action": "done",
+      "issue_ids": [
+        "review::.::holistic::cross_module_architecture::parallel_project_imports"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Project imports consolidated in page.server.ts only",
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:26:15+00:00",
+      "action": "sync_stale",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "changes": true
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:26:15+00:00",
+      "action": "sync_communicate_score",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "injected": true
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:26:15+00:00",
+      "action": "sync_create_plan",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "injected": true
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:27:49+00:00",
+      "action": "skip",
+      "issue_ids": [
+        "orphaned::svelte.config.js"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Framework config file loaded by SvelteKit at build time, not imported by application code",
+      "detail": {
+        "kind": "temporary",
+        "reason": "wontfix"
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:27:50+00:00",
+      "action": "skip",
+      "issue_ids": [
+        "test_coverage::svelte.config.js"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Framework config file loaded by SvelteKit at build time, not application code requiring unit tests",
+      "detail": {
+        "kind": "temporary",
+        "reason": "wontfix"
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:27:51+00:00",
+      "action": "skip",
+      "issue_ids": [
+        "stale_exclude::.desloppify::.desloppify"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Desloppify state directory, correctly excluded from scans",
+      "detail": {
+        "kind": "temporary",
+        "reason": "wontfix"
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:27:52+00:00",
+      "action": "skip",
+      "issue_ids": [
+        "stale_exclude::.svelte-kit::.svelte-kit"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "SvelteKit generated directory, correctly excluded from scans",
+      "detail": {
+        "kind": "temporary",
+        "reason": "wontfix"
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:27:56+00:00",
+      "action": "skip",
+      "issue_ids": [
+        "stale_exclude::docs::docs"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Documentation directory excluded per user instruction",
+      "detail": {
+        "kind": "temporary",
+        "reason": "wontfix"
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:27:57+00:00",
+      "action": "skip",
+      "issue_ids": [
+        "exports::.svelte-kit/types/src/routes/proxy+page.server.ts::load"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Generated file in .svelte-kit directory, already in exclusion list",
+      "detail": {
+        "kind": "temporary",
+        "reason": "wontfix"
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:28:56+00:00",
+      "action": "skip",
+      "issue_ids": [
+        "unused::svelte.config.js::unused_import::1"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Framework config file, imports used by SvelteKit build system",
+      "detail": {
+        "kind": "temporary",
+        "reason": "wontfix"
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:28:56+00:00",
+      "action": "skip",
+      "issue_ids": [
+        "unused::svelte.config.js::unused_import::2"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Framework config file, imports used by SvelteKit build system",
+      "detail": {
+        "kind": "temporary",
+        "reason": "wontfix"
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:32:06+00:00",
+      "action": "review_import_sync",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "trigger": "review_import",
+        "new_ids": [
+          "review::.::holistic::ai_generated_debt::verbose_project_descriptions",
+          "review::.::holistic::api_surface_coherence::testing_exports_inflate_api_surface",
+          "review::.::holistic::contract_coherence::tryFetchJson_redundant_union",
+          "review::.::holistic::convention_outlier::artefacts_bypasses_section_wrapper",
+          "review::.::holistic::error_consistency::mixed_fallback_strategies",
+          "review::.::holistic::error_consistency::unprotected_json_parse",
+          "review::.::holistic::low_level_elegance::duplicate_observer_effects",
+          "review::.::holistic::mid_level_elegance::section_tints_implicit_contract",
+          "review::.::holistic::test_strategy::data_tests_shape_only",
+          "review::.::holistic::test_strategy::untested_page_server_orchestration",
+          "review::.::holistic::type_safety::redundant_unknown_null_union",
+          "review::.::holistic::type_safety::unsafe_error_cast"
+        ],
+        "added_to_queue": [
+          "review::.::holistic::ai_generated_debt::verbose_project_descriptions",
+          "review::.::holistic::api_surface_coherence::testing_exports_inflate_api_surface",
+          "review::.::holistic::contract_coherence::tryFetchJson_redundant_union",
+          "review::.::holistic::convention_outlier::artefacts_bypasses_section_wrapper",
+          "review::.::holistic::error_consistency::mixed_fallback_strategies",
+          "review::.::holistic::error_consistency::unprotected_json_parse",
+          "review::.::holistic::low_level_elegance::duplicate_observer_effects",
+          "review::.::holistic::mid_level_elegance::section_tints_implicit_contract",
+          "review::.::holistic::test_strategy::data_tests_shape_only",
+          "review::.::holistic::test_strategy::untested_page_server_orchestration",
+          "review::.::holistic::type_safety::redundant_unknown_null_union",
+          "review::.::holistic::type_safety::unsafe_error_cast"
+        ],
+        "workflow_injected_ids": [],
+        "triage_injected": true,
+        "triage_injected_ids": [
+          "triage::observe",
+          "triage::reflect",
+          "triage::organize",
+          "triage::enrich",
+          "triage::sense-check",
+          "triage::commit"
+        ],
+        "triage_deferred": false,
+        "diff_new": 12,
+        "diff_reopened": 0,
+        "diff_auto_resolved": 14,
+        "stale_pruned_from_queue": [],
+        "covered_subjective": [],
+        "stale_sync_injected": [],
+        "stale_sync_pruned": [
+          "subjective::abstraction_fitness",
+          "subjective::ai_generated_debt",
+          "subjective::api_surface_coherence",
+          "subjective::authorization_consistency",
+          "subjective::contract_coherence",
+          "subjective::convention_outlier",
+          "subjective::cross_module_architecture",
+          "subjective::dependency_health",
+          "subjective::design_coherence",
+          "subjective::error_consistency",
+          "subjective::high_level_elegance",
+          "subjective::incomplete_migration",
+          "subjective::initialization_coupling",
+          "subjective::logic_clarity",
+          "subjective::low_level_elegance",
+          "subjective::mid_level_elegance",
+          "subjective::naming_quality",
+          "subjective::package_organization",
+          "subjective::test_strategy",
+          "subjective::type_safety"
+        ]
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:32:14+00:00",
+      "action": "cluster_done",
+      "issue_ids": [],
+      "cluster_name": "auto/subjective_review",
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "reason": "all issues resolved by scan"
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:32:14+00:00",
+      "action": "reconcile",
+      "issue_ids": [
+        "review::.::holistic::ai_generated_debt::verbose_project_descriptions",
+        "review::.::holistic::api_surface_coherence::testing_exports_inflate_api_surface",
+        "review::.::holistic::contract_coherence::tryFetchJson_redundant_union",
+        "review::.::holistic::convention_outlier::artefacts_bypasses_section_wrapper",
+        "review::.::holistic::error_consistency::mixed_fallback_strategies",
+        "review::.::holistic::error_consistency::unprotected_json_parse",
+        "review::.::holistic::low_level_elegance::duplicate_observer_effects",
+        "review::.::holistic::mid_level_elegance::section_tints_implicit_contract",
+        "review::.::holistic::test_strategy::data_tests_shape_only",
+        "review::.::holistic::test_strategy::untested_page_server_orchestration",
+        "review::.::holistic::type_safety::redundant_unknown_null_union",
+        "review::.::holistic::type_safety::unsafe_error_cast",
+        "subjective_review::src/lib/data/artefacts.ts::changed",
+        "subjective_review::src/routes/+page.server.ts::changed"
+      ],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "superseded_count": 14,
+        "pruned_count": 0,
+        "resurfaced_count": 0,
+        "clusters_completed_count": 1
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:32:14+00:00",
+      "action": "sync_unscored",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "changes": true
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:32:14+00:00",
+      "action": "auto_cluster",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {
+        "changes": true
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:32:14+00:00",
+      "action": "seed_start_scores",
+      "issue_ids": [],
+      "cluster_name": null,
+      "actor": "system",
+      "note": null,
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:32:57+00:00",
+      "action": "done",
+      "issue_ids": [
+        "review::.::holistic::contract_coherence::tryFetchJson_redundant_union"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Changed return type from Promise<unknown | null> to Promise<unknown>",
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:32:58+00:00",
+      "action": "done",
+      "issue_ids": [
+        "review::.::holistic::type_safety::redundant_unknown_null_union"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Changed tryFetchJson return type from Promise<unknown | null> to Promise<unknown>",
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:33:00+00:00",
+      "action": "done",
+      "issue_ids": [
+        "review::.::holistic::error_consistency::unprotected_json_parse"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Added try-catch around res.json() in tryFetchJson with console.warn logging",
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:33:02+00:00",
+      "action": "done",
+      "issue_ids": [
+        "review::.::holistic::test_strategy::untested_page_server_orchestration"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Added 5 tests for attachGithubData in src/routes/page.server.test.ts covering match, missing, null, mixed, and field preservation",
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:33:07+00:00",
+      "action": "done",
+      "issue_ids": [
+        "tryFetch"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Changed return type and added try-catch for json parse",
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:33:18+00:00",
+      "action": "done",
+      "issue_ids": [
+        "4"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Changed tryFetchJson return type from Promise<unknown | null> to Promise<unknown>",
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:33:19+00:00",
+      "action": "done",
+      "issue_ids": [
+        "5"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Added try-catch around res.json() in tryFetchJson with console.warn",
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:33:21+00:00",
+      "action": "done",
+      "issue_ids": [
+        "6"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Created page.server.test.ts with 5 tests for attachGithubData function",
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:33:23+00:00",
+      "action": "done",
+      "issue_ids": [
+        "13"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Changed tryFetchJson return type from Promise<unknown | null> to Promise<unknown>",
+      "detail": {}
+    },
+    {
+      "timestamp": "2026-03-12T09:33:24+00:00",
+      "action": "done",
+      "issue_ids": [
+        "3"
+      ],
+      "cluster_name": null,
+      "actor": "user",
+      "note": "Created page.server.test.ts with 5 tests, plus attachGithubData moved to github.ts",
+      "detail": {}
     }
   ],
   "epic_triage_meta": {
@@ -4520,5 +5269,5 @@
   "commit_log": [],
   "uncommitted_issues": [],
   "commit_tracking_branch": null,
-  "previous_plan_start_scores": {}
+  "scan_count_at_plan_start": 3
 }

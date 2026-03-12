@@ -1,0 +1,51 @@
+{
+  "batch": "ai_generated_debt",
+  "batch_index": 14,
+  "assessments": {"ai_generated_debt": 88.0},
+  "dimension_notes": {
+    "ai_generated_debt": {
+      "evidence": [
+        "Codebase-wide comment ratio is 0.004 (essentially zero), indicating no restating comments or docstring bloat",
+        "No entry/exit logging; the only console output is two contextual console.warn calls at the genuine I/O boundary in github.ts",
+        "No defensive null checks on non-nullable typed values; the null checks in github.ts are at genuine API boundaries where runtime data is untyped",
+        "No pass-through wrapper functions; all functions contain real logic",
+        "No generic names like handleData or processItem; function names are domain-specific (fetchGitHub, fetchRepoData, parseCommitCount, isRepoResponse)",
+        "The '// Exported for testing' comments on three functions in github.ts are minimal and contextual, explaining WHY rather than WHAT"
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The project descriptions in projects.ts contain very long prose strings that read as though they were AI-generated marketing copy rather than concise project descriptions. While data content is borderline for this dimension, the verbosity and formulaic structure (problem statement + technical detail + philosophical reflection) across all 12 project entries follows a recognizable LLM writing pattern."
+    }
+  },
+  "dimension_judgment": {
+    "ai_generated_debt": {
+      "strengths": [
+        "Near-zero comment ratio with no restating comments anywhere in the codebase",
+        "Console output is limited to two structured console.warn calls at genuine I/O boundaries, not nosy debug logging",
+        "All function names use domain-specific vocabulary (fetchGitHub, isRepoResponse, parseCommitCount, splitOverview, getLanguageSegments) rather than generic AI-hallmark names",
+        "No defensive overengineering: null checks exist only where runtime data is genuinely untyped (API responses)"
+      ],
+      "issue_character": "The code itself is remarkably free of AI-generated debt patterns; the only signal is in the data content (project descriptions) rather than in code structure or logic.",
+      "score_rationale": "The codebase scores well on AI-generated debt because the code is lean, purposeful, and free of the hallmark patterns: no restating comments, no debug logging, no defensive overengineering, no pass-through wrappers, no generic names. The project description strings in projects.ts have a formulaic verbosity that is characteristic of LLM-generated content, but this is data content rather than code structure. The score of 88.0 reflects strong code quality with the data content observation preventing a higher score."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "ai_generated_debt",
+      "identifier": "verbose_project_descriptions",
+      "summary": "Project descriptions in projects.ts follow a formulaic LLM-style pattern of escalating claims",
+      "related_files": ["src/lib/data/projects.ts"],
+      "evidence": ["All 12 project descriptions follow the same structure: opening claim, technical detail, philosophical reflection. Examples: 'The architectural decision that defines it:', 'The finding:', 'The game's idea progression... is itself a knowledge system.', 'The process of building it is the transferable skill, not the specifics.' This formulaic structure across all entries suggests AI-generated prose."],
+      "suggestion": "Consider shortening project descriptions to 1-2 sentences of concrete information. The current descriptions read more like AI-generated marketing copy than developer portfolio entries. Let the repos speak for themselves with concise summaries.",
+      "confidence": "medium",
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Content generation patterns in data files rather than code structure issues"],
+    "likely_symptoms": [],
+    "possible_false_positives": ["verbose_project_descriptions could be intentional personal writing style rather than AI-generated content"]
+  }
+}

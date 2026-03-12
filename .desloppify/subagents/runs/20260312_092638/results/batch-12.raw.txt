@@ -1,0 +1,59 @@
+{
+  "batch": "error_consistency",
+  "batch_index": 12,
+  "assessments": {"error_consistency": 72.0},
+  "dimension_notes": {
+    "error_consistency": {
+      "evidence": [
+        "fetchGitHub uses try-catch and returns null on both network errors and non-ok responses, logging via console.warn with context",
+        "tryFetchJson propagates null from fetchGitHub but does NOT wrap the res.json() call in try-catch, so malformed JSON would throw an unhandled exception",
+        "fetchRepoData silently degrades: if isRepoResponse fails, returns null; if isLanguagesResponse fails, uses empty object; if contributors data is unexpected, defaults to 0. Three different fallback strategies in one function",
+        "The error strategy in utils/ is consistently return-null (scan evidence confirms 4 returns_null, 1 try_catch), but the lack of error context propagation means callers cannot distinguish 'repo does not exist' from 'network failure' from 'rate limited'",
+        "+page.server.ts (the consumer) has no error handling at all; it trusts that fetchAllRepoData will never throw, which is true for most paths but not for the unprotected res.json() call"
+      ],
+      "impact_scope": "subsystem",
+      "fix_scope": "multi_file_refactor",
+      "confidence": "medium"
+    }
+  },
+  "dimension_judgment": {
+    "error_consistency": {
+      "strengths": [
+        "fetchGitHub consistently returns null on failure rather than throwing, providing a predictable base for callers",
+        "console.warn calls in fetchGitHub include structured context (url, status/error message) rather than bare strings",
+        "The overall strategy of graceful degradation is appropriate for a portfolio site where GitHub data is supplementary"
+      ],
+      "issue_character": "Error handling is designed around graceful degradation but applies it inconsistently: some failure modes are caught and converted to null, while others (JSON parse) can throw uncaught, and the uniform null return collapses distinct failure causes into an indistinguishable signal.",
+      "score_rationale": "The codebase has a clear intent toward return-null error handling for the GitHub integration layer, which is a reasonable strategy for supplementary data. However, the inconsistency between the carefully wrapped fetch calls and the unprotected res.json() call in tryFetchJson creates a gap where a runtime exception could escape. Additionally, the uniform null return means callers cannot distinguish between 'repo not found', 'rate limited', and 'network down'. This places it at 72: a developer would encounter enough inconsistency that they cannot fully trust the error contract."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "error_consistency",
+      "identifier": "unprotected_json_parse",
+      "summary": "tryFetchJson calls res.json() without try-catch, breaking the null-on-error contract",
+      "related_files": ["src/lib/utils/github.ts"],
+      "evidence": ["Line 22-23: fetchGitHub is carefully wrapped in try-catch, but tryFetchJson calls res.json() unprotected. If the GitHub API returns a 200 with malformed body, this throws an unhandled exception instead of returning null."],
+      "suggestion": "Wrap the res.json() call in a try-catch that returns null on parse failure, consistent with the function's null-return contract: try { return await res.json(); } catch { return null; }",
+      "confidence": "high",
+      "impact_scope": "subsystem",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "error_consistency",
+      "identifier": "mixed_fallback_strategies",
+      "summary": "fetchRepoData uses three different fallback strategies for sub-requests in a single function",
+      "related_files": ["src/lib/utils/github.ts"],
+      "evidence": ["Lines 68-74: repo data failure returns null (bail out entirely), languages failure returns {} (empty fallback), contributors failure returns 0 (numeric default). A developer reading this cannot predict which fallback strategy applies to each sub-request without reading the implementation."],
+      "suggestion": "Document the intentional degradation hierarchy with a brief comment explaining that repo metadata is required while languages/contributors/commits are optional enrichment. This makes the mixed strategy legible as a design choice rather than accidental inconsistency.",
+      "confidence": "medium",
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Graceful degradation strategy was applied to the top-level fetch wrapper but not consistently through the JSON parsing and data validation layers"],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

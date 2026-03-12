@@ -1,0 +1,49 @@
+{
+  "batch": "contract_coherence",
+  "batch_index": 11,
+  "assessments": {"contract_coherence": 82.5},
+  "dimension_notes": {
+    "contract_coherence": {
+      "evidence": [
+        "tryFetchJson declares return type Promise<unknown | null> but 'unknown | null' simplifies to 'unknown' since null is a subset of unknown; the return type annotation is technically misleading about the null-return semantics",
+        "fetchGitHub returns Promise<Response | null> and faithfully honors that contract across both error paths and success",
+        "attachGithubData in +page.server.ts returns Project[] which correctly includes the github field added via spread+nullish coalescing",
+        "isRepoResponse and isLanguagesResponse are proper type guards with accurate narrowing",
+        "parseCommitCount's second parameter 'responseOk' is a boolean derived from a null check on the caller side (commitsRes !== null); the name accurately reflects its semantic meaning"
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "confidence": "medium"
+    }
+  },
+  "dimension_judgment": {
+    "contract_coherence": {
+      "strengths": [
+        "Type guard functions (isRepoResponse, isLanguagesResponse) properly narrow unknown to specific interfaces with runtime checks that match the declared type predicate",
+        "fetchRepoData returns ProjectGitHubData | null and honors both paths: returns null when validation fails, returns a fully populated object otherwise",
+        "Data modules (artefacts.ts, projects.ts, terminal.ts) export typed arrays that match their declared types with no hidden mutations or side effects",
+        "attachGithubData correctly transforms Omit<Project, 'github'>[] to Project[] by adding the github field"
+      ],
+      "issue_character": "The only contract issue is a minor type annotation imprecision in tryFetchJson where 'unknown | null' is redundant since null is already part of unknown.",
+      "score_rationale": "The codebase generally honors its contracts well. Functions do what their names and return types promise. Type guards are accurate, and the data flow from GitHub API through validation to typed output is coherent. The tryFetchJson return type annotation is imprecise rather than wrong, which prevents a higher score but does not meaningfully mislead developers. This places the codebase solidly above the 80 anchor (solid but uneven) but below 90 (strong with only minor friction)."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "contract_coherence",
+      "identifier": "tryFetchJson_redundant_union",
+      "summary": "tryFetchJson return type 'unknown | null' is redundant since null is a subset of unknown",
+      "related_files": ["src/lib/utils/github.ts"],
+      "evidence": ["Line 20: 'async function tryFetchJson(url: string): Promise<unknown | null>' - 'unknown | null' collapses to 'unknown', obscuring the intentional null-return contract"],
+      "suggestion": "Change return type to Promise<unknown> since that already includes null, or better yet use a more specific return type. If the intent is to communicate 'JSON data or null', consider a branded type or a comment clarifying the null semantics.",
+      "confidence": "high",
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Minor type annotation imprecision rather than systematic contract violations"],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

@@ -1,0 +1,863 @@
+{
+  "assessments": {
+    "abstraction_fitness": {
+      "score": 90.5,
+      "components": [
+        "Abstraction Leverage",
+        "Indirection Cost",
+        "Interface Honesty",
+        "Delegation Density",
+        "Definition Directness",
+        "Type Discipline"
+      ],
+      "component_scores": {
+        "Abstraction Leverage": 92.0,
+        "Indirection Cost": 95.0,
+        "Interface Honesty": 88.0,
+        "Delegation Density": 95.0,
+        "Definition Directness": 92.0,
+        "Type Discipline": 90.0
+      }
+    },
+    "ai_generated_debt": 86.5,
+    "api_surface_coherence": 85.4,
+    "authorization_consistency": 95.0,
+    "contract_coherence": 80.3,
+    "convention_outlier": 86.0,
+    "cross_module_architecture": 90.0,
+    "dependency_health": 95.0,
+    "design_coherence": 88.0,
+    "error_consistency": 66.1,
+    "high_level_elegance": 90.5,
+    "incomplete_migration": 95.0,
+    "initialization_coupling": 95.0,
+    "logic_clarity": 92.0,
+    "low_level_elegance": 82.5,
+    "mid_level_elegance": 84.9,
+    "naming_quality": 90.0,
+    "package_organization": 91.0,
+    "test_strategy": 65.5,
+    "type_safety": 83.1
+  },
+  "dimension_notes": {
+    "high_level_elegance": {
+      "evidence": [
+        "src/lib/ cleanly separates into components/, data/, types/, and utils/ with no overlap in responsibility",
+        "src/routes/ contains only SvelteKit-conventional files (+page.svelte, +page.server.ts, +layout.ts, +layout.svelte)",
+        "Data layer (src/lib/data/) contains only typed static content arrays; utility layer (src/lib/utils/) contains only the GitHub API integration; components/ contains only Svelte presentation components",
+        "Single-page architecture means there is exactly one route entry point, eliminating routing-level decomposition ambiguity",
+        "Types are centralized in src/lib/types/index.ts and used consistently across data, utils, and components"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The constants.ts file in src/lib/ sits at the lib root rather than alongside the types or data it serves; its single export (accentColors) is a design-token mapping that blurs the boundary between data and configuration. Additionally, +page.server.ts performs data-fetching orchestration that includes a local attachGithubData helper, mixing composition logic with framework plumbing."
+    },
+    "mid_level_elegance": {
+      "evidence": [
+        "The data-to-page handoff is clean: +page.server.ts imports static project arrays from data/, fetches GitHub data via utils/, and merges them through a single attachGithubData function before passing to the page",
+        "Component boundaries accept well-typed props (Project, Artefact, TerminalFrame) with no ad-hoc reshaping",
+        "The GitHub API module returns ProjectGitHubData | null, and the consumer (+page.server.ts) handles the null case via nullish coalescing at the merge point",
+        "Error propagation from GitHub API failures is contained: fetchGitHub returns null on failure, callers handle it, and the page renders gracefully without GitHub data",
+        "+page.svelte receives fully assembled data via SvelteKit's load mechanism and distributes it to components without further transformation"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The attachGithubData function in +page.server.ts is a local helper that performs the data/github merge; if additional data sources were added, this merge-point pattern would need to be formalized. The sectionTints record in +page.svelte is a hardcoded color mapping that implicitly couples to section IDs defined across multiple components, creating a non-obvious cross-component contract."
+    },
+    "test_strategy": {
+      "evidence": [
+        "5 test files exist covering data modules (artefacts, projects, terminal), types/constants, and the GitHub API utility",
+        "github.test.ts is the strongest test file: it covers parseCommitCount edge cases, type guard functions (isRepoResponse, isLanguagesResponse), fetchRepoData success/failure/malformed paths, and fetchAllRepoData deduplication and partial failure",
+        "Data module tests (artefacts.test.ts, projects.test.ts, terminal.test.ts) only verify structural invariants: non-empty arrays, presence of required fields, and format constraints (repo path format, last frame delay). These are schema-validation tests, not behavioral tests.",
+        "No tests exist for any Svelte components (8 .svelte files in components/ plus +page.svelte and +layout.svelte)",
+        "No test exists for +page.server.ts, which contains the attachGithubData orchestration logic and the SvelteKit load function",
+        "The types/index.test.ts file actually tests constants.ts (accentColors), not the type definitions themselves, indicating a minor naming/placement mismatch"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "multi_file_refactor",
+      "confidence": "high",
+      "issues_preventing_higher_score": ""
+    },
+    "api_surface_coherence": {
+      "evidence": [
+        "github.ts exports a coherent public API: fetchRepoData(repoPath) for single repos and fetchAllRepoData(repoNames) for batch operations, both returning ProjectGitHubData | null",
+        "Type guard functions (isRepoResponse, isLanguagesResponse) are exported with 'Exported for testing' comments, making the export rationale clear",
+        "parseCommitCount is also exported for testing with the same comment pattern",
+        "All async functions are consistently async; the sync helpers (type guards, parseCommitCount) are correctly synchronous",
+        "The internal helpers (fetchGitHub, tryFetchJson) are not exported, keeping the public surface minimal",
+        "The scan evidence flags sync_async_mix for github.ts, but this is a correct design: type guards and parsers should be sync, fetch operations should be async"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The 'Exported for testing' pattern exposes internal implementation details (type guards, commit count parser) as public API purely for testability. A test-only export barrel or explicit @internal annotation would make the API surface more honest about which exports are for consumers vs. testing."
+    },
+    "package_organization": {
+      "evidence": [
+        "Directory structure: src/lib/components/ (8 .svelte files), src/lib/data/ (3 .ts files), src/lib/types/ (1 index.ts), src/lib/utils/ (1 github.ts), src/routes/ (4 SvelteKit-conventional files), plus src/lib/constants.ts at the lib root",
+        "Total production files: 8 TypeScript + 8 Svelte components + 4 route files + 1 CSS + 1 HTML template = ~22 files. This is a small project where the current structure is appropriate.",
+        "directory_profiles from holistic_context: src/lib/data/ has 3 files with avg_fan_in 1.0 and avg_fan_out 0.0; src/routes/ has 2 files with avg_fan_in 0.0 and avg_fan_out 0.0. No directory shows coupling anomalies.",
+        "No flat directory overload: the largest directory (components/) has 8 files, all Svelte presentation components with a single clear concern each",
+        "Import affinity is clean: data/ files import only from types/, utils/ imports only from types/, components import from types/ and constants.ts, routes import from data/, utils/, and components/"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "constants.ts sits at the src/lib/ root with a single export (accentColors). At 8 LOC, it is a straggler root file with fan_in of 3 (imported by Section.svelte, ProjectCard.svelte, and types/index.test.ts). While it could live inside data/ or alongside the types it depends on, this is a borderline concern given the project's small size."
+    },
+    "initialization_coupling": {
+      "evidence": [
+        "Module-level constants in github.ts (API_BASE, GITHUB_HEADERS) are simple string/object literals with no side effects",
+        "Data modules (artefacts.ts, projects.ts, terminal.ts) export static arrays at module scope; pure data, no I/O or computation",
+        "+layout.ts exports two boolean constants (prerender, csr) with no dependencies",
+        "+page.server.ts imports are straightforward with no boot-order sensitivity",
+        "No environment variable reads at import time anywhere in the codebase",
+        "No circular import dependencies detected"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The codebase is small enough (8 files, 308 LOC) that initialization coupling risks are structurally unlikely. The minor gap from 100 reflects that github.ts module-level constants could theoretically become stale if the module were hot-reloaded, but this is not a practical concern in a static-site build context."
+    },
+    "design_coherence": {
+      "evidence": [
+        "attachGithubData in +page.server.ts is a focused pure function: takes projects and github data, returns enriched projects",
+        "The load function has a single coherent responsibility: gather repos, fetch GitHub data, attach and return",
+        "github.ts functions are well-decomposed: fetchGitHub (low-level fetch), tryFetchJson (JSON parsing layer), type guards (isRepoResponse, isLanguagesResponse), fetchRepoData (single repo), fetchAllRepoData (batch)",
+        "Data files are simple typed constant arrays with no logic to evaluate for design coherence",
+        "No deep nesting anywhere in the codebase; control flow is flat and direct"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The repeated .map(p => p.repo) pattern in the load function across three project arrays is a minor structural repetition that could be data-driven, though it is not worth flagging as a defect given the small scale."
+    },
+    "naming_quality": {
+      "evidence": [
+        "Consistent fetch* prefix convention in github.ts: fetchGitHub, fetchRepoData, fetchAllRepoData all clearly indicate network operations",
+        "Type guard functions use proper is* prefix: isRepoResponse, isLanguagesResponse both return boolean as expected",
+        "parseCommitCount clearly indicates transformation from raw data to a numeric value",
+        "attachGithubData is a descriptive verb communicating the enrichment operation",
+        "Raw suffix convention (repoRaw, langRaw, contribRaw) clearly signals unvalidated data before type narrowing",
+        "Project category names (impactProjects, explorationProjects, metaProjects) communicate domain categories directly",
+        "tryFetchJson uses a try prefix to signal fallibility, which is accurate for a function returning null on failure"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The naming is strong throughout. The minor gap from a perfect score is that tryFetchJson is a slightly unusual naming convention in TypeScript (try prefix is more common in Go/Rust), though it communicates intent effectively."
+    },
+    "logic_clarity": {
+      "evidence": [
+        "fetchGitHub uses a clean try/catch with early return on non-ok response; no redundant branches",
+        "isRepoResponse and isLanguagesResponse type guards have direct, necessary boolean logic with no simplification opportunities",
+        "parseCommitCount has clear two-branch logic: try link header parsing first, fall back to responseOk boolean",
+        "fetchRepoData uses Promise.all for parallel fetches followed by sequential type narrowing; control flow is linear and direct",
+        "No dead code paths, no always-true/false conditions, no identical branches anywhere in the codebase",
+        "No async functions that never await; all async functions perform actual async operations",
+        "The load function in +page.server.ts is a straightforward async function with a single await and return"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The logic is clean throughout. The minor gap from a perfect score reflects that the codebase has very little complex logic to evaluate; the high score is earned but on limited evidence."
+    },
+    "type_safety": {
+      "evidence": [
+        "All public API functions in github.ts have explicit return type annotations",
+        "Type guards (isRepoResponse, isLanguagesResponse) properly narrow unknown to specific interfaces",
+        "Omit<Project, 'github'> pattern in projects.ts and +page.server.ts correctly represents pre-enrichment project shape",
+        "attachGithubData type signature honestly represents the transformation from Omit<Project, 'github'>[] to Project[]",
+        "parseCommitCount accepts string | null for linkHeader, matching the nullable return of Headers.get()",
+        "All interfaces in types/index.ts have precise field types with no use of any",
+        "tryFetchJson return type is Promise<unknown | null>, but unknown already includes null in TypeScript; the union is redundant"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "tryFetchJson has a redundant union type (unknown | null), and the catch block uses an (e as Error) cast that could fail if a non-Error is thrown."
+    },
+    "contract_coherence": {
+      "evidence": [
+        "tryFetchJson declares return type Promise<unknown | null> but 'unknown | null' simplifies to 'unknown' since null is a subset of unknown; the return type annotation is technically misleading about the null-return semantics",
+        "fetchGitHub returns Promise<Response | null> and faithfully honors that contract across both error paths and success",
+        "attachGithubData in +page.server.ts returns Project[] which correctly includes the github field added via spread+nullish coalescing",
+        "isRepoResponse and isLanguagesResponse are proper type guards with accurate narrowing",
+        "parseCommitCount's second parameter 'responseOk' is a boolean derived from a null check on the caller side (commitsRes !== null); the name accurately reflects its semantic meaning"
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "confidence": "medium",
+      "issues_preventing_higher_score": ""
+    },
+    "error_consistency": {
+      "evidence": [
+        "fetchGitHub uses try-catch and returns null on both network errors and non-ok responses, logging via console.warn with context",
+        "tryFetchJson propagates null from fetchGitHub but does NOT wrap the res.json() call in try-catch, so malformed JSON would throw an unhandled exception",
+        "fetchRepoData silently degrades: if isRepoResponse fails, returns null; if isLanguagesResponse fails, uses empty object; if contributors data is unexpected, defaults to 0. Three different fallback strategies in one function",
+        "The error strategy in utils/ is consistently return-null (scan evidence confirms 4 returns_null, 1 try_catch), but the lack of error context propagation means callers cannot distinguish 'repo does not exist' from 'network failure' from 'rate limited'",
+        "+page.server.ts (the consumer) has no error handling at all; it trusts that fetchAllRepoData will never throw, which is true for most paths but not for the unprotected res.json() call"
+      ],
+      "impact_scope": "subsystem",
+      "fix_scope": "multi_file_refactor",
+      "confidence": "medium",
+      "issues_preventing_higher_score": ""
+    },
+    "abstraction_fitness": {
+      "evidence": [
+        "No wrapper functions or pass-through indirection detected; mechanical scan confirms 0 total wrappers out of 3 function signatures",
+        "Types (Project, Artefact, TerminalFrame, ProjectGitHubData, SectionAccent) are all directly consumed by components and data modules with no unnecessary intermediate interfaces",
+        "No single-implementation interfaces or generic abstractions with only one concrete usage",
+        "The Omit<Project, 'github'> usage in projects.ts is a precise type operation that earns its keep by expressing that static project data lacks the github field",
+        "accentColors in constants.ts maps SectionAccent to CSS variables and is consumed by Section and ProjectCard, a clean shared lookup with no over-abstraction",
+        "Component props use direct interfaces (Props) with no inherited base or shared abstraction hierarchy"
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The SectionAccent type and accentColors record create a small abstraction that works well but the 'none' variant maps to 'var(--border)' which is a semantic mismatch (border color used as an accent). This is minor but indicates the abstraction slightly overpromises.",
+      "sub_axes": {
+        "abstraction_leverage": 92.0,
+        "indirection_cost": 95.0,
+        "interface_honesty": 88.0,
+        "delegation_density": 95.0,
+        "definition_directness": 92.0,
+        "type_discipline": 90.0
+      }
+    },
+    "ai_generated_debt": {
+      "evidence": [
+        "Codebase-wide comment ratio is 0.004 (essentially zero), indicating no restating comments or docstring bloat",
+        "No entry/exit logging; the only console output is two contextual console.warn calls at the genuine I/O boundary in github.ts",
+        "No defensive null checks on non-nullable typed values; the null checks in github.ts are at genuine API boundaries where runtime data is untyped",
+        "No pass-through wrapper functions; all functions contain real logic",
+        "No generic names like handleData or processItem; function names are domain-specific (fetchGitHub, fetchRepoData, parseCommitCount, isRepoResponse)",
+        "The '// Exported for testing' comments on three functions in github.ts are minimal and contextual, explaining WHY rather than WHAT"
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The project descriptions in projects.ts contain very long prose strings that read as though they were AI-generated marketing copy rather than concise project descriptions. While data content is borderline for this dimension, the verbosity and formulaic structure (problem statement + technical detail + philosophical reflection) across all 12 project entries follows a recognizable LLM writing pattern."
+    },
+    "low_level_elegance": {
+      "evidence": [
+        "fetchRepoData uses Promise.all for concurrent API calls with clear destructuring of results, then processes each result with appropriate type narrowing",
+        "parseCommitCount is a clean pure function: handles the Link header regex case and falls back based on the boolean",
+        "splitOverview in ProjectCard.svelte uses regex to find sentence boundaries and returns a clean {overview, detail} split",
+        "getLanguageSegments chains sort/slice/map in a readable pipeline",
+        "Terminal.svelte's playFrames function is a straightforward async loop with delay, clear and intention-revealing",
+        "+page.svelte has two $effect blocks that both create IntersectionObservers with cleanup; the pattern is repeated but each has distinct configuration (threshold, rootMargin) and behavior"
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": ""
+    },
+    "cross_module_architecture": {
+      "evidence": [
+        "Clean unidirectional dependency flow: routes import from lib/data and lib/utils, components import from lib/types and lib/constants, data modules import only from lib/types",
+        "No circular dependencies detected anywhere in the import graph",
+        "No hub/god modules: the most-imported files (lib/types/index.ts, lib/constants.ts) are pure type/constant definitions with zero behavior",
+        "lib/utils/github.ts is consumed only by routes/+page.server.ts, keeping the GitHub API boundary well-contained",
+        "All cross-module coordination happens through explicit data passing (props, load function returns) with no shared mutable state or import-time side effects"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The codebase is small (8 production files, 308 LOC) which makes architectural quality easy to maintain. The api_surface mix of sync and async exports in github.ts is a minor boundary clarity concern, though it is correctly scoped to that one utility module."
+    },
+    "convention_outlier": {
+      "evidence": [
+        "All TypeScript files consistently use camelCase for functions/variables and PascalCase for types/interfaces",
+        "All data modules (artefacts.ts, projects.ts, terminal.ts) follow the same pattern: import type, export named const array",
+        "All Svelte components consistently use Svelte 5 runes ($props, $state, $derived, $effect) with typed Props interfaces",
+        "Named exports used uniformly across all modules; no default exports anywhere",
+        "Artefacts component does not use the Section wrapper component that other sections (Impact, Explorations, Meta) use, creating a mild structural inconsistency among page sections"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "medium",
+      "issues_preventing_higher_score": "The Artefacts section bypasses the Section component pattern used by its siblings, resulting in a slight convention drift in how page sections are structured. About, Background, Contact, and Hero also do not use Section, but they are simpler content-only sections without accent styling, so the inconsistency is most notable for Artefacts which has similar complexity to the sections that do use it."
+    },
+    "dependency_health": {
+      "evidence": [
+        "Zero production dependencies in package.json; every listed package is a devDependency (SvelteKit, Tailwind, Vite, TypeScript, Vitest)",
+        "No duplicate libraries for the same purpose; the codebase uses native fetch exclusively for HTTP requests",
+        "No heavy dependencies pulled in for light use; the entire runtime is framework-only",
+        "No circular dependency cycles in the import graph",
+        "Clean dependency set: SvelteKit + Tailwind CSS 4 + TypeScript + Vite, all current-generation versions with compatible semver ranges"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The score is not 100 only because evaluation is based on devDependencies visible in package.json with caret ranges, and the lock file was not inspected for potential version conflict signals. The dependency set itself is exemplary for this project scope."
+    },
+    "authorization_consistency": {
+      "evidence": [
+        "This is a static portfolio site with no authenticated routes, no user sessions, no login flows, and no protected resources",
+        "The only server-side code (+page.server.ts) fetches public GitHub API data without authentication tokens",
+        "No auth middleware, decorators, or permission checks exist because none are needed",
+        "The GitHub API calls use unauthenticated public endpoints, consistent with the project's design of working without API keys",
+        "No admin routes, no service roles, no RLS, no permission strings exist in the codebase"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The dimension is largely not applicable to a static portfolio site. The score reflects that no authorization concerns exist because the architecture correctly has no authorization surface. A minor consideration is that the unauthenticated GitHub API calls are subject to rate limiting, but this is a design choice documented in CLAUDE.md ('no auth, public repos only'), not an authorization gap."
+    },
+    "incomplete_migration": {
+      "evidence": [
+        "All source files are TypeScript or Svelte with lang='ts'; zero .js files exist in the src/ directory",
+        "Uniformly Svelte 5 runes throughout: $props(), $state(), $derived(), $effect() used consistently in every component with no legacy Svelte 4 patterns (no export let, no $: reactive statements, no on:event directives)",
+        "No TODO/FIXME/HACK/deprecated/legacy/migrate comments found anywhere in the codebase",
+        "No coexistence of old and new API patterns: single HTTP approach (native fetch), single state management approach (Svelte 5 runes), single styling approach (Tailwind CSS 4 + CSS custom properties)",
+        "svelte.config.js is the only .js file at project root (framework convention, not a migration artifact)"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "svelte.config.js uses JSDoc type annotation (/** @type {import('@sveltejs/kit').Config} */) rather than being a .ts file, but this is a SvelteKit framework convention and not an incomplete migration artifact."
+    }
+  },
+  "dimension_judgment": {
+    "high_level_elegance": {
+      "strengths": [
+        "Clear four-way split under src/lib/ (components, data, types, utils) maps directly to domain capabilities: presentation, content, contracts, and external integration",
+        "src/routes/ follows SvelteKit conventions exactly with no custom routing complexity",
+        "Public surface is minimal: data/ exports typed arrays, utils/ exports two async functions, types/ exports interfaces and a type alias",
+        "A new engineer could explain every directory's purpose within minutes of opening the project",
+        "The separation between static content (data/) and runtime-fetched content (utils/github.ts + page.server.ts) is a deliberate, coherent architectural choice"
+      ],
+      "issue_character": "Issues are cosmetic boundary nits rather than structural problems; the decomposition is sound and predictable.",
+      "score_rationale": "The codebase is small (308 LOC across 8 production files) but its decomposition is purposeful and domain-aligned. A developer can explain why each directory and file exists. The minor rough edge is that constants.ts floats at the lib root with a single export that could live closer to its consumers. This places the score solidly in the 90+ range: a developer trusts the structure with only minor friction."
+    },
+    "mid_level_elegance": {
+      "strengths": [
+        "Data translation happens in exactly one place: attachGithubData in +page.server.ts merges static and dynamic data into the final Project type",
+        "Error containment at the GitHub API boundary is explicit and consistent: all four parallel fetches use the same fetchGitHub/tryFetchJson pattern that returns null on failure",
+        "Component props are typed interfaces, not ad-hoc object bags, making handoffs self-documenting",
+        "The page composes collaborators (Hero, About, Section, ProjectCard, Terminal, Artefacts, Background, Contact) in a readable top-to-bottom flow with no tangled cross-calls"
+      ],
+      "issue_character": "The only notable seam friction is a hardcoded color mapping in +page.svelte that creates an implicit contract with section IDs; otherwise handoffs are clean and predictable.",
+      "score_rationale": "Module boundaries are explicit and minimal. The data flow from static content through GitHub enrichment to component rendering follows a clear pipeline. The sectionTints coupling in +page.svelte is a minor implicit contract that a developer might not expect, but it does not create significant friction. This places the score in the high 80s: mostly strong seams with one minor boundary coupling that prevents a 90+ score."
+    },
+    "test_strategy": {
+      "strengths": [
+        "github.test.ts covers the most complex module thoroughly: type guards, header parsing edge cases, network errors, malformed responses, deduplication logic, and partial failure scenarios",
+        "Test infrastructure (Vitest with mocked fetch) is properly set up with beforeEach/afterEach cleanup patterns",
+        "Data module tests enforce structural contracts that would catch data entry errors (missing fields, wrong repo format)"
+      ],
+      "issue_character": "The test strategy has a clear gap: the most behaviorally complex utility module is well-tested, but the orchestration layer (+page.server.ts) and all presentation components have zero coverage, meaning a developer making changes to the data pipeline or component behavior has no safety net.",
+      "score_rationale": "The GitHub API module tests are genuinely strong and would give a developer confidence modifying that code. However, the attachGithubData function in +page.server.ts is completely untested despite being the critical data-merging seam. For a static portfolio site, the risk of untested components is lower than in an interactive application, but the orchestration logic in +page.server.ts is a meaningful gap. The data module tests are better than nothing but verify shape rather than behavior. This places the score around 72: a developer has confidence in the API layer but would worry about changes to the data pipeline or component logic."
+    },
+    "api_surface_coherence": {
+      "strengths": [
+        "Public API follows a consistent pattern: fetchX for async data retrieval, isX for type guards, parseX for data extraction",
+        "Parameter shapes are consistent: string paths for repo identification, no mixed parameter ordering",
+        "Return types are consistent: Promise<T | null> for all async operations that can fail",
+        "The module's only consumer (+page.server.ts) uses exactly fetchAllRepoData, confirming the public surface matches real usage"
+      ],
+      "issue_character": "The only coherence friction is that testing-motivated exports expand the public API surface beyond what consumers need, creating a mild discoverability issue.",
+      "score_rationale": "The API surface is small, consistent, and predictable. A developer seeing fetchRepoData can correctly predict fetchAllRepoData exists and what it does. The sync/async split is appropriate, not mixed. The testing-export pattern is a minor wart that slightly inflates the public surface but is clearly documented. This places the score in the mid-to-high 80s: strong coherence with a small testing-export concern."
+    },
+    "package_organization": {
+      "strengths": [
+        "Four-directory split under src/lib/ (components, data, types, utils) maps precisely to ownership boundaries: presentation, content, contracts, external integration",
+        "Every file lives in the directory a developer would expect: type definitions in types/, GitHub fetching in utils/, static content arrays in data/, Svelte components in components/",
+        "No flat directory has mixed concerns: components/ has only .svelte files, data/ has only typed data arrays, utils/ has only the GitHub integration",
+        "SvelteKit route files follow framework conventions exactly, with no custom routing or layout complexity"
+      ],
+      "issue_character": "There are no meaningful organizational problems; the only observation is a single root-level constants file that could theoretically live inside a subdirectory.",
+      "score_rationale": "A developer can predict file locations from directory names alone. The project is small (22 total files) and its structure is appropriate for its size: not over-organized with unnecessary nesting, not under-organized with mixed concerns. The single straggler (constants.ts) is a very minor nit. This places the score at 91: strong organization with a trivial placement outlier that does not affect navigation or ownership clarity."
+    },
+    "initialization_coupling": {
+      "strengths": [
+        "All module-scope values are pure data literals or simple constants with zero side effects",
+        "No environment variable reads at import time; the codebase has no runtime configuration coupling",
+        "The only async work (GitHub API fetching) happens inside the SvelteKit load function, not at module scope",
+        "No global singletons or shared mutable state anywhere in the codebase"
+      ],
+      "issue_character": "No initialization coupling issues were found in this codebase.",
+      "score_rationale": "The codebase is exemplary from an initialization coupling perspective. All module-scope code consists of pure data declarations and simple constants. Async work is properly deferred to the SvelteKit load function. The score of 95 rather than 100 reflects the inherent difficulty of giving a perfect score to a very small codebase where the absence of problems may partly reflect limited complexity rather than deliberate discipline."
+    },
+    "design_coherence": {
+      "strengths": [
+        "Functions are focused with single responsibilities throughout: fetchGitHub, tryFetchJson, isRepoResponse, parseCommitCount, fetchRepoData, fetchAllRepoData each do exactly one thing",
+        "No deep nesting anywhere; the deepest nesting is a single level of conditional inside a map callback",
+        "The separation between data modules (static content), utility modules (GitHub API), and route modules (orchestration) is clean and earned",
+        "Type guards (isRepoResponse, isLanguagesResponse) are properly extracted as standalone predicates rather than inline checks"
+      ],
+      "issue_character": "The only minor structural concern is a repetitive pattern in the load function that maps three project arrays identically, but this is proportionate to the domain's three-category structure and does not warrant a defect finding.",
+      "score_rationale": "The codebase demonstrates strong design coherence. Functions are focused, abstractions are earned (not speculative), and patterns are consistent. The score of 88 reflects genuinely solid structural decisions throughout a small but well-organized codebase. The gap from higher scores reflects that the codebase is small enough that design coherence has not been tested by complexity pressure."
+    },
+    "naming_quality": {
+      "strengths": [
+        "Consistent verb prefix conventions throughout github.ts: fetch* for network operations, is* for type guards, parse* for transformations",
+        "The Raw suffix pattern (repoRaw, langRaw, contribRaw) clearly distinguishes unvalidated API responses from narrowed typed values",
+        "Domain-specific names in projects.ts (impactProjects, explorationProjects, metaProjects) directly map to the portfolio's content categories",
+        "attachGithubData communicates its enrichment behavior without resorting to generic verbs like 'process' or 'handle'",
+        "Interface names (ProjectGitHubData, TerminalFrame, SectionAccent) are precise and domain-aligned"
+      ],
+      "issue_character": "No naming defects were found; the codebase uses precise, consistent vocabulary throughout.",
+      "score_rationale": "Names across the codebase are precise and predictable. A developer can read function names and correctly predict behavior without checking implementations, which is the hallmark of strong naming quality. The score of 90 reflects genuinely strong naming discipline with no misleading or generic names, docked slightly from higher only because the codebase is small enough that naming consistency has not been stress-tested across many modules."
+    },
+    "logic_clarity": {
+      "strengths": [
+        "Control flow in github.ts is consistently flat with early returns; no deep nesting or convoluted branching",
+        "Type guard functions use direct boolean checks that a developer can trace without surprises",
+        "parseCommitCount has a clear precedence: try regex on link header first, then fall back to response status; both paths are distinct and necessary",
+        "Promise.all in fetchRepoData followed by sequential narrowing is direct and intention-revealing",
+        "No redundant null checks; every guard clause protects against a genuinely possible null/undefined value"
+      ],
+      "issue_character": "No logic clarity issues were found in this codebase.",
+      "score_rationale": "Control flow throughout the codebase is direct, necessary, and traceable. A developer can follow every branch path without surprises. The score of 92 reflects genuinely clean logic with no dead code, redundant branches, or confusing conditionals, pulled slightly below exemplary only because the codebase's limited complexity means logic clarity has not been tested under pressure."
+    },
+    "type_safety": {
+      "strengths": [
+        "All public functions have explicit return type annotations that accurately describe runtime behavior",
+        "Type guards provide proper narrowing from unknown to specific interfaces, avoiding unsafe casts in consuming code",
+        "The Omit<Project, 'github'> pattern accurately models the data shape at each stage of the pipeline",
+        "Interface definitions in types/index.ts use precise field types with no any escape hatches",
+        "SectionAccent type uses a string literal union for compile-time validation of accent values"
+      ],
+      "issue_character": "Type safety issues are isolated and minor: a redundant union type and an unsafe error cast, neither of which cause runtime problems in practice.",
+      "score_rationale": "Type annotations throughout the codebase accurately describe runtime behavior, and the type guard pattern in github.ts demonstrates intentional type narrowing discipline. The score of 87 reflects strong type safety with two minor blemishes: the redundant unknown | null return type and the e as Error cast. These are low-impact issues that do not mislead developers but represent slight imprecision in the type model."
+    },
+    "contract_coherence": {
+      "strengths": [
+        "Type guard functions (isRepoResponse, isLanguagesResponse) properly narrow unknown to specific interfaces with runtime checks that match the declared type predicate",
+        "fetchRepoData returns ProjectGitHubData | null and honors both paths: returns null when validation fails, returns a fully populated object otherwise",
+        "Data modules (artefacts.ts, projects.ts, terminal.ts) export typed arrays that match their declared types with no hidden mutations or side effects",
+        "attachGithubData correctly transforms Omit<Project, 'github'>[] to Project[] by adding the github field"
+      ],
+      "issue_character": "The only contract issue is a minor type annotation imprecision in tryFetchJson where 'unknown | null' is redundant since null is already part of unknown.",
+      "score_rationale": "The codebase generally honors its contracts well. Functions do what their names and return types promise. Type guards are accurate, and the data flow from GitHub API through validation to typed output is coherent. The tryFetchJson return type annotation is imprecise rather than wrong, which prevents a higher score but does not meaningfully mislead developers. This places the codebase solidly above the 80 anchor (solid but uneven) but below 90 (strong with only minor friction)."
+    },
+    "error_consistency": {
+      "strengths": [
+        "fetchGitHub consistently returns null on failure rather than throwing, providing a predictable base for callers",
+        "console.warn calls in fetchGitHub include structured context (url, status/error message) rather than bare strings",
+        "The overall strategy of graceful degradation is appropriate for a portfolio site where GitHub data is supplementary"
+      ],
+      "issue_character": "Error handling is designed around graceful degradation but applies it inconsistently: some failure modes are caught and converted to null, while others (JSON parse) can throw uncaught, and the uniform null return collapses distinct failure causes into an indistinguishable signal.",
+      "score_rationale": "The codebase has a clear intent toward return-null error handling for the GitHub integration layer, which is a reasonable strategy for supplementary data. However, the inconsistency between the carefully wrapped fetch calls and the unprotected res.json() call in tryFetchJson creates a gap where a runtime exception could escape. Additionally, the uniform null return means callers cannot distinguish between 'repo not found', 'rate limited', and 'network down'. This places it at 72: a developer would encounter enough inconsistency that they cannot fully trust the error contract."
+    },
+    "abstraction_fitness": {
+      "strengths": [
+        "Zero wrapper rate: all 3 function signatures in the utils layer do real work rather than forwarding to another function",
+        "Type definitions are minimal and directly consumed: no interface-for-the-sake-of-interface patterns",
+        "Omit<Project, 'github'> is a precise use of TypeScript utility types that communicates exactly why static data differs from runtime-enriched data",
+        "No barrel/re-export modules or facade layers; imports go directly to their source",
+        "Component props are flat and specific rather than wide option bags passed through layers"
+      ],
+      "issue_character": "No material abstraction fitness issues exist; the codebase is lean and direct with abstractions that earn their place.",
+      "score_rationale": "This is a small codebase (308 LOC, 8 files) with essentially no unnecessary abstraction. Types are consumed directly, functions do real work, and there are no pass-through wrappers or single-implementation interfaces. The mechanical scan confirms zero wrappers, zero facade modules, and zero delegation-heavy classes. The score sits at 90.5 reflecting genuinely strong abstraction fitness with only the minor SectionAccent 'none' semantic mismatch preventing a higher score. For a codebase of this size and simplicity, abstraction fitness is near-exemplary."
+    },
+    "ai_generated_debt": {
+      "strengths": [
+        "Near-zero comment ratio with no restating comments anywhere in the codebase",
+        "Console output is limited to two structured console.warn calls at genuine I/O boundaries, not nosy debug logging",
+        "All function names use domain-specific vocabulary (fetchGitHub, isRepoResponse, parseCommitCount, splitOverview, getLanguageSegments) rather than generic AI-hallmark names",
+        "No defensive overengineering: null checks exist only where runtime data is genuinely untyped (API responses)"
+      ],
+      "issue_character": "The code itself is remarkably free of AI-generated debt patterns; the only signal is in the data content (project descriptions) rather than in code structure or logic.",
+      "score_rationale": "The codebase scores well on AI-generated debt because the code is lean, purposeful, and free of the hallmark patterns: no restating comments, no debug logging, no defensive overengineering, no pass-through wrappers, no generic names. The project description strings in projects.ts have a formulaic verbosity that is characteristic of LLM-generated content, but this is data content rather than code structure. The score of 88.0 reflects strong code quality with the data content observation preventing a higher score."
+    },
+    "low_level_elegance": {
+      "strengths": [
+        "fetchRepoData composes concurrent API calls cleanly with Promise.all and handles each result with appropriate validation/fallback on separate lines",
+        "Pure helper functions (parseCommitCount, splitOverview, formatDate, getLanguageSegments) are extracted at the right granularity and contain no side effects",
+        "Terminal.svelte's intersection-triggered animation is direct: observe, play frames sequentially, cleanup on unmount",
+        "Guard clauses used effectively: if (!res) return null, if (total === 0) return [], if (prefersReducedMotion) return early"
+      ],
+      "issue_character": "Issues are minor and isolated: one function (fetchRepoData) packs multiple validation strategies into a single body, and the two IntersectionObserver $effect blocks in +page.svelte duplicate structural patterns without extraction.",
+      "score_rationale": "Function internals are generally direct, well-extracted, and intention-revealing. Helper functions are proportionate to their complexity, and control flow uses guard clauses effectively. The score sits at 84.0, above the 80 anchor (solid but uneven) because the code is mostly clean with good extraction balance. The two duplicated IntersectionObserver patterns in +page.svelte and the mixed validation density in fetchRepoData prevent a higher score, but neither rises to the level of a reportable defect since they are still readable and maintainable at this codebase size."
+    },
+    "cross_module_architecture": {
+      "strengths": [
+        "Strict unidirectional dependency flow: routes -> lib/data + lib/utils -> lib/types, with no reverse or lateral violations",
+        "No circular dependencies in the entire codebase",
+        "GitHub API boundary is cleanly isolated in a single utility module consumed by one server-side load function",
+        "Type definitions centralized in lib/types/index.ts serve as a stable shared contract without behavioral coupling",
+        "No shared mutable state or import-time side effects across module boundaries"
+      ],
+      "issue_character": "No cross-module architecture issues were found; the codebase is small and its dependency graph is clean and intentional.",
+      "score_rationale": "A developer can trust that dependency direction and boundaries are coherent. The import graph is acyclic, boundaries are clear, and there are no hub modules or blast-radius concerns. The score stops short of 95+ because the codebase is small enough that architectural discipline has not yet been tested at scale, and the sync/async mix in github.ts is a minor boundary consideration."
+    },
+    "convention_outlier": {
+      "strengths": [
+        "Uniform naming convention: camelCase for values, PascalCase for types, across all files without exception",
+        "Consistent Svelte 5 runes usage: every component uses $props() with a typed Props interface",
+        "All data modules follow an identical export pattern: typed array exported as named const",
+        "No mixed export strategies: named exports used throughout with zero default exports",
+        "Consistent use of prefers-reduced-motion checks across all animation-bearing components (Hero, Terminal, +page.svelte)"
+      ],
+      "issue_character": "The single convention outlier is a minor structural inconsistency in how page sections are composed, not a naming or export pattern drift.",
+      "score_rationale": "A developer can see a pattern in one area and largely trust it holds everywhere. Naming, exports, runes usage, and animation handling are all consistent. The score is pulled down slightly by the Artefacts component not following the Section wrapper pattern used by sibling sections with similar complexity, but this is a minor structural divergence rather than a systemic convention problem."
+    },
+    "dependency_health": {
+      "strengths": [
+        "Zero production dependencies: the entire dependency set is devDependencies for build tooling",
+        "No duplicate libraries: native fetch used for HTTP, no competing HTTP client libraries",
+        "Minimal, purposeful dependency set: SvelteKit, Tailwind CSS 4, TypeScript, Vite, Vitest; nothing extraneous",
+        "No heavy deps for light use; no lodash, moment, or similar utility library bloat",
+        "All dependency versions are current-generation (Svelte 5, Tailwind 4, Vite 6)"
+      ],
+      "issue_character": "No dependency health issues were found; the dependency set is minimal and purposeful.",
+      "score_rationale": "The dependency set is cohesive, current, and purposeful. A developer would find zero redundancy, zero bloat, and zero conflicts. The codebase uses only framework and build tooling as dependencies, with all runtime logic written in plain TypeScript using native APIs. This is near-exemplary dependency hygiene."
+    },
+    "authorization_consistency": {
+      "strengths": [
+        "Architecture correctly has zero authorization surface: no protected routes, no user data, no admin endpoints",
+        "GitHub API usage is intentionally unauthenticated, documented as 'no auth, public repos only' in CLAUDE.md",
+        "The single server-side load function fetches only public data, maintaining consistent trust boundaries",
+        "No secrets, tokens, or credentials appear anywhere in the codebase"
+      ],
+      "issue_character": "No authorization consistency issues exist because the application architecture correctly has no authorization requirements.",
+      "score_rationale": "A developer can trust that the authorization posture is consistent: there is none, and none is needed. This is a static portfolio site that intentionally operates without authentication. The GitHub API is consumed unauthenticated for public repo data, which is a documented design decision. The score is high because the codebase correctly avoids authorization complexity it does not need."
+    },
+    "incomplete_migration": {
+      "strengths": [
+        "Complete TypeScript adoption: zero .js source files in src/",
+        "Complete Svelte 5 migration: every component uses runes ($props, $state, $derived, $effect) with no legacy Svelte 4 patterns anywhere",
+        "No deprecated symbols, stale migration TODOs, or compatibility shims in the codebase",
+        "Single, consistent approach for each concern: native fetch for HTTP, Svelte 5 runes for state, Tailwind 4 for styling"
+      ],
+      "issue_character": "No incomplete migration issues were found; the codebase appears to have been built from scratch with current-generation tooling rather than migrated from an older stack.",
+      "score_rationale": "Migrations are complete with no legacy residue. A developer would find zero confusion about which pattern to follow or extend. The codebase uses Svelte 5, TypeScript, and Tailwind CSS 4 uniformly with no traces of predecessor versions. This is near-exemplary; the minor JSDoc annotation in svelte.config.js is a framework convention rather than migration debt."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "mid_level_elegance",
+      "identifier": "section_tints_implicit_contract",
+      "summary": "sectionTints record in +page.svelte hardcodes section IDs, creating implicit coupling to child components",
+      "confidence": "medium",
+      "suggestion": "Define section IDs and their associated tint colors as a shared typed constant in src/lib/data/ or src/lib/constants.ts, then import it in both the page and any component that sets its own section ID. This makes the contract explicit and enforceable.",
+      "related_files": [
+        "src/routes/+page.svelte"
+      ],
+      "evidence": [
+        "sectionTints keys ('top', 'about', 'impact', 'explorations', 'meta', 'background', 'artefacts', 'contact') must match section IDs spread across Hero, About, Section, Artefacts, Background, and Contact components; adding or renaming a section requires updating this map manually with no type or compile-time enforcement"
+      ],
+      "impact_scope": "subsystem",
+      "fix_scope": "multi_file_refactor"
+    },
+    {
+      "dimension": "test_strategy",
+      "identifier": "untested_page_server_orchestration",
+      "summary": "+page.server.ts load function and attachGithubData helper have zero test coverage",
+      "confidence": "high",
+      "suggestion": "Extract attachGithubData to a testable module (e.g., src/lib/utils/projects.ts) and add unit tests covering: (1) correct merge when GitHub data exists, (2) null fallback when GitHub data is missing for a repo, (3) handling of repos shared across project categories. The load function itself can remain untested as framework plumbing.",
+      "related_files": [
+        "src/routes/+page.server.ts"
+      ],
+      "evidence": [
+        "attachGithubData merges static project data with GitHub API results using nullish coalescing; the load function orchestrates collecting all repo names, fetching data, and attaching it to three separate project arrays. No test verifies this merge logic, the deduplication of shared repos across project categories, or the graceful degradation when GitHub data is unavailable."
+      ],
+      "impact_scope": "module",
+      "fix_scope": "multi_file_refactor"
+    },
+    {
+      "dimension": "test_strategy",
+      "identifier": "data_tests_shape_only",
+      "summary": "Data module tests verify structural shape but not behavioral contracts",
+      "confidence": "medium",
+      "suggestion": "Add uniqueness assertions (no duplicate repo values across all project arrays), and for terminal data, verify total replay duration is within a reasonable bound. These are low-effort additions that catch real data entry errors.",
+      "related_files": [
+        "src/lib/data/artefacts.test.ts",
+        "src/lib/data/projects.test.ts",
+        "src/lib/data/terminal.test.ts"
+      ],
+      "evidence": [
+        "artefacts.test.ts checks non-empty array, truthy fields, and repo format. projects.test.ts checks non-empty arrays, truthy fields, and slash in repo. terminal.test.ts checks non-empty array, field types, and last-frame delay. None of these tests would catch a duplicate repo entry, a project with description and techLine swapped, or terminal frames with unreasonable delay values."
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "api_surface_coherence",
+      "identifier": "testing_exports_inflate_api_surface",
+      "summary": "Three functions exported solely for testing expand the public API surface beyond consumer needs",
+      "confidence": "low",
+      "suggestion": "Move the test-only exports to a separate file (e.g., src/lib/utils/github.internal.ts) that github.test.ts imports directly, or use Vitest's ability to test unexported functions via vi.importActual or by co-locating tests. Alternatively, add a clear API documentation comment at the top of the file listing the intended public exports.",
+      "related_files": [
+        "src/lib/utils/github.ts"
+      ],
+      "evidence": [
+        "isRepoResponse, isLanguagesResponse, and parseCommitCount are all annotated with '// Exported for testing' comments. These are internal implementation details (type guards for raw API responses, link header parsing) that no consumer outside of github.test.ts uses. They appear alongside fetchRepoData and fetchAllRepoData in the export surface, making it unclear which exports are the intended public API."
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "type_safety",
+      "identifier": "redundant_unknown_null_union",
+      "summary": "tryFetchJson return type unknown | null is redundant since unknown already includes null",
+      "confidence": "medium",
+      "suggestion": "Change the return type to Promise<unknown>. If the intent is to document that null is a meaningful return value, add a JSDoc comment instead of encoding it in a redundant union.",
+      "related_files": [
+        "src/lib/utils/github.ts"
+      ],
+      "evidence": [
+        "Line 20: async function tryFetchJson(url: string): Promise<unknown | null> - the union unknown | null is equivalent to just unknown in TypeScript since unknown is a top type that includes null"
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "type_safety",
+      "identifier": "unsafe_error_cast",
+      "summary": "Catch block casts caught value to Error without validation",
+      "confidence": "medium",
+      "suggestion": "Use a type-safe error message extraction: either check e instanceof Error first, or use String(e) for the log message. For example: console.warn('[GitHub API] Fetch failed', { url, error: e instanceof Error ? e.message : String(e) })",
+      "related_files": [
+        "src/lib/utils/github.ts"
+      ],
+      "evidence": [
+        "Line 15: (e as Error).message - the caught value in a catch block has type unknown in TypeScript strict mode; casting to Error is unsafe if a non-Error value is thrown (e.g., a string or null)"
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "contract_coherence",
+      "identifier": "tryFetchJson_redundant_union",
+      "summary": "tryFetchJson return type 'unknown | null' is redundant since null is a subset of unknown",
+      "confidence": "high",
+      "suggestion": "Change return type to Promise<unknown> since that already includes null, or better yet use a more specific return type. If the intent is to communicate 'JSON data or null', consider a branded type or a comment clarifying the null semantics.",
+      "related_files": [
+        "src/lib/utils/github.ts"
+      ],
+      "evidence": [
+        "Line 20: 'async function tryFetchJson(url: string): Promise<unknown | null>' - 'unknown | null' collapses to 'unknown', obscuring the intentional null-return contract"
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "error_consistency",
+      "identifier": "unprotected_json_parse",
+      "summary": "tryFetchJson calls res.json() without try-catch, breaking the null-on-error contract",
+      "confidence": "high",
+      "suggestion": "Wrap the res.json() call in a try-catch that returns null on parse failure, consistent with the function's null-return contract: try { return await res.json(); } catch { return null; }",
+      "related_files": [
+        "src/lib/utils/github.ts"
+      ],
+      "evidence": [
+        "Line 22-23: fetchGitHub is carefully wrapped in try-catch, but tryFetchJson calls res.json() unprotected. If the GitHub API returns a 200 with malformed body, this throws an unhandled exception instead of returning null."
+      ],
+      "impact_scope": "subsystem",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "error_consistency",
+      "identifier": "mixed_fallback_strategies",
+      "summary": "fetchRepoData uses three different fallback strategies for sub-requests in a single function",
+      "confidence": "medium",
+      "suggestion": "Document the intentional degradation hierarchy with a brief comment explaining that repo metadata is required while languages/contributors/commits are optional enrichment. This makes the mixed strategy legible as a design choice rather than accidental inconsistency.",
+      "related_files": [
+        "src/lib/utils/github.ts"
+      ],
+      "evidence": [
+        "Lines 68-74: repo data failure returns null (bail out entirely), languages failure returns {} (empty fallback), contributors failure returns 0 (numeric default). A developer reading this cannot predict which fallback strategy applies to each sub-request without reading the implementation."
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "ai_generated_debt",
+      "identifier": "verbose_project_descriptions",
+      "summary": "Project descriptions in projects.ts follow a formulaic LLM-style pattern of escalating claims",
+      "confidence": "medium",
+      "suggestion": "Consider shortening project descriptions to 1-2 sentences of concrete information. The current descriptions read more like AI-generated marketing copy than developer portfolio entries. Let the repos speak for themselves with concise summaries.",
+      "related_files": [
+        "src/lib/data/projects.ts"
+      ],
+      "evidence": [
+        "All 12 project descriptions follow the same structure: opening claim, technical detail, philosophical reflection. Examples: 'The architectural decision that defines it:', 'The finding:', 'The game's idea progression... is itself a knowledge system.', 'The process of building it is the transferable skill, not the specifics.' This formulaic structure across all entries suggests AI-generated prose."
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "low_level_elegance",
+      "identifier": "duplicate_observer_effects",
+      "summary": "Two $effect blocks in +page.svelte create IntersectionObservers with duplicated structural pattern",
+      "confidence": "medium",
+      "suggestion": "Extract a reusable createSectionObserver helper that takes an options object and a callback, returning the cleanup function. This would reduce the two 20-line blocks to two concise calls while keeping the distinct behavior clear.",
+      "related_files": [
+        "src/routes/+page.svelte"
+      ],
+      "evidence": [
+        "Lines 31-52 and 54-75: both $effect blocks create an IntersectionObserver, iterate entries, check isIntersecting, perform an action, and return a cleanup function. The structure is identical even though the behavior differs (reveal animation vs background color tint)."
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit"
+    },
+    {
+      "dimension": "convention_outlier",
+      "identifier": "artefacts_bypasses_section_wrapper",
+      "summary": "Artefacts component implements its own section structure instead of using the shared Section component",
+      "confidence": "medium",
+      "suggestion": "Consider wrapping Artefacts content in the Section component for consistency, or document the intentional deviation if the mono-font styling requires it.",
+      "related_files": [
+        "src/lib/components/Artefacts.svelte",
+        "src/lib/components/Section.svelte"
+      ],
+      "evidence": [
+        "Impact, Explorations, and Meta sections all compose via <Section id title accent>, but Artefacts renders its own <section> with its own heading styling",
+        "Artefacts has its own .artefacts-heading style while sibling sections use the .section-heading class provided by Section.svelte"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "review_quality": {
+    "batch_count": 20,
+    "dimension_coverage": 0.05,
+    "evidence_density": 5.15,
+    "high_score_missing_issue_note": 0,
+    "issue_pressure": 11.456,
+    "dimensions_with_issues": 9
+  },
+  "review_scope": {
+    "reviewed_files_count": 6,
+    "successful_batch_count": 20,
+    "full_sweep_included": false,
+    "total_files": 8,
+    "imported_dimensions": [
+      "abstraction_fitness",
+      "ai_generated_debt",
+      "api_surface_coherence",
+      "authorization_consistency",
+      "contract_coherence",
+      "convention_outlier",
+      "cross_module_architecture",
+      "dependency_health",
+      "design_coherence",
+      "error_consistency",
+      "high_level_elegance",
+      "incomplete_migration",
+      "initialization_coupling",
+      "logic_clarity",
+      "low_level_elegance",
+      "mid_level_elegance",
+      "naming_quality",
+      "package_organization",
+      "test_strategy",
+      "type_safety"
+    ]
+  },
+  "reviewed_files": [
+    "src/lib/data/artefacts.ts",
+    "src/lib/data/projects.ts",
+    "src/lib/data/terminal.ts",
+    "src/routes/+layout.ts",
+    "src/routes/+page.server.ts",
+    "src/lib/utils/github.ts"
+  ],
+  "provenance": {
+    "kind": "blind_review_batch_import",
+    "blind": true,
+    "runner": "dry-run",
+    "run_stamp": "20260312_092638",
+    "created_at": "2026-03-12T09:32:22+00:00",
+    "batch_count": 20,
+    "batch_indexes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "packet_path": "/home/user/JasonWarrenUK.github.io/.desloppify/review_packet_blind.json",
+    "packet_sha256": "a15799b5d64dcadf279d6c3c31dbe64b2cef2dbcbee5e4c6e267a56761a710cd"
+  },
+  "assessment_coverage": {
+    "scored_dimensions": [
+      "naming_quality",
+      "logic_clarity",
+      "type_safety",
+      "contract_coherence",
+      "error_consistency",
+      "abstraction_fitness",
+      "ai_generated_debt",
+      "high_level_elegance",
+      "mid_level_elegance",
+      "low_level_elegance",
+      "cross_module_architecture",
+      "initialization_coupling",
+      "convention_outlier",
+      "dependency_health",
+      "test_strategy",
+      "api_surface_coherence",
+      "authorization_consistency",
+      "incomplete_migration",
+      "package_organization",
+      "design_coherence"
+    ],
+    "selected_dimensions": [
+      "naming_quality",
+      "logic_clarity",
+      "type_safety",
+      "contract_coherence",
+      "error_consistency",
+      "abstraction_fitness",
+      "ai_generated_debt",
+      "high_level_elegance",
+      "mid_level_elegance",
+      "low_level_elegance",
+      "cross_module_architecture",
+      "initialization_coupling",
+      "convention_outlier",
+      "dependency_health",
+      "test_strategy",
+      "api_surface_coherence",
+      "authorization_consistency",
+      "incomplete_migration",
+      "package_organization",
+      "design_coherence"
+    ],
+    "imported_dimensions": [
+      "abstraction_fitness",
+      "ai_generated_debt",
+      "api_surface_coherence",
+      "authorization_consistency",
+      "contract_coherence",
+      "convention_outlier",
+      "cross_module_architecture",
+      "dependency_health",
+      "design_coherence",
+      "error_consistency",
+      "high_level_elegance",
+      "incomplete_migration",
+      "initialization_coupling",
+      "logic_clarity",
+      "low_level_elegance",
+      "mid_level_elegance",
+      "naming_quality",
+      "package_organization",
+      "test_strategy",
+      "type_safety"
+    ],
+    "missing_dimensions": []
+  }
+}

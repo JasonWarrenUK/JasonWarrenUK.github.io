@@ -1,0 +1,39 @@
+{
+  "batch": "initialization_coupling",
+  "batch_index": 6,
+  "assessments": {"initialization_coupling": 95.0},
+  "dimension_notes": {
+    "initialization_coupling": {
+      "evidence": [
+        "Module-level constants in github.ts (API_BASE, GITHUB_HEADERS) are simple string/object literals with no side effects",
+        "Data modules (artefacts.ts, projects.ts, terminal.ts) export static arrays at module scope; pure data, no I/O or computation",
+        "+layout.ts exports two boolean constants (prerender, csr) with no dependencies",
+        "+page.server.ts imports are straightforward with no boot-order sensitivity",
+        "No environment variable reads at import time anywhere in the codebase",
+        "No circular import dependencies detected"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The codebase is small enough (8 files, 308 LOC) that initialization coupling risks are structurally unlikely. The minor gap from 100 reflects that github.ts module-level constants could theoretically become stale if the module were hot-reloaded, but this is not a practical concern in a static-site build context."
+    }
+  },
+  "dimension_judgment": {
+    "initialization_coupling": {
+      "strengths": [
+        "All module-scope values are pure data literals or simple constants with zero side effects",
+        "No environment variable reads at import time; the codebase has no runtime configuration coupling",
+        "The only async work (GitHub API fetching) happens inside the SvelteKit load function, not at module scope",
+        "No global singletons or shared mutable state anywhere in the codebase"
+      ],
+      "issue_character": "No initialization coupling issues were found in this codebase.",
+      "score_rationale": "The codebase is exemplary from an initialization coupling perspective. All module-scope code consists of pure data declarations and simple constants. Async work is properly deferred to the SvelteKit load function. The score of 95 rather than 100 reflects the inherent difficulty of giving a perfect score to a very small codebase where the absence of problems may partly reflect limited complexity rather than deliberate discipline."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": ["The orphaned file signal on +page.server.ts is a false positive; SvelteKit uses this file via its file-based routing convention, not via direct imports"]
+  }
+}

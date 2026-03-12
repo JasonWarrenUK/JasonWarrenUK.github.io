@@ -1,0 +1,51 @@
+{
+  "batch": "api_surface_coherence",
+  "batch_index": 4,
+  "assessments": {"api_surface_coherence": 86.3},
+  "dimension_notes": {
+    "api_surface_coherence": {
+      "evidence": [
+        "github.ts exports a coherent public API: fetchRepoData(repoPath) for single repos and fetchAllRepoData(repoNames) for batch operations, both returning ProjectGitHubData | null",
+        "Type guard functions (isRepoResponse, isLanguagesResponse) are exported with 'Exported for testing' comments, making the export rationale clear",
+        "parseCommitCount is also exported for testing with the same comment pattern",
+        "All async functions are consistently async; the sync helpers (type guards, parseCommitCount) are correctly synchronous",
+        "The internal helpers (fetchGitHub, tryFetchJson) are not exported, keeping the public surface minimal",
+        "The scan evidence flags sync_async_mix for github.ts, but this is a correct design: type guards and parsers should be sync, fetch operations should be async"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The 'Exported for testing' pattern exposes internal implementation details (type guards, commit count parser) as public API purely for testability. A test-only export barrel or explicit @internal annotation would make the API surface more honest about which exports are for consumers vs. testing."
+    }
+  },
+  "dimension_judgment": {
+    "api_surface_coherence": {
+      "strengths": [
+        "Public API follows a consistent pattern: fetchX for async data retrieval, isX for type guards, parseX for data extraction",
+        "Parameter shapes are consistent: string paths for repo identification, no mixed parameter ordering",
+        "Return types are consistent: Promise<T | null> for all async operations that can fail",
+        "The module's only consumer (+page.server.ts) uses exactly fetchAllRepoData, confirming the public surface matches real usage"
+      ],
+      "issue_character": "The only coherence friction is that testing-motivated exports expand the public API surface beyond what consumers need, creating a mild discoverability issue.",
+      "score_rationale": "The API surface is small, consistent, and predictable. A developer seeing fetchRepoData can correctly predict fetchAllRepoData exists and what it does. The sync/async split is appropriate, not mixed. The testing-export pattern is a minor wart that slightly inflates the public surface but is clearly documented. This places the score in the mid-to-high 80s: strong coherence with a small testing-export concern."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "api_surface_coherence",
+      "identifier": "testing_exports_inflate_api_surface",
+      "summary": "Three functions exported solely for testing expand the public API surface beyond consumer needs",
+      "related_files": ["src/lib/utils/github.ts"],
+      "evidence": ["isRepoResponse, isLanguagesResponse, and parseCommitCount are all annotated with '// Exported for testing' comments. These are internal implementation details (type guards for raw API responses, link header parsing) that no consumer outside of github.test.ts uses. They appear alongside fetchRepoData and fetchAllRepoData in the export surface, making it unclear which exports are the intended public API."],
+      "suggestion": "Move the test-only exports to a separate file (e.g., src/lib/utils/github.internal.ts) that github.test.ts imports directly, or use Vitest's ability to test unexported functions via vi.importActual or by co-locating tests. Alternatively, add a clear API documentation comment at the top of the file listing the intended public exports.",
+      "confidence": "low",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["The testing-export pattern is a pragmatic choice in a small codebase where the overhead of a separate internal module would outweigh the benefit."],
+    "likely_symptoms": [],
+    "possible_false_positives": ["The scan evidence sync_async_mix flag for github.ts is a false positive; the mix of sync type guards and async fetch operations is correct API design, not an inconsistency."]
+  }
+}

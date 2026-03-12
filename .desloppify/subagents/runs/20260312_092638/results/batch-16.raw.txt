@@ -1,0 +1,39 @@
+{
+  "batch": "cross_module_architecture",
+  "batch_index": 16,
+  "assessments": {"cross_module_architecture": 90.0},
+  "dimension_notes": {
+    "cross_module_architecture": {
+      "evidence": [
+        "Clean unidirectional dependency flow: routes import from lib/data and lib/utils, components import from lib/types and lib/constants, data modules import only from lib/types",
+        "No circular dependencies detected anywhere in the import graph",
+        "No hub/god modules: the most-imported files (lib/types/index.ts, lib/constants.ts) are pure type/constant definitions with zero behavior",
+        "lib/utils/github.ts is consumed only by routes/+page.server.ts, keeping the GitHub API boundary well-contained",
+        "All cross-module coordination happens through explicit data passing (props, load function returns) with no shared mutable state or import-time side effects"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The codebase is small (8 production files, 308 LOC) which makes architectural quality easy to maintain. The api_surface mix of sync and async exports in github.ts is a minor boundary clarity concern, though it is correctly scoped to that one utility module."
+    }
+  },
+  "dimension_judgment": {
+    "cross_module_architecture": {
+      "strengths": [
+        "Strict unidirectional dependency flow: routes -> lib/data + lib/utils -> lib/types, with no reverse or lateral violations",
+        "No circular dependencies in the entire codebase",
+        "GitHub API boundary is cleanly isolated in a single utility module consumed by one server-side load function",
+        "Type definitions centralized in lib/types/index.ts serve as a stable shared contract without behavioral coupling",
+        "No shared mutable state or import-time side effects across module boundaries"
+      ],
+      "issue_character": "No cross-module architecture issues were found; the codebase is small and its dependency graph is clean and intentional.",
+      "score_rationale": "A developer can trust that dependency direction and boundaries are coherent. The import graph is acyclic, boundaries are clear, and there are no hub modules or blast-radius concerns. The score stops short of 95+ because the codebase is small enough that architectural discipline has not yet been tested at scale, and the sync/async mix in github.ts is a minor boundary consideration."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": ["The scan_evidence flagging +page.server.ts as 'orphaned' is a false positive; it is a SvelteKit entry point consumed by the framework's routing system, not by explicit imports"]
+  }
+}

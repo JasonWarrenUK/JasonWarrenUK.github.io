@@ -1,0 +1,41 @@
+{
+  "batch": "naming_quality",
+  "batch_index": 8,
+  "assessments": {"naming_quality": 90.0},
+  "dimension_notes": {
+    "naming_quality": {
+      "evidence": [
+        "Consistent fetch* prefix convention in github.ts: fetchGitHub, fetchRepoData, fetchAllRepoData all clearly indicate network operations",
+        "Type guard functions use proper is* prefix: isRepoResponse, isLanguagesResponse both return boolean as expected",
+        "parseCommitCount clearly indicates transformation from raw data to a numeric value",
+        "attachGithubData is a descriptive verb communicating the enrichment operation",
+        "Raw suffix convention (repoRaw, langRaw, contribRaw) clearly signals unvalidated data before type narrowing",
+        "Project category names (impactProjects, explorationProjects, metaProjects) communicate domain categories directly",
+        "tryFetchJson uses a try prefix to signal fallibility, which is accurate for a function returning null on failure"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The naming is strong throughout. The minor gap from a perfect score is that tryFetchJson is a slightly unusual naming convention in TypeScript (try prefix is more common in Go/Rust), though it communicates intent effectively."
+    }
+  },
+  "dimension_judgment": {
+    "naming_quality": {
+      "strengths": [
+        "Consistent verb prefix conventions throughout github.ts: fetch* for network operations, is* for type guards, parse* for transformations",
+        "The Raw suffix pattern (repoRaw, langRaw, contribRaw) clearly distinguishes unvalidated API responses from narrowed typed values",
+        "Domain-specific names in projects.ts (impactProjects, explorationProjects, metaProjects) directly map to the portfolio's content categories",
+        "attachGithubData communicates its enrichment behavior without resorting to generic verbs like 'process' or 'handle'",
+        "Interface names (ProjectGitHubData, TerminalFrame, SectionAccent) are precise and domain-aligned"
+      ],
+      "issue_character": "No naming defects were found; the codebase uses precise, consistent vocabulary throughout.",
+      "score_rationale": "Names across the codebase are precise and predictable. A developer can read function names and correctly predict behavior without checking implementations, which is the hallmark of strong naming quality. The score of 90 reflects genuinely strong naming discipline with no misleading or generic names, docked slightly from higher only because the codebase is small enough that naming consistency has not been stress-tested across many modules."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "batch": "package_organization",
+  "batch_index": 5,
+  "assessments": {"package_organization": 91.0},
+  "dimension_notes": {
+    "package_organization": {
+      "evidence": [
+        "Directory structure: src/lib/components/ (8 .svelte files), src/lib/data/ (3 .ts files), src/lib/types/ (1 index.ts), src/lib/utils/ (1 github.ts), src/routes/ (4 SvelteKit-conventional files), plus src/lib/constants.ts at the lib root",
+        "Total production files: 8 TypeScript + 8 Svelte components + 4 route files + 1 CSS + 1 HTML template = ~22 files. This is a small project where the current structure is appropriate.",
+        "directory_profiles from holistic_context: src/lib/data/ has 3 files with avg_fan_in 1.0 and avg_fan_out 0.0; src/routes/ has 2 files with avg_fan_in 0.0 and avg_fan_out 0.0. No directory shows coupling anomalies.",
+        "No flat directory overload: the largest directory (components/) has 8 files, all Svelte presentation components with a single clear concern each",
+        "Import affinity is clean: data/ files import only from types/, utils/ imports only from types/, components import from types/ and constants.ts, routes import from data/, utils/, and components/"
+      ],
+      "impact_scope": "codebase",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "constants.ts sits at the src/lib/ root with a single export (accentColors). At 8 LOC, it is a straggler root file with fan_in of 3 (imported by Section.svelte, ProjectCard.svelte, and types/index.test.ts). While it could live inside data/ or alongside the types it depends on, this is a borderline concern given the project's small size."
+    }
+  },
+  "dimension_judgment": {
+    "package_organization": {
+      "strengths": [
+        "Four-directory split under src/lib/ (components, data, types, utils) maps precisely to ownership boundaries: presentation, content, contracts, external integration",
+        "Every file lives in the directory a developer would expect: type definitions in types/, GitHub fetching in utils/, static content arrays in data/, Svelte components in components/",
+        "No flat directory has mixed concerns: components/ has only .svelte files, data/ has only typed data arrays, utils/ has only the GitHub integration",
+        "SvelteKit route files follow framework conventions exactly, with no custom routing or layout complexity"
+      ],
+      "issue_character": "There are no meaningful organizational problems; the only observation is a single root-level constants file that could theoretically live inside a subdirectory.",
+      "score_rationale": "A developer can predict file locations from directory names alone. The project is small (22 total files) and its structure is appropriate for its size: not over-organized with unnecessary nesting, not under-organized with mixed concerns. The single straggler (constants.ts) is a very minor nit. This places the score at 91: strong organization with a trivial placement outlier that does not affect navigation or ownership clarity."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": ["The package_size_census flags src as 100% of LOC, which is trivially true for any project with a single src/ directory and is not an organizational issue.", "The orphaned flag on +page.server.ts is a false positive due to SvelteKit's framework-level file loading convention."]
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "batch": "api_surface_coherence",
+  "batch_index": 4,
+  "assessments": {"api_surface_coherence": 87.0},
+  "dimension_notes": {
+    "api_surface_coherence": {
+      "evidence": [
+        "github.ts exports four public symbols: isRepoResponse, isLanguagesResponse, parseCommitCount (sync type guards and parser), fetchRepoData, fetchAllRepoData (async fetchers). All async functions return Promise consistently. No mixed sync/async on the same concern.",
+        "fetchRepoData(repoPath: string): Promise<ProjectGitHubData | null> — single string parameter, explicit nullable return type. Clean.",
+        "fetchAllRepoData(repoNames: string[]): Promise<Record<string, ProjectGitHubData | null>> — array of strings, keyed record return. Consistent with fetchRepoData's shape.",
+        "parseCommitCount(linkHeader: string | null, responseOk: boolean): number — two parameters, both typed, explicit semantics. Slightly mixed abstraction: this is a parsing detail exposed on the public API surface (marked 'Exported for testing'). It is a low-level helper rather than a true public contract.",
+        "isRepoResponse and isLanguagesResponse are exported as type guards for testing; they are implementation details that happen to be exported. They do not belong in the public API contract from a consumer perspective.",
+        "The module has no overloaded interfaces and no functions with more than 2 parameters.",
+        "Error contracts: all public functions return null on failure (fetchRepoData, fetchAllRepoData) or false (type guards). This is consistent. No thrown exceptions documented or possible from the public surface. console.warn is used internally — this is an implicit side effect not reflected in types.",
+        "The internal helpers fetchGitHub and tryFetchJson are not exported, which is correct — they are implementation details.",
+        "No parameter ordering inconsistency across the API: the two async fetchers both take repo identifier(s) as their first and only argument."
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "Three implementation-detail symbols (isRepoResponse, isLanguagesResponse, parseCommitCount) are exported solely for testing, polluting the module's public surface. The console.warn side effect in fetchGitHub is not reflected in the return type contract.",
+      "sub_axes": null
+    }
+  },
+  "dimension_judgment": {
+    "api_surface_coherence": {
+      "strengths": [
+        "All async public functions use Promise consistently; no mixed sync/async.",
+        "Parameter count is minimal: no function exceeds 2 parameters.",
+        "Null-return error contract is applied uniformly across both public fetchers.",
+        "Parameter ordering is consistent across fetchRepoData and fetchAllRepoData.",
+        "Internal helpers are not exported, keeping the surface intentionally small."
+      ],
+      "issue_character": "The main coherence issue is the leakage of three testing-helper exports (type guards and a parser) into the public module surface, which blurs the distinction between the module's actual API contract and its testing infrastructure.",
+      "score_rationale": "The API is clean and consistent at the level of the two primary public functions. The score is held back from the 90+ range by the exported-for-testing pattern which inflates the visible surface with implementation details, and by the undocumented console.warn side effect. Neither is a structural failure — the module is small enough that the leakage is low cost — but a caller reading the exports cannot distinguish 'this is the API' from 'this is a test hook'."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "api_surface_coherence",
+      "identifier": "asc_test_helper_exports",
+      "summary": "isRepoResponse, isLanguagesResponse, and parseCommitCount are exported solely for testing, blurring public API surface",
+      "related_files": ["src/lib/utils/github.ts", "src/lib/utils/github.test.ts"],
+      "evidence": ["Lines 33, 44, 50 in github.ts carry '// Exported for testing' comments. These are internal type guards and a link-header parser, not part of the module's intended public contract."],
+      "suggestion": "Move the test-only exports to a separate src/lib/utils/github.internal.ts file (or use Vitest's importOriginal to access internals without exporting). Alternatively, keep them exported but document them with a @internal JSDoc tag and a note that they are not part of the stable API surface. The cleanest solution for a small codebase is a dedicated test-helpers re-export in the test file itself using vi.importActual with module augmentation.",
+      "confidence": "high",
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "root_cause_cluster": "test_infrastructure_leakage"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Vitest's module mocking constraints led to exporting internals rather than using test-scoped access patterns."],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

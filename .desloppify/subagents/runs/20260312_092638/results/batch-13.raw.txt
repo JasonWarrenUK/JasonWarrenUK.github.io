@@ -1,0 +1,41 @@
+{
+  "batch": "abstraction_fitness",
+  "batch_index": 13,
+  "assessments": {"abstraction_fitness": 90.5},
+  "dimension_notes": {
+    "abstraction_fitness": {
+      "evidence": [
+        "No wrapper functions or pass-through indirection detected; mechanical scan confirms 0 total wrappers out of 3 function signatures",
+        "Types (Project, Artefact, TerminalFrame, ProjectGitHubData, SectionAccent) are all directly consumed by components and data modules with no unnecessary intermediate interfaces",
+        "No single-implementation interfaces or generic abstractions with only one concrete usage",
+        "The Omit<Project, 'github'> usage in projects.ts is a precise type operation that earns its keep by expressing that static project data lacks the github field",
+        "accentColors in constants.ts maps SectionAccent to CSS variables and is consumed by Section and ProjectCard, a clean shared lookup with no over-abstraction",
+        "Component props use direct interfaces (Props) with no inherited base or shared abstraction hierarchy"
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The SectionAccent type and accentColors record create a small abstraction that works well but the 'none' variant maps to 'var(--border)' which is a semantic mismatch (border color used as an accent). This is minor but indicates the abstraction slightly overpromises.",
+      "sub_axes": {"abstraction_leverage": 92.0, "indirection_cost": 95.0, "interface_honesty": 88.0, "delegation_density": 95.0, "definition_directness": 92.0, "type_discipline": 90.0}
+    }
+  },
+  "dimension_judgment": {
+    "abstraction_fitness": {
+      "strengths": [
+        "Zero wrapper rate: all 3 function signatures in the utils layer do real work rather than forwarding to another function",
+        "Type definitions are minimal and directly consumed: no interface-for-the-sake-of-interface patterns",
+        "Omit<Project, 'github'> is a precise use of TypeScript utility types that communicates exactly why static data differs from runtime-enriched data",
+        "No barrel/re-export modules or facade layers; imports go directly to their source",
+        "Component props are flat and specific rather than wide option bags passed through layers"
+      ],
+      "issue_character": "No material abstraction fitness issues exist; the codebase is lean and direct with abstractions that earn their place.",
+      "score_rationale": "This is a small codebase (308 LOC, 8 files) with essentially no unnecessary abstraction. Types are consumed directly, functions do real work, and there are no pass-through wrappers or single-implementation interfaces. The mechanical scan confirms zero wrappers, zero facade modules, and zero delegation-heavy classes. The score sits at 90.5 reflecting genuinely strong abstraction fitness with only the minor SectionAccent 'none' semantic mismatch preventing a higher score. For a codebase of this size and simplicity, abstraction fitness is near-exemplary."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

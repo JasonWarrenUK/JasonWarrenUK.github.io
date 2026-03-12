@@ -1,0 +1,43 @@
+{
+  "batch": "ai_generated_debt",
+  "batch_index": 14,
+  "assessments": {"ai_generated_debt": 93.0},
+  "dimension_notes": {
+    "ai_generated_debt": {
+      "evidence": [
+        "github.ts has 3 comments: '// Exported for testing' (x3) — these explain WHY the functions are exported, not restating what they do; appropriate",
+        "ProjectCard.svelte has one comment: '// Match \". \" or \".\" \" as sentence boundaries' — explains the regex pattern; informative, not restating",
+        "Terminal.svelte has one comment: '<!-- Title bar -->' and '<!-- Terminal content -->' — minimal structural markers in a template context; not bloat",
+        "console.warn calls in fetchGitHub are contextually tagged '[GitHub API]' and log structured objects ({url, status} / {url, error}) — not nosy logging; two total in the file, at genuine I/O error boundaries",
+        "No entry/exit logging on any function anywhere in the codebase",
+        "No null checks on values that cannot be null by type (e.g. no if (project !== null) where project: Project)",
+        "No pass-through wrappers with no added logic",
+        "No multi-line docstrings on trivial functions",
+        "No generic names (handleData, processItem, doOperation) — domain terms used throughout (fetchRepoData, parseCommitCount, irisSession, attachGithubData)",
+        "ai_debt_signals from scan: codebase_avg_comment_ratio 0.004 — very low, confirms sparse comments"
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The codebase is nearly free of AI-generated debt patterns. The small deduction reflects the '// Exported for testing' comments appearing three times in one file — while individually legitimate, the repetition adds minor noise. This is a marginal concern, not a structural problem."
+    }
+  },
+  "dimension_judgment": {
+    "ai_generated_debt": {
+      "strengths": [
+        "Comment density is exceptionally low (ratio 0.004) and every comment present explains WHY rather than restating WHAT",
+        "No entry/exit logging anywhere in the codebase — diagnostic output is limited to two contextual warn calls at genuine failure boundaries",
+        "Domain-specific names used consistently throughout: fetchRepoData, parseCommitCount, irisSession, attachGithubData, splitOverview — no generic handle/process/do patterns",
+        "No defensive null checks on typed values — the code trusts its types rather than second-guessing them"
+      ],
+      "issue_character": "No meaningful AI-generated debt found; the minor repetition of '// Exported for testing' comments is the closest thing to a pattern, but these are accurate and informative rather than noisy.",
+      "score_rationale": "The codebase is purpose-driven with essentially zero ceremony. A developer reading this code spends their attention on logic, not filtering boilerplate. The 7-point deduction from 100 reflects the three repeated '// Exported for testing' markers (minor) and the fact that at this small scale, any future expansion would need to maintain this discipline. Against the 90 anchor of 'mostly clean with small pockets of boilerplate', this is slightly better than 90 — the pockets are very small and confined to a single pattern in one file."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": ["The '// Exported for testing' comments could appear as restating comments, but they explain a non-obvious API decision (why internal functions are exported) — correctly classified as informative"]
+  }
+}

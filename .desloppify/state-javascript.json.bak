@@ -1,46 +1,46 @@
 {
   "version": 1,
   "created": "2026-03-12T08:46:06+00:00",
-  "last_scan": "2026-03-12T09:21:24+00:00",
-  "scan_count": 9,
-  "overall_score": 87.5,
-  "objective_score": 99.5,
-  "strict_score": 86.5,
-  "verified_strict_score": 99.5,
+  "last_scan": "2026-03-12T09:33:38+00:00",
+  "scan_count": 13,
+  "overall_score": 89.4,
+  "objective_score": 98.9,
+  "strict_score": 88.3,
+  "verified_strict_score": 98.9,
   "stats": {
-    "total": 66,
-    "auto_resolved": 39,
+    "total": 88,
+    "auto_resolved": 54,
     "false_positive": 0,
     "fixed": 0,
-    "open": 16,
+    "open": 23,
     "wontfix": 11,
     "by_tier": {
       "1": {
-        "auto_resolved": 8,
+        "auto_resolved": 11,
         "false_positive": 0,
         "fixed": 0,
         "open": 3,
         "wontfix": 3
       },
       "2": {
-        "auto_resolved": 15,
+        "auto_resolved": 22,
         "false_positive": 0,
         "fixed": 0,
-        "open": 7,
+        "open": 9,
         "wontfix": 8
       },
       "3": {
-        "auto_resolved": 8,
+        "auto_resolved": 11,
         "false_positive": 0,
         "fixed": 0,
-        "open": 4,
+        "open": 8,
         "wontfix": 0
       },
       "4": {
-        "auto_resolved": 8,
+        "auto_resolved": 10,
         "false_positive": 0,
         "fixed": 0,
-        "open": 2,
+        "open": 3,
         "wontfix": 0
       }
     }
@@ -147,13 +147,13 @@
       "status": "open",
       "note": null,
       "first_seen": "2026-03-12T08:46:39+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
+      "last_seen": "2026-03-12T09:33:38+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "lang": "typescript",
       "zone": "production",
       "suppressed": true,
-      "suppressed_at": "2026-03-12T09:21:24+00:00",
+      "suppressed_at": "2026-03-12T09:33:38+00:00",
       "suppression_pattern": "single_use::src/app.css"
     },
     "orphaned::src/lib/components/ProjectCard.svelte": {
@@ -169,13 +169,13 @@
       "status": "open",
       "note": null,
       "first_seen": "2026-03-12T08:46:39+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
+      "last_seen": "2026-03-12T09:33:38+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "lang": "typescript",
       "zone": "production",
       "suppressed": true,
-      "suppressed_at": "2026-03-12T09:21:24+00:00",
+      "suppressed_at": "2026-03-12T09:33:38+00:00",
       "suppression_pattern": "orphaned::src/lib/components/*"
     },
     "orphaned::src/routes/+page.svelte": {
@@ -191,13 +191,13 @@
       "status": "open",
       "note": null,
       "first_seen": "2026-03-12T08:46:39+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
+      "last_seen": "2026-03-12T09:33:38+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "lang": "typescript",
       "zone": "production",
       "suppressed": true,
-      "suppressed_at": "2026-03-12T09:21:24+00:00",
+      "suppressed_at": "2026-03-12T09:33:38+00:00",
       "suppression_pattern": "orphaned::src/routes/*"
     },
     "orphaned::src/lib/components/Terminal.svelte": {
@@ -213,13 +213,13 @@
       "status": "open",
       "note": null,
       "first_seen": "2026-03-12T08:46:39+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
+      "last_seen": "2026-03-12T09:33:38+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "lang": "typescript",
       "zone": "production",
       "suppressed": true,
-      "suppressed_at": "2026-03-12T09:21:24+00:00",
+      "suppressed_at": "2026-03-12T09:33:38+00:00",
       "suppression_pattern": "orphaned::src/lib/components/*"
     },
     "orphaned::src/lib/data/projects.ts": {
@@ -263,13 +263,13 @@
       "status": "open",
       "note": null,
       "first_seen": "2026-03-12T08:46:39+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
+      "last_seen": "2026-03-12T09:33:38+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "lang": "typescript",
       "zone": "production",
       "suppressed": true,
-      "suppressed_at": "2026-03-12T09:21:24+00:00",
+      "suppressed_at": "2026-03-12T09:33:38+00:00",
       "suppression_pattern": "orphaned::src/lib/components/*"
     },
     "orphaned::src/lib/data/artefacts.ts": {
@@ -341,13 +341,13 @@
       "status": "open",
       "note": null,
       "first_seen": "2026-03-12T08:46:39+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
+      "last_seen": "2026-03-12T09:33:38+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "lang": "typescript",
       "zone": "production",
       "suppressed": true,
-      "suppressed_at": "2026-03-12T09:21:24+00:00",
+      "suppressed_at": "2026-03-12T09:33:38+00:00",
       "suppression_pattern": "orphaned::src/lib/components/*"
     },
     "orphaned::src/routes/+page.server.ts": {
@@ -356,20 +356,20 @@
       "file": "src/routes/+page.server.ts",
       "tier": 3,
       "confidence": "medium",
-      "summary": "Orphaned file (30 LOC): zero importers, not an entry point",
+      "summary": "Orphaned file (19 LOC): zero importers, not an entry point",
       "detail": {
-        "loc": 30
+        "loc": 19
       },
       "status": "open",
       "note": null,
       "first_seen": "2026-03-12T08:46:39+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
+      "last_seen": "2026-03-12T09:33:38+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "lang": "typescript",
       "zone": "production",
       "suppressed": true,
-      "suppressed_at": "2026-03-12T09:21:24+00:00",
+      "suppressed_at": "2026-03-12T09:33:38+00:00",
       "suppression_pattern": "orphaned::src/routes/*"
     },
     "orphaned::src/routes/+layout.svelte": {
@@ -385,13 +385,13 @@
       "status": "open",
       "note": null,
       "first_seen": "2026-03-12T08:46:39+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
+      "last_seen": "2026-03-12T09:33:38+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "lang": "typescript",
       "zone": "production",
       "suppressed": true,
-      "suppressed_at": "2026-03-12T09:21:24+00:00",
+      "suppressed_at": "2026-03-12T09:33:38+00:00",
       "suppression_pattern": "orphaned::src/routes/*"
     },
     "test_coverage::src/lib/data/artefacts.ts::untested_module": {
@@ -462,17 +462,17 @@
       "file": "src/routes/+page.server.ts",
       "tier": 3,
       "confidence": "high",
-      "summary": "Untested module (30 LOC, 0 importers)",
+      "summary": "Untested module (19 LOC, 0 importers)",
       "detail": {
         "kind": "untested_module",
-        "loc": 30,
+        "loc": 19,
         "importer_count": 0,
-        "loc_weight": 5.477225575051661
+        "loc_weight": 4.358898943540674
       },
       "status": "open",
       "note": null,
       "first_seen": "2026-03-12T08:46:39+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
+      "last_seen": "2026-03-12T09:33:38+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "lang": "typescript",
@@ -562,13 +562,13 @@
       "status": "open",
       "note": null,
       "first_seen": "2026-03-12T08:46:39+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
+      "last_seen": "2026-03-12T09:33:38+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "lang": "typescript",
       "zone": "production",
       "suppressed": true,
-      "suppressed_at": "2026-03-12T09:21:24+00:00",
+      "suppressed_at": "2026-03-12T09:33:38+00:00",
       "suppression_pattern": "smells::src/lib/data/projects.ts::hardcoded_url"
     },
     "smells::src/app.css::css_important_overuse": {
@@ -589,13 +589,13 @@
       "status": "open",
       "note": null,
       "first_seen": "2026-03-12T08:46:39+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
+      "last_seen": "2026-03-12T09:33:38+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "lang": "typescript",
       "zone": "production",
       "suppressed": true,
-      "suppressed_at": "2026-03-12T09:21:24+00:00",
+      "suppressed_at": "2026-03-12T09:33:38+00:00",
       "suppression_pattern": "smells::src/app.css::css_important_overuse"
     },
     "smells::README.md::docs_scripts_drift": {
@@ -818,7 +818,7 @@
       "status": "open",
       "note": null,
       "first_seen": "2026-03-12T08:46:41+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
+      "last_seen": "2026-03-12T09:33:38+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "lang": "typescript",
@@ -840,7 +840,7 @@
       "status": "open",
       "note": null,
       "first_seen": "2026-03-12T08:46:41+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
+      "last_seen": "2026-03-12T09:33:38+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "lang": "typescript",
@@ -862,7 +862,7 @@
       "status": "open",
       "note": null,
       "first_seen": "2026-03-12T08:46:41+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
+      "last_seen": "2026-03-12T09:33:38+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "lang": "typescript",
@@ -1688,12 +1688,12 @@
       "summary": "File changed since last review \u2014 re-review recommended",
       "detail": {
         "reason": "changed",
-        "loc": 93
+        "loc": 108
       },
       "status": "auto_resolved",
       "note": "resolved by reviewed_files cache refresh",
       "first_seen": "2026-03-12T08:55:11+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
+      "last_seen": "2026-03-12T09:33:38+00:00",
       "resolved_at": "2026-03-12T08:59:56+00:00",
       "reopen_count": 0,
       "lang": "typescript",
@@ -1714,16 +1714,16 @@
       "file": ".",
       "tier": 4,
       "confidence": "low",
-      "summary": "Codebase changed significantly since holistic review (7\u219213 files) \u2014 re-review recommended",
+      "summary": "Codebase changed significantly since holistic review (8\u219215 files) \u2014 re-review recommended",
       "detail": {
         "reason": "drift",
-        "old_files": 7,
-        "new_files": 13
+        "old_files": 8,
+        "new_files": 15
       },
       "status": "auto_resolved",
       "note": "resolved by holistic review import",
       "first_seen": "2026-03-12T08:55:11+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
+      "last_seen": "2026-03-12T09:33:38+00:00",
       "resolved_at": "2026-03-12T08:59:56+00:00",
       "reopen_count": 0,
       "lang": "typescript",
@@ -1816,11 +1816,11 @@
         "reasoning": "",
         "content_hash": "082f1d15"
       },
-      "status": "open",
-      "note": null,
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:32:06+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
@@ -1907,11 +1907,11 @@
         "reasoning": "",
         "content_hash": "a0392f1a"
       },
-      "status": "open",
-      "note": null,
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:32:06+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
@@ -1938,11 +1938,11 @@
         "reasoning": "",
         "content_hash": "086f8ab2"
       },
-      "status": "open",
-      "note": null,
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:32:06+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
@@ -1970,11 +1970,11 @@
         "reasoning": "",
         "content_hash": "c49b2063"
       },
-      "status": "open",
-      "note": null,
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:32:06+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
@@ -2121,11 +2121,11 @@
         "reasoning": "",
         "content_hash": "e7cf22f5"
       },
-      "status": "open",
-      "note": null,
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:32:06+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
@@ -2266,11 +2266,11 @@
         "reasoning": "",
         "content_hash": "f6a5187e"
       },
-      "status": "open",
-      "note": null,
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:32:06+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
@@ -2297,11 +2297,11 @@
         "reasoning": "",
         "content_hash": "80adebf3"
       },
-      "status": "open",
-      "note": null,
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:32:06+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
@@ -2385,11 +2385,11 @@
         "reasoning": "",
         "content_hash": "34556ba1"
       },
-      "status": "open",
-      "note": null,
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:32:06+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
@@ -2416,11 +2416,11 @@
         "reasoning": "",
         "content_hash": "91942d7a"
       },
-      "status": "open",
-      "note": null,
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:32:06+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
@@ -2504,11 +2504,11 @@
         "reasoning": "",
         "content_hash": "ed8154a3"
       },
-      "status": "open",
-      "note": null,
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:32:06+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
@@ -2650,11 +2650,11 @@
         "reasoning": "",
         "content_hash": "15efda96"
       },
-      "status": "open",
-      "note": null,
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:32:06+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
@@ -2683,11 +2683,11 @@
         "reasoning": "",
         "content_hash": "b1bad2dd"
       },
-      "status": "open",
-      "note": null,
+      "status": "auto_resolved",
+      "note": "not reported in latest holistic re-import",
       "first_seen": "2026-03-12T08:59:56+00:00",
       "last_seen": "2026-03-12T09:00:10+00:00",
-      "resolved_at": null,
+      "resolved_at": "2026-03-12T09:32:06+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "suppressed": false,
@@ -2700,24 +2700,25 @@
       "file": "src/lib/utils/github.ts",
       "tier": 1,
       "confidence": "high",
-      "summary": "2 tagged logs [GitHub API]",
+      "summary": "3 tagged logs [GitHub API]",
       "detail": {
-        "count": 2,
+        "count": 3,
         "lines": [
           10,
-          15
+          15,
+          26
         ]
       },
       "status": "open",
       "note": null,
       "first_seen": "2026-03-12T09:18:35+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
+      "last_seen": "2026-03-12T09:33:38+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "lang": "typescript",
       "zone": "production",
       "suppressed": true,
-      "suppressed_at": "2026-03-12T09:21:24+00:00",
+      "suppressed_at": "2026-03-12T09:33:38+00:00",
       "suppression_pattern": "logs::src/lib/utils/github.ts::GitHub API"
     },
     "unused::src/lib/utils/github.test.ts::callCount:181": {
@@ -2767,7 +2768,7 @@
       "status": "open",
       "note": null,
       "first_seen": "2026-03-12T09:18:40+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
+      "last_seen": "2026-03-12T09:33:38+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "lang": "typescript",
@@ -2787,17 +2788,23 @@
         "reason": "changed",
         "loc": 24
       },
-      "status": "open",
-      "note": null,
+      "status": "auto_resolved",
+      "note": "resolved by reviewed_files cache refresh",
       "first_seen": "2026-03-12T09:18:40+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
-      "resolved_at": null,
+      "last_seen": "2026-03-12T09:26:15+00:00",
+      "resolved_at": "2026-03-12T09:32:06+00:00",
       "reopen_count": 0,
       "lang": "typescript",
       "zone": "production",
       "suppressed": false,
       "suppressed_at": null,
-      "suppression_pattern": null
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Per-file review cache refreshed for this file",
+        "attested_at": "2026-03-12T09:32:06+00:00",
+        "scan_verified": false
+      }
     },
     "subjective_review::src/routes/+page.server.ts::changed": {
       "id": "subjective_review::src/routes/+page.server.ts::changed",
@@ -2810,14 +2817,447 @@
         "reason": "changed",
         "loc": 30
       },
+      "status": "auto_resolved",
+      "note": "resolved by reviewed_files cache refresh",
+      "first_seen": "2026-03-12T09:18:40+00:00",
+      "last_seen": "2026-03-12T09:26:15+00:00",
+      "resolved_at": "2026-03-12T09:32:06+00:00",
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null,
+      "resolution_attestation": {
+        "kind": "agent_import",
+        "text": "Per-file review cache refreshed for this file",
+        "attested_at": "2026-03-12T09:32:06+00:00",
+        "scan_verified": false
+      }
+    },
+    "exports::.svelte-kit/types/src/routes/proxy+page.server.ts::load": {
+      "id": "exports::.svelte-kit/types/src/routes/proxy+page.server.ts::load",
+      "detector": "exports",
+      "file": ".svelte-kit/types/src/routes/proxy+page.server.ts",
+      "tier": 2,
+      "confidence": "high",
+      "summary": "Dead export: load",
+      "detail": {
+        "line": 237,
+        "kind": "export"
+      },
       "status": "open",
       "note": null,
-      "first_seen": "2026-03-12T09:18:40+00:00",
-      "last_seen": "2026-03-12T09:21:24+00:00",
+      "first_seen": "2026-03-12T09:26:14+00:00",
+      "last_seen": "2026-03-12T09:33:38+00:00",
       "resolved_at": null,
       "reopen_count": 0,
       "lang": "typescript",
       "zone": "production",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::mid_level_elegance::section_tints_implicit_contract": {
+      "id": "review::.::holistic::mid_level_elegance::section_tints_implicit_contract",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "sectionTints record in +page.svelte hardcodes section IDs, creating implicit coupling to child components",
+      "detail": {
+        "holistic": true,
+        "dimension": "mid_level_elegance",
+        "related_files": [
+          "src/routes/+page.svelte"
+        ],
+        "evidence": [
+          "sectionTints keys ('top', 'about', 'impact', 'explorations', 'meta', 'background', 'artefacts', 'contact') must match section IDs spread across Hero, About, Section, Artefacts, Background, and Contact components; adding or renaming a section requires updating this map manually with no type or compile-time enforcement"
+        ],
+        "suggestion": "Define section IDs and their associated tint colors as a shared typed constant in src/lib/data/ or src/lib/constants.ts, then import it in both the page and any component that sets its own section ID. This makes the contract explicit and enforceable.",
+        "reasoning": "",
+        "content_hash": "48484aae"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T09:32:06+00:00",
+      "last_seen": "2026-03-12T09:32:22+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::test_strategy::untested_page_server_orchestration": {
+      "id": "review::.::holistic::test_strategy::untested_page_server_orchestration",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "+page.server.ts load function and attachGithubData helper have zero test coverage",
+      "detail": {
+        "holistic": true,
+        "dimension": "test_strategy",
+        "related_files": [
+          "src/routes/+page.server.ts"
+        ],
+        "evidence": [
+          "attachGithubData merges static project data with GitHub API results using nullish coalescing; the load function orchestrates collecting all repo names, fetching data, and attaching it to three separate project arrays. No test verifies this merge logic, the deduplication of shared repos across project categories, or the graceful degradation when GitHub data is unavailable."
+        ],
+        "suggestion": "Extract attachGithubData to a testable module (e.g., src/lib/utils/projects.ts) and add unit tests covering: (1) correct merge when GitHub data exists, (2) null fallback when GitHub data is missing for a repo, (3) handling of repos shared across project categories. The load function itself can remain untested as framework plumbing.",
+        "reasoning": "",
+        "content_hash": "5ad54d9e"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T09:32:06+00:00",
+      "last_seen": "2026-03-12T09:32:22+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::test_strategy::data_tests_shape_only": {
+      "id": "review::.::holistic::test_strategy::data_tests_shape_only",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "Data module tests verify structural shape but not behavioral contracts",
+      "detail": {
+        "holistic": true,
+        "dimension": "test_strategy",
+        "related_files": [
+          "src/lib/data/artefacts.test.ts",
+          "src/lib/data/projects.test.ts",
+          "src/lib/data/terminal.test.ts"
+        ],
+        "evidence": [
+          "artefacts.test.ts checks non-empty array, truthy fields, and repo format. projects.test.ts checks non-empty arrays, truthy fields, and slash in repo. terminal.test.ts checks non-empty array, field types, and last-frame delay. None of these tests would catch a duplicate repo entry, a project with description and techLine swapped, or terminal frames with unreasonable delay values."
+        ],
+        "suggestion": "Add uniqueness assertions (no duplicate repo values across all project arrays), and for terminal data, verify total replay duration is within a reasonable bound. These are low-effort additions that catch real data entry errors.",
+        "reasoning": "",
+        "content_hash": "c5affb2c"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T09:32:06+00:00",
+      "last_seen": "2026-03-12T09:32:22+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::api_surface_coherence::testing_exports_inflate_api_surface": {
+      "id": "review::.::holistic::api_surface_coherence::testing_exports_inflate_api_surface",
+      "detector": "review",
+      "file": ".",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "Three functions exported solely for testing expand the public API surface beyond consumer needs",
+      "detail": {
+        "holistic": true,
+        "dimension": "api_surface_coherence",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "isRepoResponse, isLanguagesResponse, and parseCommitCount are all annotated with '// Exported for testing' comments. These are internal implementation details (type guards for raw API responses, link header parsing) that no consumer outside of github.test.ts uses. They appear alongside fetchRepoData and fetchAllRepoData in the export surface, making it unclear which exports are the intended public API."
+        ],
+        "suggestion": "Move the test-only exports to a separate file (e.g., src/lib/utils/github.internal.ts) that github.test.ts imports directly, or use Vitest's ability to test unexported functions via vi.importActual or by co-locating tests. Alternatively, add a clear API documentation comment at the top of the file listing the intended public exports.",
+        "reasoning": "",
+        "content_hash": "b88b9c50"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T09:32:06+00:00",
+      "last_seen": "2026-03-12T09:32:22+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::type_safety::redundant_unknown_null_union": {
+      "id": "review::.::holistic::type_safety::redundant_unknown_null_union",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "tryFetchJson return type unknown | null is redundant since unknown already includes null",
+      "detail": {
+        "holistic": true,
+        "dimension": "type_safety",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "Line 20: async function tryFetchJson(url: string): Promise<unknown | null> - the union unknown | null is equivalent to just unknown in TypeScript since unknown is a top type that includes null"
+        ],
+        "suggestion": "Change the return type to Promise<unknown>. If the intent is to document that null is a meaningful return value, add a JSDoc comment instead of encoding it in a redundant union.",
+        "reasoning": "",
+        "content_hash": "1ba3f2dc"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T09:32:06+00:00",
+      "last_seen": "2026-03-12T09:32:22+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::type_safety::unsafe_error_cast": {
+      "id": "review::.::holistic::type_safety::unsafe_error_cast",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "Catch block casts caught value to Error without validation",
+      "detail": {
+        "holistic": true,
+        "dimension": "type_safety",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "Line 15: (e as Error).message - the caught value in a catch block has type unknown in TypeScript strict mode; casting to Error is unsafe if a non-Error value is thrown (e.g., a string or null)"
+        ],
+        "suggestion": "Use a type-safe error message extraction: either check e instanceof Error first, or use String(e) for the log message. For example: console.warn('[GitHub API] Fetch failed', { url, error: e instanceof Error ? e.message : String(e) })",
+        "reasoning": "",
+        "content_hash": "6f96f007"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T09:32:06+00:00",
+      "last_seen": "2026-03-12T09:32:22+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::contract_coherence::tryFetchJson_redundant_union": {
+      "id": "review::.::holistic::contract_coherence::tryFetchJson_redundant_union",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "tryFetchJson return type 'unknown | null' is redundant since null is a subset of unknown",
+      "detail": {
+        "holistic": true,
+        "dimension": "contract_coherence",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "Line 20: 'async function tryFetchJson(url: string): Promise<unknown | null>' - 'unknown | null' collapses to 'unknown', obscuring the intentional null-return contract"
+        ],
+        "suggestion": "Change return type to Promise<unknown> since that already includes null, or better yet use a more specific return type. If the intent is to communicate 'JSON data or null', consider a branded type or a comment clarifying the null semantics.",
+        "reasoning": "",
+        "content_hash": "9063ec53"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T09:32:06+00:00",
+      "last_seen": "2026-03-12T09:32:22+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::error_consistency::unprotected_json_parse": {
+      "id": "review::.::holistic::error_consistency::unprotected_json_parse",
+      "detector": "review",
+      "file": ".",
+      "tier": 1,
+      "confidence": "high",
+      "summary": "tryFetchJson calls res.json() without try-catch, breaking the null-on-error contract",
+      "detail": {
+        "holistic": true,
+        "dimension": "error_consistency",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "Line 22-23: fetchGitHub is carefully wrapped in try-catch, but tryFetchJson calls res.json() unprotected. If the GitHub API returns a 200 with malformed body, this throws an unhandled exception instead of returning null."
+        ],
+        "suggestion": "Wrap the res.json() call in a try-catch that returns null on parse failure, consistent with the function's null-return contract: try { return await res.json(); } catch { return null; }",
+        "reasoning": "",
+        "content_hash": "108566d3"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T09:32:06+00:00",
+      "last_seen": "2026-03-12T09:32:22+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::error_consistency::mixed_fallback_strategies": {
+      "id": "review::.::holistic::error_consistency::mixed_fallback_strategies",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "fetchRepoData uses three different fallback strategies for sub-requests in a single function",
+      "detail": {
+        "holistic": true,
+        "dimension": "error_consistency",
+        "related_files": [
+          "src/lib/utils/github.ts"
+        ],
+        "evidence": [
+          "Lines 68-74: repo data failure returns null (bail out entirely), languages failure returns {} (empty fallback), contributors failure returns 0 (numeric default). A developer reading this cannot predict which fallback strategy applies to each sub-request without reading the implementation."
+        ],
+        "suggestion": "Document the intentional degradation hierarchy with a brief comment explaining that repo metadata is required while languages/contributors/commits are optional enrichment. This makes the mixed strategy legible as a design choice rather than accidental inconsistency.",
+        "reasoning": "",
+        "content_hash": "f2a3e229"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T09:32:06+00:00",
+      "last_seen": "2026-03-12T09:32:22+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::ai_generated_debt::verbose_project_descriptions": {
+      "id": "review::.::holistic::ai_generated_debt::verbose_project_descriptions",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "Project descriptions in projects.ts follow a formulaic LLM-style pattern of escalating claims",
+      "detail": {
+        "holistic": true,
+        "dimension": "ai_generated_debt",
+        "related_files": [
+          "src/lib/data/projects.ts"
+        ],
+        "evidence": [
+          "All 12 project descriptions follow the same structure: opening claim, technical detail, philosophical reflection. Examples: 'The architectural decision that defines it:', 'The finding:', 'The game's idea progression... is itself a knowledge system.', 'The process of building it is the transferable skill, not the specifics.' This formulaic structure across all entries suggests AI-generated prose."
+        ],
+        "suggestion": "Consider shortening project descriptions to 1-2 sentences of concrete information. The current descriptions read more like AI-generated marketing copy than developer portfolio entries. Let the repos speak for themselves with concise summaries.",
+        "reasoning": "",
+        "content_hash": "962d5f69"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T09:32:06+00:00",
+      "last_seen": "2026-03-12T09:32:22+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::low_level_elegance::duplicate_observer_effects": {
+      "id": "review::.::holistic::low_level_elegance::duplicate_observer_effects",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "Two $effect blocks in +page.svelte create IntersectionObservers with duplicated structural pattern",
+      "detail": {
+        "holistic": true,
+        "dimension": "low_level_elegance",
+        "related_files": [
+          "src/routes/+page.svelte"
+        ],
+        "evidence": [
+          "Lines 31-52 and 54-75: both $effect blocks create an IntersectionObserver, iterate entries, check isIntersecting, perform an action, and return a cleanup function. The structure is identical even though the behavior differs (reveal animation vs background color tint)."
+        ],
+        "suggestion": "Extract a reusable createSectionObserver helper that takes an options object and a callback, returning the cleanup function. This would reduce the two 20-line blocks to two concise calls while keeping the distinct behavior clear.",
+        "reasoning": "",
+        "content_hash": "1368f562"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T09:32:06+00:00",
+      "last_seen": "2026-03-12T09:32:22+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "review::.::holistic::convention_outlier::artefacts_bypasses_section_wrapper": {
+      "id": "review::.::holistic::convention_outlier::artefacts_bypasses_section_wrapper",
+      "detector": "review",
+      "file": ".",
+      "tier": 2,
+      "confidence": "medium",
+      "summary": "Artefacts component implements its own section structure instead of using the shared Section component",
+      "detail": {
+        "holistic": true,
+        "dimension": "convention_outlier",
+        "related_files": [
+          "src/lib/components/Artefacts.svelte",
+          "src/lib/components/Section.svelte"
+        ],
+        "evidence": [
+          "Impact, Explorations, and Meta sections all compose via <Section id title accent>, but Artefacts renders its own <section> with its own heading styling",
+          "Artefacts has its own .artefacts-heading style while sibling sections use the .section-heading class provided by Section.svelte"
+        ],
+        "suggestion": "Consider wrapping Artefacts content in the Section component for consistency, or document the intentional deviation if the mono-font styling requires it.",
+        "reasoning": "",
+        "content_hash": "19a1e30f"
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T09:32:06+00:00",
+      "last_seen": "2026-03-12T09:32:22+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "suppressed": false,
+      "suppressed_at": null,
+      "suppression_pattern": null
+    },
+    "smells::src/routes/page.server.test.ts::hardcoded_url": {
+      "id": "smells::src/routes/page.server.test.ts::hardcoded_url",
+      "detector": "smells",
+      "file": "src/routes/page.server.test.ts",
+      "tier": 3,
+      "confidence": "low",
+      "summary": "2x Hardcoded URL in source code",
+      "detail": {
+        "smell_id": "hardcoded_url",
+        "severity": "medium",
+        "count": 2,
+        "lines": [
+          70,
+          81
+        ]
+      },
+      "status": "open",
+      "note": null,
+      "first_seen": "2026-03-12T09:33:36+00:00",
+      "last_seen": "2026-03-12T09:33:36+00:00",
+      "resolved_at": null,
+      "reopen_count": 0,
+      "lang": "typescript",
+      "zone": "test",
       "suppressed": false,
       "suppressed_at": null,
       "suppression_pattern": null
@@ -2879,7 +3319,7 @@
         }
       },
       "warnings": [],
-      "updated_at": "2026-03-12T09:21:24+00:00"
+      "updated_at": "2026-03-12T09:33:38+00:00"
     }
   },
   "score_confidence": {
@@ -2891,21 +3331,25 @@
   "subjective_integrity": {
     "status": "penalized",
     "target_score": 95.0,
-    "matched_count": 2,
+    "matched_count": 4,
     "matched_dimensions": [
       "authorization_consistency",
-      "dependency_health"
+      "dependency_health",
+      "incomplete_migration",
+      "initialization_coupling"
     ],
     "reset_dimensions": [
       "authorization_consistency",
-      "dependency_health"
+      "dependency_health",
+      "incomplete_migration",
+      "initialization_coupling"
     ]
   },
   "subjective_assessments": {
     "abstraction_fitness": {
-      "score": 85.9,
+      "score": 90.5,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00",
+      "assessed_at": "2026-03-12T09:32:22+00:00",
       "components": [
         "Abstraction Leverage",
         "Indirection Cost",
@@ -2915,120 +3359,114 @@
         "Type Discipline"
       ],
       "component_scores": {
-        "Abstraction Leverage": 93.0,
+        "Abstraction Leverage": 92.0,
         "Indirection Cost": 95.0,
-        "Interface Honesty": 94.0,
-        "Delegation Density": 96.0,
-        "Definition Directness": 90.0,
-        "Type Discipline": 88.0
+        "Interface Honesty": 88.0,
+        "Delegation Density": 95.0,
+        "Definition Directness": 92.0,
+        "Type Discipline": 90.0
       }
     },
     "ai_generated_debt": {
-      "score": 89.0,
+      "score": 86.5,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:32:22+00:00"
     },
     "api_surface_coherence": {
-      "score": 81.1,
+      "score": 85.4,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:32:22+00:00"
     },
     "authorization_consistency": {
       "score": 95.0,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:32:22+00:00"
     },
     "contract_coherence": {
-      "score": 80.1,
+      "score": 80.3,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:32:22+00:00"
     },
     "convention_outlier": {
-      "score": 80.5,
+      "score": 86.0,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:32:22+00:00"
     },
     "cross_module_architecture": {
-      "score": 84.9,
+      "score": 90.0,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:32:22+00:00"
     },
     "dependency_health": {
       "score": 95.0,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:32:22+00:00"
     },
     "design_coherence": {
-      "score": 82.4,
+      "score": 88.0,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:32:22+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "mechanical_issues_changed",
+      "stale_since": "2026-03-12T09:33:38+00:00"
     },
     "error_consistency": {
-      "score": 67.3,
+      "score": 66.1,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:32:22+00:00",
+      "needs_review_refresh": true,
+      "refresh_reason": "mechanical_issues_changed",
+      "stale_since": "2026-03-12T09:33:38+00:00"
     },
     "high_level_elegance": {
-      "score": 85.4,
+      "score": 90.5,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00",
-      "needs_review_refresh": true,
-      "refresh_reason": "review_issue_wontfix",
-      "stale_since": "2026-03-12T09:09:07+00:00"
+      "assessed_at": "2026-03-12T09:32:22+00:00"
     },
     "incomplete_migration": {
-      "score": 92.0,
+      "score": 95.0,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:32:22+00:00"
     },
     "initialization_coupling": {
-      "score": 93.0,
+      "score": 95.0,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:32:22+00:00"
     },
     "logic_clarity": {
-      "score": 78.1,
+      "score": 92.0,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:32:22+00:00"
     },
     "low_level_elegance": {
-      "score": 80.5,
+      "score": 82.5,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00",
-      "needs_review_refresh": true,
-      "refresh_reason": "review_issue_wontfix",
-      "stale_since": "2026-03-12T09:09:22+00:00"
+      "assessed_at": "2026-03-12T09:32:22+00:00"
     },
     "mid_level_elegance": {
-      "score": 77.8,
+      "score": 84.9,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00",
-      "needs_review_refresh": true,
-      "refresh_reason": "review_issue_wontfix",
-      "stale_since": "2026-03-12T09:09:09+00:00"
+      "assessed_at": "2026-03-12T09:32:22+00:00"
     },
     "naming_quality": {
-      "score": 86.0,
+      "score": 90.0,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:32:22+00:00"
     },
     "package_organization": {
-      "score": 85.9,
+      "score": 91.0,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00",
-      "needs_review_refresh": true,
-      "refresh_reason": "review_issue_wontfix",
-      "stale_since": "2026-03-12T09:09:08+00:00"
+      "assessed_at": "2026-03-12T09:32:22+00:00"
     },
     "test_strategy": {
-      "score": 55.2,
+      "score": 65.5,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:32:22+00:00"
     },
     "type_safety": {
-      "score": 75.2,
+      "score": 83.1,
       "source": "holistic",
-      "assessed_at": "2026-03-12T09:00:10+00:00"
+      "assessed_at": "2026-03-12T09:32:22+00:00"
     }
   },
   "scan_history": [
@@ -4192,6 +4630,522 @@
           "strict": 75.2
         }
       }
+    },
+    {
+      "timestamp": "2026-03-12T09:26:15+00:00",
+      "lang": "typescript",
+      "strict_score": 86.2,
+      "verified_strict_score": 98.7,
+      "objective_score": 98.7,
+      "overall_score": 87.2,
+      "open": 24,
+      "diff_new": 1,
+      "diff_resolved": 0,
+      "ignored": 11,
+      "raw_issues": 21,
+      "suppressed_pct": 52.4,
+      "ignore_patterns": 8,
+      "subjective_integrity": {
+        "status": "penalized",
+        "matched_count": 2,
+        "reset_count": 2,
+        "target_score": 95.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 97.6,
+          "strict": 95.7
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Duplication": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 96.9,
+          "strict": 89.0
+        },
+        "Abstraction fit": {
+          "score": 85.9,
+          "strict": 85.9
+        },
+        "AI generated debt": {
+          "score": 89.0,
+          "strict": 89.0
+        },
+        "API coherence": {
+          "score": 81.1,
+          "strict": 81.1
+        },
+        "Auth consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Contracts": {
+          "score": 80.1,
+          "strict": 80.1
+        },
+        "Convention drift": {
+          "score": 80.5,
+          "strict": 80.5
+        },
+        "Cross-module arch": {
+          "score": 84.9,
+          "strict": 84.9
+        },
+        "Dep health": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Design coherence": {
+          "score": 82.4,
+          "strict": 82.4
+        },
+        "Error consistency": {
+          "score": 67.3,
+          "strict": 67.3
+        },
+        "High elegance": {
+          "score": 85.4,
+          "strict": 85.4
+        },
+        "Stale migration": {
+          "score": 92.0,
+          "strict": 92.0
+        },
+        "Init coupling": {
+          "score": 93.0,
+          "strict": 93.0
+        },
+        "Logic clarity": {
+          "score": 78.1,
+          "strict": 78.1
+        },
+        "Low elegance": {
+          "score": 80.5,
+          "strict": 80.5
+        },
+        "Mid elegance": {
+          "score": 77.8,
+          "strict": 77.8
+        },
+        "Naming quality": {
+          "score": 86.0,
+          "strict": 86.0
+        },
+        "Structure nav": {
+          "score": 85.9,
+          "strict": 85.9
+        },
+        "Test strategy": {
+          "score": 55.2,
+          "strict": 55.2
+        },
+        "Type safety": {
+          "score": 75.2,
+          "strict": 75.2
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:32:06+00:00",
+      "lang": "typescript",
+      "strict_score": 90.1,
+      "verified_strict_score": 98.7,
+      "objective_score": 98.7,
+      "overall_score": 91.1,
+      "open": 36,
+      "diff_new": 12,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 12,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "disabled",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": null
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 97.6,
+          "strict": 95.7
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Duplication": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 96.9,
+          "strict": 89.0
+        },
+        "Abstraction fit": {
+          "score": 90.5,
+          "strict": 90.5
+        },
+        "AI generated debt": {
+          "score": 86.5,
+          "strict": 86.5
+        },
+        "API coherence": {
+          "score": 85.4,
+          "strict": 85.4
+        },
+        "Auth consistency": {
+          "score": 95.0,
+          "strict": 95.0
+        },
+        "Contracts": {
+          "score": 80.3,
+          "strict": 80.3
+        },
+        "Convention drift": {
+          "score": 86.0,
+          "strict": 86.0
+        },
+        "Cross-module arch": {
+          "score": 90.0,
+          "strict": 90.0
+        },
+        "Dep health": {
+          "score": 95.0,
+          "strict": 95.0
+        },
+        "Design coherence": {
+          "score": 88.0,
+          "strict": 88.0
+        },
+        "Error consistency": {
+          "score": 66.1,
+          "strict": 66.1
+        },
+        "High elegance": {
+          "score": 90.5,
+          "strict": 90.5
+        },
+        "Stale migration": {
+          "score": 95.0,
+          "strict": 95.0
+        },
+        "Init coupling": {
+          "score": 95.0,
+          "strict": 95.0
+        },
+        "Logic clarity": {
+          "score": 92.0,
+          "strict": 92.0
+        },
+        "Low elegance": {
+          "score": 82.5,
+          "strict": 82.5
+        },
+        "Mid elegance": {
+          "score": 84.9,
+          "strict": 84.9
+        },
+        "Naming quality": {
+          "score": 90.0,
+          "strict": 90.0
+        },
+        "Structure nav": {
+          "score": 91.0,
+          "strict": 91.0
+        },
+        "Test strategy": {
+          "score": 65.5,
+          "strict": 65.5
+        },
+        "Type safety": {
+          "score": 83.1,
+          "strict": 83.1
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:32:22+00:00",
+      "lang": "typescript",
+      "strict_score": 90.1,
+      "verified_strict_score": 98.8,
+      "objective_score": 98.8,
+      "overall_score": 91.2,
+      "open": 22,
+      "diff_new": 0,
+      "diff_resolved": 0,
+      "ignored": 0,
+      "raw_issues": 12,
+      "suppressed_pct": 0.0,
+      "ignore_patterns": 0,
+      "subjective_integrity": {
+        "status": "disabled",
+        "matched_count": 0,
+        "reset_count": 0,
+        "target_score": null
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 97.6,
+          "strict": 95.7
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Duplication": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 97.3,
+          "strict": 89.0
+        },
+        "Abstraction fit": {
+          "score": 90.5,
+          "strict": 90.5
+        },
+        "AI generated debt": {
+          "score": 86.5,
+          "strict": 86.5
+        },
+        "API coherence": {
+          "score": 85.4,
+          "strict": 85.4
+        },
+        "Auth consistency": {
+          "score": 95.0,
+          "strict": 95.0
+        },
+        "Contracts": {
+          "score": 80.3,
+          "strict": 80.3
+        },
+        "Convention drift": {
+          "score": 86.0,
+          "strict": 86.0
+        },
+        "Cross-module arch": {
+          "score": 90.0,
+          "strict": 90.0
+        },
+        "Dep health": {
+          "score": 95.0,
+          "strict": 95.0
+        },
+        "Design coherence": {
+          "score": 88.0,
+          "strict": 88.0
+        },
+        "Error consistency": {
+          "score": 66.1,
+          "strict": 66.1
+        },
+        "High elegance": {
+          "score": 90.5,
+          "strict": 90.5
+        },
+        "Stale migration": {
+          "score": 95.0,
+          "strict": 95.0
+        },
+        "Init coupling": {
+          "score": 95.0,
+          "strict": 95.0
+        },
+        "Logic clarity": {
+          "score": 92.0,
+          "strict": 92.0
+        },
+        "Low elegance": {
+          "score": 82.5,
+          "strict": 82.5
+        },
+        "Mid elegance": {
+          "score": 84.9,
+          "strict": 84.9
+        },
+        "Naming quality": {
+          "score": 90.0,
+          "strict": 90.0
+        },
+        "Structure nav": {
+          "score": 91.0,
+          "strict": 91.0
+        },
+        "Test strategy": {
+          "score": 65.5,
+          "strict": 65.5
+        },
+        "Type safety": {
+          "score": 83.1,
+          "strict": 83.1
+        }
+      }
+    },
+    {
+      "timestamp": "2026-03-12T09:33:38+00:00",
+      "lang": "typescript",
+      "strict_score": 88.3,
+      "verified_strict_score": 98.9,
+      "objective_score": 98.9,
+      "overall_score": 89.4,
+      "open": 23,
+      "diff_new": 1,
+      "diff_resolved": 0,
+      "ignored": 11,
+      "raw_issues": 20,
+      "suppressed_pct": 55.0,
+      "ignore_patterns": 8,
+      "subjective_integrity": {
+        "status": "penalized",
+        "matched_count": 4,
+        "reset_count": 4,
+        "target_score": 95.0
+      },
+      "score_confidence": {
+        "status": "full",
+        "confidence": 1.0,
+        "detector_count": 0,
+        "dimension_count": 0
+      },
+      "dimension_scores": {
+        "Code quality": {
+          "score": 97.6,
+          "strict": 95.7
+        },
+        "Security": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "File health": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Duplication": {
+          "score": 100.0,
+          "strict": 100.0
+        },
+        "Test health": {
+          "score": 97.6,
+          "strict": 89.3
+        },
+        "Abstraction fit": {
+          "score": 90.5,
+          "strict": 90.5
+        },
+        "AI generated debt": {
+          "score": 86.5,
+          "strict": 86.5
+        },
+        "API coherence": {
+          "score": 85.4,
+          "strict": 85.4
+        },
+        "Auth consistency": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Contracts": {
+          "score": 80.3,
+          "strict": 80.3
+        },
+        "Convention drift": {
+          "score": 86.0,
+          "strict": 86.0
+        },
+        "Cross-module arch": {
+          "score": 90.0,
+          "strict": 90.0
+        },
+        "Dep health": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Design coherence": {
+          "score": 88.0,
+          "strict": 88.0
+        },
+        "Error consistency": {
+          "score": 66.1,
+          "strict": 66.1
+        },
+        "High elegance": {
+          "score": 90.5,
+          "strict": 90.5
+        },
+        "Stale migration": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Init coupling": {
+          "score": 0.0,
+          "strict": 0.0
+        },
+        "Logic clarity": {
+          "score": 92.0,
+          "strict": 92.0
+        },
+        "Low elegance": {
+          "score": 82.5,
+          "strict": 82.5
+        },
+        "Mid elegance": {
+          "score": 84.9,
+          "strict": 84.9
+        },
+        "Naming quality": {
+          "score": 90.0,
+          "strict": 90.0
+        },
+        "Structure nav": {
+          "score": 91.0,
+          "strict": 91.0
+        },
+        "Test strategy": {
+          "score": 65.5,
+          "strict": 65.5
+        },
+        "Type safety": {
+          "score": 83.1,
+          "strict": 83.1
+        }
+      }
     }
   ],
   "lang_capabilities": {
@@ -4215,10 +5169,11 @@
   },
   "zone_distribution": {
     "production": 8,
-    "test": 5
+    "test": 6,
+    "config": 1
   },
   "tool_hash": "18d10939aa40",
-  "scan_path": "src",
+  "scan_path": ".",
   "scan_completeness": {
     "javascript": "full",
     "typescript": "full"
@@ -4244,23 +5199,23 @@
     "typescript": {
       "logs": 9,
       "unused": 9,
-      "exports": 0,
+      "exports": 1,
       "deprecated": 0,
       "structural": 8,
-      "flat_dirs": 5,
+      "flat_dirs": 7,
       "props": 0,
       "single_use": 0,
       "coupling": 0,
       "cycles": 13,
       "orphaned": 13,
       "patterns": 0,
-      "naming": 4,
+      "naming": 5,
       "facade": 13,
-      "test_coverage": 35,
+      "test_coverage": 34,
       "smells": 10,
       "react": 0,
       "security": 8,
-      "subjective_review": 5,
+      "subjective_review": 4,
       "boilerplate_duplication": 0,
       "dupes": 5,
       "stale_wontfix": 0
@@ -4273,31 +5228,37 @@
       "total_directories": 16
     },
     "typescript": {
-      "total_files": 13,
-      "total_loc": 595,
-      "total_directories": 5
+      "total_files": 15,
+      "total_loc": 689,
+      "total_directories": 6
     }
   },
   "dimension_scores": {
     "Code quality": {
-      "score": 100.0,
-      "strict": 98.3,
-      "verified_strict_score": 100.0,
-      "checks": 124,
-      "failing": 0,
+      "score": 97.6,
+      "strict": 95.7,
+      "verified_strict_score": 97.6,
+      "checks": 128,
+      "failing": 4,
       "tier": 3,
       "detectors": {
         "unused": {
           "potential": 9,
-          "pass_rate": 1.0,
-          "failing": 0,
-          "weighted_failures": 0.0
+          "pass_rate": 0.8444444444444444,
+          "failing": 2,
+          "weighted_failures": 1.4
         },
         "logs": {
           "potential": 9,
           "pass_rate": 1.0,
           "failing": 0,
           "weighted_failures": 0.0
+        },
+        "exports": {
+          "potential": 1,
+          "pass_rate": 0.0,
+          "failing": 1,
+          "weighted_failures": 1.0
         },
         "smells": {
           "potential": 10,
@@ -4307,18 +5268,18 @@
         },
         "orphaned": {
           "potential": 49,
-          "pass_rate": 1.0,
-          "failing": 0,
-          "weighted_failures": 0.0
+          "pass_rate": 0.9857142857142857,
+          "failing": 1,
+          "weighted_failures": 0.7
         },
         "flat_dirs": {
-          "potential": 29,
+          "potential": 31,
           "pass_rate": 1.0,
           "failing": 0,
           "weighted_failures": 0.0
         },
         "naming": {
-          "potential": 4,
+          "potential": 5,
           "pass_rate": 1.0,
           "failing": 0,
           "weighted_failures": 0.0
@@ -4398,41 +5359,41 @@
       }
     },
     "Test health": {
-      "score": 98.1,
-      "strict": 90.2,
-      "verified_strict_score": 98.1,
-      "checks": 360,
-      "failing": 3,
+      "score": 97.6,
+      "strict": 89.3,
+      "verified_strict_score": 97.6,
+      "checks": 358,
+      "failing": 2,
       "tier": 4,
       "detectors": {
         "test_coverage": {
-          "potential": 355,
-          "pass_rate": 0.9845711955632348,
-          "failing": 1,
-          "weighted_failures": 5.477225575051661
+          "potential": 354,
+          "pass_rate": 0.9757018654501132,
+          "failing": 2,
+          "weighted_failures": 8.601539630659959
         },
         "subjective_review": {
-          "potential": 5,
-          "pass_rate": 0.72,
-          "failing": 2,
-          "weighted_failures": 1.4
+          "potential": 4,
+          "pass_rate": 1.0,
+          "failing": 0,
+          "weighted_failures": 0.0
         }
       }
     },
     "Abstraction fit": {
-      "score": 85.9,
-      "strict": 85.9,
-      "verified_strict_score": 85.9,
+      "score": 90.5,
+      "strict": 90.5,
+      "verified_strict_score": 90.5,
       "checks": 10,
       "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.859,
+          "pass_rate": 0.905,
           "failing": 0,
-          "weighted_failures": 1.41,
-          "assessment_score": 85.9,
+          "weighted_failures": 0.95,
+          "assessment_score": 90.5,
           "placeholder": false,
           "dimension_key": "abstraction_fitness",
           "configured_weight": 8.0,
@@ -4445,30 +5406,30 @@
             "Type Discipline"
           ],
           "component_scores": {
-            "Abstraction Leverage": 93.0,
+            "Abstraction Leverage": 92.0,
             "Indirection Cost": 95.0,
-            "Interface Honesty": 94.0,
-            "Delegation Density": 96.0,
-            "Definition Directness": 90.0,
-            "Type Discipline": 88.0
+            "Interface Honesty": 88.0,
+            "Delegation Density": 95.0,
+            "Definition Directness": 92.0,
+            "Type Discipline": 90.0
           }
         }
       }
     },
     "AI generated debt": {
-      "score": 89.0,
-      "strict": 89.0,
-      "verified_strict_score": 89.0,
+      "score": 86.5,
+      "strict": 86.5,
+      "verified_strict_score": 86.5,
       "checks": 10,
       "failing": 1,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.89,
+          "pass_rate": 0.865,
           "failing": 1,
-          "weighted_failures": 1.1,
-          "assessment_score": 89.0,
+          "weighted_failures": 1.35,
+          "assessment_score": 86.5,
           "placeholder": false,
           "dimension_key": "ai_generated_debt",
           "configured_weight": 1.0,
@@ -4477,19 +5438,19 @@
       }
     },
     "API coherence": {
-      "score": 81.1,
-      "strict": 81.1,
-      "verified_strict_score": 81.1,
+      "score": 85.4,
+      "strict": 85.4,
+      "verified_strict_score": 85.4,
       "checks": 10,
       "failing": 1,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.811,
+          "pass_rate": 0.854,
           "failing": 1,
-          "weighted_failures": 1.89,
-          "assessment_score": 81.1,
+          "weighted_failures": 1.46,
+          "assessment_score": 85.4,
           "placeholder": false,
           "dimension_key": "api_surface_coherence",
           "configured_weight": 1.0,
@@ -4519,19 +5480,19 @@
       }
     },
     "Contracts": {
-      "score": 80.1,
-      "strict": 80.1,
-      "verified_strict_score": 80.1,
+      "score": 80.3,
+      "strict": 80.3,
+      "verified_strict_score": 80.3,
       "checks": 10,
-      "failing": 0,
+      "failing": 1,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.801,
-          "failing": 0,
-          "weighted_failures": 1.99,
-          "assessment_score": 80.1,
+          "pass_rate": 0.803,
+          "failing": 1,
+          "weighted_failures": 1.97,
+          "assessment_score": 80.3,
           "placeholder": false,
           "dimension_key": "contract_coherence",
           "configured_weight": 12.0,
@@ -4540,19 +5501,19 @@
       }
     },
     "Convention drift": {
-      "score": 80.5,
-      "strict": 80.5,
-      "verified_strict_score": 80.5,
+      "score": 86.0,
+      "strict": 86.0,
+      "verified_strict_score": 86.0,
       "checks": 10,
       "failing": 1,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.805,
+          "pass_rate": 0.86,
           "failing": 1,
-          "weighted_failures": 1.95,
-          "assessment_score": 80.5,
+          "weighted_failures": 1.4,
+          "assessment_score": 86.0,
           "placeholder": false,
           "dimension_key": "convention_outlier",
           "configured_weight": 1.0,
@@ -4561,19 +5522,19 @@
       }
     },
     "Cross-module arch": {
-      "score": 84.9,
-      "strict": 84.9,
-      "verified_strict_score": 84.9,
+      "score": 90.0,
+      "strict": 90.0,
+      "verified_strict_score": 90.0,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.849,
-          "failing": 1,
-          "weighted_failures": 1.51,
-          "assessment_score": 84.9,
+          "pass_rate": 0.9,
+          "failing": 0,
+          "weighted_failures": 1.0,
+          "assessment_score": 90.0,
           "placeholder": false,
           "dimension_key": "cross_module_architecture",
           "configured_weight": 1.0,
@@ -4603,19 +5564,19 @@
       }
     },
     "Design coherence": {
-      "score": 82.4,
-      "strict": 82.4,
-      "verified_strict_score": 82.4,
+      "score": 88.0,
+      "strict": 88.0,
+      "verified_strict_score": 88.0,
       "checks": 10,
       "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.824,
+          "pass_rate": 0.88,
           "failing": 0,
-          "weighted_failures": 1.76,
-          "assessment_score": 82.4,
+          "weighted_failures": 1.2,
+          "assessment_score": 88.0,
           "placeholder": false,
           "dimension_key": "design_coherence",
           "configured_weight": 10.0,
@@ -4624,19 +5585,19 @@
       }
     },
     "Error consistency": {
-      "score": 67.3,
-      "strict": 67.3,
-      "verified_strict_score": 67.3,
+      "score": 66.1,
+      "strict": 66.1,
+      "verified_strict_score": 66.1,
       "checks": 10,
       "failing": 2,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.673,
+          "pass_rate": 0.661,
           "failing": 2,
-          "weighted_failures": 3.27,
-          "assessment_score": 67.3,
+          "weighted_failures": 3.39,
+          "assessment_score": 66.1,
           "placeholder": false,
           "dimension_key": "error_consistency",
           "configured_weight": 3.0,
@@ -4645,19 +5606,19 @@
       }
     },
     "High elegance": {
-      "score": 85.4,
-      "strict": 85.4,
-      "verified_strict_score": 85.4,
+      "score": 90.5,
+      "strict": 90.5,
+      "verified_strict_score": 90.5,
       "checks": 10,
       "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.854,
+          "pass_rate": 0.905,
           "failing": 0,
-          "weighted_failures": 1.46,
-          "assessment_score": 85.4,
+          "weighted_failures": 0.95,
+          "assessment_score": 90.5,
           "placeholder": false,
           "dimension_key": "high_level_elegance",
           "configured_weight": 22.0,
@@ -4666,6 +5627,48 @@
       }
     },
     "Stale migration": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": false,
+          "dimension_key": "incomplete_migration",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Init coupling": {
+      "score": 0.0,
+      "strict": 0.0,
+      "verified_strict_score": 0.0,
+      "checks": 10,
+      "failing": 0,
+      "tier": 4,
+      "detectors": {
+        "subjective_assessment": {
+          "potential": 10,
+          "pass_rate": 0.0,
+          "failing": 0,
+          "weighted_failures": 10.0,
+          "assessment_score": 0.0,
+          "placeholder": false,
+          "dimension_key": "initialization_coupling",
+          "configured_weight": 1.0,
+          "components": []
+        }
+      }
+    },
+    "Logic clarity": {
       "score": 92.0,
       "strict": 92.0,
       "verified_strict_score": 92.0,
@@ -4680,48 +5683,6 @@
           "weighted_failures": 0.8,
           "assessment_score": 92.0,
           "placeholder": false,
-          "dimension_key": "incomplete_migration",
-          "configured_weight": 1.0,
-          "components": []
-        }
-      }
-    },
-    "Init coupling": {
-      "score": 93.0,
-      "strict": 93.0,
-      "verified_strict_score": 93.0,
-      "checks": 10,
-      "failing": 0,
-      "tier": 4,
-      "detectors": {
-        "subjective_assessment": {
-          "potential": 10,
-          "pass_rate": 0.93,
-          "failing": 0,
-          "weighted_failures": 0.7,
-          "assessment_score": 93.0,
-          "placeholder": false,
-          "dimension_key": "initialization_coupling",
-          "configured_weight": 1.0,
-          "components": []
-        }
-      }
-    },
-    "Logic clarity": {
-      "score": 78.1,
-      "strict": 78.1,
-      "verified_strict_score": 78.1,
-      "checks": 10,
-      "failing": 0,
-      "tier": 4,
-      "detectors": {
-        "subjective_assessment": {
-          "potential": 10,
-          "pass_rate": 0.781,
-          "failing": 0,
-          "weighted_failures": 2.19,
-          "assessment_score": 78.1,
-          "placeholder": false,
           "dimension_key": "logic_clarity",
           "configured_weight": 6.0,
           "components": []
@@ -4729,19 +5690,19 @@
       }
     },
     "Low elegance": {
-      "score": 80.5,
-      "strict": 80.5,
-      "verified_strict_score": 80.5,
+      "score": 82.5,
+      "strict": 82.5,
+      "verified_strict_score": 82.5,
       "checks": 10,
-      "failing": 0,
+      "failing": 1,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.805,
-          "failing": 0,
-          "weighted_failures": 1.95,
-          "assessment_score": 80.5,
+          "pass_rate": 0.825,
+          "failing": 1,
+          "weighted_failures": 1.75,
+          "assessment_score": 82.5,
           "placeholder": false,
           "dimension_key": "low_level_elegance",
           "configured_weight": 12.0,
@@ -4750,19 +5711,19 @@
       }
     },
     "Mid elegance": {
-      "score": 77.8,
-      "strict": 77.8,
-      "verified_strict_score": 77.8,
+      "score": 84.9,
+      "strict": 84.9,
+      "verified_strict_score": 84.9,
       "checks": 10,
       "failing": 1,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.778,
+          "pass_rate": 0.849,
           "failing": 1,
-          "weighted_failures": 2.22,
-          "assessment_score": 77.8,
+          "weighted_failures": 1.51,
+          "assessment_score": 84.9,
           "placeholder": false,
           "dimension_key": "mid_level_elegance",
           "configured_weight": 22.0,
@@ -4771,19 +5732,19 @@
       }
     },
     "Naming quality": {
-      "score": 86.0,
-      "strict": 86.0,
-      "verified_strict_score": 86.0,
+      "score": 90.0,
+      "strict": 90.0,
+      "verified_strict_score": 90.0,
       "checks": 10,
-      "failing": 1,
+      "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.86,
-          "failing": 1,
-          "weighted_failures": 1.4,
-          "assessment_score": 86.0,
+          "pass_rate": 0.9,
+          "failing": 0,
+          "weighted_failures": 1.0,
+          "assessment_score": 90.0,
           "placeholder": false,
           "dimension_key": "naming_quality",
           "configured_weight": 2.0,
@@ -4792,19 +5753,19 @@
       }
     },
     "Structure nav": {
-      "score": 85.9,
-      "strict": 85.9,
-      "verified_strict_score": 85.9,
+      "score": 91.0,
+      "strict": 91.0,
+      "verified_strict_score": 91.0,
       "checks": 10,
       "failing": 0,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.859,
+          "pass_rate": 0.91,
           "failing": 0,
-          "weighted_failures": 1.41,
-          "assessment_score": 85.9,
+          "weighted_failures": 0.9,
+          "assessment_score": 91.0,
           "placeholder": false,
           "dimension_key": "package_organization",
           "configured_weight": 5.0,
@@ -4813,19 +5774,19 @@
       }
     },
     "Test strategy": {
-      "score": 55.2,
-      "strict": 55.2,
-      "verified_strict_score": 55.2,
+      "score": 65.5,
+      "strict": 65.5,
+      "verified_strict_score": 65.5,
       "checks": 10,
       "failing": 2,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.552,
+          "pass_rate": 0.655,
           "failing": 2,
-          "weighted_failures": 4.48,
-          "assessment_score": 55.2,
+          "weighted_failures": 3.45,
+          "assessment_score": 65.5,
           "placeholder": false,
           "dimension_key": "test_strategy",
           "configured_weight": 1.0,
@@ -4834,19 +5795,19 @@
       }
     },
     "Type safety": {
-      "score": 75.2,
-      "strict": 75.2,
-      "verified_strict_score": 75.2,
+      "score": 83.1,
+      "strict": 83.1,
+      "verified_strict_score": 83.1,
       "checks": 10,
       "failing": 2,
       "tier": 4,
       "detectors": {
         "subjective_assessment": {
           "potential": 10,
-          "pass_rate": 0.752,
+          "pass_rate": 0.831,
           "failing": 2,
-          "weighted_failures": 2.48,
-          "assessment_score": 75.2,
+          "weighted_failures": 1.69,
+          "assessment_score": 83.1,
           "placeholder": false,
           "dimension_key": "type_safety",
           "configured_weight": 12.0,
@@ -4857,51 +5818,51 @@
   },
   "reminder_history": {
     "zone_classification": 3,
-    "report_scores": 5,
+    "report_scores": 7,
     "feedback_nudge": 3,
     "review_issues_pending": 3,
     "stagnant_nudge": 3,
     "wontfix_growing": 2,
-    "auto_fixers_available": 1,
-    "dry_run_first": 1
+    "auto_fixers_available": 2,
+    "dry_run_first": 2
   },
   "review_cache": {
     "files": {
       "src/lib/data/projects.ts": {
         "content_hash": "7d41cdb689adfcb7",
-        "reviewed_at": "2026-03-12T09:00:10+00:00",
+        "reviewed_at": "2026-03-12T09:32:22+00:00",
         "issue_count": 0
       },
       "src/routes/+page.server.ts": {
-        "content_hash": "a9ea53d2c6225c7d",
-        "reviewed_at": "2026-03-12T09:00:10+00:00",
+        "content_hash": "7baf95a3415f1573",
+        "reviewed_at": "2026-03-12T09:32:22+00:00",
         "issue_count": 0
       },
       "src/lib/data/artefacts.ts": {
-        "content_hash": "97e6de75df451522",
-        "reviewed_at": "2026-03-12T09:00:10+00:00",
+        "content_hash": "933e3ff556d237fa",
+        "reviewed_at": "2026-03-12T09:32:22+00:00",
         "issue_count": 0
       },
       "src/lib/data/terminal.ts": {
         "content_hash": "d7a6185bdbd7aed9",
-        "reviewed_at": "2026-03-12T09:00:10+00:00",
+        "reviewed_at": "2026-03-12T09:32:22+00:00",
         "issue_count": 0
       },
       "src/lib/utils/github.ts": {
-        "content_hash": "098839f43b4de450",
-        "reviewed_at": "2026-03-12T09:00:10+00:00",
+        "content_hash": "c0dfec754c84091b",
+        "reviewed_at": "2026-03-12T09:32:22+00:00",
         "issue_count": 0
       },
       "src/routes/+layout.ts": {
         "content_hash": "1fe67243c3784fca",
-        "reviewed_at": "2026-03-12T09:00:10+00:00",
+        "reviewed_at": "2026-03-12T09:32:22+00:00",
         "issue_count": 0
       }
     },
     "holistic": {
-      "reviewed_at": "2026-03-12T09:00:10+00:00",
-      "file_count_at_review": 7,
-      "issue_count": 22,
+      "reviewed_at": "2026-03-12T09:32:22+00:00",
+      "file_count_at_review": 8,
+      "issue_count": 12,
       "reviewed_files_count": 6,
       "full_sweep_included": false
     }
@@ -4942,6 +5903,30 @@
       "provisional_count": 0,
       "attest": "",
       "import_file": "/home/user/JasonWarrenUK.github.io/.desloppify/subagents/runs/20260312_085521/holistic_issues_merged.json"
+    },
+    {
+      "timestamp": "2026-03-12T09:32:06+00:00",
+      "mode": "trusted_internal",
+      "trusted": true,
+      "reason": "trusted import-run replay from 20260312_092638",
+      "override_used": false,
+      "attested_external": false,
+      "provisional": false,
+      "provisional_count": 0,
+      "attest": "",
+      "import_file": "/home/user/JasonWarrenUK.github.io/.desloppify/subagents/runs/20260312_092638/holistic_issues_merged.json"
+    },
+    {
+      "timestamp": "2026-03-12T09:32:22+00:00",
+      "mode": "trusted_internal",
+      "trusted": true,
+      "reason": "trusted import-run replay from 20260312_092638",
+      "override_used": false,
+      "attested_external": false,
+      "provisional": false,
+      "provisional_count": 0,
+      "attest": "",
+      "import_file": "/home/user/JasonWarrenUK.github.io/.desloppify/subagents/runs/20260312_092638/holistic_issues_merged.json"
     }
   ],
   "attestation_log": [

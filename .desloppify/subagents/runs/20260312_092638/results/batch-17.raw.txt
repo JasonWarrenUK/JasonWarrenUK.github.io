@@ -1,0 +1,54 @@
+{
+  "batch": "convention_outlier",
+  "batch_index": 17,
+  "assessments": {"convention_outlier": 88.0},
+  "dimension_notes": {
+    "convention_outlier": {
+      "evidence": [
+        "All TypeScript files consistently use camelCase for functions/variables and PascalCase for types/interfaces",
+        "All data modules (artefacts.ts, projects.ts, terminal.ts) follow the same pattern: import type, export named const array",
+        "All Svelte components consistently use Svelte 5 runes ($props, $state, $derived, $effect) with typed Props interfaces",
+        "Named exports used uniformly across all modules; no default exports anywhere",
+        "Artefacts component does not use the Section wrapper component that other sections (Impact, Explorations, Meta) use, creating a mild structural inconsistency among page sections"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "medium",
+      "issues_preventing_higher_score": "The Artefacts section bypasses the Section component pattern used by its siblings, resulting in a slight convention drift in how page sections are structured. About, Background, Contact, and Hero also do not use Section, but they are simpler content-only sections without accent styling, so the inconsistency is most notable for Artefacts which has similar complexity to the sections that do use it."
+    }
+  },
+  "dimension_judgment": {
+    "convention_outlier": {
+      "strengths": [
+        "Uniform naming convention: camelCase for values, PascalCase for types, across all files without exception",
+        "Consistent Svelte 5 runes usage: every component uses $props() with a typed Props interface",
+        "All data modules follow an identical export pattern: typed array exported as named const",
+        "No mixed export strategies: named exports used throughout with zero default exports",
+        "Consistent use of prefers-reduced-motion checks across all animation-bearing components (Hero, Terminal, +page.svelte)"
+      ],
+      "issue_character": "The single convention outlier is a minor structural inconsistency in how page sections are composed, not a naming or export pattern drift.",
+      "score_rationale": "A developer can see a pattern in one area and largely trust it holds everywhere. Naming, exports, runes usage, and animation handling are all consistent. The score is pulled down slightly by the Artefacts component not following the Section wrapper pattern used by sibling sections with similar complexity, but this is a minor structural divergence rather than a systemic convention problem."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "convention_outlier",
+      "identifier": "artefacts_bypasses_section_wrapper",
+      "summary": "Artefacts component implements its own section structure instead of using the shared Section component",
+      "related_files": ["src/lib/components/Artefacts.svelte", "src/lib/components/Section.svelte"],
+      "evidence": [
+        "Impact, Explorations, and Meta sections all compose via <Section id title accent>, but Artefacts renders its own <section> with its own heading styling",
+        "Artefacts has its own .artefacts-heading style while sibling sections use the .section-heading class provided by Section.svelte"
+      ],
+      "suggestion": "Consider wrapping Artefacts content in the Section component for consistency, or document the intentional deviation if the mono-font styling requires it.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "single_edit"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Artefacts section likely predates or was designed independently of the Section component abstraction"],
+    "likely_symptoms": [],
+    "possible_false_positives": ["The About, Hero, Background, and Contact components also do not use Section, but these are simpler content-only sections where the pattern divergence is less notable"]
+  }
+}

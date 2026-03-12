@@ -1,0 +1,50 @@
+{
+  "batch": "abstraction_fitness",
+  "batch_index": 13,
+  "assessments": {"abstraction_fitness": 88.0},
+  "dimension_notes": {
+    "abstraction_fitness": {
+      "evidence": [
+        "No wrapper chains: data flows directly from data modules through +page.server.ts to components without intermediate translation layers",
+        "attachGithubData in +page.server.ts is a focused helper that does real work: merging Omit<Project,'github'>[] with a lookup map to produce Project[] — not a pass-through",
+        "tryFetchJson adds value by unifying the fetchGitHub + json() steps into a nullable pattern used in three call sites — earns its existence",
+        "SectionAccent type + accentColors record: used by Section.svelte, ProjectCard.svelte (via constants import), and +page.svelte — three consumers, provides genuine type safety for the accent system",
+        "TerminalFrame interface: used by Terminal.svelte and terminal.ts — small surface, but both consumers use it and it prevents misshaping the frame objects",
+        "Artefact, Project, ProjectGitHubData interfaces: each used across data, utils, and component layers — no single-implementation ceremony",
+        "holistic_context confirms: wrapper_rate 0.0, one_impl_interface_count 0, delegation_heavy_class_count 0, facade_module_count 0",
+        "Mechanical sub-axes all at 100 from scan, consistent with observed code: no delegation-heavy classes, no facade modules, no TypedDict violations"
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "The abstraction layer is lean and all interfaces earn their existence through multiple consumers. The one mild concern is that RepoResponse is a private interface in github.ts used only as a guard target for isRepoResponse — it is not exported or reused, but this is appropriate scoping rather than a fitness problem. Overall abstraction fitness is strong.",
+      "sub_axes": {
+        "abstraction_leverage": 92.0,
+        "indirection_cost": 96.0,
+        "interface_honesty": 94.0,
+        "delegation_density": 100.0,
+        "definition_directness": 88.0,
+        "type_discipline": 90.0
+      }
+    }
+  },
+  "dimension_judgment": {
+    "abstraction_fitness": {
+      "strengths": [
+        "Every exported interface (Project, Artefact, TerminalFrame, SectionAccent, ProjectGitHubData) is consumed across multiple files — no single-use ceremony",
+        "No pass-through wrapper functions: helpers like attachGithubData and tryFetchJson add real behavior (data transformation, null-propagation pattern)",
+        "Type guard functions (isRepoResponse, isLanguagesResponse) are correctly scoped — they isolate external API volatility at the exact boundary where the unknown type arrives",
+        "accentColors record derives directly from SectionAccent type, providing a single-source-of-truth mapping that multiple components use without duplicating the literal-to-CSS mapping",
+        "Mechanical scan confirms zero wrappers, zero delegation-heavy classes, zero facade modules across the codebase"
+      ],
+      "issue_character": "No meaningful abstraction fitness issues found — the abstraction layer is genuinely lean, and every layer of indirection pays for itself.",
+      "score_rationale": "This codebase scores very well on abstraction fitness: there are no pass-through wrappers, no single-implementation interfaces, and no wide parameter bags. The 12-point deduction from 100 reflects minor opportunities — the RepoResponse private interface could be inlined, and the accentColors + SectionAccent dual-definition (type + record) is slightly ceremonial for a 4-value set — but these are not real friction sources. Against the 90 anchor of 'generally strong with a few layers that feel overbuilt but don't materially slow the developer down', this sits just below 90 because the code is cleanly direct without those few overbuilt layers."
+    }
+  },
+  "issues": [],
+  "retrospective": {
+    "root_causes": [],
+    "likely_symptoms": [],
+    "possible_false_positives": ["RepoResponse private interface — it is correctly scoped as a local type guard target, not a ceremony issue"]
+  }
+}
