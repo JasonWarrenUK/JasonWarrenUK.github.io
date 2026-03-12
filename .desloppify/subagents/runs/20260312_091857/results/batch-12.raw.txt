@@ -1,0 +1,54 @@
+{
+  "batch": "error_consistency",
+  "batch_index": 12,
+  "assessments": {"error_consistency": 80.0},
+  "dimension_notes": {
+    "error_consistency": {
+      "evidence": [
+        "fetchGitHub uses try/catch and returns null on both network errors and non-ok HTTP responses — consistent null-return strategy at the outer boundary",
+        "fetchRepoData returns null when isRepoResponse guard fails — null propagation is the single strategy throughout github.ts",
+        "tryFetchJson does not wrap res.json() in a try/catch; a JSON parse failure would produce an unhandled rejection, breaking the null-return strategy for this failure mode",
+        "console.warn used in fetchGitHub for both failure cases (non-ok response and network error) — consistent diagnostic logging at the error boundary, appropriate for a static-site generator context",
+        "No error handling exists in +page.server.ts: fetchAllRepoData is awaited without a try/catch; if the function itself threw (rather than returning null) the load function would throw and the page would fail",
+        "fetchAllRepoData currently cannot throw because all internal failures resolve to null, but the load function provides no fallback if that assumption breaks in future"
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "medium",
+      "issues_preventing_higher_score": "The null-return strategy is coherent across HTTP and network failures but is not complete: JSON parse errors in tryFetchJson escape as rejections rather than nulls, and the +page.server.ts load function has no top-level error boundary to protect against future changes to github.ts's error strategy."
+    }
+  },
+  "dimension_judgment": {
+    "error_consistency": {
+      "strengths": [
+        "github.ts applies a single null-return strategy consistently across HTTP failure, network failure, and validation failure — a developer can predict that any failed fetch returns null",
+        "console.warn calls are consistently tagged with '[GitHub API]' and include both url and a structured error object — diagnostic context is preserved uniformly",
+        "Data modules (projects.ts, artefacts.ts, terminal.ts) have no I/O and no error surface — no inconsistency possible there"
+      ],
+      "issue_character": "The error strategy is coherent within its defined scope but has two gaps: one internal (JSON parse errors escape the null-return boundary) and one architectural (the load function has no defense if github.ts's strategy changes).",
+      "score_rationale": "The codebase applies null-return consistently for the failure modes it handles, which is a solid foundation. Two gaps prevent a higher score: tryFetchJson does not cover JSON parse errors in its null-return contract, and +page.server.ts load has no top-level catch that would protect the page if fetchAllRepoData ever propagated a rejection. Against the 80 anchor of 'developer encounters mixed strategies making error behavior hard to predict', this is better than that — the strategy is coherent where applied — but the incomplete boundary coverage keeps it at 80 rather than 90."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "error_consistency",
+      "identifier": "try_fetch_json_unhandled_parse",
+      "summary": "JSON parse failure in tryFetchJson escapes as unhandled rejection, breaking null-return strategy",
+      "related_files": ["src/lib/utils/github.ts"],
+      "evidence": [
+        "tryFetchJson calls res.json() without await inside a try/catch; if the response body is not valid JSON, the rejection propagates instead of returning null",
+        "All other failure modes in github.ts (network error, non-ok status, isRepoResponse failing) return null — this is the only path that doesn't"
+      ],
+      "suggestion": "Change the body of tryFetchJson to: `const res = await fetchGitHub(url); if (!res) return null; try { return await res.json(); } catch { return null; }` — this brings JSON parse failures into the null-return contract.",
+      "confidence": "high",
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "root_cause_cluster": "error_boundary_completeness"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["The null-return strategy was applied at the fetch/HTTP layer but not extended to the parse layer — a consistent oversight for a single function"],
+    "likely_symptoms": ["try_fetch_json_unhandled_parse"],
+    "possible_false_positives": ["The load function lacking a top-level catch is intentional for SvelteKit's error handling model; SvelteKit catches load errors and renders the error page — this may be by design rather than a gap"]
+  }
+}

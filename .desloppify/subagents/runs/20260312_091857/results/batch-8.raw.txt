@@ -1,0 +1,66 @@
+{
+  "batch": "naming_quality",
+  "batch_index": 8,
+  "assessments": {"naming_quality": 88.0},
+  "dimension_notes": {
+    "naming_quality": {
+      "evidence": [
+        "fetchGitHub (github.ts): name correctly describes what it does — performs a GitHub-targeted fetch; returns Response | null which is honest",
+        "tryFetchJson (github.ts): the 'try' prefix communicates fallibility; consistent with the error-absorbing semantics of the function",
+        "isRepoResponse, isLanguagesResponse (github.ts): boolean predicates with 'is' prefix returning boolean — name/behavior match is correct",
+        "parseCommitCount (github.ts): 'parse' accurately describes reading the Link header; returns number — clean",
+        "fetchRepoData, fetchAllRepoData (github.ts): parallel naming with clear scope distinction (single vs all) — good vocabulary consistency",
+        "attachGithubData (page.server.ts): 'attach' is slightly generic but contextually clear given the parameter types; not a generic verb like 'handle' or 'process'",
+        "getLanguageSegments (ProjectCard.svelte): 'get' prefix with no mutation — name/behavior match is correct; 'Segments' communicates the shape of the output",
+        "splitOverview (ProjectCard.svelte): 'split' is accurate; returns { overview, detail } which matches the name",
+        "irisSession (terminal.ts): names the data by what it represents (a recorded terminal session for Iris) — appropriately specific",
+        "impactProjects, explorationProjects, metaProjects (projects.ts): category names match the section titles in the UI ('Impact Work', 'Explorations', 'Meta') — vocabulary is consistent",
+        "SectionAccent type (types/index.ts): 'Accent' is a visual design term consistent with CSS custom property names (--accent-primary etc.) — domain vocabulary is coherent",
+        "techLine (types/index.ts, projects.ts): 'Line' is slightly informal but used consistently across all project definitions; not an outlier",
+        "accentColors (constants.ts): plural noun for a Record — appropriate; keys match SectionAccent values exactly",
+        "containerEl (Terminal.svelte): 'El' suffix for an HTMLElement binding is an acceptable abbreviation; used once",
+        "langColors, langRaw, repoRaw, contribRaw (ProjectCard.svelte, github.ts): 'Raw' suffix for unvalidated API responses is a clear convention signalling pre-validation data — good"
+      ],
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "confidence": "high",
+      "issues_preventing_higher_score": "attachGithubData uses a slightly generic verb ('attach') when 'mergeGithubData' or 'hydrateWithGithubData' would more precisely describe that static project records are being enriched with fetched data. This is a minor clarity gap, not a serious defect. The 'Raw' suffix convention is used in github.ts but then the variable is immediately renamed in the destructured assignment — not an issue but worth noting for consistency."
+    }
+  },
+  "dimension_judgment": {
+    "naming_quality": {
+      "strengths": [
+        "Boolean predicates (isRepoResponse, isLanguagesResponse) correctly use the 'is' prefix and return boolean — no name/behavior mismatch",
+        "The 'Raw' suffix convention for unvalidated API responses clearly signals pre-validation data throughout github.ts",
+        "fetch/fetchAll naming pattern provides clear scope distinction without abbreviation",
+        "Project category names (impactProjects, explorationProjects, metaProjects) align precisely with the UI section titles, keeping vocabulary consistent across layers",
+        "SectionAccent type and accentColors constant share vocabulary with CSS custom property names, creating a coherent design-token naming chain"
+      ],
+      "issue_character": "The naming is generally precise and codebase-consistent; the sole minor concern is 'attachGithubData' using a generic attachment verb where a more specific enrichment/hydration verb would communicate that static data is being augmented with fetched data.",
+      "score_rationale": "A score of 88 reflects a codebase with strong naming discipline: consistent vocabulary across data, utilities, and components; correct use of boolean naming conventions; and a coherent design-token vocabulary. The deduction is for 'attachGithubData', where 'attach' undersells the function's semantics relative to the richer vocabulary used elsewhere in the file. No generic verbs like 'handle', 'process', or 'manage' appear anywhere in the production code. This places the codebase in the upper 'good with minor polish opportunities' band."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "naming_quality",
+      "identifier": "nq_attach_github_data",
+      "summary": "attachGithubData uses a generic 'attach' verb where a more precise term would communicate the enrichment/hydration semantics",
+      "related_files": ["src/routes/+page.server.ts"],
+      "evidence": [
+        "Function signature: attachGithubData(projects: Omit<Project, 'github'>[], githubData: Record<string, ProjectGitHubData | null>): Project[]",
+        "The function merges fetched GitHub data into static project records — this is enrichment/hydration, not generic attachment",
+        "'attach' is not as precise as 'merge', 'hydrate', or 'enrich' given the context"
+      ],
+      "suggestion": "Rename to mergeGithubData or hydrateProjects to communicate that static records are being augmented with fetched data, making the two-phase data model more explicit at the call site.",
+      "confidence": "low",
+      "impact_scope": "local",
+      "fix_scope": "single_edit",
+      "root_cause_cluster": "naming_precision"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["The naming is overall high quality; the single issue is a mild verb imprecision in a helper function rather than a systemic pattern."],
+    "likely_symptoms": [],
+    "possible_false_positives": []
+  }
+}

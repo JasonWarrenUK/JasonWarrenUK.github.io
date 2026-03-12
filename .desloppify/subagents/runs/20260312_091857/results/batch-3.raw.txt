@@ -1,0 +1,80 @@
+{
+  "batch": "test_strategy",
+  "batch_index": 3,
+  "assessments": {"test_strategy": 72.0},
+  "dimension_notes": {
+    "test_strategy": {
+      "evidence": [
+        "src/lib/utils/github.test.ts has solid coverage of the utility module: all three exported type guards (isRepoResponse, isLanguagesResponse, parseCommitCount) are tested for happy path, null, missing fields, and wrong types. fetchRepoData and fetchAllRepoData are integration-tested with fetch stubs.",
+        "src/lib/data/artefacts.test.ts, projects.test.ts, terminal.test.ts exist and test shape invariants (non-empty, required fields, format patterns). These are data integrity guards, not snapshot tests.",
+        "src/lib/types/index.test.ts actually tests accentColors from constants.ts — the file is misnamed but tests a real runtime value.",
+        "Zero tests for any Svelte component (Hero, About, Section, ProjectCard, Terminal, Nav, Artefacts, Contact, Background). The components contain meaningful logic: Terminal.svelte has IntersectionObserver orchestration and an async playFrames loop; ProjectCard.svelte has getLanguageSegments calculation, formatDate, and splitOverview string parsing — none of this is exercised by tests.",
+        "splitOverview in ProjectCard.svelte is a non-trivial string parsing function (regex boundary detection with edge cases) that currently has zero test coverage.",
+        "parseCommitCount, isRepoResponse, isLanguagesResponse are exported specifically to enable testing (comments say 'Exported for testing') and have thorough unit tests — this is good practice.",
+        "No integration test verifies that the server load function (attachGithubData) correctly merges GitHub data with static project arrays.",
+        "No test for the +page.server.ts load function end-to-end.",
+        "No snapshot or visual regression tests, which is appropriate for this type of site.",
+        "Test count: github.test.ts has ~15 cases; data files have ~5-8 each; types test has 2. Total is modest but not absent."
+      ],
+      "impact_scope": "subsystem",
+      "fix_scope": "multi_file_refactor",
+      "confidence": "high",
+      "issues_preventing_higher_score": "Component logic (especially splitOverview, getLanguageSegments, Terminal playback orchestration) is untested. The server load function has no test. These are medium-risk paths given the site's primary content is rendered through them."
+    }
+  },
+  "dimension_judgment": {
+    "test_strategy": {
+      "strengths": [
+        "The GitHub utility module has thorough unit and integration tests with proper fetch mocking.",
+        "Data integrity tests for artefacts, projects, and terminal frames catch shape regressions without being implementation-coupled.",
+        "Type guards are exported specifically to enable testing — a deliberate, good decision.",
+        "No snapshot test overuse; all tests make explicit assertions."
+      ],
+      "issue_character": "Coverage is concentrated in the data and utility layers while all Svelte component logic (including non-trivial string parsing and async animation orchestration) has zero tests.",
+      "score_rationale": "The codebase is above the 50 'some tests exist' anchor but well below the 85+ 'critical paths covered' threshold. The utility layer is genuinely well-tested, and the data integrity tests are appropriate. The gap is the complete absence of tests for component logic: splitOverview is a boundary-condition-prone string parser, getLanguageSegments has sorting and rounding logic, and Terminal's async playFrames loop has observable state. These are not low-value untested files — they are the primary rendering paths for the portfolio's content."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "test_strategy",
+      "identifier": "ts_splitoverview_untested",
+      "summary": "splitOverview string parser in ProjectCard has zero test coverage despite edge-case-prone regex logic",
+      "related_files": ["src/lib/components/ProjectCard.svelte"],
+      "evidence": ["splitOverview uses /\\.\\s|\\.\\"\\s/ regex and slices on match.index — untested for strings with no sentence break, strings with quoted sentences, and empty strings."],
+      "suggestion": "Extract splitOverview to src/lib/utils/text.ts and add a test file src/lib/utils/text.test.ts covering: no-break input, quoted-sentence boundary, multiple sentences, empty string. Then import back into ProjectCard.",
+      "confidence": "high",
+      "impact_scope": "local",
+      "fix_scope": "multi_file_refactor",
+      "root_cause_cluster": "untested_component_logic"
+    },
+    {
+      "dimension": "test_strategy",
+      "identifier": "ts_getlanguagesegments_untested",
+      "summary": "getLanguageSegments calculation (sort, slice, rounding, fallback palette) has no test coverage",
+      "related_files": ["src/lib/components/ProjectCard.svelte"],
+      "evidence": ["getLanguageSegments computes language bar percentages with Math.round and a 4-entry palette fallback. Edge cases (empty languages, >4 languages, unknown language name) are unverified."],
+      "suggestion": "Extract getLanguageSegments to src/lib/utils/languages.ts and add tests for: empty input, single language, exactly 4 languages, more than 4 languages, known and unknown language names.",
+      "confidence": "high",
+      "impact_scope": "local",
+      "fix_scope": "multi_file_refactor",
+      "root_cause_cluster": "untested_component_logic"
+    },
+    {
+      "dimension": "test_strategy",
+      "identifier": "ts_server_load_untested",
+      "summary": "attachGithubData and the +page.server.ts load function have no unit or integration tests",
+      "related_files": ["src/routes/+page.server.ts"],
+      "evidence": ["attachGithubData merges static project arrays with GitHub API results using nullish coalescing. No test verifies correct merging, null handling, or that all three project arrays are returned with proper shapes."],
+      "suggestion": "Add src/routes/+page.server.test.ts testing attachGithubData in isolation (it is a pure function and can be extracted or tested by importing the module with a mocked fetchAllRepoData). Test: full data merge, null github data fallback, empty project arrays.",
+      "confidence": "high",
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "root_cause_cluster": "untested_critical_path"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Testing investment concentrated on the network utility layer; component logic treated as untestable due to Svelte coupling, but several functions are extractable to pure utils."],
+    "likely_symptoms": ["ts_splitoverview_untested", "ts_getlanguagesegments_untested"],
+    "possible_false_positives": []
+  }
+}

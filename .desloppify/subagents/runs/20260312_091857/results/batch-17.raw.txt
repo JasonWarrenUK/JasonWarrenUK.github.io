@@ -1,0 +1,57 @@
+{
+  "batch": "convention_outlier",
+  "batch_index": 17,
+  "assessments": {"convention_outlier": 91.0},
+  "dimension_notes": {
+    "convention_outlier": {
+      "evidence": [
+        "All data modules (artefacts.ts, projects.ts, terminal.ts) use named exports consistently: `export const artefacts`, `export const impactProjects`, `export const irisSession`. No default exports anywhere in lib/data.",
+        "All components are PascalCase .svelte files with named imports in consuming files. No mixed default/named export pattern across siblings.",
+        "Type definitions all reside in src/lib/types/index.ts as exported interfaces and type aliases. No TypedDict/dataclass/NamedTuple mixing (TypeScript-equivalent) — the codebase uses a single interface strategy throughout.",
+        "camelCase functions throughout lib/utils/github.ts: fetchGitHub, tryFetchJson, isRepoResponse, isLanguagesResponse, parseCommitCount, fetchRepoData, fetchAllRepoData. Consistent with TypeScript conventions.",
+        "One minor inconsistency: the types/index.test.ts file is nominally named after the types module but actually tests accentColors from lib/constants.ts, not the types themselves. This is a misplaced test file, but it is a minor navigation issue rather than a style island.",
+        "All sibling data modules follow identical structure: import type from $lib/types, export const <name>: <Type>[]. The pattern is uniform.",
+        "No snake_case/camelCase drift observed. No directory using a completely different convention than its siblings."
+      ],
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "confidence": "medium",
+      "issues_preventing_higher_score": "The types/index.test.ts file tests constants, not types — its filename misrepresents its actual content, creating a mild navigation mismatch for a developer looking for type-level tests."
+    }
+  },
+  "dimension_judgment": {
+    "convention_outlier": {
+      "strengths": [
+        "All lib/data sibling modules share identical structure: typed named export of an array constant — zero convention drift across three siblings.",
+        "Export style is uniformly named exports throughout production code — no named-vs-default mixing.",
+        "All utility functions follow camelCase consistently, matching TypeScript conventions.",
+        "A single interface strategy is used for all domain types (no TypedDict vs dataclass splitting).",
+        "Component naming (PascalCase .svelte files) is applied uniformly across all 9 components."
+      ],
+      "issue_character": "The single convention outlier is a misnamed test file (types/index.test.ts tests constants, not types), a low-impact navigation inconsistency rather than a systemic drift.",
+      "score_rationale": "Conventions are applied with high uniformity across the codebase: naming, export patterns, and type strategies are all internally consistent. The one concrete outlier is a test file whose name misrepresents its contents, which causes mild navigator confusion but has no production impact. This places the codebase in the 90-93 range — strong with an isolated rough edge, not in the 80s where a developer would regularly notice convention drift."
+    }
+  },
+  "issues": [
+    {
+      "dimension": "convention_outlier",
+      "identifier": "misnamed_types_test",
+      "summary": "types/index.test.ts tests lib/constants accentColors, not the types module",
+      "related_files": ["src/lib/types/index.test.ts"],
+      "evidence": [
+        "File is named index.test.ts inside src/lib/types/ but imports from '$lib/constants' and tests accentColors, not any type from src/lib/types/index.ts",
+        "A developer navigating to types/ to find type-related tests would find constant tests instead"
+      ],
+      "suggestion": "Rename the file to src/lib/constants.test.ts and move it alongside src/lib/constants.ts. The test content is correct; only the file placement and name misrepresent its coverage.",
+      "confidence": "medium",
+      "impact_scope": "module",
+      "fix_scope": "single_edit",
+      "root_cause_cluster": "test_file_placement"
+    }
+  ],
+  "retrospective": {
+    "root_causes": ["Test file was likely placed next to the types module during early development before constants.ts was fully separated from types."],
+    "likely_symptoms": ["misnamed_types_test"],
+    "possible_false_positives": []
+  }
+}
